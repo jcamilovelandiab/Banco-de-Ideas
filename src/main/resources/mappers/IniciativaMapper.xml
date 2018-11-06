@@ -11,14 +11,17 @@
 		<result property='descripcion' column='descripcionIniciativa'/>
 		<result property='fechaPropuesta' column='fechaPropuestaIniciativa'/>
 		<result property='fechaCierre' column='fechaCierreIniciativa'/>
-		<result property='estado' column='estadoIniciativa'/>
+		
+		<result property='estado' column='estadoIniciativa' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
+		
 		<association property="usuario" column='usuarioIniciativa' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
 		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
 		<collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
 	</resultMap>
 	
 	<insert id="crearIniciativa" parameterType="Iniciativa">
-		INSERT INTO Iniciativas (nombre,descripcion,fechapropuesta,estado,proponente) VALUES (#{ini.nombre},#{ini.descripcion},#{ini.fechaPropuesta},#{ini.proponente}); 
+		INSERT INTO Iniciativas (nombre,descripcion,fechapropuesta,estado,proponente) 
+		VALUES (#{ini.nombre},#{ini.descripcion},now(),#{ini.estado.toString()} ,#{ini.proponente}); 
 	</insert>
 	
 </mapper>

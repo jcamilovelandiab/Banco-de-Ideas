@@ -3,6 +3,8 @@ import java.io.File;
 import java.sql.Date;
 import java.util.List;
 import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.pdsw.entities.*;
@@ -13,9 +15,11 @@ public interface  UsuarioDAO {
     public List<Usuario>consultarUsuarios() throws PersistenceException;
 	public boolean autenticarUsuario(Usuario usuario) throws PersistenceException;
 	 
-	public void votarxIniciativa(Usuario usuario, Iniciativa iniciativa) throws PersistenceException;
-	public void cancelarVotoIniciativa(Usuario usuario, Iniciativa iniciativa) throws PersistenceException; 
-	public void mostrarInteresxIniciativa(Usuario usuario, Iniciativa iniciativa, Interes interes) throws PersistenceException;
 	public File consultarEstadisticas() throws PersistenceException;
+	public void asignarPerfil(String correoUsuario, Rol tipo) throws PersistenceException;
 	
+	
+	public void votarxIniciativa(String correoUsuario, long idIniciativa) throws PersistenceException;
+    public void cancelarVotoIniciativa(String correoUsuario, long idIniciativa) throws PersistenceException;
+    public void mostrarInteresxIniciativa(String correoUsuario, long idIniciativa, Interes interes) throws PersistenceException;
 }

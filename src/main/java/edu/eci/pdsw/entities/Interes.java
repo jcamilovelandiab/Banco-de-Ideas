@@ -3,7 +3,7 @@ package edu.eci.pdsw.entities;
 import java.sql.Date;
 
 public class Interes {
-	private Long id;
+	private long id;
 	private String intencion;
 	private Date fecha;
 	private Boolean trabajo;
@@ -13,42 +13,55 @@ public class Interes {
 	public Interes() {
 		
 	}
-	public Long getId() {
+	
+	public long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getIntencion() {
 		return intencion;
 	}
+	
 	public void setIntencion(String intencion) {
 		this.intencion = intencion;
 	}
+	
 	public Date getFecha() {
 		return fecha;
 	}
+	
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	
 	public Boolean getTrabajo() {
 		return trabajo;
 	}
+	
 	public void setTrabajo(Boolean trabajo) {
 		this.trabajo = trabajo;
 	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
+	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
 	public Iniciativa getIniciativa() {
 		return iniciativa;
 	}
+	
 	public void setIniciativa(Iniciativa iniciativa) {
 		this.iniciativa = iniciativa;
 	}
+	
 	public Interes(Long id, String intencion, Date fecha, Boolean trabajo, Usuario usuairo, Iniciativa iniciativa) {
 		super();
 		this.id = id;

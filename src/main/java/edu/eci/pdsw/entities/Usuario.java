@@ -11,11 +11,12 @@ public class Usuario {
 	private ArrayList<Iniciativa> votos;
 	private ArrayList<Comentario> comentario;
 	private ArrayList<Interes> interes;
+	
 	public Usuario() {
 		
 	}
 	
-	public Usuario(String nombre,String correo,Area area, Rol tipo) {
+	public Usuario(String nombre, String correo,Area area, Rol tipo) {
         this.nombre = nombre;
         this.correo=correo;
         this.area= area;
@@ -25,7 +26,6 @@ public class Usuario {
         this.comentario= new ArrayList<Comentario>();
         this.interes= new ArrayList<Interes>();
     }
-
            
     public ArrayList<Comentario> getComentario() {
 		return comentario;

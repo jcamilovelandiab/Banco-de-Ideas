@@ -8,10 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import edu.eci.pdsw.entities.Area;
-import edu.eci.pdsw.entities.Rol;
-import edu.eci.pdsw.entities.Usuario;
+import edu.eci.pdsw.entities.*;
 import edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.pdsw.samples.services.*;
 
 public class MyBatisExample {
 	
@@ -34,9 +33,18 @@ public class MyBatisExample {
 		  SqlSessionFactory sessionfact = getSqlSessionFactory();
 	      SqlSession sqlss = sessionfact.openSession();
 	      
-	      //UsuarioMapper usrMapper =  sqlss.getMapper(UsuarioMapper.class);
-	      //Usuario usr = new Usuario("John Ibanez","john.ibanez@mail.escuelaing.edu.co",Area.Administracion,Rol.PUBLICO);
-	      //usrMapper.crearUsuario(usr);
+	      IdeasServicesFactory servicesFactory = IdeasServicesFactory.getInstance();
+	      IdeasServices ideasServices = servicesFactory.getIdeasServices();
+	      
+	      UsuarioMapper usrMapper =  sqlss.getMapper(UsuarioMapper.class);
+	      Area area = new Area("AreaPrueba", "descripcionPrueba");
+	      Usuario usr = new Usuario("John Ibanez","john.ibanez@mail.escuelaing.edu.co", area,Rol.PUBLICO);
+	      try {
+			ideasServices.crearUsuario(usr);
+		  } catch (ServicesException e) {
+			e.getMessage();
+		  }
+	     System.out.println("SUPER BIEN");
 	    
 	      sqlss.commit();
 	      sqlss.close();

@@ -148,29 +148,29 @@ public class IdeasServicesImpl  implements IdeasServices{
 	}
 	
 	@Override
-	public void votarxIniciativa(Usuario usuario, Iniciativa iniciativa) throws ServicesException {
+	public void votarxIniciativa(String correoUsuario, long idIniciativa) throws ServicesException {
 		try{
-			usuarioDAO.votarxIniciativa(usuario, iniciativa);		
+			usuarioDAO.votarxIniciativa(correoUsuario,idIniciativa);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al votar por la iniciativa "+iniciativa.getNo_iniciativa());
+			throw new ServicesException("Error al votar por la iniciativa "+ idIniciativa);
 		}
 	}
 	
 	@Override
-	public void cancelarVotoIniciativa(Usuario usuario, Iniciativa iniciativa) throws ServicesException {
+	public void cancelarVotoIniciativa(String correoUsuario, long idIniciativa) throws ServicesException {
 		try{
-			usuarioDAO.cancelarVotoIniciativa(usuario, iniciativa);
+			usuarioDAO.cancelarVotoIniciativa(correoUsuario, idIniciativa);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al cancelar el voto del usuario "+usuario.getNombre()+ " de la iniciativa"+iniciativa.getNo_iniciativa());
+			throw new ServicesException("Error al cancelar el voto del usuario "+ correoUsuario+ " de la iniciativa"+idIniciativa);
 		}
 	}
 	
 	@Override
-	public void mostrarInteresxIniciativa(Usuario usuario, Iniciativa iniciativa, Interes interes) throws ServicesException {
+	public void mostrarInteresxIniciativa(String correoUsuario, long idIniciativa, Interes interes) throws ServicesException {
 		try{
-			usuarioDAO.mostrarInteresxIniciativa(usuario, iniciativa, interes);		
+			usuarioDAO.mostrarInteresxIniciativa(correoUsuario, idIniciativa, interes);	
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al mostrar interes del usuario "+usuario.getNombre()+" por la iniciativa "+iniciativa.getNo_iniciativa());
+			throw new ServicesException("Error al mostrar interes del usuario "+correoUsuario+" por la iniciativa "+ idIniciativa);
 		}
 	}
 	
@@ -178,6 +178,16 @@ public class IdeasServicesImpl  implements IdeasServices{
 	public File consultarEstadisticas() throws ServicesException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException {
+		try{
+			usuarioDAO.asignarPerfil(correoUsuario, tipo);	
+		}catch(PersistenceException  e) {
+			throw new ServicesException("Error al asignarle un perfil a "+correoUsuario);
+		}
+		
 	}
 
 }

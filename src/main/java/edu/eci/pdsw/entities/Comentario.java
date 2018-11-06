@@ -3,15 +3,13 @@ package edu.eci.pdsw.entities;
 import java.sql.Date;
 
 public class Comentario {
-	private Long id;
+	private long id;
 	private Date fecha;
 	private String contenido;
 	private Iniciativa	iniciativa;
 	private Usuario usuario;
 	
-	public Comentario(Long id, Date fecha, String contenido, Iniciativa iniciativa, Usuario usuario) {
-		super();
-		this.id = id;
+	public Comentario(Date fecha, String contenido, Iniciativa iniciativa, Usuario usuario) {
 		this.fecha = fecha;
 		this.contenido = contenido;
 		this.iniciativa = iniciativa;
@@ -22,13 +20,11 @@ public class Comentario {
 		
 	}
 
-
-
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

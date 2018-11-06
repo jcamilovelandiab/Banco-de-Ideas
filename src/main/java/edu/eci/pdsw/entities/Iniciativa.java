@@ -19,12 +19,11 @@ public class Iniciativa {
 	public Iniciativa() {
 		
 	}
-	public Iniciativa(String nombre, String descripcion,Date fechaPropuesta,Estado estado, Usuario usuario) {
+	
+	public Iniciativa(String nombre, String descripcion,Estado estado, Usuario usuario) {
 		this.nombre=nombre;
-		this.no_iniciativa=-1;
 		this.descripcion=descripcion;
 		this.fechaCierre=null;
-		this.fechaPropuesta=fechaPropuesta;
 		this.usuario=usuario;
 		this.palabrasClave= new ArrayList<String>();
 		this.votos= new ArrayList<Usuario>();
@@ -52,7 +51,7 @@ public class Iniciativa {
 	public Long getNo_iniciativa() {
 		return no_iniciativa;
 	}
-	public void setNo_iniciativa(Long no_iniciativa) {
+	public void setNo_iniciativa(long no_iniciativa) {
 		this.no_iniciativa = no_iniciativa;
 	}
 	public String getNombre() {

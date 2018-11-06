@@ -8,10 +8,33 @@
 	<resultMap id="UsuarioResult" type="Usuario">
 		<id property='correo' column='correoUsuario'/>
 		<result property='nombre' column='nombreUsuario'/>
-		<result property='tipo' column='tipoUsuario'/>
+		<result property='tipo' column='tipoUsuario' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
 		<association property="area" column='areaUsuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"></association>
 		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
 		<collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
 	</resultMap>
+	
+	<insert id="crearUsuario" parameterType="Usuario" >		
+		INSERT INTO Usuarios(correo, nombre, tipo, area)
+		VALUES(#{usr.correo},#{usr.nombre}, #{usr.tipo}, #{usr.area.id});	
+	</insert>
+	
+	<select id="consultarUsuario" parameterType="String" resultMap="UsuarioResult">
+		SELECT 
+		usr.correo as correoUsuario,
+		usr.nombre as nombreUsuario,
+		usr.tipo as tipoUsuario,
+		usr.area as areaUsuario,
+		areas.id as idArea,
+		areas.nombre as nombreArea,
+		areas.descripcion as descripcionArea,
+		ini.no_iniciativa as no_iniciativa 
+		FROM usuarios as usr, areas, iniciativas as ini WHERE usr.correo=#{correo};
+	</select>
+	
+	<update id="asignarPerfil">
+		UPDATE usuarios SET tipo=#{rol.toString()} WHERE correo=#{usr.correo};
+	</update>
+	
 
 </mapper>

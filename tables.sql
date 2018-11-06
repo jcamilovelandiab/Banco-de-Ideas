@@ -1,14 +1,33 @@
+/*
+drop table if exists comentarios;
+drop table if exists palabrasclave;
+drop table if exists votos;
+drop table if exists intereses;
+drop table if exists iniciativas;
+drop table if exists usuarios;
+drop table if exists areas;
+
+drop sequence if exists area_id;
+drop sequence if exists comentario_id;
+drop sequence if exists iniciativa_id;
+drop sequence if exists interes_id;
+drop sequence if exists palabrasclave_id;
+*/
+
+
 -- Table: Areas
+CREATE SEQUENCE area_id;
 CREATE TABLE IF NOT EXISTS Areas (
-    id int NOT NULL,
+    id int NOT NULL DEFAULT nextval('area_id'),
     nombre varchar(15)  NOT NULL,
     descripcion varchar(50)  NOT NULL,
     CONSTRAINT Areas_pk PRIMARY KEY (id)
 );
 
 -- Table: Comentarios
+CREATE SEQUENCE comentario_id;
 CREATE TABLE IF NOT EXISTS Comentarios (
-    id int  NOT NULL,
+    id int NOT NULL DEFAULT nextval('comentario_id'),
     contenido varchar(50)  NOT NULL,
     fecha date  NOT NULL,
     usuario varchar(60)  NOT NULL,
@@ -19,8 +38,8 @@ CREATE TABLE IF NOT EXISTS Comentarios (
 -- Table: Iniciativas
 CREATE SEQUENCE iniciativa_id;
 CREATE TABLE IF NOT EXISTS  Iniciativas (
-    no_iniciativa int  NOT NULL DEFAULT nextval('iniciativa_id'),
-    nombre varchar(15)  NOT NULL,
+    no_iniciativa int NOT NULL DEFAULT nextval('iniciativa_id'),
+    nombre varchar(50)  NOT NULL,
     descripcion varchar(500)  NOT NULL,
     fechaPropuesta date  NOT NULL,
     estado varchar(11)  NOT NULL,
@@ -29,9 +48,10 @@ CREATE TABLE IF NOT EXISTS  Iniciativas (
     CONSTRAINT Iniciativas_pk PRIMARY KEY (no_iniciativa)
 );
 
--- Table: Interes
-CREATE TABLE IF NOT EXISTS  Interes (
-    id int  NOT NULL,
+-- Table: Intereses
+CREATE SEQUENCE interes_id;
+CREATE TABLE IF NOT EXISTS  Intereses (
+    id int  NOT NULL DEFAULT nextval('interes_id'),
     Iniciativa int  NOT NULL,
     intencion varchar(50)  NOT NULL,
     descripcion varchar(500)  NOT NULL,
@@ -42,8 +62,9 @@ CREATE TABLE IF NOT EXISTS  Interes (
 );
 
 -- Table: PalabrasClave
+CREATE SEQUENCE palabrasclave_id;
 CREATE TABLE  IF NOT EXISTS PalabrasClave (
-    Id int  NOT NULL,
+    Id int NOT NULL DEFAULT nextval('palabrasclave_id'),
     Iniciativa int  NOT NULL,
     Descripcion varchar(100)  NOT NULL,
     CONSTRAINT PalabrasClave_pk PRIMARY KEY (Id)
@@ -89,13 +110,13 @@ ALTER TABLE Iniciativas ADD CONSTRAINT Iniciativas_Usuarios
     REFERENCES Usuarios (correo)  
 ;
 
-ALTER TABLE Interes ADD CONSTRAINT Interes_Iniciativa
+ALTER TABLE Intereses ADD CONSTRAINT Interes_Iniciativa
     FOREIGN KEY (Iniciativa)
     REFERENCES Iniciativas (no_iniciativa)  
  ;
 
 -- Reference: Interes_Usuarios (table: Interes)
-ALTER TABLE Interes ADD CONSTRAINT Interes_Usuarios
+ALTER TABLE Intereses ADD CONSTRAINT Interes_Usuarios
     FOREIGN KEY (usuario)
     REFERENCES Usuarios (correo)  
 ;
@@ -117,7 +138,6 @@ ALTER TABLE Votos ADD CONSTRAINT Votos_Usuarios
     FOREIGN KEY (usuario)
     REFERENCES Usuarios (correo)  
 ;
-
 
 -- Checks
 --Tipos: Estado

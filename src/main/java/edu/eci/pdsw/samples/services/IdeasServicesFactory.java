@@ -31,6 +31,7 @@ public class IdeasServicesFactory {
                   install(JdbcHelper.PostgreSQL);                        
                   setClassPathResource("mybatis-config.xml");         
                   bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
+                  bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
                   bind(IdeasServices.class).to(IdeasServicesImpl.class);
               }
 

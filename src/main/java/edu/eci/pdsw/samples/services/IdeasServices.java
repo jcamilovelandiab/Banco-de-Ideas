@@ -31,9 +31,11 @@ public interface IdeasServices {
     public List<Usuario>consultarUsuarios() throws ServicesException;
 	public boolean autenticarUsuario(Usuario usuario) throws ServicesException;
 	 
-	public void votarxIniciativa(Usuario usuario, Iniciativa iniciativa) throws ServicesException;
-	public void cancelarVotoIniciativa(Usuario usuario, Iniciativa iniciativa) throws ServicesException; 
-	public void mostrarInteresxIniciativa(Usuario usuario, Iniciativa iniciativa, Interes interes) throws ServicesException;
+	public void votarxIniciativa(String correoUsuario, long idIniciativa) throws ServicesException;
+	public void cancelarVotoIniciativa(String correoUsuario, long idIniciativa) throws ServicesException; 
+	public void mostrarInteresxIniciativa(String correoUsuario, long idIniciativa, Interes interes) throws ServicesException;
+	
+	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException;
 	public File consultarEstadisticas() throws ServicesException;
     
 

@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Area {
-	private Long id;
+	private long id;
 	private String nombre;
 	private String descripcion;
 	private ArrayList<Usuario> usuarios;
@@ -13,9 +13,7 @@ public class Area {
 		
 	}
 
-	public Area(Long id, String nombre, String descripcion) {
-		super();
-		this.id = id;
+	public Area(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.usuarios= new ArrayList<Usuario>();
@@ -29,11 +27,11 @@ public class Area {
 		this.usuarios = usuarios;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
