@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	 <settings>
+        <setting name="logImpl" value="LOG4J"/>        
+    </settings>
+    
+	
+    <typeAliases>
+        <typeAlias type='edu.eci.pdsw.entities.Area' alias='Area'/>
+        <typeAlias type='edu.eci.pdsw.entities.Comentario' alias='Comentario'/>
+        <typeAlias type='edu.eci.pdsw.entities.Estado' alias='Estado'/>
+        <typeAlias type='edu.eci.pdsw.entities.Iniciativa' alias='Iniciativa'/>
+        <typeAlias type='edu.eci.pdsw.entities.Interes' alias='Interes'/>
+        <typeAlias type='edu.eci.pdsw.entities.Rol' alias='Rol'/>
+        <typeAlias type='edu.eci.pdsw.entities.Usuario' alias='Usuario'/>
+    </typeAliases>
+
+	<environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver" />
+                <property name="url" value="jdbc:postgresql://ec2-54-225-115-234.compute-1.amazonaws.com:5432/daeb8or97p747k?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+                <property name="username" value="hturicolbmwdim" />
+                <property name="password" value="bc843b6debd46871c3845dbab53804393bd40dd113773f4a6239b715187ff6d5" />
+            </dataSource>
+        </environment>
+    </environments>
+	
+	<mappers>
+    	<mapper resource="mappers/UsuarioMapper.xml"></mapper>
+    	<mapper resource="mappers/IniciativaMapper.xml"></mapper>
+    </mappers> 
+	
+</configuration>
+
+

@@ -1,2 +1,6 @@
-0:0:0:0:0:0:0:1 - - [06/Nov/2018:15:42:07 -0500] "GET / HTTP/1.1" 200 57 http-bio-8080-exec-1 346
-0:0:0:0:0:0:0:1 - - [06/Nov/2018:15:42:07 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-3 3
+0:0:0:0:0:0:0:1 - - [06/Nov/2018:16:10:00 -0500] "GET /faces/index.xhtml HTTP/1.1" 200 1555 http-bio-8080-exec-1 343
+0:0:0:0:0:0:0:1 - - [06/Nov/2018:16:10:00 -0500] "GET /faces/javax.faces.resource/jquery/jquery.js?ln=primefaces&v=5.0 HTTP/1.1" 200 108195 http-bio-8080-exec-2 124
+0:0:0:0:0:0:0:1 - - [06/Nov/2018:16:10:00 -0500] "GET /faces/javax.faces.resource/jquery/jquery-plugins.js?ln=primefaces&v=5.0 HTTP/1.1" 200 220756 http-bio-8080-exec-5 123
+0:0:0:0:0:0:0:1 - - [06/Nov/2018:16:10:00 -0500] "GET /faces/javax.faces.resource/primefaces.js?ln=primefaces&v=5.0 HTTP/1.1" 200 300675 http-bio-8080-exec-6 122
+0:0:0:0:0:0:0:1 - - [06/Nov/2018:16:10:00 -0500] "GET /faces/javax.faces.resource/bootstrap-3.3.7-dist/css/bootstrap.min.css HTTP/1.1" 200 121330 http-bio-8080-exec-4 128
+0:0:0:0:0:0:0:1 - - [06/Nov/2018:16:10:00 -0500] "GET /faces/javax.faces.resource/primefaces.css?ln=primefaces&v=5.0 HTTP/1.1" 200 55392 http-bio-8080-exec-3 151
