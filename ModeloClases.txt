@@ -1,0 +1,70 @@
+http://sujoyu.github.io/plantuml-previewer/
+
+
+@startuml
+class Usuario
+{
+  {field}-correo: String
+  {field}-nombre: String
+  {field}-tipo: Rol
+}
+
+class Area
+{
+  {field}-id: Long
+  {field}-nombre: String
+  {field}-descripcion: String
+}
+
+class Interes
+{
+  {field}-id: Long
+  {field}-intencion: String
+  {field}-descripcion: String
+  {field}-fecha: Date
+  {field}-trabajo: boolean
+}
+
+class Iniciativa
+{
+  {field}-noIniciativa: Long
+  {field}-nombre: String
+  {field}-descripcion: String
+  {field}-fechaPropuesta: Date
+  {field}-fechaCierre: Date
+  {field}-estado: Estado
+  {field}-palabrasClave: ArrayList<String>
+}
+
+class Comentario
+{
+  {field}-id: Long
+  {field}-fecha: Date
+  {field}-contenido: String
+}
+
+enum Estado
+{
+  {field}EN_ESPERA
+  {field}EN_REVISION
+  {field}PROYECTO
+  {field}SOLUCIONADO
+  {field}DESECHADO
+}
+
+enum Rol
+{
+  {field}PUBLICO
+  {field}PROPONENTE
+  {field}ADMINISTRADOR
+  {field}PMO-ODI
+}
+
+Usuario "-usuarios  *"-->"-votos  *"Iniciativa
+Usuario -->"-iniciativas  *"Iniciativa
+Usuario -->"-intereses  *"Interes
+Usuario "-usuario"-->"-comentarios  *"Comentario
+Usuario -->"-area"Area
+Iniciativa -->"-intereses  *"Interes
+Iniciativa "-iniciativa"-->"-comentarios  *"Comentario
+@enduml
