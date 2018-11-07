@@ -13,5 +13,4 @@
 		<result property="trabajo" column="trabajoInteres"></result>
 	</resultMap>
 	
-	
 </mapper>
