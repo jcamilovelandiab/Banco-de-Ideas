@@ -12,10 +12,10 @@
 		<result property='fechaPropuesta' column='fechaPropuestaIniciativa'/>
 		<result property='fechaCierre' column='fechaCierreIniciativa'/>		
 		<result property='estado' column='estadoIniciativa' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
-		<association property="usuario" column='usuarioIniciativa' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
+		<!-- <association property="usuario" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
 		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
 		<collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-		<collection property="palabrasClave" ofType="String"></collection>
+		<collection property="palabrasClave" ofType="String" ></collection>-->
 	</resultMap>	
 	
 	<insert id="crearIniciativa" parameterType="Iniciativa">

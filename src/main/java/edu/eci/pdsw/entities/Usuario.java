@@ -3,6 +3,8 @@ package edu.eci.pdsw.entities;
 import java.util.ArrayList;
 
 public class Usuario {
+	
+
 	private String correo;
 	private String nombre;
 	private Area area;
@@ -89,5 +91,10 @@ public class Usuario {
 		this.iniciativas = iniciativas;
 	}
  
+	@Override
+	public String toString() {
+		return "Usuario [correo=" + correo + ", nombre=" + nombre + ", area=" + area + ", tipo=" + tipo
+				+ ", iniciativas=" + iniciativas + "]";
+	}
     
 }

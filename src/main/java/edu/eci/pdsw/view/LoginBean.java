@@ -29,23 +29,27 @@ public class LoginBean extends BasePageBean{
 	
 	public void login(String correo) throws IOException, ServicesException{
 
-			int user = services.existeUsuario(correo);
-			System.out.println();
+			Usuario user = services.consultarUsuario(correo);
+			if(user!=null){
+				if (user.getTipo().equals(Rol.ADMINISTRADOR)){
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            }
+	            else if (user.getTipo().equals(Rol.PUBLICO)) {
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            }
+	            else if (user.getTipo().equals(Rol.PROPONENTE)) {
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            }
+	            else{
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            }
+	           
+			}else{
+				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+				
+			}
 			
-            /*if (user.getTipo().equals(Rol.ADMINISTRADOR)){
-                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
-            }
-            else if (user.getTipo().equals(Rol.PUBLICO)) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
-            }
-            else if (user.getTipo().equals(Rol.PROPONENTE)) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
-            }
-            else{
-                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
-            }*/
             
-        
 		
 	}
 

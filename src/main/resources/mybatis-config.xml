@@ -34,6 +34,9 @@
 	<mappers>
     	<mapper resource="mappers/UsuarioMapper.xml"></mapper>
     	<mapper resource="mappers/IniciativaMapper.xml"></mapper>
+    	<mapper resource="mappers/AreaMapper.xml"></mapper>
+    	<mapper resource="mappers/InteresMapper.xml"></mapper>
+    	<mapper resource="mappers/comentarioMapper.xml"></mapper>
     </mappers> 
 	
 </configuration>
