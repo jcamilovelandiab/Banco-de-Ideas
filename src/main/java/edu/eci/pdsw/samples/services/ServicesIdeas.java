@@ -10,7 +10,7 @@ import org.apache.ibatis.exceptions.PersistenceException;
 import edu.eci.pdsw.entities.*;
 
 
-public interface IdeasServices { 
+public interface ServicesIdeas { 
     
 	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException;
     

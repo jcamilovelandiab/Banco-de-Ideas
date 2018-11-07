@@ -12,8 +12,13 @@ import edu.eci.pdsw.persistence.*;
 import edu.eci.pdsw.samples.services.*;
 
 
+<<<<<<< HEAD:src/main/java/edu/eci/pdsw/samples/services/impl/IdeasServicesImpl.java
 public class IdeasServicesImpl  implements IdeasServices{
 		
+=======
+public class ServicesIdeasImpl  implements ServicesIdeas{
+	
+>>>>>>> d00667ad3a02642a17fa5b60b2136de6530b68c5:src/main/java/edu/eci/pdsw/samples/services/impl/ServicesIdeasImpl.java
 	@Inject
 	private UsuarioDAO usuarioDAO;
 	@Inject

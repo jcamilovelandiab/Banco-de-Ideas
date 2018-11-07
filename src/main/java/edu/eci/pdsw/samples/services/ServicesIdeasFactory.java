@@ -11,19 +11,18 @@ import edu.eci.pdsw.entities.Rol;
 import edu.eci.pdsw.entities.Usuario;
 import edu.eci.pdsw.persistence.*;
 import edu.eci.pdsw.persistence.mybatisimpl.*;
-import edu.eci.pdsw.samples.services.impl.IdeasServicesImpl;
+import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
+import edu.eci.pdsw.samples.services.impl.ServicesIdeasStub;
 
-
-
-public class IdeasServicesFactory {
+public class ServicesIdeasFactory {
 
     
-    private static IdeasServicesFactory instance = new IdeasServicesFactory();
+    private static ServicesIdeasFactory instance = new ServicesIdeasFactory();
      
     private static Injector injector;
     private static Injector testingInjector;
 
-    private  IdeasServicesFactory() {
+    private  ServicesIdeasFactory() {
     	  injector = createInjector(new XMLMyBatisModule() {
 
               @Override
@@ -32,7 +31,7 @@ public class IdeasServicesFactory {
                   setClassPathResource("mybatis-config.xml");         
                   bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                   bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
-                  bind(IdeasServices.class).to(IdeasServicesImpl.class);
+                  bind(ServicesIdeas.class).to(ServicesIdeasStub.class);
               }
 
           }
@@ -54,11 +53,11 @@ public class IdeasServicesFactory {
          });*/
     }
 
-    public IdeasServices getIdeasServices(){
-        return injector.getInstance(IdeasServices.class);   
+    public ServicesIdeas getIdeasServices(){
+        return injector.getInstance(ServicesIdeas.class);   
     }
    
-    public static IdeasServicesFactory getInstance(){
+    public static ServicesIdeasFactory getInstance(){
         return instance;
     }
 

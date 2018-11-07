@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\UsuarioDAO.java
 C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\samples\services\ServicesException.java
 C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Rol.java
@@ -21,3 +22,28 @@ C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\view\LoginB
 C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Comentario.java
 C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Estado.java
 C:\Users\2138459\Documents\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\mybatisimpl\mappers\IniciativaMapper.java
+=======
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Usuario.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\guice\GuiceContextListener.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\view\IniciativaBean.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\mybatisimpl\MyBATISIniciativaDAO.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\view\BasePageBean.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\mybatisimpl\mappers\UsuarioMapper.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\IniciativaDAO.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\mybatisimpl\MyBATISUsuarioDAO.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\samples\services\ServicesException.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Iniciativa.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\samples\services\IdeasServices.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\mybatisimpl\mappers\IniciativaMapper.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Rol.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\samples\services\IdeasServicesFactory.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Interes.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\view\LoginBean.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Estado.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Area.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\samples\services\client\MyBatisExample.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\samples\services\impl\IdeasServicesImpl.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\view\UsuarioBean.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\entities\Comentario.java
+C:\Users\jcami\Desktop\PDSW\Banco_De_Ideas\src\main\java\edu\eci\pdsw\persistence\UsuarioDAO.java
+>>>>>>> d00667ad3a02642a17fa5b60b2136de6530b68c5

@@ -14,8 +14,9 @@ import edu.eci.pdsw.persistence.IniciativaDAO;
 import edu.eci.pdsw.persistence.UsuarioDAO;
 import edu.eci.pdsw.persistence.mybatisimpl.MyBATISIniciativaDAO;
 import edu.eci.pdsw.persistence.mybatisimpl.MyBATISUsuarioDAO;
-import edu.eci.pdsw.samples.services.IdeasServices;
-import edu.eci.pdsw.samples.services.impl.IdeasServicesImpl;
+import edu.eci.pdsw.samples.services.ServicesIdeas;
+import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
+import edu.eci.pdsw.samples.services.impl.ServicesIdeasStub;
 
 
 public class GuiceContextListener implements ServletContextListener {
@@ -33,7 +34,7 @@ public class GuiceContextListener implements ServletContextListener {
 				setEnvironmentId("development");
 				setClassPathResource("mybatis-config.xml");
 				
-				bind(IdeasServices.class).to(IdeasServicesImpl.class);
+				bind(ServicesIdeas.class).to(ServicesIdeasStub.class);
                 bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
 

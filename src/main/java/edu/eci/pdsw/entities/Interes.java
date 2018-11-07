@@ -14,6 +14,24 @@ public class Interes {
 		
 	}
 	
+	public Interes(long id, String intencion, Boolean trabajo, Usuario usuario, Iniciativa iniciativa) {
+		this.id = id;
+		this.intencion = intencion;
+		this.fecha = new java.sql.Date((new java.util.Date()).getTime());
+		this.trabajo = trabajo;
+		this.usuario = usuario;
+		this.iniciativa = iniciativa;
+	}
+	
+	public Interes(String intencion, Boolean trabajo, Usuario usuario, Iniciativa iniciativa) {
+		this.intencion = intencion;
+		this.fecha = new java.sql.Date((new java.util.Date()).getTime());
+		this.trabajo = trabajo;
+		this.usuario = usuario;
+		this.iniciativa = iniciativa;
+	}
+
+	
 	public long getId() {
 		return id;
 	}
@@ -62,14 +80,5 @@ public class Interes {
 		this.iniciativa = iniciativa;
 	}
 	
-	public Interes(Long id, String intencion, Date fecha, Boolean trabajo, Usuario usuairo, Iniciativa iniciativa) {
-		super();
-		this.id = id;
-		this.intencion = intencion;
-		this.fecha = fecha;
-		this.trabajo = trabajo;
-		this.usuario = usuario;
-		this.iniciativa = iniciativa;
-	}
-
+	
 }
