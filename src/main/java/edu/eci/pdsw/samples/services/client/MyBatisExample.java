@@ -43,9 +43,8 @@ public class MyBatisExample {
 	      Area area = new Area("AreaPrueba", "descripcionPrueba");
 	      area.setId(2);
 	      Usuario usr = new Usuario("John Ibanez","john.ibanez@mail.escuelaing.edu.co", area,Rol.PUBLICO);
-	      Iniciativa ini = new Iniciativa("iniciativa prueba", "prueba de insercion",Estado.EN_ESPERA, usr);
-	      */
-	      System.out.println(usrMapper.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
+	      Iniciativa ini = new Iniciativa("iniciativa prueba", "prueba de insercion",Estado.EN_ESPERA, usr);	      
+	      System.out.println(usrMapper.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));*/
 	      //usrMapper.crearUsuario(usr); bien
 	      //usrMapper.asignarPerfil("john.ibanez@mail.escuelaing.edu.co",Rol.PMO_ODI); correr de nuevo base
 	      //usrMapper.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"); error en mappers
@@ -56,11 +55,16 @@ public class MyBatisExample {
 	      //iniMapper.consultarIniciativasxClaves("pruebas"); no implementado
 	      
 	      try {
-			ideasServices.agregarPalabraClave(49,"prueba");
-		} catch (ServicesException e) {
+	    	  Area area = new Area("AreaTest", "descripcionTest");
+	    	  area.setId(2);
+	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
+	    	  ideasServices.crearUsuario(usuario);
+	    	  System.out.println(ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
+	    	  System.out.println(ideasServices.consultarUsuarios());
+	      } catch (ServicesException e) {
 			
 			System.out.println(e.getMessage());
-		}
+	      }
 	      sqlss.commit();
 	      sqlss.close();
 		
