@@ -19,7 +19,7 @@ import edu.eci.pdsw.samples.services.ServicesIdeas;
 public class ServicesIdeasStub implements ServicesIdeas{
 	
 	private final Map<Long, Area> areas;
-	private final Map<Long, Iniciativa> iniciativas;
+	private final Map<String, Iniciativa> iniciativas;
 	private final Map<Long, Comentario> comentarios;
 	private final Map<Long, Interes> intereses;
 	private final Map<String,Usuario> usuarios;
@@ -34,10 +34,10 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	
 	@Override
 	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException {
-		if (!iniciativas.containsKey(iniciativa.getNo_iniciativa())) {
-			iniciativas.put(iniciativa.getNo_iniciativa(), iniciativa);
+		if (!iniciativas.containsKey(iniciativa.getNombre())) {
+			iniciativas.put(iniciativa.getNombre(), iniciativa);
 		}else{
-		    throw new ServicesException("La iniciativa no "+iniciativa.getNo_iniciativa()+" ya esta registrado.");
+		    throw new ServicesException("La iniciativa "+iniciativa.getNombre()+" ya esta registrado.");
 		}
 	}
 
@@ -162,12 +162,6 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	public File consultarEstadisticas() throws ServicesException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void agregarPalabraClave(long ini, String desc) throws ServicesException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

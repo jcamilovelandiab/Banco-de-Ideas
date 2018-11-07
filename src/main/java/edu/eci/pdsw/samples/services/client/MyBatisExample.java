@@ -2,6 +2,7 @@ package edu.eci.pdsw.samples.services.client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -56,11 +57,23 @@ public class MyBatisExample {
 	      
 	      try {
 	    	  Area area = new Area("AreaTest", "descripcionTest");
-	    	  area.setId(2);
+	    	  area.setId(1);
 	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
-	    	  ideasServices.crearUsuario(usuario);
-	    	  System.out.println(ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
+	    	  area.setId(2);
+	    	  Usuario usuario2 = new Usuario("John Ibanez","john.ibanez@mail.escuelaing.edu.co",area,Rol.PROPONENTE);
+	    	  //ideasServices.crearUsuario(usuario);
+	    	  //ideasServices.crearUsuario(usuario2);
+	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
 	    	  System.out.println(ideasServices.consultarUsuarios());
+	    	  ideasServices.asignarPerfil("yohanna.toro@mail.escuelaing.edu.co",Rol.PMO_ODI);
+	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
+	    	  ArrayList<String> palabrasClave = new ArrayList();
+	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
+	    	  palabrasClave.add("plataformas a la primera");
+	    	  Iniciativa ini=new Iniciativa("Hacer una biblioteca","Nuestra biblioteca es muy chiquita",
+	    			  usuario2);
+	    	  
+	    	  
 	      } catch (ServicesException e) {
 			
 			System.out.println(e.getMessage());

@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Iniciativa {
-	private long no_iniciativa;
 	private String nombre;
 	private String descripcion;
 	private Date fechaPropuesta;
@@ -20,7 +19,7 @@ public class Iniciativa {
 		
 	}
 	
-	public Iniciativa(String nombre, String descripcion,Estado estado, Usuario usuario) {
+	public Iniciativa(String nombre, String descripcion, Usuario usuario) {
 		this.nombre=nombre;
 		this.descripcion=descripcion;
 		this.fechaPropuesta = new java.sql.Date((new java.util.Date()).getTime());
@@ -30,7 +29,7 @@ public class Iniciativa {
 		this.votantes= new ArrayList<Usuario>();
 		this.comentarios= new ArrayList<Comentario>();
 		this.intereses= new ArrayList<Interes>();
-		this.estado=estado;
+		this.estado=Estado.EN_ESPERA;
 	}
 	
 	public ArrayList<Interes> getInteres() {
@@ -47,7 +46,7 @@ public class Iniciativa {
 	
 	@Override
 	public String toString() {
-		return "Iniciativa [no_iniciativa=" + no_iniciativa + ", nombre=" + nombre + ", descripcion=" + descripcion
+		return "Iniciativa [nombre=" + nombre + ", descripcion=" + descripcion
 				+ ", fechaPropuesta=" + fechaPropuesta + ", fechaCierre=" + fechaCierre + ", estado=" + estado
 				+ ", palabrasClave=" + palabrasClave + ", proponente=" + proponente + "]";
 	}
@@ -62,14 +61,6 @@ public class Iniciativa {
 	
 	public void setVotos(ArrayList<Usuario> votos) {
 		this.votantes = votos;
-	}
-	
-	public Long getNo_iniciativa() {
-		return no_iniciativa;
-	}
-	
-	public void setNo_iniciativa(long no_iniciativa) {
-		this.no_iniciativa = no_iniciativa;
 	}
 	
 	public String getNombre() {

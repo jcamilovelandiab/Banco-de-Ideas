@@ -38,7 +38,7 @@ public interface  IniciativaMapper {
     public void modificarEstado(@Param("idIni")long ini, 
     		@Param("estado") Estado estado);
     
-    public void agregarPalabraClave(@Param("idIni")long ini,
+    public void agregarPalabraClave(@Param("nombreIni")String nombreIni,
     		@Param("descripcion") String desc);
      
 }

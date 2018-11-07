@@ -20,5 +20,5 @@ public interface IniciativaDAO {
     public int consultarCantidadVotos(long idIniciativa) throws PersistenceException;
     public List<Usuario> consultarInteresados(long idIniciativa) throws PersistenceException;
     public void modificarEstado(long idIniciativa, Estado estado) throws PersistenceException;
-    public void agregarPalabraClave(long ini,String desc) throws PersistenceException;
+    public void agregarPalabraClave(String nombreIni,String desc) throws PersistenceException;
 }

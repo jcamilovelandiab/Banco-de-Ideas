@@ -3,7 +3,8 @@ package edu.eci.pdsw.entities;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Area {
+public class Area {	
+
 	private long id;
 	private String nombre;
 	private String descripcion;
@@ -50,5 +51,9 @@ public class Area {
 		this.descripcion = descripcion;
 	}
 	
+	@Override
+	public String toString() {
+		return "Area [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+	}
 	
 }

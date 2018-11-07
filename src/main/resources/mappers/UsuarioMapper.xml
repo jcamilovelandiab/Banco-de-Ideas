@@ -5,9 +5,9 @@
   
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper">
 	<resultMap id="UsuarioResult" type="Usuario">
-		<id property='correo' column='usrCorreo'/>
-		<result property='nombre' column='usrNombre'/>
-		<result property='tipo' column='usrTipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+		<id property='correo' column='usuarioCorreo'/>
+		<result property='nombre' column='usuarioNombre'/>
+		<result property='tipo' column='usuarioTipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
 		<association property="area" javaType='Area' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"/>
 		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
 	</resultMap>
@@ -24,44 +24,37 @@
 	</select>
 	
 	<select id="consultarUsuario" parameterType="String" resultMap="UsuarioResult">
-			SELECT 
-		usr.nombre as usrNombre,
-		usr.correo as usrCorreo,
-		usr.tipo as usrTipo,
-		usr.area as usrArea,
-		areas.nombre as areaNombre,
-		areas.descripcion as areaDescripcion,
-		areas.id as areaId,
-		iniciativas.no_iniciativa as iniNumero,
-		iniciativas.nombre as nombreIniciativa,
-		iniciativas.descripcion as descripcionIniciativa,
-		iniciativas.fechapropuesta as fechaPropuestaIniciativa,
-		iniciativas.estado as estadoIniciativa,
-		iniciativas.fechacierre as fechaCierreIniciativa
-		FROM usuarios as usr, areas , iniciativas
-		WHERE usr.area = areas.id AND usr.correo= #{correo}
+		SELECT 
+			usr.nombre as usuarioNombre,
+			usr.correo as usuarioCorreo,
+			usr.tipo as usuarioTipo,
+			
+			areas.nombre as areaNombre,
+			areas.descripcion as areaDescripcion,
+			areas.id as areaId
+		FROM 
+			usuarios as usr, areas
+		WHERE 
+			usr.area = areas.id AND usr.correo= #{correo}
 	</select>
 	
-	
-	
-	
-	
-	
 	<select id="consultarUsuarios" resultMap="UsuarioResult">
-		SELECT
-			usr.correo, 
-			usr.nombre,
-			usr.tipo,
-			usr.area,
-			areas.nombre,
-			areas.descripcion			
-		FROM usuarios as usr, areas
-		WHERE usr.area = areas.id;
+		SELECT 
+			usr.nombre as usuarioNombre,
+			usr.correo as usuarioCorreo,
+			usr.tipo as usuarioTipo,
+			
+			areas.nombre as areaNombre,
+			areas.descripcion as areaDescripcion,
+			areas.id as areaId
+		FROM 
+			usuarios as usr, areas
+		WHERE 
+			usr.area = areas.id
 	</select>
 	
 	<update id="asignarPerfil">
 		UPDATE usuarios SET tipo=#{rol} WHERE correo=#{correo};
-	</update>
-	
+	</update>	
 
 </mapper>

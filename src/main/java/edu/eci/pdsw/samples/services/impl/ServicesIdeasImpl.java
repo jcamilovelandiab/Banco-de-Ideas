@@ -23,6 +23,9 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException {
 		try{
 			iniciativaDAO.crearIniciativa(iniciativa);
+			for(String pclave: iniciativa.getPalabrasClave()) {
+				iniciativaDAO.agregarPalabraClave(iniciativa.getNombre(), pclave);
+			}
 		}catch(PersistenceException  ex) {
 			throw new ServicesException("Error al crear una iniciativa");
 		}
@@ -51,7 +54,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativasRelacionadas(iniciativa);
 		}catch(PersistenceException  ex) {
-			throw new ServicesException("Error al consultar iniciativas relacionadas de "+iniciativa.getNo_iniciativa());
+			throw new ServicesException("Error al consultar iniciativas relacionadas de "+iniciativa.getNombre());
 		}
 	}
 	
@@ -78,7 +81,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			iniciativaDAO.agregarComentario(usuario, iniciativa, comentario);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al agregar el comentario a la iniciativa "+iniciativa.getNo_iniciativa());
+			throw new ServicesException("Error al agregar el comentario a la iniciativa "+iniciativa.getNombre());
 		}
 	}
 	
@@ -187,16 +190,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			usuarioDAO.asignarPerfil(correoUsuario, tipo);	
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al asignarle un perfil a "+correoUsuario);
-		}
-		
-	}
-
-	@Override
-	public void agregarPalabraClave(long ini, String desc) throws ServicesException {
-		try{
-			iniciativaDAO.agregarPalabraClave(ini, desc);
-		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al agregar una palabra clave a la iniciativa "+ini);
 		}
 		
 	}

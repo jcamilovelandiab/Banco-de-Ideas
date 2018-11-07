@@ -73,8 +73,8 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public void agregarPalabraClave(long ini, String desc) {
-		iniciativaMapper.agregarPalabraClave(ini, desc);
+	public void agregarPalabraClave(String nombreIni, String desc) {
+		iniciativaMapper.agregarPalabraClave(nombreIni, desc);
 		
 	}  
 
