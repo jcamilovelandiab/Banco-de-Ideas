@@ -6,6 +6,10 @@
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper">
 
 	<resultMap id="ComentarioResult" type="Comentario">
+		<id property="id" column="idComentario"></id>
+		<result property="fecha" column="fechaComentario"></result>
+		<result property="contenido" column="contenidoComentario"></result>
+		<association property="autor" javaType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
 	</resultMap>
 	
 

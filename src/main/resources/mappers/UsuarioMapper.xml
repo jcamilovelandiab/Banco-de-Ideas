@@ -4,7 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper">
-
+	<resultMap id="UsuarioResult" type="Usuario">
+		<id property='correo' column='usrCorreo'/>
+		<result property='nombre' column='usrNombre'/>
+		<result property='tipo' column='usrTipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+		<association property="area" javaType='Area' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"/>
+		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
+	</resultMap>
 	
 	<insert id="crearUsuario" parameterType="Usuario" >		
 		INSERT INTO Usuarios(correo, nombre, tipo, area)
@@ -36,16 +42,7 @@
 		WHERE usr.area = areas.id AND usr.correo= #{correo}
 	</select>
 	
-	<resultMap id="UsuarioResult" type="Usuario">
-		<id property='correo' column='usrCorreo'/>
-		<result property='nombre' column='usrNombre'/>
-		<result property='tipo' column='usrTipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
-		<association property="area" javaType='Area' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"/>
-		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-	<!--	 <collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-		 
-		 -->
-	</resultMap>
+	
 	
 	
 	

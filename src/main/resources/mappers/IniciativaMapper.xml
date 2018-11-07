@@ -12,10 +12,11 @@
 		<result property='fechaPropuesta' column='fechaPropuestaIniciativa'/>
 		<result property='fechaCierre' column='fechaCierreIniciativa'/>		
 		<result property='estado' column='estadoIniciativa' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
-		<!-- <association property="usuario" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
-		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-		<collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-		<collection property="palabrasClave" ofType="String" ></collection>-->
+		<association property="proponente" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
+		<!-- <collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
+		<collection property="votantes" ofType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></collection>
+		<collection property="palabrasClave" ofType="String" ></collection>
+		<collection property="comentarios" ofType="Comentario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper.CommentarioResult"></collection>-->
 	</resultMap>	
 	
 	<insert id="crearIniciativa" parameterType="Iniciativa">
