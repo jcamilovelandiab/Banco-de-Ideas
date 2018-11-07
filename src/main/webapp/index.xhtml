@@ -6,21 +6,55 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+<style>
+body {
+  margin: 0;
+  font-family: Courier, Helvetica, sans-serif;
+}
 
+.topnav {
+  overflow: hidden;
+  background-color: #990000;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #990000;
+  color: black;
+}
+
+
+
+</style>
 
 </h:head>
- <h:body style="background-image:url(resources/images/fondo.jpeg);background-size:cover;background-repeat: no-repeat;">
+ <h:body style="background-image:url(resources/images/inicio.jpg);background-size:1380px 724px;background-repeat: no-repeat;">
  	
  	<nav class="navbar navbar-default">
- 		<p class="navbar-text navbar-right">Bienvenido<a href="#" class="navbar-link">Mark Otto</a></p>
+ 		<p class="navbar-text navbar-right" style="color: white; font-size:17px ">Bienvenido <a href="#" class="navbar-link" style="color: white; font-size:17px  ">Mark Otto</a></p>
+ 		<div class="topnav">
+		  <a class="active" href="#home">Inicio</a>
+		  <a href="#contact">Consultar Iniciativas</a>
+		  <a href="#about">Quienes somos</a>
+		</div>
+
  		
  	</nav>
  	
  	<h:form  prependId="false" >
    		<h:panelGrid columns="1" style="
-   						margin: 13% auto;
-   						background-color: rgba(0,0,0,0.8);
-   						border-radius: 11px;width : 25%;text-align:center"  >
+   						margin: 15% auto;
+   						width:450px;height:5px;
+   						background-color: rgba(0,0,0,0.7);
+   						border-radius: 11px;text-align:center"  >
    		 	
    		 	<h:outputText value = "Banco de" style=" font-size: 2.5em;
    		 											font-family: 'courier';
@@ -36,19 +70,21 @@
             						background-color: rgba(255, 237, 246, 0.3);
             						border: rgba(255, 237, 246, 0.3);
             						text-align:center" binding="#{correo}"/> 
-			<p:watermark for="email" value="Correo"/>
+			<p:watermark for="email" value="Correo" style="color: white"/>
 			<p></p>
+			<p:separator style="width:350px;height:0px" />
 			<p:commandButton value = "Iniciar Sesion" style="
 									border-radius: 11px;
             						background-color: rgba(144, 22, 38, 0.7);
             						border: rgba(144, 22, 38, 0.7);
             						text-align:center;
+
             						color : rgba(255, 255, 255, 1)
             						"
             						actionListener="#{loginBean.login(correo.value)}">
 			
 			</p:commandButton>
-			<p:separator style="width:500px;height:20px" />
+			
 			
             
         </h:panelGrid>
