@@ -27,7 +27,8 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 				iniciativaDAO.agregarPalabraClave(iniciativa.getNombre(), pclave);
 			}
 		}catch(PersistenceException  ex) {
-			throw new ServicesException("Error al crear una iniciativa");
+			System.err.println(ex.getMessage());
+			throw new ServicesException("Error al crear la iniciativa <"+iniciativa.getNombre()+">");
 		}
 	}
 	
@@ -36,7 +37,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try {
 			return iniciativaDAO.consultarIniciativa(idIniciativa);
 		}catch(PersistenceException  ex) {
-			throw new ServicesException("Error al consultar la iniciativa "+idIniciativa);
+			throw new ServicesException("Error al consultar la iniciativa <"+idIniciativa+">");
 		}
 	}
 	

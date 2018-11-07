@@ -19,17 +19,17 @@
 	</resultMap>	
 	
 	<insert id="crearIniciativa" parameterType="Iniciativa">
-		INSERT INTO Iniciativas (nombre,descripcion,fechaPropuesta,estado,proponente) 
-		VALUES (#{ini.nombre},#{ini.descripcion},now(),#{ini.estado},#{ini.usuario.correo}); 
+		INSERT INTO Iniciativas (nombre,descripcion,fechaPropuesta, estado, proponente) 
+		VALUES (#{ini.nombre},#{ini.descripcion}, now(), #{ini.estado}, #{ini.proponente.correo}); 
 	</insert>
 	
 	<insert id="agregarPalabraClave">
 		INSERT INTO PalabrasClave (iniciativa,descripcion) 
-		VALUES (#{idIni},#{descripcion}); 
+		VALUES (#{nombreIni},#{descripcion}); 
 	</insert>
 	
 	<update id="modificarEstado">
-		UPDATE Iniciativas SET estado=#{estado} WHERE no_iniciativa=#{idIni};
+		UPDATE Iniciativas SET estado=#{estado} WHERE no_iniciativa=#{nombreIni};
 	</update>
 	
 </mapper>

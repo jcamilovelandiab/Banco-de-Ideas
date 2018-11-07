@@ -70,8 +70,8 @@ public class MyBatisExample {
 	    	  ArrayList<String> palabrasClave = new ArrayList();
 	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
 	    	  palabrasClave.add("plataformas a la primera");
-	    	  Iniciativa ini=new Iniciativa("Hacer una biblioteca","Nuestra biblioteca es muy chiquita",
-	    			  usuario2);
+	    	  Iniciativa ini=new Iniciativa("Hacer el bloque XD","Joder tio, en que pensáis ?",usuario2, palabrasClave);
+	    	  ideasServices.crearIniciativa(ini);
 	    	  
 	    	  
 	      } catch (ServicesException e) {

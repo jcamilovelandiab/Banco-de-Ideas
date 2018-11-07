@@ -19,13 +19,13 @@ public class Iniciativa {
 		
 	}
 	
-	public Iniciativa(String nombre, String descripcion, Usuario usuario) {
+	public Iniciativa(String nombre, String descripcion, Usuario usuario, ArrayList<String> palabrasClave) {
 		this.nombre=nombre;
 		this.descripcion=descripcion;
 		this.fechaPropuesta = new java.sql.Date((new java.util.Date()).getTime());
 		this.fechaCierre=null;
 		this.proponente=usuario;
-		this.palabrasClave= new ArrayList<String>();
+		this.palabrasClave= palabrasClave;
 		this.votantes= new ArrayList<Usuario>();
 		this.comentarios= new ArrayList<Comentario>();
 		this.intereses= new ArrayList<Interes>();

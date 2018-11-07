@@ -19,7 +19,7 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 
 	@Override
 	public void crearIniciativa(Iniciativa iniciativa) throws PersistenceException {
-		iniciativaMapper.crearIniciativa(iniciativa);		
+		iniciativaMapper.crearIniciativa(iniciativa);
 	}
 
 	@Override
