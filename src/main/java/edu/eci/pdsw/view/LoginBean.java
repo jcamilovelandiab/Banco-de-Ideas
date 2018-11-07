@@ -28,11 +28,11 @@ public class LoginBean extends BasePageBean{
 	private ServicesIdeasImpl services;
 	
 	public void login(String correo) throws IOException, ServicesException{
-			System.out.println(correo);
-			System.out.println("llegue aca");
-			Usuario user = services.consultarUsuario(correo);
+
+			int user = services.existeUsuario(correo);
+			System.out.println();
 			
-            if (user.getTipo().equals(Rol.ADMINISTRADOR)) {
+            /*if (user.getTipo().equals(Rol.ADMINISTRADOR)){
                 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
             }
             else if (user.getTipo().equals(Rol.PUBLICO)) {
@@ -43,7 +43,7 @@ public class LoginBean extends BasePageBean{
             }
             else{
                 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
-            }
+            }*/
             
         
 		

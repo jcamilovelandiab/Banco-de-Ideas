@@ -11,6 +11,12 @@
 		VALUES(#{usr.correo},#{usr.nombre}, #{usr.tipo}, #{usr.area.id});	
 	</insert>
 	
+	<select id= "existeUsuario"  resultType = "java.lang.Integer">
+		select count(usr.correo)
+		from usuarios as usr 	
+		where usr.correo = #{correo}
+	</select>
+	
 	<select id="consultarUsuario" parameterType="String" resultMap="UsuarioResult">
 		SELECT 
 		usr.nombre as usrNomre,

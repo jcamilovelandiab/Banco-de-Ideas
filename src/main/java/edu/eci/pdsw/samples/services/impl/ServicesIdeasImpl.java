@@ -200,5 +200,13 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 		
 	}
-
+	
+	@Override
+	public int existeUsuario(String correo)throws SecurityException{
+		try{
+			return usuarioDAO.existeUsuario(correo);
+		}catch(PersistenceException ex){
+			throw  new SecurityException("Hay problema al encontrar el usuario");
+		}
+	}
 }

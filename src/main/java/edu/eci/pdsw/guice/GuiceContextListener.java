@@ -34,7 +34,7 @@ public class GuiceContextListener implements ServletContextListener {
 				setEnvironmentId("development");
 				setClassPathResource("mybatis-config.xml");
 				
-				bind(ServicesIdeas.class).to(ServicesIdeasStub.class);
+				bind(ServicesIdeas.class).to(ServicesIdeasImpl.class);
                 bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
 

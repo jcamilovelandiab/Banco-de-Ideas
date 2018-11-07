@@ -170,4 +170,10 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		
 	}
 
+	@Override
+	public int existeUsuario(String correo) throws SecurityException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

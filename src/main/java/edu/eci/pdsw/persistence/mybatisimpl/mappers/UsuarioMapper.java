@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+
 import edu.eci.pdsw.entities.*;
 
 /**
@@ -26,5 +27,6 @@ public interface  UsuarioMapper {
     public void cancelarVotoIniciativa(@Param("correo")String correo, @Param("idIni")long idIni);
     public void mostrarInteresxIniciativa(@Param("correo")String correo, @Param("idIni")long idIni, @Param("interes")Interes interes);
 	public void asignarPerfil(@Param("correo")String correo,@Param("rol")Rol tipo);
+	public int existeUsuario(@Param("correo") String correo);
     
 }

@@ -92,4 +92,12 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws PersistenceException {
 		usuarioMapper.asignarPerfil(correoUsuario, tipo);
 	}
+
+
+	@Override
+	public int existeUsuario(String correo) throws PersistenceException {
+		return usuarioMapper.existeUsuario(correo);
+
+	
+	}
 }
