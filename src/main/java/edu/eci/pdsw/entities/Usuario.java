@@ -9,10 +9,7 @@ public class Usuario {
 	private String nombre;
 	private Area area;
 	private Rol tipo;
-	private ArrayList<Iniciativa> iniciativas; 
-	private ArrayList<Iniciativa> votos;
-	private ArrayList<Comentario> comentario;
-	private ArrayList<Interes> interes;
+	private ArrayList<Interes> intereses;
 	
 	public Usuario() {
 		
@@ -23,36 +20,15 @@ public class Usuario {
         this.correo=correo;
         this.area= area;
         this.tipo=tipo;
-        this.iniciativas = new ArrayList<Iniciativa>();
-        this.votos=new ArrayList<Iniciativa>();
-        this.comentario= new ArrayList<Comentario>();
-        this.interes= new ArrayList<Interes>();
     }
-           
-    public ArrayList<Comentario> getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(ArrayList<Comentario> comentario) {
-		this.comentario = comentario;
-	}
 
 	public ArrayList<Interes> getInteres() {
-		return interes;
+		return intereses;
 	}
 
 	public void setInteres(ArrayList<Interes> interes) {
-		this.interes = interes;
+		this.intereses = interes;
 	}
-
-	public ArrayList<Iniciativa> getVotos() {
-		return votos;
-	}
-
-	public void setVotos(ArrayList<Iniciativa> votos) {
-		this.votos = votos;
-	}
-
 	public String getNombre() {
         return nombre;
     }
@@ -82,19 +58,11 @@ public class Usuario {
     public void setTipo(Rol tipo) {
     	this.tipo= tipo;
     }
-
-	public ArrayList<Iniciativa> getIniciativas() {
-		return iniciativas;
-	}
-
-	public void setIniciativas(ArrayList<Iniciativa> iniciativas) {
-		this.iniciativas = iniciativas;
-	}
  
 	@Override
 	public String toString() {
 		return "Usuario [correo=" + correo + ", nombre=" + nombre + ", area=" + area + ", tipo=" + tipo
-				+ ", iniciativas=" + iniciativas + "]";
+				+ ", iniciativas=" + "]";
 	}
     
 }

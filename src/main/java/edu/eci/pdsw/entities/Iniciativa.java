@@ -10,11 +10,11 @@ public class Iniciativa {
 	private Date fechaPropuesta;
 	private Date fechaCierre;
 	private Estado estado;
+	private Usuario proponente;
 	private ArrayList<String> palabrasClave;
-	//private ArrayList<Usuario> votos;
-	private ArrayList<Comentario> comentario;
-	//private ArrayList<Interes> interes;
-	private Usuario usuario;
+	private ArrayList<Usuario> votantes;
+	private ArrayList<Comentario> comentarios;
+	private ArrayList<Interes> intereses;
 	
 	public Iniciativa() {
 		
@@ -25,44 +25,44 @@ public class Iniciativa {
 		this.descripcion=descripcion;
 		this.fechaPropuesta = new java.sql.Date((new java.util.Date()).getTime());
 		this.fechaCierre=null;
-		this.usuario=usuario;
+		this.proponente=usuario;
 		this.palabrasClave= new ArrayList<String>();
-		//this.votos= new ArrayList<Usuario>();
-		this.comentario= new ArrayList<Comentario>();
-		//this.interes= new ArrayList<Interes>();
+		this.votantes= new ArrayList<Usuario>();
+		this.comentarios= new ArrayList<Comentario>();
+		this.intereses= new ArrayList<Interes>();
 		this.estado=estado;
 	}
-	/*
+	
 	public ArrayList<Interes> getInteres() {
-		return interes;
+		return intereses;
 	}
 	
 	public void setInteres(ArrayList<Interes> interes) {
-		this.interes = interes;
+		this.intereses = interes;
 	}
-	*/
+
 	public ArrayList<Comentario> getComentario() {
-		return comentario;
+		return comentarios;
 	}
 	
 	@Override
 	public String toString() {
 		return "Iniciativa [no_iniciativa=" + no_iniciativa + ", nombre=" + nombre + ", descripcion=" + descripcion
 				+ ", fechaPropuesta=" + fechaPropuesta + ", fechaCierre=" + fechaCierre + ", estado=" + estado
-				+ ", palabrasClave=" + palabrasClave + ", usuario=" + usuario + "]";
+				+ ", palabrasClave=" + palabrasClave + ", proponente=" + proponente + "]";
 	}
 
 	public void setComentario(ArrayList<Comentario> comentario) {
-		this.comentario = comentario;
+		this.comentarios = comentario;
 	}
-	/*
+	
 	public ArrayList<Usuario> getVotos() {
-		return votos;
+		return votantes;
 	}
 	
 	public void setVotos(ArrayList<Usuario> votos) {
-		this.votos = votos;
-	}*/
+		this.votantes = votos;
+	}
 	
 	public Long getNo_iniciativa() {
 		return no_iniciativa;
@@ -119,15 +119,37 @@ public class Iniciativa {
 	public void setPalabrasClave(ArrayList<String> palabrasClave) {
 		this.palabrasClave = palabrasClave;
 	}
-	
-	public Usuario getUsuario() {
-		return usuario;
+
+	public Usuario getProponente() {
+		return proponente;
 	}
-	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+
+	public void setProponente(Usuario proponente) {
+		this.proponente = proponente;
 	}
-	
-	
+
+	public ArrayList<Usuario> getVotantes() {
+		return votantes;
+	}
+
+	public void setVotantes(ArrayList<Usuario> votantes) {
+		this.votantes = votantes;
+	}
+
+	public ArrayList<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(ArrayList<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public ArrayList<Interes> getIntereses() {
+		return intereses;
+	}
+
+	public void setIntereses(ArrayList<Interes> intereses) {
+		this.intereses = intereses;
+	}
 
 }

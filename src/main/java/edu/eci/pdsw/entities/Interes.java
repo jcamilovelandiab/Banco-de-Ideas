@@ -5,33 +5,33 @@ import java.sql.Date;
 public class Interes {
 	private long id;
 	private String intencion;
+	private String descripcion;
 	private Date fecha;
 	private Boolean trabajo;
-	private Usuario usuario;
-	private Iniciativa iniciativa;
 	
 	public Interes() {
 		
 	}
 	
-	public Interes(long id, String intencion, Boolean trabajo, Usuario usuario, Iniciativa iniciativa) {
-		this.id = id;
+	public Interes(String intencion,String descripcion, Boolean trabajo) {
 		this.intencion = intencion;
 		this.fecha = new java.sql.Date((new java.util.Date()).getTime());
 		this.trabajo = trabajo;
-		this.usuario = usuario;
-		this.iniciativa = iniciativa;
+		this.descripcion = descripcion;
 	}
 	
-	public Interes(String intencion, Boolean trabajo, Usuario usuario, Iniciativa iniciativa) {
-		this.intencion = intencion;
-		this.fecha = new java.sql.Date((new java.util.Date()).getTime());
-		this.trabajo = trabajo;
-		this.usuario = usuario;
-		this.iniciativa = iniciativa;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -62,22 +62,6 @@ public class Interes {
 	
 	public void setTrabajo(Boolean trabajo) {
 		this.trabajo = trabajo;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
-	public Iniciativa getIniciativa() {
-		return iniciativa;
-	}
-	
-	public void setIniciativa(Iniciativa iniciativa) {
-		this.iniciativa = iniciativa;
 	}
 	
 	

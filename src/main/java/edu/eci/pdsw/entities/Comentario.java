@@ -6,24 +6,22 @@ public class Comentario {
 	private long id;
 	private Date fecha;
 	private String contenido;
-	private Iniciativa	iniciativa;
-	private Usuario usuario;
+	private Usuario autor;
 	
-	public Comentario(String contenido, Iniciativa iniciativa, Usuario usuario) {
+	public Comentario(String contenido, Usuario autor) {
 		this.contenido = contenido;
-		this.iniciativa = iniciativa;
-		this.usuario = usuario;
+		this.autor = autor;
 		this.fecha= new java.sql.Date((new java.util.Date()).getTime());
+	}
+	
+	public Usuario getAutor() {
+		return autor;
 	}
 
-	public Comentario(long id, String contenido, Iniciativa iniciativa, Usuario usuario) {
-		this.id=id;
-		this.contenido = contenido;
-		this.iniciativa = iniciativa;
-		this.usuario = usuario;
-		this.fecha= new java.sql.Date((new java.util.Date()).getTime());
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
 	}
-	
+
 	public Comentario() {
 		
 	}
@@ -50,14 +48,6 @@ public class Comentario {
 
 	public void setContenido(String contenido) {
 		this.contenido = contenido;
-	}
-
-	public Iniciativa getIniciativa() {
-		return iniciativa;
-	}
-
-	public void setIniciativa(Iniciativa iniciativa) {
-		this.iniciativa = iniciativa;
 	}
 	
 }
