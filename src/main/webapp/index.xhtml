@@ -6,14 +6,55 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title></title>
+
+
 </h:head>
-<h:body>
-	<h:form id="user_form">
-	<p:commandButton value = "Registra alquiler"  
-		 styleClass="btn btn-success">
-		</p:commandButton>
+ <h:body style="background-image:url(resources/images/fondo.jpeg);background-size:cover;background-repeat: no-repeat;">
+ 	
+ 	<nav class="navbar navbar-default">
+ 		<p class="navbar-text navbar-right">Bienvenido<a href="#" class="navbar-link">Mark Otto</a></p>
+ 		
+ 	</nav>
+ 	
+ 	<h:form  prependId="false" >
+   		<h:panelGrid columns="1" style="
+   						margin: 13% auto;
+   						background-color: rgba(0,0,0,0.8);
+   						border-radius: 11px;width : 25%;text-align:center"  >
+   		 	
+   		 	<h:outputText value = "Banco de" style=" font-size: 2.5em;
+   		 											font-family: 'courier';
+   		 											color : rgba(255, 255, 255, 1);
+   		 											"/>
+   		 	<h:outputText value = "Iniciativas" style=" font-size: 2.5em;
+   		 												font-family: 'courier';
+   		 												color : rgba(255, 255, 255, 1);
+   		 												"/> 
+         
+            
+            <p:inputText id="email" style="border-radius: 11px;
+            						background-color: rgba(255, 237, 246, 0.3);
+            						border: rgba(255, 237, 246, 0.3);
+            						text-align:center" binding="#{correo}"/> 
+			<p:watermark for="email" value="Correo"/>
+			<p></p>
+			<p:commandButton value = "Iniciar Sesion" style="
+									border-radius: 11px;
+            						background-color: rgba(144, 22, 38, 0.7);
+            						border: rgba(144, 22, 38, 0.7);
+            						text-align:center;
+            						color : rgba(255, 255, 255, 1)
+            						"
+            						actionListener="#{loginBean.login(correo.value)}">
+			
+			</p:commandButton>
+			<p:separator style="width:500px;height:20px" />
+			
+            
+        </h:panelGrid>
+	
 	</h:form>
 	<h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	
 </h:body>
 </html>
