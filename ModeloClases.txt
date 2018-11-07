@@ -60,11 +60,11 @@ enum Rol
   {field}PMO-ODI
 }
 
-Usuario "-usuarios  *"-->"-votos  *"Iniciativa
-Usuario -->"-iniciativas  *"Iniciativa
+Usuario "-votantes  *"<--Iniciativa
 Usuario -->"-intereses  *"Interes
-Usuario "-usuario"-->"-comentarios  *"Comentario
+Iniciativa -->"-  proponente"Usuario
+Usuario "-autor"-->Comentario
 Usuario -->"-area"Area
 Iniciativa -->"-intereses  *"Interes
-Iniciativa "-iniciativa"-->"-comentarios  *"Comentario
+Iniciativa -->"-comentarios  *"Comentario
 @enduml
