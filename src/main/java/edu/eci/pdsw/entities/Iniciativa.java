@@ -29,6 +29,7 @@ public class Iniciativa {
 		this.votos= new ArrayList<Usuario>();
 		this.comentario= new ArrayList<Comentario>();
 		this.interes= new ArrayList<Interes>();
+		this.estado=estado;
 	}
 	public ArrayList<Interes> getInteres() {
 		return interes;

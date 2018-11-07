@@ -190,4 +190,14 @@ public class IdeasServicesImpl  implements IdeasServices{
 		
 	}
 
+	@Override
+	public void agregarPalabraClave(long ini, String desc) throws ServicesException {
+		try{
+			iniciativaDAO.agregarPalabraClave(ini, desc);
+		}catch(PersistenceException  e) {
+			throw new ServicesException("Error al agregar una palabra clave a la iniciativa "+ini);
+		}
+		
+	}
+
 }
