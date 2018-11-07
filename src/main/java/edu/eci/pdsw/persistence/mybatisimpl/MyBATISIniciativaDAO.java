@@ -70,6 +70,12 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	@Override
 	public void modificarEstado(long idIniciativa, Estado estado) throws PersistenceException {
 		iniciativaMapper.modificarEstado(idIniciativa,estado);
+	}
+
+	@Override
+	public void agregarPalabraClave(long ini, String desc) {
+		iniciativaMapper.agregarPalabraClave(ini, desc);
+		
 	}  
 
 }

@@ -37,6 +37,7 @@ public interface IdeasServices {
 	
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException;
 	public File consultarEstadisticas() throws ServicesException;
+	public void agregarPalabraClave(long ini,String desc) throws ServicesException;
     
 
 }

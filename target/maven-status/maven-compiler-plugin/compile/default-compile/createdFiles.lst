@@ -1,12 +1,12 @@
 edu/eci/pdsw/guice/GuiceContextListener.class
 edu/eci/pdsw/persistence/UsuarioDAO.class
-edu/eci/pdsw/persistence/mybatisimpl/mappers/UsuarioMapper.class
 edu/eci/pdsw/view/BasePageBean.class
-edu/eci/pdsw/entities/Usuario.class
+edu/eci/pdsw/persistence/mybatisimpl/mappers/UsuarioMapper.class
 edu/eci/pdsw/samples/services/client/MyBatisExample.class
+edu/eci/pdsw/entities/Usuario.class
 edu/eci/pdsw/entities/Rol.class
-edu/eci/pdsw/entities/Estado.class
 edu/eci/pdsw/samples/services/ServicesException.class
+edu/eci/pdsw/entities/Estado.class
 edu/eci/pdsw/view/UsuarioBean.class
 edu/eci/pdsw/entities/Comentario.class
 edu/eci/pdsw/view/IniciativaBean.class

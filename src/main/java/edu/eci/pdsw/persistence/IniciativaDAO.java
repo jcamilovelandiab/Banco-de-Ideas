@@ -2,6 +2,7 @@ package edu.eci.pdsw.persistence;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.pdsw.entities.*;
@@ -19,5 +20,5 @@ public interface IniciativaDAO {
     public int consultarCantidadVotos(long idIniciativa) throws PersistenceException;
     public List<Usuario> consultarInteresados(long idIniciativa) throws PersistenceException;
     public void modificarEstado(long idIniciativa, Estado estado) throws PersistenceException;
-    
+    public void agregarPalabraClave(long ini,String desc) throws PersistenceException;
 }
