@@ -1,4 +1,4 @@
-host ec2-54-225-115-234.compute-1.amazonaws.com:5432/daeb8or97p747k?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&
-dataName daeb8or97p747k
-username hturicolbmwdim
-password bc843b6debd46871c3845dbab53804393bd40dd113773f4a6239b715187ff6d5
+host=ec2-54-225-115-234.compute-1.amazonaws.com:5432/daeb8or97p747k?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&
+dataName=daeb8or97p747k
+username=hturicolbmwdim
+password=bc843b6debd46871c3845dbab53804393bd40dd113773f4a6239b715187ff6d5
