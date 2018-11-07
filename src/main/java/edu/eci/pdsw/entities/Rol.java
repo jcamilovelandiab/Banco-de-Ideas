@@ -2,7 +2,7 @@ package edu.eci.pdsw.entities;
 
 public enum Rol {
 	PUBLICO,
-	PRPONENTE,
+	PROPONENTE,
 	ADMINISTRADOR,
 	PMO_ODI;
 	

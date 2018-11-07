@@ -13,7 +13,7 @@ import edu.eci.pdsw.samples.services.*;
 
 
 public class IdeasServicesImpl  implements IdeasServices{
-	
+		
 	@Inject
 	private UsuarioDAO usuarioDAO;
 	@Inject
@@ -123,6 +123,7 @@ public class IdeasServicesImpl  implements IdeasServices{
 	@Override
 	public Usuario consultarUsuario(String correo) throws ServicesException {
 		try{
+			
 			return usuarioDAO.consultarUsuario(correo);
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al consultar el usuario con correo "+correo);

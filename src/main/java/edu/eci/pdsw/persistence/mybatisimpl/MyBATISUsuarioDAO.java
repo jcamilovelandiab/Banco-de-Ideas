@@ -23,6 +23,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
       */
     @Override
     public Usuario consultarUsuario(String correo) throws PersistenceException {
+    	System.out.println("estoy en mybatis");
         return usuarioMapper.consultarUsuario(correo);
     }
 

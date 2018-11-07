@@ -36,10 +36,14 @@ body {
 </style>
 
 </h:head>
- <h:body style="background-image:url(resources/images/inicio.jpg);background-size:1380px 724px;background-repeat: no-repeat;">
+ <h:body style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
  	
  	<nav class="navbar navbar-default">
- 		<p class="navbar-text navbar-right" style="color: white; font-size:17px ">Bienvenido <a href="#" class="navbar-link" style="color: white; font-size:17px  ">Mark Otto</a></p>
+ 		<p class="navbar-text navbar-right" style="color: white; font-size:17px ;
+ 			
+    			left: -80px;
+   				right: -42px;
+    			bottom: -10px;">Bienvenido <a href="#" class="navbar-link" style="color: white; font-size:17px  ">Mark Otto</a></p>
  		<div class="topnav">
 		  <a class="active" href="#home">Inicio</a>
 		  <a href="#contact">Consultar Iniciativas</a>
@@ -59,6 +63,7 @@ body {
    		 	<h:outputText value = "Banco de" style=" font-size: 2.5em;
    		 											font-family: 'courier';
    		 											color : rgba(255, 255, 255, 1);
+   		 									
    		 											"/>
    		 	<h:outputText value = "Iniciativas" style=" font-size: 2.5em;
    		 												font-family: 'courier';
@@ -69,6 +74,7 @@ body {
             <p:inputText id="email" style="border-radius: 11px;
             						background-color: rgba(255, 237, 246, 0.3);
             						border: rgba(255, 237, 246, 0.3);
+            						color: white;
             						text-align:center" binding="#{correo}"/> 
 			<p:watermark for="email" value="Correo" style="color: white"/>
 			<p></p>
@@ -78,7 +84,10 @@ body {
             						background-color: rgba(144, 22, 38, 0.7);
             						border: rgba(144, 22, 38, 0.7);
             						text-align:center;
-
+									top: -10px;
+    								left: 2px;
+   									 right: -42px;
+    								bottom: -10px;
             						color : rgba(255, 255, 255, 1)
             						"
             						actionListener="#{loginBean.login(correo.value)}">

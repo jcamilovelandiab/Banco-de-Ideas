@@ -19,8 +19,8 @@ import edu.eci.pdsw.entities.*;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginBean")
-public class LoginBean {
-	
+public class LoginBean extends BasePageBean{
+
 	private static final long serialVersionUID = 3594009161252782831L;
 	
 	@Inject
@@ -28,8 +28,19 @@ public class LoginBean {
 	
 	public void login(String correo) throws IOException, ServicesException{
 			System.out.println(correo);
+			System.out.println("llegue aca");
 			Usuario user = services.consultarUsuario(correo);
+			
             if (user.getTipo().equals(Rol.ADMINISTRADOR)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+            }
+            else if (user.getTipo().equals(Rol.PUBLICO)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+            }
+            else if (user.getTipo().equals(Rol.PROPONENTE)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+            }
+            else{
                 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
             }
             
