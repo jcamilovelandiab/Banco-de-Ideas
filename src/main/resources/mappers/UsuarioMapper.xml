@@ -5,14 +5,6 @@
   
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper">
 
-	<resultMap id="UsuarioResult" type="Usuario">
-		<id property='correo' column='correo'/>
-		<result property='nombre' column='nombre'/>
-		<result property='tipo' column='tipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
-		<association property="area" column='area' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"></association>
-		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-		<collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
-	</resultMap>
 	
 	<insert id="crearUsuario" parameterType="Usuario" >		
 		INSERT INTO Usuarios(correo, nombre, tipo, area)
@@ -21,10 +13,35 @@
 	
 	<select id="consultarUsuario" parameterType="String" resultMap="UsuarioResult">
 		SELECT 
-		*
-		FROM usuarios as usr, areas
-		WHERE usr.area = areas.id AND usr.correo=#{correo};
+		usr.nombre as usrNomre,
+		usr.correo as usrCorreo,
+		usr.tipo as usrTipo,
+		usr.area as usrArea,
+		areas.nombre as areaNombre,
+		areas.descripcion as areaDescripcion,
+		areas.id as areaId	
+		iniciativas.no_iniciativa as iniNumero
+		iniciativas.nombre as nombreIniciativa
+		iniciativas.descripcion as descripcionIniciativa
+		iniciativas.fechapropuesta as fechaPropuestaIniciativa
+		iniciativas.estado as estadoIniciativa
+		iniciativas.fechacierre as fechaCierreIniciativa
+		iniciativas.proponente  as
+		
+		FROM usuarios as usr, areas , iniciativas as ini,  
+		WHERE usr.area = areas.id AND usr.correo= #{correo}
 	</select>
+	
+	<resultMap id="UsuarioResult" type="Usuario">
+		<id property='correo' column='usrCorreo'/>
+		<result property='nombre' column='usrNomre'/>
+		<result property='tipo' column='usrTipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+		<association property="area" javaType='Area' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"></association>
+		<collection property="iniciativas" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
+		<collection property="votos" ofType="Iniciativa" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper.IniciativaResult"></collection>
+		
+	</resultMap>
+	
 	
 	<select id="consultarUsuarios" resultMap="UsuarioResult">
 		SELECT

@@ -6,10 +6,9 @@
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper">
 
 	<resultMap id="AreaResult" type="Area">
-		<id property='id' column='id'/>
-		<result property='nombre' column='nombre'/>
-		<result property='descripcion' column='descripcion'/>
-		<collection property="usuarios" ofType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></collection>
+		<id property='id' column='areaId'/>
+		<result property='nombre' column='areaNombre'/>
+		<result property='descripcion' column='areaDescripcion'/>
 	</resultMap>
 	
 </mapper>

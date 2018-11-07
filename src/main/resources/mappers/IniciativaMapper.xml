@@ -6,7 +6,7 @@
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper">
 
 	<resultMap id="IniciativaResult" type="Iniciativa">
-		<id property='no_iniciativa' column='no_iniciativa'/>
+		<id property='no_iniciativa' column='iniNumero'/>
 		<result property='nombre' column='nombreIniciativa'/>
 		<result property='descripcion' column='descripcionIniciativa'/>
 		<result property='fechaPropuesta' column='fechaPropuestaIniciativa'/>
