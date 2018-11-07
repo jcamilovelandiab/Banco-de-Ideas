@@ -9,13 +9,21 @@ public class Comentario {
 	private Iniciativa	iniciativa;
 	private Usuario usuario;
 	
-	public Comentario(Date fecha, String contenido, Iniciativa iniciativa, Usuario usuario) {
-		this.fecha = fecha;
+	public Comentario(String contenido, Iniciativa iniciativa, Usuario usuario) {
 		this.contenido = contenido;
 		this.iniciativa = iniciativa;
 		this.usuario = usuario;
+		this.fecha= new java.sql.Date((new java.util.Date()).getTime());
 	}
 
+	public Comentario(long id, String contenido, Iniciativa iniciativa, Usuario usuario) {
+		this.id=id;
+		this.contenido = contenido;
+		this.iniciativa = iniciativa;
+		this.usuario = usuario;
+		this.fecha= new java.sql.Date((new java.util.Date()).getTime());
+	}
+	
 	public Comentario() {
 		
 	}

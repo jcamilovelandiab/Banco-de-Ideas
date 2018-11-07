@@ -31,11 +31,12 @@ public class MyBatisExample {
 	}
 
 	public static void main(String[] args) {
+		/*
 		  SqlSessionFactory sessionfact = getSqlSessionFactory();
 	      SqlSession sqlss = sessionfact.openSession();
 	      
-	      IdeasServicesFactory servicesFactory = IdeasServicesFactory.getInstance();
-	      IdeasServices ideasServices = servicesFactory.getIdeasServices();
+	      ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
+	      ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
 	      
 	      UsuarioMapper usrMapper =  sqlss.getMapper(UsuarioMapper.class);
 	      IniciativaMapper iniMapper =  sqlss.getMapper(IniciativaMapper.class);
@@ -59,7 +60,25 @@ public class MyBatisExample {
 			System.out.println(e.getMessage());
 		}
 	      sqlss.commit();
-	      sqlss.close();
+	      sqlss.close();*/
+		
+		
+		
+		// PROBANDO CON SERVICES IDEAS STUB
+		ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
+	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
+	    Area area = new Area("AreaPrueba", "descripcionPrueba");
+	    Usuario usr = new Usuario("John Ibanez","john.ibanez@mail.escuelaing.edu.co", area, Rol.PUBLICO);
+	    try {
+			ideasServices.crearUsuario(usr);
+			System.out.println("INGRESE EL USUARIO");
+			Usuario usrQuery = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
+			if(usrQuery != null) {
+				System.out.println(usrQuery.getNombre()+ " SI ESTA EN LA BASE DE DATOS (: ");
+			}
+		} catch (ServicesException e) {
+			System.err.println(e.getMessage());
+		}
+	    
 	}
-
 }

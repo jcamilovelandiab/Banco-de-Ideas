@@ -18,6 +18,13 @@ public class Area {
 		this.descripcion = descripcion;
 		this.usuarios= new ArrayList<Usuario>();
 	}
+	
+	public Area(long id, String nombre, String descripcion) {
+		this.id= id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.usuarios= new ArrayList<Usuario>();
+	}
 
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;

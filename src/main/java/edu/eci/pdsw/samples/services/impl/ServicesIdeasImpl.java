@@ -12,7 +12,7 @@ import edu.eci.pdsw.persistence.*;
 import edu.eci.pdsw.samples.services.*;
 
 
-public class IdeasServicesImpl  implements IdeasServices{
+public class ServicesIdeasImpl  implements ServicesIdeas{
 	
 	@Inject
 	private UsuarioDAO usuarioDAO;

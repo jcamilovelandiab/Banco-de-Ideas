@@ -24,7 +24,7 @@ public class LoginBean {
 	private static final long serialVersionUID = 3594009161252782831L;
 	
 	@Inject
-	private IdeasServicesImpl services;
+	private ServicesIdeasImpl services;
 	
 	public void login(String correo) throws IOException, ServicesException{
 			System.out.println(correo);
