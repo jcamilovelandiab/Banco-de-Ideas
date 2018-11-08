@@ -25,6 +25,7 @@ public class UsuarioBean extends BasePageBean {
 	private String correo;
 	private Usuario sr;
 	
+	
 	private static final long serialVersionUID = 3594009161252782831L;
 	
 	@Inject
@@ -56,7 +57,13 @@ public class UsuarioBean extends BasePageBean {
 			throw new  ServicesException("a");
 		}
 	}
-	
+	public List<Usuario> usr() throws ServicesException{
+		return (List<Usuario>) services.consultarUsuarios();
+	}
+	public Usuario consultar(String correo) throws ServicesException {
+		System.out.println("holi"+correo);
+		return services.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co");
+	}
 	
 
 

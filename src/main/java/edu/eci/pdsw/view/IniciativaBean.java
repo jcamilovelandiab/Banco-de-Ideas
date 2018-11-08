@@ -23,6 +23,7 @@ import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
 @RequestScoped
 
 public class IniciativaBean extends BasePageBean{
+	
 	@ManagedProperty(value = "#{param.nombre}")
 	private String nombre;
 	
@@ -39,9 +40,9 @@ public class IniciativaBean extends BasePageBean{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public List<Iniciativa> pal(String palabra) throws ServicesException{
-		System.out.println(palabra);
+	public List<Iniciativa> pal() throws ServicesException{
 		
-		return (List<Iniciativa>) services.consultarIniciativas(palabra);
+		
+		return (List<Iniciativa>) services.consultarIniciativas("");
 	}
 }
