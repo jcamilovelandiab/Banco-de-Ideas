@@ -40,6 +40,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try {
 			return iniciativaDAO.consultarIniciativa(nombreIniciativa);
 		}catch(PersistenceException  ex) {
+			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al consultar la iniciativa <"+nombreIniciativa+">");
 		}
 	}
@@ -65,15 +66,17 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	
 	@Override
 	public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException {
+		
 		try{
 			TreeMap<String,Iniciativa> iniciativas = new TreeMap<String,Iniciativa>();
 			for (String pclave : palabrasClave) {
+				//System.out.println("PALABRA CLAVE - <"+pclave+">");
 				List<Iniciativa> inics = iniciativaDAO.consultarIniciativasxClaves(pclave);
-				System.out.println(inics);
-				/*for (Iniciativa ini : inics) {
-					System.out.println(ini.getNombre());
-					//iniciativas.put(ini.getNombre(), ini);
-				}*/
+				for (Iniciativa ini : inics) {
+					if(!iniciativas.containsKey(ini.getNombre())) {
+						iniciativas.put(ini.getNombre(), ini);
+					}
+				}
 			}
 			return iniciativas.values();
 		}catch(PersistenceException  e) {
@@ -100,20 +103,20 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	@Override
-	public int consultarCantidadVotos(long idIniciativa) throws ServicesException {
+	public int consultarCantidadVotos(String nombreIni) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarCantidadVotos(idIniciativa);
+			return iniciativaDAO.consultarCantidadVotos(nombreIni);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al consultar la cantidad de votos de la iniciativa "+idIniciativa);
+			throw new ServicesException("Error al consultar la cantidad de votos de la iniciativa "+nombreIni);
 		}
 	}
 	
 	@Override
-	public List<Usuario> consultarInteresados(long idIniciativa) throws ServicesException {
+	public List<Usuario> consultarInteresados(String nombreIni) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarInteresados(idIniciativa);
+			return iniciativaDAO.consultarInteresados(nombreIni);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al consultar los interesados en la iniciativa "+idIniciativa);
+			throw new ServicesException("Error al consultar los interesados en la iniciativa "+nombreIni);
 		}
 	}
 	

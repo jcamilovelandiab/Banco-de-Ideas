@@ -84,13 +84,13 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public int consultarCantidadVotos(long idIniciativa) throws ServicesException {
+	public int consultarCantidadVotos(String nombreIni) throws ServicesException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<Usuario> consultarInteresados(long idIniciativa) throws ServicesException {
+	public List<Usuario> consultarInteresados(String nombreIni) throws ServicesException {
 		// TODO Auto-generated method stub
 		return null;
 	}

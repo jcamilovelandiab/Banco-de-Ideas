@@ -3,6 +3,8 @@ package edu.eci.pdsw.samples.services.client;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -76,18 +78,44 @@ public class MyBatisExample {
 	    	  Iniciativa ini=new Iniciativa("Hacer el bloque XD","Joder tio, en que pensáis ?",usuario2, palabrasClave);
 	    	  //ideasServices.crearIniciativa(ini);
 	    	  //ideasServices.modificarEstado("Hacer una biblioteca", Estado.DESECHADO);*/
+	      
 	    	  ArrayList<String> palabrasClave = new ArrayList();
+	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
+	    	  palabrasClave.add("plataformas a la primera");
+	    	  
+	    	  Collection<Usuario> usuarios = ideasServices.consultarUsuarios();
+	    	  System.out.println("------ USUARIOS ------");
+	    	  for (Usuario usuario : usuarios) {
+	    		  System.out.println(usuario);
+	    	  }
+	    	  System.out.println("\nCONSULTANDO A YOWIS");
+	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
+	    	  System.out.println("\nCAMBIO ROL A YOWIS POR ADMINISTRADOR");
+	    	  ideasServices.asignarPerfil("yohanna.toro@mail.escuelaing.edu.co", Rol.ADMINISTRADOR);
+	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
+	    	  
 	    	  Area area = new Area("AreaTest", "descripcionTest");
 	    	  area.setId(1);
-	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
-	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
-	    	  palabrasClave.add("plataformas a la primera");	    	  
-	    	  Iniciativa ini2 = new Iniciativa("Hacer el bloque K","Joder tio, en que pensáis ?",usuario, palabrasClave);
-	    	  //ideasServices.crearIniciativa(ini2);
-	    	  System.out.println(ideasServices.consultarIniciativasxClaves(palabrasClave));
+	    	  //Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
 	    	  
-	      } catch (ServicesException e) {
-			
+	    	  //Iniciativa ini2 = new Iniciativa("Hacer el bloque K","Joder tio, en que pensáis ?",usuario, palabrasClave);
+	    	  //ideasServices.crearIniciativa(ini2);
+	    	  
+	    	  Iniciativa iniciativaPrueba = ideasServices.consultarIniciativa("Hacer el bloque K");
+	    	  System.out.println("\nINICIATIVA -> "+iniciativaPrueba);
+	    	  System.out.println("\nINICIATIVAS POR PALABRAS CLAVE");
+	    	  Collection<Iniciativa> inisQuery = ideasServices.consultarIniciativasxClaves(palabrasClave);
+	    	  for (Iniciativa ini : inisQuery) {
+	    		  System.out.println(ini);
+	    	  }
+	    	  
+	    	  System.out.println("\nTODAS LAS INICIATIVAS");
+	    	  Collection<Iniciativa> inisQuery2 = ideasServices.consultarIniciativas("Nada");
+	    	  for (Iniciativa ini : inisQuery2) {
+	    		  System.out.println(ini);
+	    	  }
+	    	  
+	      } catch (ServicesException e){
 			System.out.println(e.getMessage());
 	      }
 	      sqlss.commit();

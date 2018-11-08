@@ -13,11 +13,40 @@
 		
 		<result property='estado' column='iniciativaEstado' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
 		<association property="proponente" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
-		<collection property="palabrasClave" ofType="String" ></collection>	
+		
+		<collection property="palabrasClave" ofType="java.lang.String" javaType="list">
+        	<result column="iniciativaPalabrasClave" />
+    	</collection>
+    	
 		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
 		<collection property="votantes" ofType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></collection>
 		<collection property="comentarios" ofType="Comentario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper.ComentarioResult"></collection>
 	</resultMap>	
+	
+	
+	<select id="consultarIniciativa" parameterType="String" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave, 
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre AND ini.nombre = #{nombreIni};
+	</select>
 	
 	<select id="consultarIniciativas" parameterType="String" resultMap="IniciativaResult">
 		SELECT
@@ -31,40 +60,43 @@
 			usr.nombre AS usuarioNombre,
 			usr.tipo AS usuarioTipo,
 			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
 			
 			areas.id AS areaId,
 			areas.nombre AS areaNombre,
 			areas.descripcion AS areaDescripcion 
 		FROM 
-			iniciativas ini, usuarios usr, areas 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
 		WHERE
-			ini.proponente = usr.correo AND usr.area = areas.id;
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre;
 	</select>
 	
+	
 	<select id="consultarIniciativasxClaves" parameterType="String" resultMap="IniciativaResult">
-		select
-			ini.nombre as nombreIniciativa,
-			ini.descripcion as descripcionIniciativa,
-			ini.fechapropuesta as fechaPropuestaIniciativa,
-			ini.fechacierre as fechaCierreIniciativa,
-			ini.estado as estadoIniciativa,
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
 			
-			usr.correo as correoUsuario,
-			usr.nombre as nombreUsuario,
-			usr.tipo as tipoUsuario,
-			usr.area as areaUsuario,
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
 			
-			areas.id as areaId,
-			areas.nombre as areaNombre,
-			areas.descripcion as areaDescripcion,
-			pclaves.descripcion as palabrasClave 
-			
-		from 
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
 			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
-		where
-			ini.proponente = usr.correo and usr.area = areas.id 
-			and pclaves.iniciativa=ini.nombre and pclaves.descripcion = #{clave};
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre AND pclaves.descripcion = #{clave};
 	</select>
+	
 	
 	<insert id="crearIniciativa" parameterType="Iniciativa">
 		INSERT INTO Iniciativas (nombre,descripcion,fechaPropuesta, estado, proponente) 

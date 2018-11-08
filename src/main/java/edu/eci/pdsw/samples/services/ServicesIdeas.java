@@ -22,8 +22,8 @@ public interface ServicesIdeas {
     public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException;
     
     public void agregarComentario(Usuario usuario, Iniciativa iniciativa, Comentario comentario) throws ServicesException;
-    public int consultarCantidadVotos(long idIniciativa) throws ServicesException;
-    public Collection<Usuario> consultarInteresados(long idIniciativa) throws ServicesException;
+    public int consultarCantidadVotos(String nombreIni) throws ServicesException;
+    public Collection<Usuario> consultarInteresados(String nombreIni) throws ServicesException;
     public void modificarEstado(String nombreIniciativa, Estado estado) throws ServicesException;
     
     

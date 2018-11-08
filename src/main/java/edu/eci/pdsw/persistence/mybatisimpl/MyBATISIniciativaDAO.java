@@ -54,13 +54,13 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public int consultarCantidadVotos(long idIniciativa) throws PersistenceException {
-		return iniciativaMapper.consultarCantidadVotos(idIniciativa);
+	public int consultarCantidadVotos(String nombreIni) throws PersistenceException {
+		return iniciativaMapper.consultarCantidadVotos(nombreIni);
 	}
 
 	@Override
-	public List<Usuario> consultarInteresados(long idIniciativa) throws PersistenceException {
-		return iniciativaMapper.consultarInteresados(idIniciativa);
+	public List<Usuario> consultarInteresados(String nombreIni) throws PersistenceException {
+		return iniciativaMapper.consultarInteresados(nombreIni);
 	}
 
 	@Override

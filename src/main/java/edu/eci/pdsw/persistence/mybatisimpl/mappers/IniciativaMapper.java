@@ -23,7 +23,7 @@ public interface  IniciativaMapper {
     
     public List<Iniciativa> consultarIniciativasRelacionadas(@Param("ini")Iniciativa ini);
     
-    public List<Iniciativa> consultarIniciativasxClaves(@Param("clave")String palabraClave);
+    public List<Iniciativa> consultarIniciativasxClaves(@Param("clave")String clave);
     
     public List<Iniciativa> consultarIniciativasxEstado(@Param("estado")Estado estado);
     
@@ -31,9 +31,9 @@ public interface  IniciativaMapper {
     		@Param("ini")Iniciativa ini,
     		@Param("comentario")Comentario comentario);
     
-    public int consultarCantidadVotos(@Param("idIni") long idIni);
+    public int consultarCantidadVotos(@Param("nombreIni")String nombreIni);
     
-    public List<Usuario> consultarInteresados(@Param("idIni") long idIni);
+    public List<Usuario> consultarInteresados(@Param("nombreIni")String nombreIni);
     
     public void modificarEstado(@Param("nombreIni")String nombreIniciativa, 
     		@Param("estado") Estado estado);
