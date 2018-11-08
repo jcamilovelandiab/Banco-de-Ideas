@@ -42,10 +42,10 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public Iniciativa consultarIniciativa(long idIniciativa) throws ServicesException {
+	public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException {
 		Iniciativa ini = null;
-		if(iniciativas.containsKey(idIniciativa)) {
-			ini = iniciativas.get(idIniciativa);
+		if(iniciativas.containsKey(nombreIniciativa)) {
+			ini = iniciativas.get(nombreIniciativa);
 		}
 		return ini;
 	}
@@ -96,7 +96,7 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public void modificarEstado(long idIniciativa, Estado estado) throws ServicesException {
+	public void modificarEstado(String nombreIniciativa, Estado estado) throws ServicesException {
 		// TODO Auto-generated method stub
 		
 	}

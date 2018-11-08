@@ -6,17 +6,65 @@
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.IniciativaMapper">
 
 	<resultMap id="IniciativaResult" type="Iniciativa">
-		<id property='nombre' column='nombreIniciativa'/>
-		<result property='descripcion' column='descripcionIniciativa'/>
-		<result property='fechaPropuesta' column='fechaPropuestaIniciativa'/>
-		<result property='fechaCierre' column='fechaCierreIniciativa'/>		
-		<result property='estado' column='estadoIniciativa' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
+		<id property='nombre' column='iniciativaNombre'/>
+		<result property='descripcion' column='iniciativaDescripcion'/>
+		<result property='fechaPropuesta' column='iniciativaFechaPropuesta'/>
+		<result property='fechaCierre' column='iniciativaFechaCierre'/>
+		
+		<result property='estado' column='iniciativaEstado' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
 		<association property="proponente" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
+		<collection property="palabrasClave" ofType="String" ></collection>	
 		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
 		<collection property="votantes" ofType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></collection>
-		<collection property="palabrasClave" ofType="String" ></collection>
-		<collection property="comentarios" ofType="Comentario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper.CommentarioResult"></collection>
+		<collection property="comentarios" ofType="Comentario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper.ComentarioResult"></collection>
 	</resultMap>	
+	
+	<select id="consultarIniciativas" parameterType="String" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas 
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id;
+	</select>
+	
+	<select id="consultarIniciativasxClaves" parameterType="String" resultMap="IniciativaResult">
+		select
+			ini.nombre as nombreIniciativa,
+			ini.descripcion as descripcionIniciativa,
+			ini.fechapropuesta as fechaPropuestaIniciativa,
+			ini.fechacierre as fechaCierreIniciativa,
+			ini.estado as estadoIniciativa,
+			
+			usr.correo as correoUsuario,
+			usr.nombre as nombreUsuario,
+			usr.tipo as tipoUsuario,
+			usr.area as areaUsuario,
+			
+			areas.id as areaId,
+			areas.nombre as areaNombre,
+			areas.descripcion as areaDescripcion,
+			pclaves.descripcion as palabrasClave 
+			
+		from 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		where
+			ini.proponente = usr.correo and usr.area = areas.id 
+			and pclaves.iniciativa=ini.nombre and pclaves.descripcion = #{clave};
+	</select>
 	
 	<insert id="crearIniciativa" parameterType="Iniciativa">
 		INSERT INTO Iniciativas (nombre,descripcion,fechaPropuesta, estado, proponente) 
@@ -29,7 +77,9 @@
 	</insert>
 	
 	<update id="modificarEstado">
-		UPDATE Iniciativas SET estado=#{estado} WHERE no_iniciativa=#{nombreIni};
+		UPDATE iniciativas SET estado=#{estado} WHERE nombre=#{nombreIni};
 	</update>
+	
+	
 	
 </mapper>

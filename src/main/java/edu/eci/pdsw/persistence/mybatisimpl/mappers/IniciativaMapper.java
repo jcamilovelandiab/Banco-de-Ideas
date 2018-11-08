@@ -17,7 +17,7 @@ public interface  IniciativaMapper {
 
     public void crearIniciativa(@Param("ini")Iniciativa ini);
     
-    public Iniciativa consultarIniciativa(@Param("idIni") long  idIni);
+    public Iniciativa consultarIniciativa(@Param("nombreIni")String  nombreIni);
     
     public List<Iniciativa> consultarIniciativas(@Param("orden")String orden);
     
@@ -35,7 +35,7 @@ public interface  IniciativaMapper {
     
     public List<Usuario> consultarInteresados(@Param("idIni") long idIni);
     
-    public void modificarEstado(@Param("idIni")long ini, 
+    public void modificarEstado(@Param("nombreIni")String nombreIniciativa, 
     		@Param("estado") Estado estado);
     
     public void agregarPalabraClave(@Param("nombreIni")String nombreIni,

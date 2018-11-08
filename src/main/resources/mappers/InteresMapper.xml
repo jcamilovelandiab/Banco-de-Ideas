@@ -6,11 +6,11 @@
 <mapper namespace="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper">
 
 	<resultMap id="InteresResult" type="Interes">
-		<id property="id" column="idInteres"></id>
-		<result property="intencion" column="intencionInteres"></result>
-		<result property="descripcion" column="descripcionInteres"></result>
-		<result property="fecha" column="fechaInteres"></result>
-		<result property="trabajo" column="trabajoInteres"></result>
+		<id property="id" column="interesId"></id>
+		<result property="intencion" column="interesIntencion"></result>
+		<result property="descripcion" column="interesDescripcion"></result>
+		<result property="fecha" column="interesFecha"></result>
+		<result property="trabajo" column="interesTrabajo"></result>
 	</resultMap>
 	
 </mapper>

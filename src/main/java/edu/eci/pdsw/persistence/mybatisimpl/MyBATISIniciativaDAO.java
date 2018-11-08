@@ -23,8 +23,8 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public Iniciativa consultarIniciativa(long idIniciativa) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativa(idIniciativa);
+	public Iniciativa consultarIniciativa(String nombreIniciativa) throws PersistenceException {
+		return iniciativaMapper.consultarIniciativa(nombreIniciativa);
 	}
 
 	@Override
@@ -38,12 +38,8 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws PersistenceException {
-		ArrayList<Iniciativa> res = new ArrayList<Iniciativa>();
-		for (String palabra : palabrasClave) {
-			res.addAll(iniciativaMapper.consultarIniciativasxClaves(palabra));
-		}
-		return res;
+	public List<Iniciativa> consultarIniciativasxClaves(String palabraClave) throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasxClaves(palabraClave);
 	}
 
 	@Override
@@ -68,8 +64,8 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public void modificarEstado(long idIniciativa, Estado estado) throws PersistenceException {
-		iniciativaMapper.modificarEstado(idIniciativa,estado);
+	public void modificarEstado(String nombreIniciativa, Estado estado) throws PersistenceException {
+		iniciativaMapper.modificarEstado(nombreIniciativa,estado);
 	}
 
 	@Override

@@ -1,7 +1,10 @@
 package edu.eci.pdsw.samples.services.impl;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
@@ -33,11 +36,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	@Override
-	public Iniciativa consultarIniciativa(long idIniciativa) throws ServicesException {
+	public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException {
 		try {
-			return iniciativaDAO.consultarIniciativa(idIniciativa);
+			return iniciativaDAO.consultarIniciativa(nombreIniciativa);
 		}catch(PersistenceException  ex) {
-			throw new ServicesException("Error al consultar la iniciativa <"+idIniciativa+">");
+			throw new ServicesException("Error al consultar la iniciativa <"+nombreIniciativa+">");
 		}
 	}
 	
@@ -46,6 +49,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativas(orden);
 		}catch(PersistenceException  ex) {
+			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al consultar todas las iniciativas");
 		}
 	}
@@ -60,9 +64,18 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	@Override
-	public List<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException {
+	public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarIniciativasxClaves(palabrasClave);
+			TreeMap<String,Iniciativa> iniciativas = new TreeMap<String,Iniciativa>();
+			for (String pclave : palabrasClave) {
+				List<Iniciativa> inics = iniciativaDAO.consultarIniciativasxClaves(pclave);
+				System.out.println(inics);
+				/*for (Iniciativa ini : inics) {
+					System.out.println(ini.getNombre());
+					//iniciativas.put(ini.getNombre(), ini);
+				}*/
+			}
+			return iniciativas.values();
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al consultar iniciativas por palabras clave");
 		}
@@ -105,11 +118,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	@Override
-	public void modificarEstado(long idIniciativa, Estado estado) throws ServicesException {
+	public void modificarEstado(String nombreIniciativa, Estado estado) throws ServicesException {
 		try{
-			iniciativaDAO.modificarEstado(idIniciativa, estado);		
+			iniciativaDAO.modificarEstado(nombreIniciativa, estado);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al modificar el estado de la iniciativa "+idIniciativa);
+			throw new ServicesException("Error al modificar el estado de la iniciativa "+nombreIniciativa);
 		}
 	}
 	

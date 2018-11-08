@@ -56,6 +56,7 @@ public class MyBatisExample {
 	      //iniMapper.consultarIniciativasxClaves("pruebas"); no implementado
 	      
 	      try {
+	    	  /*
 	    	  Area area = new Area("AreaTest", "descripcionTest");
 	    	  area.setId(1);
 	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
@@ -71,8 +72,17 @@ public class MyBatisExample {
 	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
 	    	  palabrasClave.add("plataformas a la primera");
 	    	  Iniciativa ini=new Iniciativa("Hacer el bloque XD","Joder tio, en que pensáis ?",usuario2, palabrasClave);
-	    	  ideasServices.crearIniciativa(ini);
-	    	  
+	    	  //ideasServices.crearIniciativa(ini);
+	    	  //ideasServices.modificarEstado("Hacer una biblioteca", Estado.DESECHADO);*/
+	    	  ArrayList<String> palabrasClave = new ArrayList();
+	    	  Area area = new Area("AreaTest", "descripcionTest");
+	    	  area.setId(1);
+	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
+	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
+	    	  palabrasClave.add("plataformas a la primera");	    	  
+	    	  Iniciativa ini2 = new Iniciativa("Hacer el bloque K","Joder tio, en que pensáis ?",usuario, palabrasClave);
+	    	  //ideasServices.crearIniciativa(ini2);
+	    	  System.out.println(ideasServices.consultarIniciativasxClaves(palabrasClave));
 	    	  
 	      } catch (ServicesException e) {
 			
