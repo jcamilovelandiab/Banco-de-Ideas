@@ -59,10 +59,8 @@
 	<f:metadata>
 	    <f:viewParam name="correo" value="#{usuarioBean.correo}" />
 	</f:metadata>
-	
-	<p:inputText id="doc1" binding="#{crr}" value = "#{usuarioBean.getCorreo()}" style="display:none"/>
-	<p:inputText id="doc21" binding="#{nom}" value = "#{usuarioBean.getNombre(crr.value)}" style="display:none"/>
-	
+		<p:inputText id="doc21" binding="#{nom}" value = "#{usuarioBean.getNombre().getNombre()}" style="display:none"/>
+		<p:inputText id="doc21" binding="#{nomi}" value = "#{usuarioBean.getNombre().getTipo()}" style="display:none"/>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:8px">
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
@@ -71,11 +69,9 @@
 					Menu
 				</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" style="font-size:12px;" href="#">Action</a>
-				<a class="dropdown-item" style="font-size:12px;" href="#">Another action</a>
-			<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">Something else here</a>
-			</div>
+				<a class="dropdown-item" style="font-size:12px;" href="#">Opciones usuarios</a>
+				<a class="dropdown-item" style="font-size:12px;" href="#">Opciones inciativas</a></div>
+			
 			</li>
 		</ul>
 		</div>
@@ -84,13 +80,13 @@
 			text-align:center;
    						margin: 15% auto;
    						height:5px;">
-			<h:outputText value = "aa" style=" font-size: 20px;
+			<h:outputText value = "#{nom.value}" style=" font-size: 20px;
    		 											font-family: 'Times New Roman';
    		 											color : rgba(255, 255, 255, 1);
    		 									
    		 											"/>
 													
-			<h:outputText value = "" style=" font-size: 15px;
+			<h:outputText value = "#{nomi.value}" style=" font-size: 15px;
 													
    		 											font-family: 'Times New Roman';
    		 											color : rgba(255, 255, 255, 1);

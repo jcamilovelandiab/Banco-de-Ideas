@@ -20,9 +20,10 @@ import edu.eci.pdsw.entities.*;
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
-public class UsuarioBean {
+public class UsuarioBean extends BasePageBean {
 	@ManagedProperty(value = "#{param.correo}")
 	private String correo;
+	private Usuario sr;
 	
 	private static final long serialVersionUID = 3594009161252782831L;
 	
@@ -30,7 +31,7 @@ public class UsuarioBean {
 	private ServicesIdeas services;
 	
 	
-	private String nombre;
+	
 
 	
 	public String getCorreo(){
@@ -44,11 +45,13 @@ public class UsuarioBean {
 		
 	}
 	
-	public String getNombre(String correo) throws ServicesException {
+	public Usuario getNombre() throws ServicesException {
 		System.out.println("Correo : "+ correo);
 		try {
-			System.out.println(services.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
-			return "Hola mundo";
+			Usuario sr=services.consultarUsuario(correo);
+			System.out.println("holi ");
+			System.out.println(sr.getNombre());
+			return sr;
 		} catch (ServicesException e) {
 			throw new  ServicesException("a");
 		}

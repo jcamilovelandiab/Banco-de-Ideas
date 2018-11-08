@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
-
+import edu.eci.pdsw.view.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -54,6 +54,9 @@ public class LoginBean extends BasePageBean{
             
 		
 	}
+
+		
+
 
 	
 

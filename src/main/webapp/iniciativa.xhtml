@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
+	<h:head>
 <style>
 body {
   margin: 0;
@@ -43,16 +43,14 @@ body {
     			left: -80px;
    				right: -42px;
     			bottom: -10px;">Usuario <a href="#" class="navbar-link" style="color: white; font-size:17px  ">Publico</a></p>
- 	<div class="topnav">
+ 		<div class="topnav">
 		  <a class="active" href="index.xhtml">Inicio</a>
-		  <a href="iniciativa.xhtml">Consultar Iniciativas</a>
+		  <a href="iniciativa.xhtml" >Consultar Iniciativas</a>
 		  <a href="#about">Quienes somos</a>
 		</div>
-    </nav>
 
  		
-
- 	
+ 	</nav>
  	<h:form  prependId="false" >
    		<h:panelGrid columns="1" style="
    						margin: 15% auto;
@@ -60,7 +58,7 @@ body {
    						background-color: rgba(0,0,0,0.7);
    						border-radius: 11px;text-align:center"  >
    		 	
-   		 	<h:outputText value = "Banco de" style=" font-size: 2.5em;
+   		 	<h:outputText value = "Consultar" style=" font-size: 2.5em;
    		 											font-family: 'courier';
    		 											color : rgba(255, 255, 255, 1);
    		 									
@@ -71,15 +69,15 @@ body {
    		 												"/> 
          
             
-            <p:inputText id="email" style="border-radius: 11px;
+            <p:inputText id="Palabras" style="border-radius: 11px;
             						background-color: rgba(255, 237, 246, 0.3);
             						border: rgba(255, 237, 246, 0.3);
             						color: white;
-            						text-align:center" binding="#{correo}"/> 
-			<p:watermark for="email" value="Correo" style="color: white"/>
+            						text-align:center" binding="#{palabra}"/> 
+			<p:watermark for="Palabras" value="palabra" style="color: white"/>
 			<p></p>
 			<p:separator style="width:350px;height:0px" />
-			<p:commandButton value = "Iniciar Sesion" style="
+			<p:commandButton value = "Buscar" style="
 									border-radius: 11px;
             						background-color: rgba(144, 22, 38, 0.7);
             						border: rgba(144, 22, 38, 0.7);
@@ -90,15 +88,13 @@ body {
     								bottom: -10px;
             						color : rgba(255, 255, 255, 1)
             						"
-            						actionListener="#{loginBean.login(correo.value)}">
+            						actionListener="#{iniciativaBean.pal(palabra.value)}">
 			
 			</p:commandButton>
-			
-			
-            
-        </h:panelGrid>
+			</h:panelGrid>
 	
 	</h:form>
+ 	
 	<h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	
 </h:body>

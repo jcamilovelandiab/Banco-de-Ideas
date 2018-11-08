@@ -39,6 +39,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	
 	@Override
 	public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException {
+		System.out.println("llegue a impl");
 		try {
 			return iniciativaDAO.consultarIniciativa(nombreIniciativa.toLowerCase());
 		}catch(PersistenceException  ex) {
