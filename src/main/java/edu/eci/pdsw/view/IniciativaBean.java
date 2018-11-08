@@ -1,6 +1,7 @@
 package edu.eci.pdsw.view;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
@@ -40,8 +41,18 @@ public class IniciativaBean extends BasePageBean{
 		this.nombre = nombre;
 	}
 	public List<Iniciativa> pal(String palabra) throws ServicesException{
-		System.out.println(palabra);
-		
+		System.out.println((List<Iniciativa>) services.consultarIniciativas(palabra));
 		return (List<Iniciativa>) services.consultarIniciativas(palabra);
+	}
+	
+	
+	public Collection<Iniciativa> getDatas(String keyword)throws ServicesException {
+		List<String> vamos = new ArrayList<>();
+		vamos.add(keyword);
+		try {
+			return services.consultarIniciativasxClaves(vamos);
+		} catch (ServicesException e) {
+			throw new ServicesException("mAMDAS");
+		}
 	}
 }
