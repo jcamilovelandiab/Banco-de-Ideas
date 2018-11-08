@@ -78,11 +78,15 @@ public class MyBatisExample {
 	    	  Iniciativa ini=new Iniciativa("Hacer el bloque XD","Joder tio, en que pensáis ?",usuario2, palabrasClave);
 	    	  //ideasServices.crearIniciativa(ini);
 	    	  //ideasServices.modificarEstado("Hacer una biblioteca", Estado.DESECHADO);*/
-	      
+	      	  
 	    	  ArrayList<String> palabrasClave = new ArrayList();
-	    	  palabrasClave.add("biblioteca"); palabrasClave.add("Acabar el E");
+	    	  palabrasClave.add("biblioteca"); palabrasClave.add("prueba");
 	    	  palabrasClave.add("plataformas a la primera");
 	    	  
+	    	  Usuario usr0 = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
+	    	  Iniciativa ini0=new Iniciativa("ESTO ES UNA PRUEBITA","ESTO ES UNA PRUEBITA DONT WORRY?",usr0, palabrasClave);
+	    	  ideasServices.crearIniciativa(ini0);
+	    	  /*
 	    	  Collection<Usuario> usuarios = ideasServices.consultarUsuarios();
 	    	  System.out.println("------ USUARIOS ------");
 	    	  for (Usuario usuario : usuarios) {
@@ -102,7 +106,7 @@ public class MyBatisExample {
 	    	  //Iniciativa ini2 = new Iniciativa("Hacer el bloque K","Joder tio, en que pensáis ?",usuario, palabrasClave);
 	    	  //ideasServices.crearIniciativa(ini2);
 	    	  
-	    	  Iniciativa iniciativaPrueba = ideasServices.consultarIniciativa("Hacer el bloque K");
+	    	  Iniciativa iniciativaPrueba = ideasServices.consultarIniciativa("Hacer el bloque tu");
 	    	  System.out.println("\nINICIATIVA -> "+iniciativaPrueba);
 	    	  System.out.println("\nINICIATIVAS POR PALABRAS CLAVE");
 	    	  Collection<Iniciativa> inisQuery = ideasServices.consultarIniciativasxClaves(palabrasClave);
@@ -123,7 +127,7 @@ public class MyBatisExample {
 	    	  
 	    	  Iniciativa ini3 = new Iniciativa("ConstrUir Un MeJoR resTaurante","Por favor a mEjorar CHIcos", usrYowis, palabrasClave2);
 	    	  //ideasServices.crearIniciativa(ini3);
-	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));
+	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));*/
 	    	  
 	      } catch (ServicesException e){
 			System.out.println(e.getMessage());

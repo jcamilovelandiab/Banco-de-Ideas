@@ -31,6 +31,18 @@ body {
   color: black;
 }
 
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #ffffff;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
 
 
 </style>
@@ -87,7 +99,7 @@ body {
    									right: -42px;
     								bottom: -10px;
             						color : rgba(255, 255, 255, 1)"
-            						actionListener="#{iniciativaBean.pal(palabra.value)}">
+            						update="seraQueSi">
 				</p:commandButton>
 	         </p:column>
 	
@@ -97,11 +109,12 @@ body {
 	
 	
 	<h:form id="seraQueSi">
-		<p:repeat var = "vamos" value="#{iniciativaBean.pal('bibloteca')}">
-		<p:growl id="msgs" showDetail="true" style=""/>
+		<p:repeat id="preb" var = "vamos" value="#{iniciativaBean.pal(palabra.value)}">
+			<p:growl id="msgs" showDetail="true" style=""/>
 	    		<p:fieldset legend="#{vamos.nombre}" toggleable="true" toggleSpeed="500" style="
 	    																						width:500px;
 	    																						text-align:center;
+	    																						color:white;
 	    																						margin: auto;">
 	        		<h:panelGrid columns="2" cellpadding="5" style="background-color: rgba(0,0,0,0.7);
 	        													color : white;
