@@ -30,18 +30,20 @@ public class LoginBean extends BasePageBean{
 	public void login(String correo) throws IOException, ServicesException{
 
 			Usuario user = services.consultarUsuario(correo);
+			System.out.println(user);
 			if(user!=null){
 				if (user.getTipo().equals(Rol.ADMINISTRADOR)){
-	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
 	            }
 	            else if (user.getTipo().equals(Rol.PUBLICO)) {
-	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            	
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
 	            }
 	            else if (user.getTipo().equals(Rol.PROPONENTE)) {
-	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            	 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
 	            }
 	            else{
-	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+	            	 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
 	            }
 	           
 			}else{

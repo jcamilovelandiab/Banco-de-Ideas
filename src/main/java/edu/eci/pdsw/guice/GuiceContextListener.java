@@ -30,15 +30,14 @@ public class GuiceContextListener implements ServletContextListener {
 		Injector injector = Guice.createInjector(new XMLMyBatisModule() {
 			@Override
 			protected void initialize() {
-				install(JdbcHelper.PostgreSQL);
-				setEnvironmentId("development");
-				setClassPathResource("mybatis-config.xml");
-				
-				bind(ServicesIdeas.class).to(ServicesIdeasImpl.class);
-                bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
-                bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
+				 install(JdbcHelper.PostgreSQL);                        
+                 setClassPathResource("mybatis-config.xml");         
+                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
+                 bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
+                 bind(ServicesIdeas.class).to(ServicesIdeasImpl.class);
+             }
 
-				}
+				
 			}
 		);
 		ServletContext servletContext = servletContextEvent.getServletContext();

@@ -55,7 +55,8 @@ public class MyBatisExample {
 	      //iniMapper.modificarEstado(6, Estado.EN_REVISION);  bien confirmar en la base
 	      //iniMapper.consultarIniciativasxClaves("pruebas"); no implementado
 	      
-	      try {
+	      System.out.println(usrMapper.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
+	      /* try {
 	    	  Area area = new Area("AreaTest", "descripcionTest");
 	    	  area.setId(1);
 	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
@@ -84,7 +85,7 @@ public class MyBatisExample {
 		
 		
 		// PROBANDO CON SERVICES IDEAS STUB
-		/*ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
+		ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
 	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
 	    Area area = new Area("AreaPrueba", "descripcionPrueba");
 	    Usuario usr = new Usuario("John Ibanez","john.ibanez@mail.escuelaing.edu.co", area, Rol.PUBLICO);
