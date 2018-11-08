@@ -23,9 +23,9 @@ public interface  UsuarioMapper {
 	public List<Usuario> consultarUsuarios();
     public boolean autenticarUsuario(@Param("usr")Usuario usr);
     
-    public void votarxIniciativa(@Param("correo")String correo, @Param("idIni")long idIni);
-    public void cancelarVotoIniciativa(@Param("correo")String correo, @Param("idIni")long idIni);
-    public void mostrarInteresxIniciativa(@Param("correo")String correo, @Param("idIni")long idIni, @Param("interes")Interes interes);
+    public void votarxIniciativa(@Param("correo")String correo, @Param("nombreIni")String nombreIni);
+    public void cancelarVotoIniciativa(@Param("correo")String correo, @Param("nombreIni")String nombreIni);
+    public void mostrarInteresxIniciativa(@Param("correo")String correo, @Param("nombreIni")String nombreIni, @Param("interes")Interes interes);
 	public void asignarPerfil(@Param("correo")String correo,@Param("rol")Rol tipo);
 	public int existeUsuario(@Param("correo") String correo);
     

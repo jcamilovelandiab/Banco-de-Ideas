@@ -131,22 +131,21 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public void votarxIniciativa(String correoUsuario, long idIniciativa) throws ServicesException {
+	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void cancelarVotoIniciativa(String correoUsuario, long idIniciativa) throws ServicesException {
+	public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mostrarInteresxIniciativa(String correoUsuario, long idIniciativa, Interes interes)
+	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes)
 			throws ServicesException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

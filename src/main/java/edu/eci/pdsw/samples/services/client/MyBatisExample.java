@@ -89,7 +89,8 @@ public class MyBatisExample {
 	    		  System.out.println(usuario);
 	    	  }
 	    	  System.out.println("\nCONSULTANDO A YOWIS");
-	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
+	    	  Usuario usrYowis = ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co");
+	    	  System.out.println(usrYowis);
 	    	  System.out.println("\nCAMBIO ROL A YOWIS POR ADMINISTRADOR");
 	    	  ideasServices.asignarPerfil("yohanna.toro@mail.escuelaing.edu.co", Rol.ADMINISTRADOR);
 	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
@@ -114,6 +115,15 @@ public class MyBatisExample {
 	    	  for (Iniciativa ini : inisQuery2) {
 	    		  System.out.println(ini);
 	    	  }
+	    	  
+	    	  System.out.println("\nNUEVA INICIATIVA");
+	    	  ArrayList<String> palabrasClave2 = new ArrayList();
+	    	  palabrasClave2.add("haCer reStaurantes");
+	    	  palabrasClave2.add("mejOrar la cCmida");
+	    	  
+	    	  Iniciativa ini3 = new Iniciativa("ConstrUir Un MeJoR resTaurante","Por favor a mEjorar CHIcos", usrYowis, palabrasClave2);
+	    	  //ideasServices.crearIniciativa(ini3);
+	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));
 	    	  
 	      } catch (ServicesException e){
 			System.out.println(e.getMessage());

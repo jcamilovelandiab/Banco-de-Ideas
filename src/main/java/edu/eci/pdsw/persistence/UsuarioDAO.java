@@ -19,7 +19,7 @@ public interface  UsuarioDAO {
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws PersistenceException;
 	
 	
-	public void votarxIniciativa(String correoUsuario, long idIniciativa) throws PersistenceException;
-    public void cancelarVotoIniciativa(String correoUsuario, long idIniciativa) throws PersistenceException;
-    public void mostrarInteresxIniciativa(String correoUsuario, long idIniciativa, Interes interes) throws PersistenceException;
+	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException;
+    public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException;
+    public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes) throws PersistenceException;
 }

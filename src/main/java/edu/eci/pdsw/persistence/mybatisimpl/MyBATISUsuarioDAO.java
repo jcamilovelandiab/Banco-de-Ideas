@@ -62,22 +62,22 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 	 * @votar votar muestra si le gusta la iniciativa o si quiere quitar su voto por la iniciativa
 	 */
 	@Override
-	public void votarxIniciativa(String correoUsuario, long idIniciativa) throws PersistenceException {
-		usuarioMapper.votarxIniciativa(correoUsuario, idIniciativa);
+	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException {
+		usuarioMapper.votarxIniciativa(correoUsuario, nombreIniciativa);
 	}
 	
 	@Override
-	public void cancelarVotoIniciativa(String correoUsuario, long idIniciativa) throws PersistenceException {
-		usuarioMapper.cancelarVotoIniciativa(correoUsuario,idIniciativa);
+	public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException {
+		usuarioMapper.cancelarVotoIniciativa(correoUsuario,nombreIniciativa);
 	}
 
 	/**
 	 * Un usuario demuestra el interes a una iniciativa
 	 */
 	@Override
-	public void mostrarInteresxIniciativa(String correoUsuario, long idIniciativa, Interes interes)
+	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes)
 			throws PersistenceException {
-		usuarioMapper.mostrarInteresxIniciativa(correoUsuario, idIniciativa, interes);	
+		usuarioMapper.mostrarInteresxIniciativa(correoUsuario, nombreIniciativa, interes);	
 	}
 
 	@Override
