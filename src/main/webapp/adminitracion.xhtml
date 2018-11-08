@@ -47,8 +47,47 @@
 		text-align: inherit;
 		white-space: nowrap;   
 	}
-	
-	
+	#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:{background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #990000;
+    color: white;
+
+}
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#usuarios tr:{background-color: #f2f2f2;}
+
+#usuarios tr:hover {background-color: #ddd;}
+
+#usuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #990000;
+    color: white;
+
+
+}	
 </style>
 </h:head>
 
@@ -69,7 +108,7 @@
 					Menu
 				</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" style="font-size:12px;" href="#">Opciones usuarios</a>
+				<a class="dropdown-item" style="font-size:12px;" href="usuarioAdmin.xhtml">Opciones usuarios</a>
 				<a class="dropdown-item" style="font-size:12px;" href="#">Opciones inciativas</a></div>
 			
 			</li>
@@ -94,8 +133,47 @@
    		 											"/>
 			</h:panelGrid>
 		</span>
-	</nav>
+		</nav>
+		
+	
 
+	<p:dataTable id="customers" var="ini"  style="font-size:14px;background-color: rgba(0,0,0,0.3);width: 700px;
+		 margin: 0 auto;
+									
+
+	" value="#{iniciativaBean.pal()}">
+		<p:column  headerText="Nombre">
+			<h:outputText style="color: black" value="#{ini.nombre}" />
+		</p:column>
+		<p:column  headerText="Descripcion">
+			<h:outputText style="color: black; text-align: center" value="#{ini.descripcion}" />
+		</p:column>
+		<p:column  headerText="Proponente">
+			<h:outputText style="color: black" value="#{ini.proponente.nombre}" />
+		</p:column>
+		<p:column  headerText="Estado">
+			<h:outputText style="color: black;text-align: center" value="#{ini.estado}" />
+		</p:column>
+	</p:dataTable>
+	<br></br>
+	<p:dataTable id="usuarios" var="usu"  style="font-size:14px;background-color: rgba(0,0,0,0.3); 
+		width: 700px;
+		 margin: 0 auto;
+									
+
+	" value="#{usuarioBean.usr()}">
+		<p:column  headerText="Nombre">
+			<h:outputText style="color: black" value="#{usu.nombre}" />
+		</p:column>
+		<p:column  headerText="correo">
+			<h:outputText style="color: black" value="#{usu.correo}" />
+		</p:column>
+		<p:column  headerText="area">
+			<h:outputText style="color: black" value="#{usu.area.nombre}" />
+		</p:column>
+
+	</p:dataTable>
+	
 	<h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
 	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
 	

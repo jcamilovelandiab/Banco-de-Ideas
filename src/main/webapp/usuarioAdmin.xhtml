@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Template</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<style>
+	.bg-light{
+		    background-color: #8b0000!important;
+	}
+	
+	#usuarios tr:{background-color: #f2f2f2;}
+
+#usuarios tr:hover {background-color: #ddd;}
+
+#usuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #990000;
+    color: white;
+
+
+}	
+	.dropdown-menu {
+		position: absolute;
+		top: 100%;
+		left: 10;
+		z-index: 1000;
+		display: none;
+		float: left;
+		min-width: 18rem;
+		padding: .5rem 0;
+		margin: .125rem 0 0;
+		font-size: 1rem;
+		color: #527da9;
+		text-align: left;
+		list-style: none;
+		background-color: rgba(255,255,255,.15);
+		background-clip: padding-box;
+		border: 1px solid rgba(0,0,0,.15);
+		border-radius: .5rem;
+	}
+	
+	.dropdown-item {
+		display: block;
+		width: 100%;
+		padding: .20rem 1.5rem;
+		clear: both;
+		font-weight: 700;
+		color: #303131;
+		text-align: inherit;
+		white-space: nowrap;   
+	}
+	#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+</style>
+</h:head>
+
+
+
+
+ <h:body style="background-image:url(resources/images/fondoUsu.jpg);background-size:cover;background-repeat: no-repeat;">
+	<f:metadata>
+	    <f:viewParam name="correo" value="#{usuarioBean.correo}" />
+	</f:metadata>
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:8px">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle"  Style="color:white; font-size:17px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Menu
+				</a>
+
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" style="font-size:12px;" href="#">Opciones usuarios</a>
+				<a class="dropdown-item" style="font-size:12px;" href="#">Opciones inciativas</a></div>
+			
+			</li>
+
+		</ul>
+		</div>
+		<span class="navbar-text">
+			<h:panelGrid columns ="1" style="
+			text-align:center;
+   						margin: 15% auto;
+   						height:5px;">
+			<h:outputText value = "Administrador" style=" font-size: 20px;
+   		 											font-family: 'Times New Roman';
+   		 											color : rgba(255, 255, 255, 1);
+   		 									
+   		 											"/>
+			</h:panelGrid>
+		</span>
+		</nav>
+		
+
+
+		<p:inputText id="email" style="border-radius: 11px;
+            						background-color: rgba(255, 237, 246, 0.3);
+            						border: rgba(255, 237, 246, 0.3);
+            						color: white;
+            						text-align:center" binding="#{correo}"/> 
+			<p:watermark for="email" value="Correo" style="color: white"/>
+			<p></p>
+			<p:commandButton value = "Busscar usuario" style="
+									border-radius: 11px;
+            						background-color: rgba(144, 22, 38, 0.7);
+            						border: rgba(144, 22, 38, 0.7);
+            						text-align:center;
+									top: -10px;
+    								left: 2px;
+   									 right: -42px;
+    								bottom: -10px;
+            						color : rgba(255, 255, 255, 1)
+            						"
+            						actionListener="#{usuarioBean.consultar(correo.value)}">
+			
+			</p:commandButton>
+	
+			<p:dataTable id="usuarios" var="usu"  style="font-size:14px;background-color: rgba(0,0,0,0.3); 
+				width: 700px;
+				 margin: 0 auto;
+											
+
+			" value="#{usuarioBean.consultar(correo.value)}">
+				<p:column  headerText="Nombre">
+					<h:outputText style="color: black" value="#{usu.nombre}" />
+				</p:column>
+				<p:column  headerText="correo">
+					<h:outputText style="color: black" value="#{usu.correo}" />
+				</p:column>
+				<p:column  headerText="area">
+					<h:outputText style="color: black" value="#{usu.area.nombre}" />
+				</p:column>
+
+			</p:dataTable>
+	
+	
+	<h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+	
+	<script src = "bootstrap-3.3.7-dist/js/bootstrap.min.js"/>
+	
+	
+	
+</h:body>
+</html>
