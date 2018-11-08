@@ -54,14 +54,11 @@ public class MyBatisExample {
 	      //iniMapper.agregarPalabraClave(6,"pruebas");iniMapper.agregarPalabraClave(6,"mappers"); bien confirmar en la base
 	      //iniMapper.modificarEstado(6, Estado.EN_REVISION);  bien confirmar en la base
 	      //iniMapper.consultarIniciativasxClaves("pruebas"); no implementado
-	      
-<<<<<<< HEAD
+
 	      try {
-	    	  /*
-=======
+	    	 
 	      System.out.println(usrMapper.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
 	      /* try {
->>>>>>> b6a21bf9ad7e201d7baee03e991e6a41eabca579
 	    	  Area area = new Area("AreaTest", "descripcionTest");
 	    	  area.setId(1);
 	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
@@ -97,7 +94,7 @@ public class MyBatisExample {
 	      sqlss.close();
 		
 		
-		
+		/*
 		// PROBANDO CON SERVICES IDEAS STUB
 		ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
 	    ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
@@ -112,7 +109,7 @@ public class MyBatisExample {
 			}
 		} catch (ServicesException e) {
 			System.err.println(e.getMessage());
-		}*/
-	    
+		}
+	    */
 	}
 }
