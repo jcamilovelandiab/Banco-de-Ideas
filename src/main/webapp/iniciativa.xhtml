@@ -4,17 +4,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
-	<h:head>
+	
+ 	<h:head>
+ 	<h:outputStylesheet name = "css/tags.css" />
 <style>
 body {
   margin: 0;
-  font-family: Courier, Helvetica, sans-serif;
+  font-family: PT Sans,Arial,Helvetica,sans-serif;
 }
 
 .topnav {
   overflow: hidden;
-  background-color: #990000;
+  background-color: #900;
 }
 
 .topnav a {
@@ -27,7 +28,7 @@ body {
 }
 
 .topnav a:hover {
-  background-color: #990000;
+  background-color: #900;
   color: black;
 }
 
@@ -45,7 +46,9 @@ legend {
 
 
 
+
 </style>
+	<link rel="stylesheet"  href="bootstrap-3.3.7-dist/css/stylePal.css"/>
 
 </h:head>
  <h:body style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
@@ -63,8 +66,7 @@ legend {
 
  		
  	</nav>
- 	
- 	
+ 
    <h:form  prependId="false" >
 		<p:panel>
    		<h:panelGrid columns="2" style="
@@ -75,18 +77,22 @@ legend {
    						text-align:center;
    						right: 1000px;"
    						cellpadding="10" >
+ 	
+ 			
  			<p:column  colspan="4" style="text-align: right">
+ 			
+ 			
+ 			
+ 	
+			<input id="keyword2" type="text"  data-role="tagsinput"/>
+			<p:inputText id="keyword" binding="#{keywordsInput}" type="hidden" style="border-radius: 11px; margin: 3% auto; background-color: ; border: rgba(255, 237, 246, 0.3); width:450px ; color: black; text-align:center"/>
+			<h:outputScript name = "js/bootstrap-tagsinput.js" />
+	 			
     
-   		        <p:inputText id="PalClave"  style="border-radius: 11px;
-   	        						margin: 3% auto;
-            						background-color: rgba(255, 237, 246, 0.5);
-            						border: rgba(255, 237, 246, 0.3);
-            						width:450px	;
-            						color: black;
-            						text-align:center" binding="#{palabra}"/> 
-			
-			<p:watermark for="PalClave" value="Buscar por la clave" style="color: white"/>
+   		 
+		
 	         </p:column>
+	
 	
 			<p:column  colspan="4" style="text-align: right">
     			<p:commandButton value = "Buscar" style="

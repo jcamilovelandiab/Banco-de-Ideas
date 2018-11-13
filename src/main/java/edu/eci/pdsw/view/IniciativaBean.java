@@ -53,9 +53,8 @@ public class IniciativaBean extends BasePageBean{
 	}
 	
 	
-	public Collection<Iniciativa> getDatas(String keyword)throws ServicesException {
-		List<String> vamos = new ArrayList<>();
-		vamos.add(keyword);
+	public Collection<Iniciativa> getDatas(List<String> vamos)throws ServicesException {
+		
 		try {
 			return services.consultarIniciativasxClaves(vamos);
 		} catch (ServicesException e) {
