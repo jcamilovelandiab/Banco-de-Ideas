@@ -48,13 +48,27 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	
+	
 	@Override
 	public List<Iniciativa> consultarIniciativas(String orden) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarIniciativas(orden.toLowerCase());
+			if(orden.toLowerCase().equals("nombre")) {
+				return iniciativaDAO.consultarIniciativasOrdenNombre();
+			}if(orden.toLowerCase().equals("descripcion")) {
+				return iniciativaDAO.consultarIniciativasOrdenDescripcion();
+			}if(orden.toLowerCase().equals("fechaPropuesta")) {
+				return iniciativaDAO.consultarIniciativasOrdenFecha();
+			}if(orden.toLowerCase().equals("estado")) {
+				return iniciativaDAO.consultarIniciativasOrdenEstado();
+			}if(orden.toLowerCase().equals("fechaCierre")) {
+				return iniciativaDAO.consultarIniciativasOrdenFechaFin();
+			}else {
+				return iniciativaDAO.consultarIniciativas();
+			}			
 		}catch(PersistenceException  ex) {
 			System.err.println(ex.getMessage());
-			throw new ServicesException("Error al consultar todas las iniciativas");
+			throw new ServicesException("Error al consultar las iniciativas segun "+orden);
 		}
 	}
 	

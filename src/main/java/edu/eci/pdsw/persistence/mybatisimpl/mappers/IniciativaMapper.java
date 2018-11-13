@@ -19,7 +19,12 @@ public interface  IniciativaMapper {
     
     public Iniciativa consultarIniciativa(@Param("nombreIni")String  nombreIni);
     
-    public List<Iniciativa> consultarIniciativas(@Param("orden")String orden);
+    public List<Iniciativa> consultarIniciativas();
+    public List<Iniciativa> consultarIniciativasOrdenNombre();
+    public List<Iniciativa> consultarIniciativasOrdenDescripcion();
+    public List<Iniciativa> consultarIniciativasOrdenEstado();
+    public List<Iniciativa> consultarIniciativasOrdenFecha();
+    public List<Iniciativa> consultarIniciativasOrdenFechaFin();
     
     public List<Iniciativa> consultarIniciativasRelacionadas(@Param("ini")Iniciativa ini);
     

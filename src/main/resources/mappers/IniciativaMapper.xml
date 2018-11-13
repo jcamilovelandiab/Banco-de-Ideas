@@ -48,7 +48,7 @@
 			AND pclaves.iniciativa=ini.nombre AND ini.nombre = #{nombreIni};
 	</select>
 	
-	<select id="consultarIniciativas" parameterType="String" resultMap="IniciativaResult">
+	<select id="consultarIniciativas" resultMap="IniciativaResult">
 		SELECT
 			ini.nombre AS iniciativaNombre,
 			ini.descripcion AS iniciativaDescripcion,
@@ -72,6 +72,130 @@
 			AND pclaves.iniciativa=ini.nombre;
 	</select>
 	
+	<select id="consultarIniciativasOrdenNombre" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre;
+		ORDER BY ini.nombre; 
+	</select>
+	
+	<select id="consultarIniciativasOrdenDescripcion" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre;
+		ORDER BY ini.descripcion; 
+	</select>
+	
+	<select id="consultarIniciativasOrdenFecha" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre;
+		ORDER BY ini.fechaPropuesta; 
+	</select>
+	
+	<select id="consultarIniciativasOrdenEstado" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre;
+		ORDER BY ini.estado; 
+	</select>
+	
+	<select id="consultarIniciativasOrdenFechaFin" resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			pclaves.descripcion AS iniciativaPalabrasClave,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion 
+		FROM 
+			iniciativas ini, usuarios usr, areas, palabrasclave pclaves
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id 
+			AND pclaves.iniciativa=ini.nombre;
+		ORDER BY ini.fechaCierre; 
+	</select>
 	
 	<select id="consultarIniciativasxClaves" parameterType="String" resultMap="IniciativaResult">
 		SELECT

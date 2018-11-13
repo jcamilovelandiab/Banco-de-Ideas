@@ -28,11 +28,6 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativas(String orden) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativas(orden);
-	}
-
-	@Override
 	public List<Iniciativa> consultarIniciativasRelacionadas(Iniciativa iniciativa) throws PersistenceException {
 		return iniciativaMapper.consultarIniciativasRelacionadas(iniciativa);
 	}
@@ -72,6 +67,36 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	public void agregarPalabraClave(String nombreIni, String desc) {
 		iniciativaMapper.agregarPalabraClave(nombreIni, desc);
 		
-	}  
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasOrdenNombre() throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasOrdenNombre();
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasOrdenFecha() throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasOrdenFecha();
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasOrdenDescripcion() throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasOrdenDescripcion();
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasOrdenEstado() throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasOrdenEstado();
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasOrdenFechaFin() throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasOrdenFechaFin();
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativas() throws PersistenceException {
+		return iniciativaMapper.consultarIniciativas();
+	}
 
 }
