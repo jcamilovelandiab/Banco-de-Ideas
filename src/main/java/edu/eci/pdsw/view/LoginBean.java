@@ -78,12 +78,5 @@ public class LoginBean extends BasePageBean{
 					
 				}
 		
-	}
-
-		
-
-
-	
-
-
+	}		
 }

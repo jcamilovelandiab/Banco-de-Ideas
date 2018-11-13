@@ -12,8 +12,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-
-import edu.eci.pdsw.entities.*;
+import edu.eci.pdsw.entities.Iniciativa;
 import edu.eci.pdsw.samples.services.ServicesException;
 import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
@@ -22,13 +21,22 @@ import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "iniciativaBean")
 @RequestScoped
-
 public class IniciativaBean extends BasePageBean{
 	
 	@ManagedProperty(value = "#{param.nombre}")
 	private String nombre;
+	private List<String> claves;
+	private List<Iniciativa> iniciativas;
+	public List<String> getClaves() {
+		return claves;
+	}
+
+	public void setClaves(List<String> claves) {
+		this.claves = claves;
+	}
 	
-	
+
+
 	private static final long serialVersionUID = 3594009161252782831L;
 	
 	@Inject
@@ -41,24 +49,36 @@ public class IniciativaBean extends BasePageBean{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public List<Iniciativa> pal() throws ServicesException{
-		
-		
-		return (List<Iniciativa>) services.consultarIniciativas("");
-	}
+	
 	public List<Iniciativa> pal(String palabra) throws ServicesException{
-		System.out.println((List<Iniciativa>) services.consultarIniciativas(palabra));
-		return (List<Iniciativa>) services.consultarIniciativas(palabra);
+		List<Iniciativa> listIniciativas = new ArrayList<>();
+		System.out.println(palabra+"algo");
+		if(!palabra.equals("")  && palabra!=null) {
+			listIniciativas = (List<Iniciativa>) services.consultarIniciativas(palabra);
+		}
+		return listIniciativas ;
 
 	}
 	
 	
-	public Collection<Iniciativa> getDatas(List<String> vamos)throws ServicesException {
-		
+	public void getDatas()throws ServicesException {
+		System.out.println(claves);
 		try {
-			return services.consultarIniciativasxClaves(vamos);
+			System.out.println(services.consultarIniciativasxClaves(claves));
+			iniciativas=new ArrayList(services.consultarIniciativasxClaves(claves));
+			System.out.println(iniciativas.get(0).getNombre());
 		} catch (ServicesException e) {
-			throw new ServicesException("mAMDAS");
+			e.printStackTrace();
 		}
 	}
+
+	public List<Iniciativa> getIniciativas() {
+		return iniciativas;
+	}
+
+	public void setIniciativas(List<Iniciativa> iniciativas) {
+		this.iniciativas = iniciativas;
+	}
+	
+	
 }

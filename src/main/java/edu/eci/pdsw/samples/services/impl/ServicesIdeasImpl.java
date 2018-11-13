@@ -83,12 +83,13 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	
 	@Override
 	public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException {
-		
+		System.out.println("Todo OK "+palabrasClave);
 		try{
 			TreeMap<String,Iniciativa> iniciativas = new TreeMap<String,Iniciativa>();
 			for (String pclave : palabrasClave) {
 				//System.out.println("PALABRA CLAVE - <"+pclave+">");
 				List<Iniciativa> inics = iniciativaDAO.consultarIniciativasxClaves(pclave.toLowerCase());
+				System.out.println();
 				for (Iniciativa ini : inics) {
 					if(!iniciativas.containsKey(ini.getNombre())) {
 						iniciativas.put(ini.getNombre(), ini);
@@ -97,6 +98,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			}
 			return iniciativas.values();
 		}catch(PersistenceException  e) {
+			e.printStackTrace();
 			throw new ServicesException("Error al consultar iniciativas por palabras clave");
 		}
 	}

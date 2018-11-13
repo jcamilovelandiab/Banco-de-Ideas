@@ -4,137 +4,94 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
- 	<h:head>
- 	<h:outputStylesheet name = "css/tags.css" />
-<style>
+
+<h:head>
+	<h:outputStylesheet name="css/tags.css" />
+	<style>
 body {
-  margin: 0;
-  font-family: PT Sans,Arial,Helvetica,sans-serif;
+	margin: 0;
+	font-family: PT Sans, Arial, Helvetica, sans-serif;
 }
 
 .topnav {
-  overflow: hidden;
-  background-color: #900;
+	overflow: hidden;
+	background-color: #900;
 }
 
 .topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
 }
 
 .topnav a:hover {
-  background-color: #900;
-  color: black;
+	background-color: #900;
+	color: black;
 }
 
 legend {
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: inherit;
-    color: #ffffff;
-    border: 0;
-    border-bottom: 1px solid #e5e5e5;
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 20px;
+	font-size: 21px;
+	line-height: inherit;
+	color: #ffffff;
+	border: 0;
+	border-bottom: 1px solid #e5e5e5;
 }
-
-
-
-
 </style>
-	<link rel="stylesheet"  href="bootstrap-3.3.7-dist/css/stylePal.css"/>
+	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/stylePal.css" />
 
 </h:head>
- <h:body style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
- 	
- 	<nav class="navbar navbar-default">
- 		<p class="navbar-text navbar-right"  style="color: white; font-size:17px ; 			
-    			left: -80px;
-   				right: -42px;
-    			bottom: -10px;">Usuario <a href="#" class="navbar-link" style="color: white; font-size:17px  ">Publico</a></p>
- 		<div class="topnav">
-		  <a class="active" href="index.xhtml">Inicio</a>
-		  <a href="iniciativa.xhtml" >Consultar Iniciativas</a>
-		  <a href="#about">Quienes somos</a>
-		</div>
+<h:body
+	style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
 
- 		
- 	</nav>
- 
-   <h:form  prependId="false" >
+	<nav class="navbar navbar-default">
+	<p class="navbar-text navbar-right"
+		style="color: white; font-size: 17px; left: -80px; right: -42px; bottom: -10px;">
+		Usuario <a href="#" class="navbar-link"
+			style="color: white; font-size: 17px">Publico</a>
+	</p>
+	<div class="topnav">
+		<a class="active" href="index.xhtml">Inicio</a> <a
+			href="iniciativa.xhtml">Consultar Iniciativas</a> <a href="#about">Quienes
+			somos</a>
+	</div>
+
+
+	</nav>
+
+
+	<h:form prependId="false">
 		<p:panel>
-   		<h:panelGrid columns="2" style="
+			<h:panelGrid columns="2"
+				style="
    						margin: 2% auto;
    						width:500px;height:5px;
    						background-color: rgba(255,255,255,0);
    						border-radius: 11px;
    						text-align:center;
    						right: 1000px;"
-   						cellpadding="10" >
- 	
- 			
- 			<p:column  colspan="4" style="text-align: right">
- 			
- 			
- 			
- 	
-			<input id="keyword2" type="text"  data-role="tagsinput"/>
-			<p:inputText id="keyword" binding="#{keywordsInput}" type="hidden" style="border-radius: 11px; margin: 3% auto; background-color: ; border: rgba(255, 237, 246, 0.3); width:450px ; color: black; text-align:center"/>
-			<h:outputScript name = "js/bootstrap-tagsinput.js" />
-	 			
-    
-   		 
-		
-	         </p:column>
-	
-	
-			<p:column  colspan="4" style="text-align: right">
-    			<p:commandButton value = "Buscar" style="
-									border-radius: 11px;
-            						background-color: rgba(144, 22, 38, 0.7);
-            						border: rgba(144, 22, 38, 0.7);
-            						text-align:center;
-									top: 0px;
-    								left: 2px;
-   									right: -42px;
-    								bottom: -10px;
-            						color : rgba(255, 255, 255, 1)"
-            						update="seraQueSi">
-				</p:commandButton>
-	         </p:column>
-	
+						cellpadding="10">
+
+				<h:panelGrid columns="2">
+				    <p:outputLabel for="chips" value="Palabras claves: " />
+				    <p:chips id="chips" value="#{iniciativaBean.claves}" />
+				    <p:commandButton value="si funca :v" update="chips" actionListener="#{iniciativaBean.getDatas()}"/>
+					
+				</h:panelGrid>
 			</h:panelGrid>
 		</p:panel>
 	</h:form>
-	
-	
-	<h:form id="seraQueSi">
-		<p:repeat id="preb" var = "vamos" value="#{iniciativaBean.pal(palabra.value)}">
-			<p:growl id="msgs" showDetail="true" style=""/>
-	    		<p:fieldset legend="#{vamos.nombre}" toggleable="true" toggleSpeed="500" style="
-	    																						width:500px;
-	    																						text-align:center;
-	    																						color:white;
-	    																						margin: auto;">
-	        		<h:panelGrid columns="2" cellpadding="5" style="background-color: rgba(0,0,0,0.7);
-	        													color : white;
-	        													height: 100px;
-	   															border-radius: 11px;
-	   															text-align:center;">
-	            	<h:outputText value="La decripcion : #{vamos.descripcion} tuvo como proponente #{vamos.proponente.nombre} en la fehca #{vamos.fechaPropuesta} esta inicitiativa tiene un estado #{vamos.estado}"></h:outputText>
-	        	</h:panelGrid>
-	    	</p:fieldset>
-		</p:repeat>
-	
-	</h:form>
- 	
-	<h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-	
+
+
+
+
+	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<h:outputScript name="js/bootstrap-tagsinput.js" />
 </h:body>
 </html>
