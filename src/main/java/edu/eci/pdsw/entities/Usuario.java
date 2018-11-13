@@ -29,6 +29,7 @@ public class Usuario {
 	public void setInteres(ArrayList<Interes> interes) {
 		this.intereses = interes;
 	}
+	
 	public String getNombre() {
         return nombre;
     }
@@ -44,6 +45,7 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
     public Area getArea() {
         return area;
     }

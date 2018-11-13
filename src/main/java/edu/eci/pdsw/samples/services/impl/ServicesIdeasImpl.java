@@ -48,27 +48,33 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
-	
-	
 	@Override
-	public List<Iniciativa> consultarIniciativas(String orden) throws ServicesException {
+	public Collection<Iniciativa> consultarIniciativasxOrden(String orden) throws ServicesException {
 		try{
-			if(orden.toLowerCase().equals("nombre")) {
-				return iniciativaDAO.consultarIniciativasOrdenNombre();
-			}if(orden.toLowerCase().equals("descripcion")) {
-				return iniciativaDAO.consultarIniciativasOrdenDescripcion();
-			}if(orden.toLowerCase().equals("fechaPropuesta")) {
-				return iniciativaDAO.consultarIniciativasOrdenFecha();
-			}if(orden.toLowerCase().equals("estado")) {
-				return iniciativaDAO.consultarIniciativasOrdenEstado();
-			}if(orden.toLowerCase().equals("fechaCierre")) {
-				return iniciativaDAO.consultarIniciativasOrdenFechaFin();
-			}else {
-				return iniciativaDAO.consultarIniciativas();
-			}			
-		}catch(PersistenceException  ex) {
+			return iniciativaDAO.consultarIniciativasxOrden(orden);
+		}catch(PersistenceException ex){
 			System.err.println(ex.getMessage());
-			throw new ServicesException("Error al consultar las iniciativas segun "+orden);
+			throw  new SecurityException("Error al consultar una iniciativa por "+orden);
+		}
+	}
+
+	@Override
+	public Collection<Iniciativa> consultarIniciativas() throws ServicesException {
+		try{
+			return iniciativaDAO.consultarIniciativas();
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar todas las iniciativas");
+		}
+	}
+
+	@Override
+	public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException {
+		try{
+			return iniciativaDAO.consultarIniciativasxEstado(estado);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar todas las iniciativas");
 		}
 	}
 	
@@ -98,15 +104,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			return iniciativas.values();
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al consultar iniciativas por palabras clave");
-		}
-	}
-	
-	@Override
-	public List<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException {
-		try{
-			return iniciativaDAO.consultarIniciativasxEstado(estado);
-		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al crear una iniciativa por estado "+estado.name());
 		}
 	}
 	
@@ -237,4 +234,15 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Hay problema al encontrar el usuario");
 		}
 	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasxProponente(String correo) throws ServicesException {
+		try{
+			return iniciativaDAO.consultarIniciativasxProponente(correo);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Hay problema al buscar las iniciativas de "+correo);
+		}
+	}
+	
 }

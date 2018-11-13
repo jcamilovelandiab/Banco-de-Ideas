@@ -58,9 +58,9 @@ public class MyBatisExample {
 	      //iniMapper.consultarIniciativasxClaves("pruebas"); no implementado
 
 	      try {
-	    	 
+	    	 /*
 	      System.out.println(usrMapper.consultarUsuario("john.ibanez@mail.escuelaing.edu.co"));
-	      /* try {
+	       try {
 	    	  Area area = new Area("AreaTest", "descripcionTest");
 	    	  area.setId(1);
 	    	  Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
@@ -79,13 +79,15 @@ public class MyBatisExample {
 	    	  //ideasServices.crearIniciativa(ini);
 	    	  //ideasServices.modificarEstado("Hacer una biblioteca", Estado.DESECHADO);*/
 	      	  
-	    	  ArrayList<String> palabrasClave = new ArrayList();
+	    	  /*ArrayList<String> palabrasClave = new ArrayList();
 	    	  palabrasClave.add("biblioteca"); palabrasClave.add("prueba");
 	    	  palabrasClave.add("plataformas a la primera");
 	    	  
 	    	  Usuario usr0 = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
 	    	  Iniciativa ini0=new Iniciativa("ESTO ES UNA PRUEBITA","ESTO ES UNA PRUEBITA DONT WORRY?",usr0, palabrasClave);
-	    	  ideasServices.crearIniciativa(ini0);
+	    	  ideasServices.crearIniciativa(ini0);*/
+	    	  
+	    	  
 	    	  /*
 	    	  Collection<Usuario> usuarios = ideasServices.consultarUsuarios();
 	    	  System.out.println("------ USUARIOS ------");
@@ -127,7 +129,12 @@ public class MyBatisExample {
 	    	  
 	    	  Iniciativa ini3 = new Iniciativa("ConstrUir Un MeJoR resTaurante","Por favor a mEjorar CHIcos", usrYowis, palabrasClave2);
 	    	  //ideasServices.crearIniciativa(ini3);
-	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));*/
+	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));
+	    	  */
+	    	  Collection<Iniciativa> iniciativas =  ideasServices.consultarIniciativasxProponente("john.ibanez@mail.escuelaing.edu.co");
+	    	  for (Iniciativa ini : iniciativas) {
+	    		  System.out.println(ini.getNombre() + "-> " + ini.getProponente());
+	    	  }
 	    	  
 	      } catch (ServicesException e){
 			System.out.println(e.getMessage());
