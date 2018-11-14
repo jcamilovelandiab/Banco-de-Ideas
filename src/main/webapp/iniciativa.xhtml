@@ -12,12 +12,10 @@
                 margin: 0;
                 font-family: PT Sans, Arial, Helvetica, sans-serif;
             }
-
             .topnav {
                 overflow: hidden;
                 background-color: #900;
             }
-
             .topnav a {
                 float: left;
                 color: #f2f2f2;
@@ -26,12 +24,10 @@
                 text-decoration: none;
                 font-size: 17px;
             }
-
             .topnav a:hover {
                 background-color: #900;
                 color: black;
             }
-
             legend {
                 display: block;
                 width: 100%;
@@ -98,7 +94,6 @@
                 position: absolute;
                 right: 0.2em;
                 top: 50%;
-
             }
             .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon {
                 margin-top: -0.5em;
@@ -143,7 +138,6 @@
 
 
         <h:form prependId="false">
-            <p:growl id="msgs" showDetail="true" />
             <h:panelGrid columns="2"
                          style="
                          margin: 2% auto;
@@ -157,12 +151,11 @@
                 <h:panelGrid columns="2" class="bootstrap-tagsinput  bootstrap-tagsinput.form-contro 
                              ui-chips ui-chips-container ui-chips-token 
                              ">
-                    <p:outputLabel for="chips" />
                     <p:chips id="chips" value="#{iniciativaBean.claves}" />
 
 
                 </h:panelGrid>
-                <p:commandButton value="buscar" update="chips" actionListener="#{iniciativaBean.getDatas()}" style="
+                <p:commandButton value="buscar" update="results" actionListener="#{iniciativaBean.getDatas()}" style="
                                  border-radius: 11px;
                                  background-color: rgba(144, 22, 38, 0.7);
                                  border: rgba(144, 22, 38, 0.7);
@@ -173,25 +166,21 @@
                                  bottom: -10px;
                                  color : rgba(255, 255, 255, 1)"/>
             </h:panelGrid>
-
+		<p:dataTable id="results" var="ini" value="#{iniciativaBean.iniciativas}">
+			<p:column headerText="Iniciativas">
+				<p:fieldset collapsed="true" legend="#{ini.nombre}" toggleable="true" toggleSpeed="500">
+					<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}"/>					
+					<h:outputText value="Proponente: #{ini.proponente.nombre}"></h:outputText><br/>
+					<h:outputText value="Fecha en que se propuso: #{ini.fechaPropuesta}"></h:outputText><br/>
+					<h:outputText value="Estado de la propuesta: #{ini.estado}"></h:outputText><br/>
+					<h:outputText value="Descripción: #{ini.descripcion}"></h:outputText>
+				</p:fieldset>
+			</p:column>
+	        </p:dataTable>
+		
         </h:form>
-        <h:form>
-            <p:growl id="msgs" showDetail="true" />
-            <p:fieldset legend="iniciativas" toggleable="true" toggleSpeed="500">
-                <p:ajax event="toggle" listener="#{iniciativaBean.iniciativas}" update="msgs" />
-                <h:panelGrid columns="2" cellpadding="5">
-
-                    <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
-                                  In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
-                                  killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."></h:outputText>
-                </h:panelGrid>
-            </p:fieldset>
-        </h:form>
-
-
-
-
-        <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+            
+	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="js/bootstrap-tagsinput.js" />
     </h:body>
 </html>

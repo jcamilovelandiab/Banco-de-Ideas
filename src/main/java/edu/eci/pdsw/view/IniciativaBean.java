@@ -32,7 +32,11 @@ public class IniciativaBean extends BasePageBean{
 	}
 
 	public void setClaves(List<String> claves) {
-		this.claves = claves;
+		if(claves == null) {
+			this.claves = new ArrayList<String>();
+		}else {
+			this.claves = claves;
+		}
 	}
 	
 
@@ -51,13 +55,10 @@ public class IniciativaBean extends BasePageBean{
 	}
 	
 	public void getDatas()throws ServicesException {
-		//System.out.println(claves);
 		try {
-			System.out.println(services.consultarIniciativasxClaves(claves));
 			iniciativas=new ArrayList(services.consultarIniciativasxClaves(claves));
-			System.out.println(iniciativas.get(0).getNombre());
 		} catch (ServicesException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
