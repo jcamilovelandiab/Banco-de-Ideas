@@ -53,7 +53,7 @@ public class IniciativaBean extends BasePageBean{
 	public void getDatas()throws ServicesException {
 		//System.out.println(claves);
 		try {
-			//System.out.println(services.consultarIniciativasxClaves(claves));
+			System.out.println(services.consultarIniciativasxClaves(claves));
 			iniciativas=new ArrayList(services.consultarIniciativasxClaves(claves));
 			System.out.println(iniciativas.get(0).getNombre());
 		} catch (ServicesException e) {
@@ -68,6 +68,11 @@ public class IniciativaBean extends BasePageBean{
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;
 	}
-	
+	public Iniciativa getDescripcion() throws ServicesException{
+            for (Iniciativa i: iniciativas){
+                return services.consultarIniciativa(i.getNombre());
+            }
+            return iniciativas.get(0);
+        }
 	
 }

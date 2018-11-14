@@ -1,97 +1,197 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<h:outputStylesheet name="css/tags.css" />
-	<style>
-body {
-	margin: 0;
-	font-family: PT Sans, Arial, Helvetica, sans-serif;
-}
+    <h:head>
+        <h:outputStylesheet name="css/tags.css" />
+        <style>
+            body {
+                margin: 0;
+                font-family: PT Sans, Arial, Helvetica, sans-serif;
+            }
 
-.topnav {
-	overflow: hidden;
-	background-color: #900;
-}
+            .topnav {
+                overflow: hidden;
+                background-color: #900;
+            }
 
-.topnav a {
-	float: left;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-}
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
 
-.topnav a:hover {
-	background-color: #900;
-	color: black;
-}
+            .topnav a:hover {
+                background-color: #900;
+                color: black;
+            }
 
-legend {
-	display: block;
-	width: 100%;
-	padding: 0;
-	margin-bottom: 20px;
-	font-size: 21px;
-	line-height: inherit;
-	color: #ffffff;
-	border: 0;
-	border-bottom: 1px solid #e5e5e5;
-}
-</style>
-	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/stylePal.css" />
+            legend {
+                display: block;
+                width: 100%;
+                padding: 0;
+                margin-bottom: 20px;
+                font-size: 21px;
+                line-height: inherit;
+                color: #ffffff;
+                border: 0;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon:before {
+                content: "x";
+            }
+            .ui-chips {
+                box-shadow: none;
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                width: auto;
+            }
+            .ui-chips-container {
+                padding: 0;
+                clear: left;
+                cursor: text;
+                list-style-type: none;
+                margin: 0;
+                min-height: 1px;
+                overflow: hidden;
+                width: 400px;
+            }
+            .ui-chips .ui-chips-container .ui-chips-token {
+                padding: 0.10725em 0;
+                margin: 0.10725em 0.286em 0.10725em 0;
+                background: #900;
+                color: white;
+            }
+            .ui-chips-token {
+                cursor: default;
+                display: inline-block;
+                vertical-align: middle;
+                overflow: hidden;
+                padding: 1px 3px;
+                white-space: nowrap;
+                position: relative;
+                margin: 2px;
+            }
+            .ui-icon {
+                height: 1em;
+                width: 1em;
+                font-size: 1.25em;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0;
+                margin-top: 0;
+                position: static;
+                text-indent: 0;
+                overflow: visible;
+                background-repeat: no-repeat;
+            }
+            .ui-chips-token .ui-chips-token-icon {
+                cursor: pointer;
+                margin-top: -9px;
+                position: absolute;
+                right: 0.2em;
+                top: 50%;
 
-</h:head>
-<h:body
-	style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
+            }
+            .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon {
+                margin-top: -0.5em;
+                position: absolute;
+                font-family: 'primeicons';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                display: inline-block;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-indent: 0px !important;
+                text-align: center;
+                background: none;
+                display: inline-block;
+                font-size: 1.25em;
+            }
+        </style>
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/stylePal.css" />
 
-	<nav class="navbar navbar-default">
-	<p class="navbar-text navbar-right"
-		style="color: white; font-size: 17px; left: -80px; right: -42px; bottom: -10px;">
-		Usuario <a href="#" class="navbar-link"
-			style="color: white; font-size: 17px">Publico</a>
-	</p>
-	<div class="topnav">
-		<a class="active" href="index.xhtml">Inicio</a> <a
-			href="iniciativa.xhtml">Consultar Iniciativas</a> <a href="#about">Quienes
-			somos</a>
-	</div>
+    </h:head>
+    <h:body
+        style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
 
-
-	</nav>
-
-
-	<h:form prependId="false">
-		<p:panel>
-			<h:panelGrid columns="2"
-				style="
-   						margin: 2% auto;
-   						width:500px;height:5px;
-   						background-color: rgba(255,255,255,0);
-   						border-radius: 11px;
-   						text-align:center;
-   						right: 1000px;"
-						cellpadding="10">
-
-				<h:panelGrid columns="2">
-				    <p:outputLabel for="chips" value="Palabras claves: " />
-				    <p:chips id="chips" value="#{iniciativaBean.claves}" />
-				    <p:commandButton value="si funca :v" update="chips" actionListener="#{iniciativaBean.getDatas()}"/>
-					
-				</h:panelGrid>
-			</h:panelGrid>
-		</p:panel>
-	</h:form>
+        <nav class="navbar navbar-default">
+            <p class="navbar-text navbar-right"
+               style="color: white; font-size: 17px; left: -80px; right: -42px; bottom: -10px;">
+                Usuario <a href="#" class="navbar-link"
+                           style="color: white; font-size: 17px">Publico</a>
+            </p>
+            <div class="topnav">
+                <a class="active" href="index.xhtml">Inicio</a> <a
+                    href="iniciativa.xhtml">Consultar Iniciativas</a> <a href="#about">Quienes
+                    somos</a>
+            </div>
 
 
+        </nav>
 
 
-	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-	<h:outputScript name="js/bootstrap-tagsinput.js" />
-</h:body>
+        <h:form prependId="false">
+            <p:growl id="msgs" showDetail="true" />
+            <h:panelGrid columns="2"
+                         style="
+                         margin: 2% auto;
+                         width:500px;height:5px;
+                         background-color: rgba(255,255,255,0);
+                         border-radius: 11px;
+                         text-align:center;
+                         right: 1000px;"
+                         cellpadding="10">
+
+                <h:panelGrid columns="2" class="bootstrap-tagsinput  bootstrap-tagsinput.form-contro 
+                             ui-chips ui-chips-container ui-chips-token 
+                             ">
+                    <p:outputLabel for="chips" />
+                    <p:chips id="chips" value="#{iniciativaBean.claves}" />
+
+
+                </h:panelGrid>
+                <p:commandButton value="buscar" update="chips" actionListener="#{iniciativaBean.getDatas()}" style="
+                                 border-radius: 11px;
+                                 background-color: rgba(144, 22, 38, 0.7);
+                                 border: rgba(144, 22, 38, 0.7);
+                                 text-align:center;
+                                 top: 0px;
+                                 left: 2px;
+                                 right: -42px;
+                                 bottom: -10px;
+                                 color : rgba(255, 255, 255, 1)"/>
+            </h:panelGrid>
+
+        </h:form>
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+            <p:fieldset legend="iniciativas" toggleable="true" toggleSpeed="500">
+                <p:ajax event="toggle" listener="#{iniciativaBean.iniciativas}" update="msgs" />
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
+                                  In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
+                                  killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."></h:outputText>
+                </h:panelGrid>
+            </p:fieldset>
+        </h:form>
+
+
+
+
+        <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <h:outputScript name="js/bootstrap-tagsinput.js" />
+    </h:body>
 </html>
