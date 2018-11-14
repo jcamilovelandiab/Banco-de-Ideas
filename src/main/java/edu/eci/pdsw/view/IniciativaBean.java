@@ -50,31 +50,10 @@ public class IniciativaBean extends BasePageBean{
 		this.nombre = nombre;
 	}
 	
-<<<<<<< HEAD
-	public List<Iniciativa> pal(String palabra) throws ServicesException{
-		List<Iniciativa> listIniciativas = new ArrayList<>();
-		System.out.println(palabra+"algo");
-		if(!palabra.equals("")  && palabra!=null) {
-			listIniciativas = (List<Iniciativa>) services.consultarIniciativas(palabra);
-		}
-		return listIniciativas ;
-
-=======
-	public List<Iniciativa> pal() throws ServicesException{
-		return (List<Iniciativa>) services.consultarIniciativas();
-	}
-	
-	public List<Iniciativa> pal(String palabra) throws ServicesException{
-		System.out.println((List<Iniciativa>) services.consultarIniciativas(palabra));
-		return (List<Iniciativa>) services.consultarIniciativas(palabra);
->>>>>>> c92630f4054317a5a3a0d11e1da082239e591188
-	}
-	
-	
 	public void getDatas()throws ServicesException {
-		System.out.println(claves);
+		//System.out.println(claves);
 		try {
-			System.out.println(services.consultarIniciativasxClaves(claves));
+			//System.out.println(services.consultarIniciativasxClaves(claves));
 			iniciativas=new ArrayList(services.consultarIniciativasxClaves(claves));
 			System.out.println(iniciativas.get(0).getNombre());
 		} catch (ServicesException e) {
