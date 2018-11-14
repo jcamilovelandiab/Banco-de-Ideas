@@ -1,6 +1,7 @@
 package edu.eci.pdsw.samples.services.impl;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	 * Retorna todas las iniciativas sin un orden
 	 */
 	@Override
-	public List<Iniciativa> consultarIniciativas(String orden) throws ServicesException {
+	public List<Iniciativa> consultarIniciativas() throws ServicesException {
 		return  new LinkedList<>(iniciativas.values());
 	}
 
@@ -167,6 +168,18 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	public int existeUsuario(String correo) throws SecurityException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Collection<Iniciativa> consultarIniciativasxOrden(String orden) throws ServicesException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasxProponente(String correo) throws ServicesException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

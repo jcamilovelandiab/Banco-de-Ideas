@@ -75,8 +75,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 	 * Un usuario demuestra el interes a una iniciativa
 	 */
 	@Override
-	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes)
-			throws PersistenceException {
+	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes) throws PersistenceException {
 		usuarioMapper.mostrarInteresxIniciativa(correoUsuario, nombreIniciativa, interes);	
 	}
 
@@ -95,8 +94,6 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 
 	@Override
 	public int existeUsuario(String correo) throws PersistenceException {
-		return usuarioMapper.existeUsuario(correo);
-
-	
+		return usuarioMapper.existeUsuario(correo);	
 	}
 }

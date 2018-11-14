@@ -70,33 +70,18 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativasOrdenNombre() throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasOrdenNombre();
-	}
-
-	@Override
-	public List<Iniciativa> consultarIniciativasOrdenFecha() throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasOrdenFecha();
-	}
-
-	@Override
-	public List<Iniciativa> consultarIniciativasOrdenDescripcion() throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasOrdenDescripcion();
-	}
-
-	@Override
-	public List<Iniciativa> consultarIniciativasOrdenEstado() throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasOrdenEstado();
-	}
-
-	@Override
-	public List<Iniciativa> consultarIniciativasOrdenFechaFin() throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasOrdenFechaFin();
-	}
-
-	@Override
 	public List<Iniciativa> consultarIniciativas() throws PersistenceException {
 		return iniciativaMapper.consultarIniciativas();
 	}
 
+	@Override
+	public List<Iniciativa> consultarIniciativasxOrden(String orden) throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasxOrden(orden);
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasxProponente(String correo){
+		return iniciativaMapper.consultarIniciativasxProponente(correo);
+	}
+	
 }

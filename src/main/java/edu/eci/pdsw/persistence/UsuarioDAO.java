@@ -13,11 +13,11 @@ public interface  UsuarioDAO {
     public void crearUsuario(Usuario usuario) throws PersistenceException;
     public Usuario consultarUsuario(String correo) throws PersistenceException;
     public List<Usuario>consultarUsuarios() throws PersistenceException;
+    
 	public boolean autenticarUsuario(Usuario usuario) throws PersistenceException;
 	public int existeUsuario(String correo) throws PersistenceException;
 	public File consultarEstadisticas() throws PersistenceException;
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws PersistenceException;
-	
 	
 	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException;
     public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException;
