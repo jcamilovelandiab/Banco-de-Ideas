@@ -17,66 +17,37 @@ import edu.eci.pdsw.samples.services.impl.*;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
 import edu.eci.pdsw.entities.*;
 
-
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginBean")
-public class LoginBean extends BasePageBean{
+public class LoginBean extends BasePageBean {
 
+    private static final long serialVersionUID = 3594009161252782831L;
+    private String correo;
 
-	private static final long serialVersionUID = 3594009161252782831L;
-	private String correo;
-	
-	@Inject
-	private ServicesIdeasImpl services;
-	
-	public void login(String correo) throws IOException, ServicesException{
-		this.correo=correo;
+    @Inject
+    private ServicesIdeasImpl services;
 
-			Usuario user = services.consultarUsuario(correo);
-			System.out.println(user);
-			if(user!=null){
-				if (user.getTipo().equals(Rol.ADMINISTRADOR)){
-	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-	            }
-	            else if (user.getTipo().equals(Rol.PUBLICO)) {
-	            	
-	                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-	            }
-	            else if (user.getTipo().equals(Rol.PROPONENTE)) {
-	            	 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-	            }
-	            else{
-	            	 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-	            }
-	           
-			}else{
-				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-				
-			}}
-			
-			public void option() throws IOException, ServicesException{
+    public void login(String correo) throws IOException, ServicesException {
+        this.correo = correo;
 
-				Usuario user = services.consultarUsuario(correo);
-				System.out.println(user.getNombre());
-				if(user!=null){
-					if (user.getTipo().equals(Rol.ADMINISTRADOR)){
-		                FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioAdmin.xhtml?correo="+correo);
-		            }
-		            else if (user.getTipo().equals(Rol.PUBLICO)) {
-		            	
-		                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-		            }
-		            else if (user.getTipo().equals(Rol.PROPONENTE)) {
-		            	 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-		            }
-		            else{
-		            	 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo="+correo);
-		            }
-		           
-				}else{
-					FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-					
-				}
-		
-	}		
+        Usuario user = services.consultarUsuario(correo);
+        if (user != null) {
+            if (user.getTipo().equals(Rol.ADMINISTRADOR)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml?correo=" + correo);
+            } else if (user.getTipo().equals(Rol.PUBLICO)) {
+
+                FacesContext.getCurrentInstance().getExternalContext().redirect("publico.xhtml?correo=" + correo);
+            } else if (user.getTipo().equals(Rol.PROPONENTE)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("proponente.xhtml?correo=" + correo);
+            } else if (user.getTipo().equals(Rol.PMO_ODI)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("PMO.xhtml?correo=" + correo);
+            }
+
+        } else {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+
+        }
+    }
+
 }
+

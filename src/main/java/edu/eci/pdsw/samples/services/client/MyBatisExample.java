@@ -135,6 +135,12 @@ public class MyBatisExample {
 	    	  for (Iniciativa ini : iniciativas) {
 	    		  System.out.println(ini.getNombre() + "-> " + ini.getProponente());
 	    	  }
+                  //Area area = new Area("AreaTest", "descripcionTest");
+	    	  //area.setId(1);
+                  //Usuario usuario = new Usuario("Alejandor Guzman","jose.naranjo@mail.escuelaing.edu.co",area,Rol.PUBLICO);
+	    	  //Usuario usuario2 = new Usuario("Camilo Velandia","juan.velandia-b@mail.escuelaing.edu.co",area,Rol.PMO_ODI);
+                  //ideasServices.crearUsuario(usuario);
+                  //ideasServices.crearUsuario(usuario2);
 	    	  
 	      } catch (ServicesException e){
 			System.out.println(e.getMessage());
