@@ -27,6 +27,9 @@ public class IniciativaBean extends BasePageBean{
 	private String nombre;
 	private List<String> claves;
 	private List<Iniciativa> iniciativas;
+        private Iniciativa selectIniciativa;
+        
+        
 	public List<String> getClaves() {
 		return claves;
 	}
@@ -69,12 +72,15 @@ public class IniciativaBean extends BasePageBean{
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;
 	}
-	public Iniciativa getDescripcion() throws ServicesException{
-            for (Iniciativa i: iniciativas){
-                return services.consultarIniciativa(i.getNombre());
-            }
-            return iniciativas.get(0);
-        }
+
+    public Iniciativa getSelectIniciativa() {
+        return selectIniciativa;
+    }
+
+    public void setSelectIniciativa(Iniciativa selectIniciativa) {
+        this.selectIniciativa = selectIniciativa;
+    }
+
         
         public List<Iniciativa> inivs() throws ServicesException{
 		return (List<Iniciativa>) services.consultarIniciativas();
