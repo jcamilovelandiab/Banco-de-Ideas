@@ -75,5 +75,9 @@ public class IniciativaBean extends BasePageBean{
             }
             return iniciativas.get(0);
         }
+        
+        public List<Iniciativa> inivs() throws ServicesException{
+		return (List<Iniciativa>) services.consultarIniciativas();
+	}
 	
 }

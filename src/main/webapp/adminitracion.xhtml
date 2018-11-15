@@ -106,10 +106,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" style="font-size:12px;" href="usuarioAdmin.xhtml">Opciones usuarios</a>
-                            <a class="dropdown-item" style="font-size:12px;" href="#">Opciones inciativas</a></div>
+                            <a class="dropdown-item" style="font-size:12px;" href="iniciativa.xhtml">Opciones inciativas</a></div>
                         
                     </li>
-                    <a class="adiciones" href="iniciativa.xhtml">Consultar Iniciativas</a>
                 </ul>
             </div>
             <span class="navbar-text">
@@ -135,7 +134,10 @@
                      margin: 0 auto;
 
 
-                     " value="#{usuarioBean.usr()}">
+                     " value="#{usuarioBean.usr()}" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15">
             <p:column  headerText="Nombre" class="block_login input">
                 <h:outputText style="color: black" value="#{usu.nombre}" />
             </p:column>
@@ -146,8 +148,31 @@
                 <h:outputText style="color: black" value="#{usu.area.nombre}" />
             </p:column>
 
-        </p:dataTable>
+        </p:dataTable><br/>
+        <p:dataTable class="block_login input" style="font-size:14px;background-color: rgba(0,0,0,0.3); 
+                     width: 700px;
+                     margin: 0 auto;"
+                     var="ini" value="#{iniciativaBean.inivs()}" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15">
+            <p:column  headerText="Nombre" class="block_login input">
+                <h:outputText style="color: black" value="#{ini.nombre}" />
+            </p:column>
+            <p:column  headerText="Proponente" class="block_login input">
+                <h:outputText style="color: black" value="#{ini.proponente.nombre}" />
+            </p:column>
+            <p:column  headerText="Fecha" class="block_login input">
+                <h:outputText style="color: black" value="#{ini.fechaPropuesta}" />
+            </p:column>
+            <p:column  headerText="Estado" class="block_login input">
+                <h:outputText style="color: black" value="#{ini.estado}" />
+            </p:column>
+            <p:column  headerText="Descripcion" class="block_login input">
+                <h:outputText style="color: black" value="#{ini.descripcion}" />
+            </p:column>
 
+        </p:dataTable>
         <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
 

@@ -36,36 +36,24 @@ public class UsuarioBean extends BasePageBean {
 
 	
 	public String getCorreo(){
-		System.out.println("Hola estamos aca" + this.correo);
 		return this.correo;
 	}
 	public void setCorreo(String correo) {
-		System.out.println("cORREO SET");
 		this.correo = correo;
-		System.out.println(this.correo);
 		
 	}
 	
 	public Usuario getNombre() throws ServicesException {
-		System.out.println("Correo : "+ correo);
 		try {
 			Usuario sr=services.consultarUsuario(correo);
-			System.out.println("holi ");
-			System.out.println(sr.getNombre());
-			return sr;
 		} catch (ServicesException e) {
-			throw new  ServicesException("a");
-		}
+			e.getMessage();
+                }
+                return sr;
 	}
+	
+        
 	public List<Usuario> usr() throws ServicesException{
 		return (List<Usuario>) services.consultarUsuarios();
 	}
-	public Usuario consultar(String correo) throws ServicesException {
-		System.out.println("holi"+correo);
-		return services.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co");
-	}
-	
-
-
-	
 }
