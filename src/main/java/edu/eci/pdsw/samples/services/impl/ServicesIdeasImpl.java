@@ -163,7 +163,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			
 			return usuarioDAO.consultarUsuario(correo.toLowerCase());
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al consultar el usuario con correo "+correo);
+                    throw new ServicesException("Error al consultar el usuario con correo "+correo);
 		}
 	}
 	
