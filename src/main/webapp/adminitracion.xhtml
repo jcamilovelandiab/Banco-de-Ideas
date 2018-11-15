@@ -18,8 +18,6 @@
             .bg-light{
                 background-color: #8b0000!important;
             }
-
-
             .dropdown-menu {
                 position: absolute;
                 top: 100%;
@@ -39,7 +37,6 @@
                 border: 1px solid rgba(0,0,0,.15);
                 border-radius: .5rem;
             }
-
             .dropdown-item {
                 display: block;
                 width: 100%;
@@ -58,7 +55,6 @@
     .ui-carousel {
         margin-bottom: 20px;
     }
-
         </style>
         <style type="text/css">
     .value {
@@ -88,8 +84,8 @@
         
         <!-- creacion de la barra-->
 
-        <p:inputText class="block_login input" id="doc21" binding="#{nom}" value = "#{usuarioBean.getUsuario().getNombre()}" style="display:none"/>
-        <p:inputText id="doc21" binding="#{nomi}" value = "#{usuarioBean.getUsuario().getTipo()}" style="display:none"/>
+        <p:inputText id="nom" binding="#{nom}" value = "#{usuarioBean.getUsuario().getNombre()}" style="display:none"/>
+        <p:inputText id="nomi" binding="#{nomi}" value = "#{usuarioBean.getUsuario().getTipo()}" style="display:none"/>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:8px">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -111,14 +107,11 @@
                              margin: 15% auto;
                              height:5px;">
                     <h:outputText value = "#{nom.value}"  style=" font-size: 20px;
-
                                   color : rgba(255, 255, 255, 1);
-
                                   "/>
 
                     <h:outputText value = "#{nomi.value}"  style=" font-size: 15px;
                                   color : rgba(255, 255, 255, 1);
-
                                   "/>
                 </h:panelGrid>
             </span>
@@ -129,7 +122,7 @@
  
  <h:panelGrid columns="2">
      <p:panel id="panel2" style="height:200px; width: 650px">
-<form id="form">
+<h:form id="form">
     <p:dataGrid var="ini" value="#{iniciativaBean.inivs()}" columns="3" layout="grid"
                 rows="4" paginator="true" id="inis"  style="background-color: rgba(255, 237, 246, 0.3);"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -143,38 +136,31 @@
             <h:panelGrid columns="1" style="width:100%">
                 <h:outputText value="#{ini.proponente.nombre}" />
  
-                <p:commandLink  oncomplete="PF('iniDialog').show()" title="View Detail">
+                <p:commandButton update=":form:carDetail" oncomplete="PF('iniDialog').show()" title="View Detail">
                     <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
                     <f:setPropertyActionListener value="#{ini}" target="#{iniciativaBean.selectIniciativa}" />
-                </p:commandLink>
+                </p:commandButton>>
             </h:panelGrid>
         </p:panel>
  
     </p:dataGrid>
  
     <p:dialog header="Informacion" widgetVar="iniDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="carDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty iniciativaBean.selectIniciativa}" columnClasses="label,value">
+        <p:outputPanel id="carDetail" style="background-color: white;text-align:center;">
+            <p:panelGrid  columns="2"  columnClasses="label,value">
                 
                  
                 <h:outputText value="Nombre:" />
-                <h:outputText value="#{iniciativaBean.selectiniciativa.nombre}" />
+                <h:outputText value="#{iniciativaBean.selectIniciativa.nombre}" />
  
-                <h:outputText value="Proponente:" />
-                <h:outputText value="#{iniciativaBean.selectiniciativa.proponente}" />
- 
-                <h:outputText value="Fecha:" />
-                <h:outputText value="#{iniciativaBean.selectiniciativa.fecha}" />
-             
-                <h:outputText value="Estado:" />
-                <h:outputText value="$#{iniciativaBean.selectiniciativa.estado}" />
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>
-</form>
-     </p:panel>
-       
-     <p:panel id="panel22"  style="height:200px; ">    
+    </h:form>
+   </p:panel>
+     
+     
+       <p:panel id="panel22"  style="height:200px; ">    
         <form>
             <p:dataGrid var="ini" value="#{usuarioBean.usr()}" columns="3" layout="grid"
                 rows="4" paginator="true" id="inis"  style="background-color: rgba(255, 237, 246, 0.5);"
@@ -198,14 +184,13 @@
             
         </form>
      </p:panel>
- </h:panelGrid>
         
+       
+    
+ </h:panelGrid>
+       
         <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
-
         <script src = "bootstrap-3.3.7-dist/js/bootstrap.min.js"/>
-
-
-
     </h:body>
 </html>

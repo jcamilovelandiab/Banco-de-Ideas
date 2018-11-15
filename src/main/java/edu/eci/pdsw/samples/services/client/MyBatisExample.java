@@ -41,6 +41,7 @@ public class MyBatisExample {
 	      ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
 	      ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
 	      UsuarioMapper usrMapper =  sqlss.getMapper(UsuarioMapper.class);
+	      System.out.println(usrMapper.consultarUsuario("jose.naranjo@mail.escuelaing.edu.co"));
 	      /*
 	      IniciativaMapper iniMapper =  sqlss.getMapper(IniciativaMapper.class);
 	      Area area = new Area("AreaPrueba", "descripcionPrueba");

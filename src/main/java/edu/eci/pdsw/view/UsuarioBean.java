@@ -15,6 +15,7 @@ import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.*;
 
 import edu.eci.pdsw.entities.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -35,42 +36,55 @@ public class UsuarioBean extends BasePageBean {
 	private ServicesIdeas services;
 	
         
-        private Map<String,String> roles;
+        private String rol;
+        private List<String> roles;
         
-	@PostConstruct
-        public void init() {
-            roles = new HashMap<String,String>();
-            roles.put("Prueba","Prueba");
+
+        
+       public String getCorreo(){
+	        System.out.println(correo);
+			return this.correo;
         }
- 
-	
-        public Map<String, String> getRoles() {
-                System.out.println(roles.toString());
-                return this.roles;
-        }
-	
-	public String getCorreo(){
-                System.out.println(correo);
-		return this.correo;
+        
+       public void setCorreo(String correo) {
+            this.correo = correo;		
 	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
+
+        public String getRol() {
+            return rol;
+        }
+
+        public void setRol(String rol) {
+            this.rol = rol;
+        }
+
+       
+       public List<String> getRoles(){
+           roles = new ArrayList<String>();
+           for (Rol entry : services.consultarRoles()) {
+                roles.add(entry.name());
+           }
+           System.out.println(roles);
+           return (List<String>)roles;
+       }
+        
+	
+        public Usuario getUsuario() throws ServicesException {
+            try {
+		sr = services.consultarUsuario(this.correo);
+            } catch(ServicesException e) {
+		e.getMessage();
+            }
+            return sr;
+	}
 		
-	}
-        
-        
-	
-	public Usuario getUsuario() throws ServicesException {
-		try {
-			sr = services.consultarUsuario(correo);
-		} catch (ServicesException e) {
-			e.getMessage();
-                }
-                return sr;
-	}
-	
-        
-	public List<Usuario> usr() throws ServicesException{
-		return (List<Usuario>) services.consultarUsuarios();
+        /*public List<Iniciativas> getBuscar(){
+            return services.consulta
+            
+        }*/
+	        
+        public List<Usuario> usr() throws ServicesException{
+            System.out.println(services.consultarUsuarios());
+			return (List<Usuario>) services.consultarUsuarios();
 	}
 }

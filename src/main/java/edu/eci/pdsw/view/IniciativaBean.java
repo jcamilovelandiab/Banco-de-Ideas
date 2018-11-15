@@ -74,15 +74,19 @@ public class IniciativaBean extends BasePageBean{
 	}
 
     public Iniciativa getSelectIniciativa() {
+        
         return selectIniciativa;
     }
 
     public void setSelectIniciativa(Iniciativa selectIniciativa) {
+        System.out.println("HOLAAAA"+selectIniciativa.getNombre());
+        
         this.selectIniciativa = selectIniciativa;
     }
 
         
         public List<Iniciativa> inivs() throws ServicesException{
+           
 		return (List<Iniciativa>) services.consultarIniciativas();
 	}
 	
