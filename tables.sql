@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Areas (
 CREATE SEQUENCE comentario_id;
 CREATE TABLE IF NOT EXISTS Comentarios (
     id int NOT NULL DEFAULT nextval('comentario_id'),
-    contenido varchar(50)  NOT NULL,
+    contenido varchar(200)  NOT NULL,
     fecha date  NOT NULL,
     usuario varchar(60)  NOT NULL,
     iniciativa varchar(100)  NOT NULL,

@@ -26,7 +26,6 @@ public class Area {
 	}
 
 	
-
 	public long getId() {
 		return id;
 	}

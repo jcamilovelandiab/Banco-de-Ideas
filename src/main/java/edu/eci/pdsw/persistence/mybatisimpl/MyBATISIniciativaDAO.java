@@ -44,18 +44,6 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public void agregarComentario(Usuario usuario, Iniciativa iniciativa, Comentario comentario)
-			throws PersistenceException {
-		iniciativaMapper.agregarComentario(usuario, iniciativa, comentario);		
-	}
-
-
-	@Override
-	public List<Usuario> consultarInteresados(String nombreIni) throws PersistenceException {
-		return iniciativaMapper.consultarInteresados(nombreIni.toLowerCase());
-	}
-
-	@Override
 	public void modificarEstado(String nombreIniciativa, Estado estado) throws PersistenceException {
 		iniciativaMapper.modificarEstado(nombreIniciativa.toLowerCase(),estado);
 	}

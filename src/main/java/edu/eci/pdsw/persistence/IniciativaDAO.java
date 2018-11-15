@@ -21,11 +21,9 @@ public interface IniciativaDAO {
     public void agregarVotanteAIniciativa(String correo, String nombreIni);
     public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws PersistenceException;
     
+    public List<Iniciativa> consultarIniciativasxProponente(String correo);
     
-    public List<Iniciativa> consultarIniciativasxProponente(@Param("correo")String correo);
-    public void agregarComentario(Usuario usuario, Iniciativa iniciativa, Comentario comentario) throws PersistenceException;
-    
-    public List<Usuario> consultarInteresados(String nombreIni) throws PersistenceException;
     public void modificarEstado(String nombreIniciativa, Estado estado) throws PersistenceException;
     public void agregarPalabraClave(String nombreIni,String desc) throws PersistenceException;
+    
 }

@@ -13,9 +13,9 @@
 		<result property="trabajo" column="interesTrabajo"></result>
 	</resultMap>
 	
-	<insert id="mostrarInteresxIniciativa">
+	<insert id="usuarioMuestraInteresxIniciativa">
 		INSERT INTO Intereses(iniciativa, intencion, descripcion, fecha, trabajo, usuario) 
-		VALUES(#{nombreIni},interes.intencion, interes.descripcion, interes.fecha, interes.trabajo, #{correo});
+		VALUES(#{nombreIni},#{interes.intencion},#{interes.descripcion}, #{interes.fecha}, #{interes.trabajo}, #{interes.interesado.correo});
 	</insert>
 	
 </mapper>

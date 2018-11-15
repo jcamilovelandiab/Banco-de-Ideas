@@ -9,7 +9,6 @@
 		<result property='nombre' column='usuarioNombre'/>
 		<result property='tipo' column='usuarioTipo' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
 		<association property="area" javaType='Area' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.AreaMapper.AreaResult"/>
-		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
 	</resultMap>
 	
 	<insert id="crearUsuario" parameterType="Usuario" >		

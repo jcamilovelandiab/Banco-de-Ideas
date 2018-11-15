@@ -22,7 +22,14 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	private UsuarioDAO usuarioDAO;
 	@Inject
 	private IniciativaDAO iniciativaDAO;
+	@Inject
+	private ComentarioDAO comentarioDAO;
+	@Inject
+	private InteresDAO interesDAO;
 	
+	/**
+	 * Crea una iniciativa
+	 */
 	@Override
 	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException {
 		try{
@@ -41,6 +48,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Consulta una iniciativa dada su nombre
+	 * @param nombreIniciativa
+	 */
 	@Override
 	public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException {
 		try {
@@ -51,6 +62,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Consulta las iniciativas y las ordena segun un orden dado
+	 * @param orden
+	 */
 	@Override
 	public Collection<Iniciativa> consultarIniciativasxOrden(String orden) throws ServicesException {
 		try{
@@ -60,7 +75,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Error al consultar una iniciativa por "+orden);
 		}
 	}
-
+	
+	/**
+	 * Consulta todas las iniciativas
+	 */
 	@Override
 	public Collection<Iniciativa> consultarIniciativas() throws ServicesException {
 		try{
@@ -70,7 +88,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Error al consultar todas las iniciativas");
 		}
 	}
-
+	
+	/**
+	 * Consulta todas las iniciativas segun un estado
+	 * @param estado
+	 */
 	@Override
 	public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException {
 		try{
@@ -81,6 +103,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Consulta las iniciativas relacionadas a una iniciativa
+	 * @param nombreIni Nombre de la iniciativa
+	 */
 	@Override
 	public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException {
 		try{
@@ -90,6 +116,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Consulta las iniciativas dada unas palabras clave
+	 * @param palabrasClave
+	 */
 	@Override
 	public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException {
 		try{
@@ -112,15 +142,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
-	@Override
-	public void agregarComentario(Usuario usuario, Iniciativa iniciativa, Comentario comentario) throws ServicesException {
-		try{
-			iniciativaDAO.agregarComentario(usuario, iniciativa, comentario);
-		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al agregar el comentario a la iniciativa "+iniciativa.getNombre());
-		}
-	}
-	
+	/**
+	 * Consulta la cantidad de votos de una iniciativa
+	 * @param nombreIni Nombre de la iniciativa
+	 */
 	@Override
 	public int consultarCantidadVotos(String nombreIni) throws ServicesException {
 		try{
@@ -130,15 +155,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
-	@Override
-	public List<Usuario> consultarInteresados(String nombreIni) throws ServicesException {
-		try{
-			return iniciativaDAO.consultarInteresados(nombreIni);
-		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al consultar los interesados en la iniciativa "+nombreIni);
-		}
-	}
-	
+	/**
+	 * Modifica el estado de una iniciativa
+	 * @param nombreIniciativa
+	 * @param estado Estado de la iniciativa
+	 */
 	@Override
 	public void modificarEstado(String nombreIniciativa, Estado estado) throws ServicesException {
 		try{
@@ -149,7 +170,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	
-	
+	/**
+	 * Crea un usuario
+	 * @param usuario
+	 */
 	@Override
 	public void crearUsuario(Usuario usuario) throws ServicesException {
 		try{
@@ -159,16 +183,24 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Consulta un usuario dado un correo
+	 * @param correo Correo del usuario
+	 */
 	@Override
 	public Usuario consultarUsuario(String correo) throws ServicesException {
 		try{
 			
 			return usuarioDAO.consultarUsuario(correo);
-		}catch(PersistenceException  e) {
-                    throw new ServicesException("Error al consultar el usuario con correo "+correo);
+		}catch(PersistenceException  ex) {
+			System.err.println(ex.getMessage());
+            throw new ServicesException("Error al consultar el usuario con correo "+correo);
 		}
 	}
 	
+	/**
+	 * Consulta todos los usuarios registrados
+	 */
 	@Override
 	public List<Usuario> consultarUsuarios() throws ServicesException {
 		try{
@@ -187,6 +219,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Agrega un usuario que vota por una iniciativa
+	 * @param correo Correo del usuario
+	 * @param nombreIni Nombre de la iniciativa
+	 */
 	@Override
 	public void agregarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException {
 		try{
@@ -203,6 +240,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Elimina un usuario que voto por una iniciativa
+	 * @param correo Correo del usuario
+	 * @param nombreIni Nombre de la iniciativa	
+	 */
 	@Override
 	public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException {
 		try{
@@ -219,12 +261,17 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Un usuario muestra el interes por una iniciativa
+	 * @param nombreIniciativa
+	 * @param interes
+	 */
 	@Override
-	public void mostrarInteresxIniciativa(String correoUsuario,String nombreIniciativa, Interes interes) throws ServicesException {
+	public void usuarioMuestraInteresxIniciativa(String nombreIniciativa, Interes interes) throws ServicesException {
 		try{
-			usuarioDAO.mostrarInteresxIniciativa(correoUsuario, nombreIniciativa, interes);	
+			interesDAO.usuarioMuestraInteresxIniciativa(nombreIniciativa, interes);
 		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al mostrar interes del usuario "+correoUsuario+" por la iniciativa "+ nombreIniciativa);
+			throw new ServicesException("Error al mostrar interes del usuario "+interes.getInteresado()+" por la iniciativa "+ nombreIniciativa);
 		}
 	}
 	
@@ -234,6 +281,12 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		return null;
 	}
 
+	
+	/**
+	 * Asigna el rol a un usuario
+	 * @param correoUsuario
+	 * @param tipo Rol del usuario
+	 */
 	@Override
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException {
 		try{
@@ -253,6 +306,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 
+	/**
+	 * Consulta las iniciativas de un usuario proponente
+	 * @param correo Correo del usuario
+	 */
 	@Override
 	public List<Iniciativa> consultarIniciativasxProponente(String correo) throws ServicesException {
 		try{
@@ -262,7 +319,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Hay problema al buscar las iniciativas de "+correo);
 		}
 	}
-
+	
+	/**
+	 * Consulta todos los usuarios que han votado por la iniciativa
+	 * @param nombreIni Nombre de la iniciativa
+	 */
 	@Override
 	public List<Usuario> consultarVotantesxIniciativa(String nombreIni) throws ServicesException {
 		try{
@@ -272,7 +333,9 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Hay problema los votantes de la iniciativa "+nombreIni);
 		}
 	}
-
+	/**
+	 * Consulta todos los roles registrados
+	 */
 	@Override
 	public Collection<Rol> consultarRoles() throws SecurityException {
 		try{
@@ -280,6 +343,50 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}catch(PersistenceException ex){
 			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar los roles");
+		}
+	}
+	
+	/**
+	 * Consulta los intereses de una iniciativa
+	 * @param nombreIniciativa
+	 */
+	@Override
+	public Collection<Interes> consultarInteresesxIniciativa(String nombreIniciativa) throws ServicesException {
+		try{
+			return interesDAO.consultarInteresesxIniciativa(nombreIniciativa);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar los intereses de la iniciativa "+nombreIniciativa);
+		}
+	}
+	
+	
+	/**
+	 * Agrega un comentario dado el nombre de la iniciativa
+	 * @param nombreIniciativa
+	 * @param comentario Comentario que se va a agregar
+	 */
+	@Override
+	public void agregarComentarioxIniciativa(String nombreIniciativa, Comentario comentario) throws ServicesException {
+		try{
+			comentarioDAO.agregarComentarioxIniciativa(nombreIniciativa, comentario);
+		}catch(PersistenceException  e) {
+			throw new ServicesException("Error al agregar el comentario a la iniciativa "+nombreIniciativa);
+		}
+	}
+	
+	
+	/**
+	 * Consulta los comentarios de una iniciativa
+	 * @param nombreIniciativa
+	 */
+	@Override
+	public List<Comentario> consultarComentariosxIniciativa(String nombreIniciativa) throws ServicesException {
+		try{
+			return comentarioDAO.consultarComentariosxIniciativa(nombreIniciativa);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar los comentarios de la iniciativa "+nombreIniciativa);
 		}
 	}
 	

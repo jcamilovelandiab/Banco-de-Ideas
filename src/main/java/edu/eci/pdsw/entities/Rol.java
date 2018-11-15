@@ -5,6 +5,4 @@ public enum Rol {
 	PROPONENTE,
 	ADMINISTRADOR,
 	PMO_ODI;
-	
-
 }

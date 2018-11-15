@@ -86,7 +86,10 @@ public class MyBatisExample {
 	    	  Usuario usrVelan = ideasServices.consultarUsuario("juan.velandia-b@mail.escuelaing.edu.co");
 	    	  Usuario usrAlejo = ideasServices.consultarUsuario("jose.naranjo@mail.escuelaing.edu.co");
 	    	  Usuario usrYowis = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
-	    	  
+	    	  Collection<Usuario> usuarios = ideasServices.consultarUsuarios();
+	    	  for (Usuario usr : usuarios) {
+	    		  System.out.println(usr);
+	    	  }
 	    	  assert(usrJohn!=null); assert(usrVelan!=null); assert(usrAlejo!=null); assert(usrYowis!=null); 
 	    	  /*
 	    	  ArrayList<String> palabrasClave = new ArrayList();
@@ -211,7 +214,30 @@ public class MyBatisExample {
 	    	  
 	    	  // ------------------------------------------------------------------------------
 	    	  */
-
+	    	  
+	    	  
+	    	  Collection<Iniciativa> iniciativas = ideasServices.consultarIniciativas();
+	    	  System.out.println("\nCONSULTAR INICIATIVAS\n");
+	    	  for (Iniciativa ini : iniciativas) {
+	    		  System.out.println(ini);
+	    	  }
+	    	  
+	    	  /*
+	    	  // -------------------------- PROBANDO  COMENTARIOS --------------------------
+	    	  System.out.println("\nCONSULTAR COMENTARIOS\n");
+	    	  Collection<Comentario> comentarios = ideasServices.consultarComentariosxIniciativa("construir un mejor restaurante");
+	    	  System.out.println("COMENTARIOS DE RESTAURANTE");
+	    	  for (Comentario com : comentarios) {
+	    		  System.out.println(com);
+	    	  }
+	    	  Comentario comentario = new Comentario("Deberiamos tener una biblioteca de mejor calidad", usrAlejo);
+	    	  //ideasServices.agregarComentarioxIniciativa("hacer una biblioteca", comentario);
+	    	  
+	    	  Collection<Comentario> comentariosQ = ideasServices.consultarComentariosxIniciativa("hacer una biblioteca");
+	    	  System.out.println("COMENTARIOS DE BIBLIOTECA");
+	    	  for (Comentario com : comentariosQ) {
+	    		  System.out.println(com);
+	    	  }*/
 	    	  
 	      } catch (ServicesException e){
 			  System.out.println(e.getMessage());

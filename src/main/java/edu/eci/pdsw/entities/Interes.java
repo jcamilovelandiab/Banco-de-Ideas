@@ -8,18 +8,28 @@ public class Interes {
 	private String descripcion;
 	private Date fecha;
 	private Boolean trabajo;
+	private Usuario interesado;
 	
 	public Interes() {
 		
 	}
 	
-	public Interes(String intencion,String descripcion, Boolean trabajo) {
+	public Interes(String intencion,String descripcion, Boolean trabajo, Usuario interesado) {
 		this.intencion = intencion;
 		this.fecha = new java.sql.Date((new java.util.Date()).getTime());
 		this.trabajo = trabajo;
 		this.descripcion = descripcion;
+		this.interesado = interesado;
 	}
 	
+	public Usuario getInteresado() {
+		return interesado;
+	}
+
+	public void setInteresado(Usuario interesado) {
+		this.interesado = interesado;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -44,6 +54,8 @@ public class Interes {
 		return intencion;
 	}
 	
+	
+
 	public void setIntencion(String intencion) {
 		this.intencion = intencion;
 	}
@@ -64,5 +76,10 @@ public class Interes {
 		this.trabajo = trabajo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Interes [id=" + id + ", intencion=" + intencion + ", descripcion=" + descripcion + ", fecha=" + fecha
+				+ ", trabajo=" + trabajo + ", interesado=" + interesado + "]";
+	}
 	
 }

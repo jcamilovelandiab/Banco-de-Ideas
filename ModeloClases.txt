@@ -63,10 +63,11 @@ enum Rol
 }
 
 Usuario "-votantes  *"<--Iniciativa
-Usuario -->"-intereses  *"Interes
+Interes-->"-interesado"Usuario
 Iniciativa -->"-  proponente"Usuario
 Usuario "-autor"-->Comentario
 Usuario -->"-area"Area
 Iniciativa -->"-intereses  *"Interes
 Iniciativa -->"-comentarios  *"Comentario
 @enduml
+

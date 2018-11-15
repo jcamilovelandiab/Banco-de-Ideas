@@ -43,13 +43,6 @@ public class Iniciativa {
 	public ArrayList<Comentario> getComentario() {
 		return comentarios;
 	}
-	
-	@Override
-	public String toString() {
-		return "Iniciativa [nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", fechaPropuesta=" + fechaPropuesta + ", fechaCierre=" + fechaCierre + ", estado=" + estado
-				+ ", palabrasClave=" + palabrasClave + ", proponente=" + proponente + "]";
-	}
 
 	public void setComentario(ArrayList<Comentario> comentario) {
 		this.comentarios = comentario;
@@ -141,6 +134,17 @@ public class Iniciativa {
 
 	public void setIntereses(ArrayList<Interes> intereses) {
 		this.intereses = intereses;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Iniciativa [nombre=" + nombre + ", descripcion=" + descripcion + ", fechaPropuesta=" + fechaPropuesta
+				+ ", fechaCierre=" + fechaCierre + ", estado=" + estado + ", proponente=" + proponente
+				+ ", palabrasClave=" + palabrasClave + ", votantes=" + votantes + ", comentarios=" + comentarios
+				+ ", intereses=" + intereses + "]";
 	}
 
 }

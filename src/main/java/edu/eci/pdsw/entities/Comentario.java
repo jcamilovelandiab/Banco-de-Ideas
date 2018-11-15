@@ -14,6 +14,9 @@ public class Comentario {
 		this.fecha= new java.sql.Date((new java.util.Date()).getTime());
 	}
 	
+	public Comentario() {
+	}
+	
 	public Usuario getAutor() {
 		return autor;
 	}
@@ -22,11 +25,7 @@ public class Comentario {
 		this.autor = autor;
 	}
 
-	public Comentario() {
-		
-	}
-
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -48,6 +47,11 @@ public class Comentario {
 
 	public void setContenido(String contenido) {
 		this.contenido = contenido;
+	}
+
+	@Override
+	public String toString() {
+		return "Comentario [id=" + id + ", fecha=" + fecha + ", contenido=" + contenido + ", autor=" + autor + "]";
 	}
 	
 }

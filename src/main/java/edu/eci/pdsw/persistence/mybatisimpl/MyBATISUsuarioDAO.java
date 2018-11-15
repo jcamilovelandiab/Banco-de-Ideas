@@ -53,15 +53,6 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 		return usuarioMapper.autenticarUsuario(usuario);
 	}
 
-	
-
-	/**
-	 * Un usuario demuestra el interes a una iniciativa
-	 */
-	@Override
-	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes) throws PersistenceException {
-		usuarioMapper.mostrarInteresxIniciativa(correoUsuario.toLowerCase(), nombreIniciativa.toLowerCase(), interes);	
-	}
 
 	@Override
 	public File consultarEstadisticas() throws PersistenceException {
