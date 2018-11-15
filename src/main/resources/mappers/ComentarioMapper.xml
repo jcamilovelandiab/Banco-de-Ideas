@@ -12,6 +12,30 @@
 		<association property="autor" javaType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
 	</resultMap>
 	
-
+	<select id="consultarComentariosxIniciativa" resultMap="ComentarioResult">
+		SELECT
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion,
+			
+			com.id as comentarioId,
+			com.fecha as comentarioFecha,
+			com.contenido as comentarioContenido 
+		FROM 
+			usuarios usr, areas, comentarios com, iniciativas ini
+		WHERE
+			usr.area = areas.id  and ini.nombre=#{nombreIni}
+			and com.iniciativa=ini.nombre and com.usuario=usr.correo
+	</select>
+	
+	<insert id="agregarComentarioxIniciativa">
+		INSERT INTO Comentarios(contenido, fecha, usuario, iniciativa)
+		VALUES(#{comentario.contenido},#{comentario.fecha},#{comentario.autor.correo},#{nombreIni});
+	</insert>
 
 </mapper>

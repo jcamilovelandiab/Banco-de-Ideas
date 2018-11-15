@@ -10,10 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.pdsw.entities.*;
-/**
- *
- * @author HAILYOWIS
- */
+
 public interface  IniciativaMapper {
 
     public void crearIniciativa(@Param("ini")Iniciativa ini);
@@ -34,9 +31,6 @@ public interface  IniciativaMapper {
     public void agregarComentario(@Param("usr")Usuario usr, 
     		@Param("ini")Iniciativa ini,
     		@Param("comentario")Comentario comentario);
-
-    
-    public List<Usuario> consultarInteresados(@Param("nombreIni")String nombreIni);
     
     public void modificarEstado(@Param("nombreIni")String nombreIniciativa, 
     		@Param("estado") Estado estado);

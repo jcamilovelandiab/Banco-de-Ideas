@@ -9,7 +9,6 @@ public class Usuario {
 	private String nombre;
 	private Area area;
 	private Rol tipo;
-	private ArrayList<Interes> intereses;
 	
 	public Usuario() {
 		
@@ -21,14 +20,6 @@ public class Usuario {
         this.area= area;
         this.tipo=tipo;
     }
-
-	public ArrayList<Interes> getInteres() {
-		return intereses;
-	}
-
-	public void setInteres(ArrayList<Interes> interes) {
-		this.intereses = interes;
-	}
 	
 	public String getNombre() {
         return nombre;
@@ -60,11 +51,12 @@ public class Usuario {
     public void setTipo(Rol tipo) {
     	this.tipo= tipo;
     }
- 
+
+
 	@Override
 	public String toString() {
-		return "Usuario [correo=" + correo + ", nombre=" + nombre + ", area=" + area + ", tipo=" + tipo
-				+ ", iniciativas=" + "]";
+		return "Usuario [correo=" + correo + ", nombre=" + nombre + ", area=" + area + ", tipo=" + tipo + "]";
 	}
+
     
 }

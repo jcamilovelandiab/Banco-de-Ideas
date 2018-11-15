@@ -13,10 +13,6 @@
 		
 		<result property='estado' column='iniciativaEstado' typeHandler="org.apache.ibatis.type.EnumTypeHandler" />
 		<association property="proponente" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
-    	
-		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
-		<collection property="votantes" ofType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></collection>
-		<collection property="comentarios" ofType="Comentario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper.ComentarioResult"></collection>
 	</resultMap>
 	
 	
@@ -165,7 +161,5 @@
 	<update id="modificarEstado">
 		UPDATE iniciativas SET estado=#{estado} WHERE nombre=#{nombreIni};
 	</update>
-	
-	
 	
 </mapper>

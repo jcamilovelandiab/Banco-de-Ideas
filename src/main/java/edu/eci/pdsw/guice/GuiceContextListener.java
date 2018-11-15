@@ -10,9 +10,13 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import edu.eci.pdsw.persistence.ComentarioDAO;
 import edu.eci.pdsw.persistence.IniciativaDAO;
+import edu.eci.pdsw.persistence.InteresDAO;
 import edu.eci.pdsw.persistence.UsuarioDAO;
+import edu.eci.pdsw.persistence.mybatisimpl.MyBATISComentarioDAO;
 import edu.eci.pdsw.persistence.mybatisimpl.MyBATISIniciativaDAO;
+import edu.eci.pdsw.persistence.mybatisimpl.MyBATISInteresDAO;
 import edu.eci.pdsw.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
@@ -34,10 +38,10 @@ public class GuiceContextListener implements ServletContextListener {
                  setClassPathResource("mybatis-config.xml");         
                  bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                  bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
+                 bind(InteresDAO.class).to(MyBATISInteresDAO.class);
+                 bind(ComentarioDAO.class).to(MyBATISComentarioDAO.class);
                  bind(ServicesIdeas.class).to(ServicesIdeasImpl.class);
              }
-
-				
 			}
 		);
 		ServletContext servletContext = servletContextEvent.getServletContext();

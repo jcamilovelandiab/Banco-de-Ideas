@@ -12,10 +12,7 @@ import org.apache.ibatis.annotations.Param;
 
 import edu.eci.pdsw.entities.*;
 
-/**
- *
- * @author HailYowis
- */
+
 public interface  UsuarioMapper {
 
 	public void crearUsuario(@Param("usr") Usuario usr);

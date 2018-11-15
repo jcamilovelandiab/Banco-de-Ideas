@@ -31,9 +31,10 @@ public class ServicesIdeasFactory {
                   setClassPathResource("mybatis-config.xml");         
                   bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                   bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
+                  bind(InteresDAO.class).to(MyBATISInteresDAO.class);
+                  bind(ComentarioDAO.class).to(MyBATISComentarioDAO.class);
                   bind(ServicesIdeas.class).to(ServicesIdeasImpl.class);
               }
-
           }
           
     );

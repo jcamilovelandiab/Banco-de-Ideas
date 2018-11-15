@@ -77,23 +77,11 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		return null;
 	}
 
-	@Override
-	public void agregarComentario(Usuario usuario, Iniciativa iniciativa, Comentario comentario)
-			throws ServicesException {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public int consultarCantidadVotos(String nombreIni) throws ServicesException {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public List<Usuario> consultarInteresados(String nombreIni) throws ServicesException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -144,7 +132,7 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes)
+	public void usuarioMuestraInteresxIniciativa(String nombreIniciativa, Interes interes)
 			throws ServicesException {
 		// TODO Auto-generated method stub
 	}
@@ -192,5 +180,24 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Collection<Interes> consultarInteresesxIniciativa(String nombreIniciativa) throws ServicesException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void agregarComentarioxIniciativa(String nombreIniciativa, Comentario comentario) throws ServicesException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Collection<Comentario> consultarComentariosxIniciativa(String nombreIniciativa) throws ServicesException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
