@@ -19,22 +19,23 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 
 	@Override
 	public void crearIniciativa(Iniciativa iniciativa) throws PersistenceException {
+		iniciativa.setNombre(iniciativa.getNombre().toLowerCase());
 		iniciativaMapper.crearIniciativa(iniciativa);
 	}
 
 	@Override
 	public Iniciativa consultarIniciativa(String nombreIniciativa) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativa(nombreIniciativa);
+		return iniciativaMapper.consultarIniciativa(nombreIniciativa.toLowerCase());
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativasRelacionadas(Iniciativa iniciativa) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasRelacionadas(iniciativa);
+	public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws PersistenceException {
+		return iniciativaMapper.consultarIniciativasRelacionadas(nombreIni.toLowerCase());
 	}
 
 	@Override
 	public List<Iniciativa> consultarIniciativasxClaves(String palabraClave) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasxClaves(palabraClave);
+		return iniciativaMapper.consultarIniciativasxClaves(palabraClave.toLowerCase());
 	}
 
 	@Override
@@ -48,24 +49,20 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 		iniciativaMapper.agregarComentario(usuario, iniciativa, comentario);		
 	}
 
-	@Override
-	public int consultarCantidadVotos(String nombreIni) throws PersistenceException {
-		return iniciativaMapper.consultarCantidadVotos(nombreIni);
-	}
 
 	@Override
 	public List<Usuario> consultarInteresados(String nombreIni) throws PersistenceException {
-		return iniciativaMapper.consultarInteresados(nombreIni);
+		return iniciativaMapper.consultarInteresados(nombreIni.toLowerCase());
 	}
 
 	@Override
 	public void modificarEstado(String nombreIniciativa, Estado estado) throws PersistenceException {
-		iniciativaMapper.modificarEstado(nombreIniciativa,estado);
+		iniciativaMapper.modificarEstado(nombreIniciativa.toLowerCase(),estado);
 	}
 
 	@Override
 	public void agregarPalabraClave(String nombreIni, String desc) {
-		iniciativaMapper.agregarPalabraClave(nombreIni, desc);
+		iniciativaMapper.agregarPalabraClave(nombreIni.toLowerCase(), desc);
 		
 	}
 
@@ -76,12 +73,32 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 
 	@Override
 	public List<Iniciativa> consultarIniciativasxOrden(String orden) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasxOrden(orden);
+		return iniciativaMapper.consultarIniciativasxOrden(orden.toLowerCase());
 	}
 
 	@Override
 	public List<Iniciativa> consultarIniciativasxProponente(String correo){
-		return iniciativaMapper.consultarIniciativasxProponente(correo);
+		return iniciativaMapper.consultarIniciativasxProponente(correo.toLowerCase());
+	}
+
+	
+	
+	/**
+	 * Un usuario desmuestra Afinidad o gusto por una Iniciativa
+	 * Se le agrega un votante
+	 * 
+	 * @param usuario Usuario que vota
+	 * @param iniciativa El usario vota por esta iniciativa
+	 * @votar votar muestra si le gusta la iniciativa o si quiere quitar su voto por la iniciativa
+	 */
+	@Override
+	public void agregarVotanteAIniciativa(String correo, String nombreIni) {
+		iniciativaMapper.agregarVotanteAIniciativa(correo.toLowerCase(), nombreIni.toLowerCase());
+	}
+
+	@Override
+	public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws PersistenceException {
+		iniciativaMapper.eliminarVotanteAIniciativa(correo.toLowerCase(), nombreIni.toLowerCase());
 	}
 	
 }

@@ -53,8 +53,24 @@
 			usr.area = areas.id
 	</select>
 	
+	<select id="consultarVotantesxIniciativa" resultMap="UsuarioResult">
+		SELECT 
+			usr.nombre as usuarioNombre,
+			usr.correo as usuarioCorreo,
+			usr.tipo as usuarioTipo,
+			
+			areas.nombre as areaNombre,
+			areas.descripcion as areaDescripcion,
+			areas.id as areaId
+		FROM 
+			usuarios usr, areas, votos, iniciativas ini
+		WHERE 
+			usr.area = areas.id and votos.iniciativa=ini.nombre and votos.usuario=usr.correo
+			and votos.iniciativa=#{nombreIni};
+	</select>
+	
 	<update id="asignarPerfil">
 		UPDATE usuarios SET tipo=#{rol} WHERE correo=#{correo};
-	</update>	
+	</update>
 
 </mapper>

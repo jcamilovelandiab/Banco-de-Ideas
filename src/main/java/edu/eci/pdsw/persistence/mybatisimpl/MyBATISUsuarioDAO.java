@@ -23,7 +23,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
       */
     @Override
     public Usuario consultarUsuario(String correo) throws PersistenceException {
-        return usuarioMapper.consultarUsuario(correo);
+        return usuarioMapper.consultarUsuario(correo.toLowerCase());
     }
 
     
@@ -32,6 +32,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
      */
 	@Override
 	public void crearUsuario(Usuario usuario) throws PersistenceException {
+		 usuario.setCorreo(usuario.getCorreo().toLowerCase());
 	     usuarioMapper.crearUsuario(usuario);  
 	}
 
@@ -55,28 +56,11 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 	
 
 	/**
-	 * Un usuario desmuestra Afinidad o gusto por una Iniciativa
-	 * 
-	 * @param usuario Usuario que vota
-	 * @param iniciativa El usario vota por esta iniciativa
-	 * @votar votar muestra si le gusta la iniciativa o si quiere quitar su voto por la iniciativa
-	 */
-	@Override
-	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException {
-		usuarioMapper.votarxIniciativa(correoUsuario, nombreIniciativa);
-	}
-	
-	@Override
-	public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws PersistenceException {
-		usuarioMapper.cancelarVotoIniciativa(correoUsuario,nombreIniciativa);
-	}
-
-	/**
 	 * Un usuario demuestra el interes a una iniciativa
 	 */
 	@Override
 	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes) throws PersistenceException {
-		usuarioMapper.mostrarInteresxIniciativa(correoUsuario, nombreIniciativa, interes);	
+		usuarioMapper.mostrarInteresxIniciativa(correoUsuario.toLowerCase(), nombreIniciativa.toLowerCase(), interes);	
 	}
 
 	@Override
@@ -88,12 +72,18 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 
 	@Override
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws PersistenceException {
-		usuarioMapper.asignarPerfil(correoUsuario, tipo);
+		usuarioMapper.asignarPerfil(correoUsuario.toLowerCase(), tipo);
 	}
 
 
 	@Override
 	public int existeUsuario(String correo) throws PersistenceException {
-		return usuarioMapper.existeUsuario(correo);	
+		return usuarioMapper.existeUsuario(correo.toLowerCase());	
+	}
+
+
+	@Override
+	public List<Usuario> consultarVotantesxIniciativa(String nombreIni) throws PersistenceException {
+		return usuarioMapper.consultarVotantesxIniciativa(nombreIni.toLowerCase());
 	}
 }
