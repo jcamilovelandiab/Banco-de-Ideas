@@ -1,6 +1,7 @@
 package edu.eci.pdsw.samples.services.impl;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -269,6 +270,16 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}catch(PersistenceException ex){
 			System.err.println(ex.getMessage());
 			throw  new SecurityException("Hay problema los votantes de la iniciativa "+nombreIni);
+		}
+	}
+
+	@Override
+	public Collection<Rol> consultarRoles() throws SecurityException {
+		try{
+			return Arrays.asList(Rol.values());
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar los roles");
 		}
 	}
 	

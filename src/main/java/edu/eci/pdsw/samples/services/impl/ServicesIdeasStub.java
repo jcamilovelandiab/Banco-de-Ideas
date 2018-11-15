@@ -187,4 +187,10 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		return null;
 	}
 
+	@Override
+	public Collection<Rol> consultarRoles() throws SecurityException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -46,6 +46,6 @@ public interface ServicesIdeas {
 	public File consultarEstadisticas() throws ServicesException;
 
 	public int existeUsuario(String correo) throws SecurityException;
-    
+    public Collection<Rol> consultarRoles() throws SecurityException;
 
 }
