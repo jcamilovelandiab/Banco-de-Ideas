@@ -19,7 +19,7 @@ public interface ServicesIdeas {
     
     public Collection<Iniciativa> consultarIniciativas() throws ServicesException;
     
-    public Collection<Iniciativa> consultarIniciativasRelacionadas(Iniciativa iniciativa) throws ServicesException;
+    public Collection<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException;
     public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException;
     public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException;
     public Collection<Iniciativa> consultarIniciativasxOrden(String orden) throws ServicesException;
@@ -36,8 +36,10 @@ public interface ServicesIdeas {
 	public boolean autenticarUsuario(Usuario usuario) throws ServicesException;
 	
 	
-	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException;
-	public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException; 
+	public void agregarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException;
+	public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException;
+	public Collection<Usuario> consultarVotantesxIniciativa(String nombreIni) throws ServicesException;
+	
 	public void mostrarInteresxIniciativa(String correoUsuario, String nombreIniciativa, Interes interes) throws ServicesException;
 	
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException;

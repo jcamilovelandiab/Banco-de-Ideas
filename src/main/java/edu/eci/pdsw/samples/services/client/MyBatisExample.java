@@ -79,13 +79,68 @@ public class MyBatisExample {
 	    	  //ideasServices.crearIniciativa(ini);
 	    	  //ideasServices.modificarEstado("Hacer una biblioteca", Estado.DESECHADO);*/
 	      	  
-	    	  /*ArrayList<String> palabrasClave = new ArrayList();
-	    	  palabrasClave.add("biblioteca"); palabrasClave.add("prueba");
-	    	  palabrasClave.add("plataformas a la primera");
 	    	  
-	    	  Usuario usr0 = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
-	    	  Iniciativa ini0=new Iniciativa("ESTO ES UNA PRUEBITA","ESTO ES UNA PRUEBITA DONT WORRY?",usr0, palabrasClave);
-	    	  ideasServices.crearIniciativa(ini0);*/
+	    	  
+	    	  // ----------------------  CREANDO Y PROBANDO INICIATIVAS -----------------------
+	    	  Usuario usrJohn = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
+	    	  Usuario usrVelan = ideasServices.consultarUsuario("juan.velandia-b@mail.escuelaing.edu.co");
+	    	  Usuario usrAlejo = ideasServices.consultarUsuario("jose.naranjo@mail.escuelaing.edu.co");
+	    	  Usuario usrYowis = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
+	    	  
+	    	  assert(usrJohn!=null); assert(usrVelan!=null); assert(usrAlejo!=null); assert(usrYowis!=null); 
+	    	  /*
+	    	  ArrayList<String> palabrasClave = new ArrayList();
+	    	  palabrasClave.add("biblioteca"); palabrasClave.add("prueba"); palabrasClave.add("plataformas a la primera");
+	    	  palabrasClave.add("amo a mi escuela");
+	    	  
+	    	  Iniciativa ini0=new Iniciativa("ESTO ES UNA PRUEBITA","ESTO ES UNA PRUEBITA DONT WORRY",usrJohn, palabrasClave);
+	    	  ideasServices.crearIniciativa(ini0);
+	    	  System.out.println(ideasServices.consultarIniciativa("ESTO ES UNA PRUEBITA"));
+	    	  
+	    	  palabrasClave.add("restaurante");
+	    	  Iniciativa ini1 = new Iniciativa("Hacer un centro de comidas","no hay muchos restaurantes",usrJohn, palabrasClave);
+	    	  ideasServices.crearIniciativa(ini1);
+	    	  System.out.println(ideasServices.consultarIniciativa("Hacer un centro de comidas"));
+	    	  
+	    	  ArrayList<String> palabrasClave2 = new ArrayList();
+	    	  palabrasClave2.add("haCer reStaurantes");
+	    	  palabrasClave2.add("mejOrar la cCmida");
+	    	  
+	    	  Iniciativa ini2 = new Iniciativa("ConstrUir Un MeJoR resTaurante","Por favor a mEjorar CHIcos", usrYowis, palabrasClave2);
+	    	  ideasServices.crearIniciativa(ini2);
+	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));
+	    	  
+	    	  Iniciativa ini3 = new Iniciativa("Bajar el precio a los almuerzos","Por favor a mEjorar CHIcos", usrVelan, palabrasClave2);
+	    	  ideasServices.crearIniciativa(ini3);
+	    	  System.out.println(ideasServices.consultarIniciativa("Bajar el precio a los almuerzOs"));
+	    	  
+	    	  ArrayList<String> palabrasClave3 = new ArrayList();
+	    	  palabrasClave3.add("infraestructura"); palabrasClave3.add("no hay espacio");
+	    	  palabrasClave3.add("amo a mi escuela");
+	
+	    	  
+	    	  Iniciativa ini4 = new Iniciativa("Construir un nuevo edificio","Por favor a mEjorar CHIcos", usrVelan, palabrasClave3);
+	    	  ideasServices.crearIniciativa(ini4);
+	    	  System.out.println(ideasServices.consultarIniciativa("Bajar el precio a los almuerzOs"));
+	    	  
+	    	  
+	    	  ArrayList<String> palabrasClave4 = new ArrayList();
+	    	  palabrasClave4.add("infraestructura"); palabrasClave4.add("no hay biblioteca comoda");
+	    	  palabrasClave4.add("amo a mi escuela");
+	    	  
+	    	  Iniciativa ini5 = new Iniciativa("Hacer una biblioteca","no tenemos una biblioteca comoda", usrVelan, palabrasClave4);
+	    	  ideasServices.crearIniciativa(ini5);
+	    	  System.out.println(ideasServices.consultarIniciativa("Hacer una bibLioteca"));
+	    	  
+	    	  System.out.println("\nTODAS LAS INICIATIVAS");
+	    	  Collection<Iniciativa> inisQuery = ideasServices.consultarIniciativas();
+	    	  for (Iniciativa ini : inisQuery) {
+	    		  System.out.println(ini);
+	    	  }
+	    	  
+	    	  // -----------------------------------------------------------------------------
+	    	  */
+	    	  
 	    	  
 	    	  
 	    	  /*
@@ -100,41 +155,28 @@ public class MyBatisExample {
 	    	  System.out.println("\nCAMBIO ROL A YOWIS POR ADMINISTRADOR");
 	    	  ideasServices.asignarPerfil("yohanna.toro@mail.escuelaing.edu.co", Rol.ADMINISTRADOR);
 	    	  System.out.println(ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co"));
+	    	  */
 	    	  
-	    	  Area area = new Area("AreaTest", "descripcionTest");
-	    	  area.setId(1);
-	    	  //Usuario usuario = new Usuario("Yohanna Toro","yohanna.toro@mail.escuelaing.edu.co",area,Rol.ADMINISTRADOR);
 	    	  
-	    	  //Iniciativa ini2 = new Iniciativa("Hacer el bloque K","Joder tio, en que pensáis ?",usuario, palabrasClave);
-	    	  //ideasServices.crearIniciativa(ini2);
-	    	  
+	    	  /*
 	    	  Iniciativa iniciativaPrueba = ideasServices.consultarIniciativa("Hacer el bloque tu");
 	    	  System.out.println("\nINICIATIVA -> "+iniciativaPrueba);
 	    	  System.out.println("\nINICIATIVAS POR PALABRAS CLAVE");
 	    	  Collection<Iniciativa> inisQuery = ideasServices.consultarIniciativasxClaves(palabrasClave);
 	    	  for (Iniciativa ini : inisQuery) {
 	    		  System.out.println(ini);
-	    	  }
+	    	  }*/
 	    	  
-	    	  System.out.println("\nTODAS LAS INICIATIVAS");
-	    	  Collection<Iniciativa> inisQuery2 = ideasServices.consultarIniciativas("Nada");
-	    	  for (Iniciativa ini : inisQuery2) {
-	    		  System.out.println(ini);
-	    	  }
 	    	  
-	    	  System.out.println("\nNUEVA INICIATIVA");
-	    	  ArrayList<String> palabrasClave2 = new ArrayList();
-	    	  palabrasClave2.add("haCer reStaurantes");
-	    	  palabrasClave2.add("mejOrar la cCmida");
 	    	  
-	    	  Iniciativa ini3 = new Iniciativa("ConstrUir Un MeJoR resTaurante","Por favor a mEjorar CHIcos", usrYowis, palabrasClave2);
-	    	  //ideasServices.crearIniciativa(ini3);
-	    	  System.out.println(ideasServices.consultarIniciativa("ConstrUir Un MeJoR resTaurante"));
-	    	  */
+	    	  //System.out.println("\nNUEVA INICIATIVA");
+	    	  
+	    	  
+	    	  /*
 	    	  Collection<Iniciativa> iniciativas =  ideasServices.consultarIniciativasxProponente("john.ibanez@mail.escuelaing.edu.co");
 	    	  for (Iniciativa ini : iniciativas) {
 	    		  System.out.println(ini.getNombre() + "-> " + ini.getProponente());
-	    	  }
+	    	  }*/
                   //Area area = new Area("AreaTest", "descripcionTest");
 	    	  //area.setId(1);
                   //Usuario usuario = new Usuario("Alejandor Guzman","jose.naranjo@mail.escuelaing.edu.co",area,Rol.PUBLICO);
@@ -142,8 +184,37 @@ public class MyBatisExample {
                   //ideasServices.crearUsuario(usuario);
                   //ideasServices.crearUsuario(usuario2);
 	    	  
+	    	  
+	    	  
+	    	  /*
+	    	  // -------------------------- PROBANDO  VOTOS --------------------------
+	    	  System.out.println("PROBANDO VOTOS");
+	    	  System.out.println(ideasServices.consultarIniciativa("Hacer una biblioteca"));
+	    	  //ideasServices.agregarVotanteAIniciativa("john.ibanez@mail.escuelaing.edu.co","Hacer una biblioteca");
+	    	  //ideasServices.agregarVotanteAIniciativa("yohanna.toro@mail.escuelaing.edu.co","Hacer una biblioteca");
+	    	  ideasServices.agregarVotanteAIniciativa("juan.velandia-b@mail.escuelaing.edu.co","hacer un centro de comidas");
+	    	  ideasServices.agregarVotanteAIniciativa("john.ibanez@mail.escuelaing.edu.co","hacer un centro de comidas");
+	    	  ideasServices.agregarVotanteAIniciativa("jose.naranjo@mail.escuelaing.edu.co","hacer un centro de comidas");
+	    	  ideasServices.agregarVotanteAIniciativa("jose.naranjo@mail.escuelaing.edu.co", "bajar el precio a los almuerzos");
+	    	  ideasServices.agregarVotanteAIniciativa("yohanna.toro@mail.escuelaing.edu.co","construir un nuevo edificio");
+	    	  ideasServices.agregarVotanteAIniciativa("juan.velandia-b@mail.escuelaing.edu.co","esto es una pruebita");
+	    	  
+	    	  
+	    	  // PROBANDO CONSULTAR VOTANTES X INICIATIVA
+	    	  Collection<Usuario> votantes = ideasServices.consultarVotantesxIniciativa("hacer un centro de comidas");
+	    	  for (Usuario vot : votantes) {
+	    		  System.out.println(vot);
+	    	  }
+	    	  //ideasServices.eliminarVotanteAIniciativa("john.ibanez@mail.escuelaing.edu.co", "hacer un centro de comidas");
+	    	  System.out.println(ideasServices.consultarCantidadVotos("hacer un centro de comidas"));
+	    	  
+	    	  
+	    	  // ------------------------------------------------------------------------------
+	    	  */
+
+	    	  
 	      } catch (ServicesException e){
-			System.out.println(e.getMessage());
+			  System.out.println(e.getMessage());
 	      }
 	      sqlss.commit();
 	      sqlss.close();

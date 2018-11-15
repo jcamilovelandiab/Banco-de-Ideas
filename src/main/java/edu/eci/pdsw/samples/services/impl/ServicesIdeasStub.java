@@ -60,7 +60,7 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativasRelacionadas(Iniciativa iniciativa) throws ServicesException {
+	public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -132,13 +132,13 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	}
 
 	@Override
-	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException {
+	public void agregarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException {
+	public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -179,6 +179,11 @@ public class ServicesIdeasStub implements ServicesIdeas{
 	@Override
 	public List<Iniciativa> consultarIniciativasxProponente(String correo) throws ServicesException {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Usuario> consultarVotantesxIniciativa(String nombreIni) throws ServicesException {
 		return null;
 	}
 

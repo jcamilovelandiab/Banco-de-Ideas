@@ -25,7 +25,10 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	@Override
 	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException {
 		try{
-			iniciativa.setNombre(iniciativa.getNombre().toLowerCase());
+			
+			if(consultarIniciativa(iniciativa.getNombre())!=null){
+				throw new ServicesException("La iniciativa con el nombre "+iniciativa.getNombre() +" ya existe");
+			}
 			iniciativa.setDescripcion(iniciativa.getDescripcion().toLowerCase());
 			iniciativaDAO.crearIniciativa(iniciativa);
 			for(String pclave: iniciativa.getPalabrasClave()) {
@@ -39,9 +42,8 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	
 	@Override
 	public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException {
-		System.out.println("llegue a impl");
 		try {
-			return iniciativaDAO.consultarIniciativa(nombreIniciativa.toLowerCase());
+			return iniciativaDAO.consultarIniciativa(nombreIniciativa);
 		}catch(PersistenceException  ex) {
 			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al consultar la iniciativa <"+nombreIniciativa+">");
@@ -79,11 +81,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	@Override
-	public List<Iniciativa> consultarIniciativasRelacionadas(Iniciativa iniciativa) throws ServicesException {
+	public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarIniciativasRelacionadas(iniciativa);
+			return iniciativaDAO.consultarIniciativasRelacionadas(nombreIni);
 		}catch(PersistenceException  ex) {
-			throw new ServicesException("Error al consultar iniciativas relacionadas de "+iniciativa.getNombre());
+			throw new ServicesException("Error al consultar iniciativas relacionadas de "+nombreIni);
 		}
 	}
 	
@@ -95,7 +97,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			}
 			TreeMap<String,Iniciativa> iniciativas = new TreeMap<String,Iniciativa>();
 			for (String pclave : palabrasClave) {
-				List<Iniciativa> inics = iniciativaDAO.consultarIniciativasxClaves(pclave.toLowerCase());
+				List<Iniciativa> inics = iniciativaDAO.consultarIniciativasxClaves(pclave);
 				for (Iniciativa ini : inics) {
 					if(!iniciativas.containsKey(ini.getNombre())) {
 						iniciativas.put(ini.getNombre(), ini);
@@ -121,7 +123,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	@Override
 	public int consultarCantidadVotos(String nombreIni) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarCantidadVotos(nombreIni.toLowerCase());
+			return usuarioDAO.consultarVotantesxIniciativa(nombreIni).size();
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al consultar la cantidad de votos de la iniciativa "+nombreIni);
 		}
@@ -130,7 +132,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	@Override
 	public List<Usuario> consultarInteresados(String nombreIni) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarInteresados(nombreIni.toLowerCase());
+			return iniciativaDAO.consultarInteresados(nombreIni);
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al consultar los interesados en la iniciativa "+nombreIni);
 		}
@@ -139,7 +141,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	@Override
 	public void modificarEstado(String nombreIniciativa, Estado estado) throws ServicesException {
 		try{
-			iniciativaDAO.modificarEstado(nombreIniciativa.toLowerCase(), estado);
+			iniciativaDAO.modificarEstado(nombreIniciativa, estado);
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al modificar el estado de la iniciativa "+nombreIniciativa);
 		}
@@ -150,7 +152,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	@Override
 	public void crearUsuario(Usuario usuario) throws ServicesException {
 		try{
-			usuario.setCorreo(usuario.getCorreo().toLowerCase());
 			usuarioDAO.crearUsuario(usuario);
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al crear un usuario");
@@ -161,7 +162,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	public Usuario consultarUsuario(String correo) throws ServicesException {
 		try{
 			
-			return usuarioDAO.consultarUsuario(correo.toLowerCase());
+			return usuarioDAO.consultarUsuario(correo);
 		}catch(PersistenceException  e) {
 			throw new ServicesException("Error al consultar el usuario con correo "+correo);
 		}
@@ -186,20 +187,34 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	}
 	
 	@Override
-	public void votarxIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException {
+	public void agregarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException {
 		try{
-			usuarioDAO.votarxIniciativa(correoUsuario.toLowerCase(),nombreIniciativa);
-		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al votar por la iniciativa "+ nombreIniciativa);
+			if(consultarIniciativa(nombreIni)==null) {
+				throw new ServicesException("La iniciativa <"+ nombreIni +"> no existe");
+			}
+			if(consultarUsuario(correo)==null) {
+				throw new ServicesException("El usuario <"+ correo +"> no existe");
+			}
+			iniciativaDAO.agregarVotanteAIniciativa(correo, nombreIni);
+		}catch(PersistenceException  ex) {
+			System.err.println(ex.getMessage());
+			throw new ServicesException("Error al registrar el voto de "+correo+" en la iniciativa "+ nombreIni);
 		}
 	}
 	
 	@Override
-	public void cancelarVotoIniciativa(String correoUsuario, String nombreIniciativa) throws ServicesException {
+	public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws ServicesException {
 		try{
-			usuarioDAO.cancelarVotoIniciativa(correoUsuario.toLowerCase(), nombreIniciativa);
-		}catch(PersistenceException  e) {
-			throw new ServicesException("Error al cancelar el voto del usuario "+ correoUsuario+ " de la iniciativa"+nombreIniciativa);
+			if(consultarIniciativa(nombreIni)==null) {
+				throw new ServicesException("La iniciativa <"+ nombreIni +"> no existe");
+			}
+			if(consultarUsuario(correo)==null) {
+				throw new ServicesException("El usuario <"+ correo +"> no existe");
+			}
+			iniciativaDAO.eliminarVotanteAIniciativa(correo, nombreIni);
+		}catch(PersistenceException  ex) {
+			System.err.println(ex.getMessage());
+			throw new ServicesException("Error al cancelar el voto del usuario "+ correo+ " de la iniciativa"+nombreIni);
 		}
 	}
 	
@@ -244,6 +259,16 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}catch(PersistenceException ex){
 			System.err.println(ex.getMessage());
 			throw  new SecurityException("Hay problema al buscar las iniciativas de "+correo);
+		}
+	}
+
+	@Override
+	public List<Usuario> consultarVotantesxIniciativa(String nombreIni) throws ServicesException {
+		try{
+			return usuarioDAO.consultarVotantesxIniciativa(nombreIni);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Hay problema los votantes de la iniciativa "+nombreIni);
 		}
 	}
 	

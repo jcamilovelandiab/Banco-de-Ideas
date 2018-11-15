@@ -17,7 +17,7 @@
 		<collection property="intereses" ofType="Interes" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.InteresMapper.InteresResult"></collection>
 		<collection property="votantes" ofType="Usuario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></collection>
 		<collection property="comentarios" ofType="Comentario" resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.ComentarioMapper.ComentarioResult"></collection>
-	</resultMap>	
+	</resultMap>
 	
 	
 	<select id="consultarIniciativa" parameterType="String" resultMap="IniciativaResult">
@@ -145,10 +145,22 @@
 		VALUES (#{ini.nombre},#{ini.descripcion}, now(), #{ini.estado}, #{ini.proponente.correo}); 
 	</insert>
 	
+	<insert id="agregarVotanteAIniciativa">
+		INSERT INTO Votos(iniciativa, usuario) 
+		VALUES(#{nombreIni},#{correo});
+	</insert>
+	
+	<insert id="eliminarVotanteAIniciativa">
+		DELETE FROM Votos 
+		WHERE usuario=#{correo} AND iniciativa=#{nombreIni}
+	</insert>
+	
 	<insert id="agregarPalabraClave">
 		INSERT INTO PalabrasClave (iniciativa,descripcion) 
 		VALUES (#{nombreIni},#{descripcion}); 
 	</insert>
+	
+	
 	
 	<update id="modificarEstado">
 		UPDATE iniciativas SET estado=#{estado} WHERE nombre=#{nombreIni};

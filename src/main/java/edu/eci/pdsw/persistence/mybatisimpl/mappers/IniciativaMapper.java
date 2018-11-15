@@ -7,6 +7,7 @@ package edu.eci.pdsw.persistence.mybatisimpl.mappers;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.pdsw.entities.*;
 /**
@@ -17,22 +18,23 @@ public interface  IniciativaMapper {
 
     public void crearIniciativa(@Param("ini")Iniciativa ini);
     
-    public Iniciativa consultarIniciativa(@Param("nombreIni")String  nombreIni);
+    public Iniciativa consultarIniciativa(@Param("nombreIni")String  nombreIni); //
     
-    public List<Iniciativa> consultarIniciativas();
+    public List<Iniciativa> consultarIniciativas(); //
     
-    public List<Iniciativa> consultarIniciativasxOrden(@Param("orden")String orden);
-    public List<Iniciativa> consultarIniciativasRelacionadas(@Param("ini")Iniciativa ini);
-    public List<Iniciativa> consultarIniciativasxClaves(@Param("clave")String clave);
+    public List<Iniciativa> consultarIniciativasxOrden(@Param("orden")String orden); //
+    public List<Iniciativa> consultarIniciativasRelacionadas(@Param("nombreIni")String nombreIni);
+    public List<Iniciativa> consultarIniciativasxClaves(@Param("clave")String clave); //
     public List<Iniciativa> consultarIniciativasxEstado(@Param("estado")Estado estado);
+    public List<Iniciativa> consultarIniciativasxProponente(@Param("correo")String correo); //
     
-    public List<Iniciativa> consultarIniciativasxProponente(@Param("correo")String correo);
+    public void agregarVotanteAIniciativa(@Param("correo")String correo, @Param("nombreIni")String nombreIni);
+    public void eliminarVotanteAIniciativa(@Param("correo")String correo, @Param("nombreIni")String nombreIni);
     
     public void agregarComentario(@Param("usr")Usuario usr, 
     		@Param("ini")Iniciativa ini,
     		@Param("comentario")Comentario comentario);
-    
-    public int consultarCantidadVotos(@Param("nombreIni")String nombreIni);
+
     
     public List<Usuario> consultarInteresados(@Param("nombreIni")String nombreIni);
     
