@@ -50,40 +50,32 @@
                 text-align: inherit;
                 white-space: nowrap;   
             }
-            #usuarios tr:{
-                background-color: #f2f2f2;
-            }
-
-
-
-            #usuarios tr:hover {background-color: #ddd;}
-
-            #usuarios th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #990000;
-                color: white;
-
-
-            }	
-            .navbar-text{
-                font-family: "PT Sans",Arial,Helvetica,sans-serif;
-            }
-            .block_login input[type="submit"] {
-                font-family: "PT Sans",Arial,Helvetica,sans-serif;
-            }
-            .adiciones {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-                overflow: hidden;
-            }
+            
+                 .value {
+        font-weight: bold;
+    }
+     
+    .ui-carousel {
+        margin-bottom: 20px;
+    }
 
         </style>
+        <style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+    .dataG{
+        background-color: rgba(255, 248, 246, 0.7);
+        font-family: "PT Sans",Arial,Helvetica,sans-serif;
+        font-size: 13px;
+    }
+    .dataG-title{
+        background-color: rgba(255, 248, 246, 0.7);
+        font-family: "PT Sans",Arial,Helvetica,sans-serif;
+        font-size: 15px;
+        border-color: black;
+    }
+</style>
     </h:head>
 
 
@@ -93,6 +85,8 @@
         <f:metadata>
             <f:viewParam name="correo" value="#{usuarioBean.correo}" />
         </f:metadata>
+        
+        <!-- creacion de la barra-->
 
         <p:inputText class="block_login input" id="doc21" binding="#{nom}" value = "#{usuarioBean.getNombre().getNombre()}" style="display:none"/>
         <p:inputText id="doc21" binding="#{nomi}" value = "#{usuarioBean.getNombre().getTipo()}" style="display:none"/>
@@ -129,50 +123,83 @@
                 </h:panelGrid>
             </span>
         </nav>
-        <p:dataTable class="block_login input" id="usuarios" var="usu"  style="font-size:14px;background-color: rgba(0,0,0,0.3); 
-                     width: 700px;
-                     margin: 0 auto;
-
-
-                     " value="#{usuarioBean.usr()}" rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 rowsPerPageTemplate="5,10,15">
-            <p:column  headerText="Nombre" class="block_login input">
-                <h:outputText style="color: black" value="#{usu.nombre}" />
-            </p:column>
-            <p:column  headerText="correo" class="block_login input">
-                <h:outputText style="color: black" value="#{usu.correo}" />
-            </p:column>
-            <p:column  headerText="area" class="block_login input">
-                <h:outputText style="color: black" value="#{usu.area.nombre}" />
-            </p:column>
-
-        </p:dataTable><br/>
-        <p:dataTable class="block_login input" style="font-size:14px;background-color: rgba(0,0,0,0.3); 
-                     width: 700px;
-                     margin: 0 auto;"
-                     var="ini" value="#{iniciativaBean.inivs()}" rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 rowsPerPageTemplate="5,10,15">
-            <p:column  headerText="Nombre" class="block_login input">
-                <h:outputText style="color: black" value="#{ini.nombre}" />
-            </p:column>
-            <p:column  headerText="Proponente" class="block_login input">
-                <h:outputText style="color: black" value="#{ini.proponente.nombre}" />
-            </p:column>
-            <p:column  headerText="Fecha" class="block_login input">
-                <h:outputText style="color: black" value="#{ini.fechaPropuesta}" />
-            </p:column>
-            <p:column  headerText="Estado" class="block_login input">
-                <h:outputText style="color: black" value="#{ini.estado}" />
-            </p:column>
-            <p:column  headerText="Descripcion" class="block_login input">
-                <h:outputText style="color: black" value="#{ini.descripcion}" />
-            </p:column>
-
-        </p:dataTable>
+        
+        <!-- usuarios y mas cosas-->
+        
+ 
+ <h:panelGrid columns="2">
+     <p:panel id="panel2" style="height:200px; width: 650px">
+<form id="form">
+    <p:dataGrid var="ini" value="#{iniciativaBean.inivs()}" columns="3" layout="grid"
+                rows="4" paginator="true" id="inis"  style="background-color: rgba(255, 237, 246, 0.3);"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,18" styleClass="dataG-title"
+        >
+        <f:facet name="header"  >
+            Iniciativas
+        </f:facet>
+ 
+        <p:panel class="dataG" header="#{ini.nombre}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <h:outputText value="#{ini.proponente.nombre}" />
+ 
+                <p:commandLink  oncomplete="PF('iniDialog').show()" title="View Detail">
+                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{ini}" target="#{iniciativaBean.selectIniciativa}" />
+                </p:commandLink>
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+    <p:dialog header="Informacion" widgetVar="iniDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty iniciativaBean.selectIniciativa}" columnClasses="label,value">
+                
+                 
+                <h:outputText value="Nombre:" />
+                <h:outputText value="#{iniciativaBean.selectiniciativa.nombre}" />
+ 
+                <h:outputText value="Proponente:" />
+                <h:outputText value="#{iniciativaBean.selectiniciativa.proponente}" />
+ 
+                <h:outputText value="Fecha:" />
+                <h:outputText value="#{iniciativaBean.selectiniciativa.fecha}" />
+             
+                <h:outputText value="Estado:" />
+                <h:outputText value="$#{iniciativaBean.selectiniciativa.estado}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</form>
+     </p:panel>
+       
+     <p:panel id="panel22"  style="height:200px; ">    
+        <form>
+            <p:dataGrid var="ini" value="#{usuarioBean.usr()}" columns="3" layout="grid"
+                rows="4" paginator="true" id="inis"  style="background-color: rgba(255, 237, 246, 0.5);"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="5,10,15" styleClass="dataG-title"
+        >
+        <f:facet name="header"  >
+            Usuarios
+        </f:facet>
+ 
+        <p:panel class="dataG" header="#{ini.nombre}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <h:outputText value="Correo:" />
+                <h:outputText value="#{ini.correo}" />
+                <h:outputText value="Area:" />
+                <h:outputText value="#{ini.area.nombre}" />
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+            
+        </form>
+     </p:panel>
+ </h:panelGrid>
+        
         <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
 
