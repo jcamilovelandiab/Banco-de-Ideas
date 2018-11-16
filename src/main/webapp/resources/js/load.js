@@ -1,3 +1,6 @@
-$(document).ready(function() { 
-    $("#initiativeTable").DataTable(); 
+$(document).ready(function() {
+    $('table.display').DataTable();
 } );
+
+
+
