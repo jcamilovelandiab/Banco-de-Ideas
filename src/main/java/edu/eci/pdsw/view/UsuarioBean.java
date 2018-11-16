@@ -36,9 +36,19 @@ public class UsuarioBean extends BasePageBean {
 	private ServicesIdeas services;
 	
         
+        private String opcion;
         private String rol;
         private List<String> roles;
         
+
+    	public void setOpcion(String opcion){
+    		this.opcion = opcion;
+    	}
+
+
+    	public String getOpcion(){
+    		return this.opcion;
+    	}
 
         
        public String getCorreo(){

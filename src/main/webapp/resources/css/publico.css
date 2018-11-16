@@ -1,0 +1,105 @@
+body {
+	font-family: "PT Sans", Arial, Helvetica, sans-serif;
+}
+
+.bg-light {
+	background-color: #8b0000 !important;
+}
+
+.navbar-nav>li>a {
+	padding-top: 40px;
+	padding-bottom: 15px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-default {
+	background-color: #990000;
+	border-color: #990000;
+}
+
+.ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon:before
+	{
+	content: "x";
+}
+
+.ui-chips {
+	box-shadow: none;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	width: auto;
+}
+
+.ui-chips-container {
+	padding: 0;
+	clear: left;
+	cursor: text;
+	list-style-type: none;
+	margin: 0;
+	min-height: 1px;
+	overflow: hidden;
+	width: 400px;
+}
+
+.ui-chips .ui-chips-container .ui-chips-token {
+	padding: 0.10725em 0;
+	margin: 0.10725em 0.286em 0.10725em 0;
+	background: #900;
+	color: white;
+}
+
+.ui-chips-token {
+	cursor: default;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	padding: 1px 3px;
+	white-space: nowrap;
+	position: relative;
+	margin: 2px;
+}
+
+.ui-icon {
+	height: 1em;
+	width: 1em;
+	font-size: 1.25em;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	margin-top: 0;
+	position: static;
+	text-indent: 0;
+	overflow: visible;
+	background-repeat: no-repeat;
+}
+
+.ui-chips-token .ui-chips-token-icon {
+	cursor: pointer;
+	margin-top: -9px;
+	position: absolute;
+	right: 0.2em;
+	top: 50%;
+}
+
+.ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon {
+	margin-top: -0.5em;
+	position: absolute;
+	font-family: 'primeicons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-indent: 0px !important;
+	text-align: center;
+	background: none;
+	display: inline-block;
+	font-size: 1.25em;
+}

@@ -1,191 +1,102 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
+<h:head>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet name="css/publico.css"/>
+	<h:outputStylesheet name = "dataTable/css/dataTables.bootstrap.min.css" />
 
-         <style>
-            body{
-                font-family: "PT Sans",Arial,Helvetica,sans-serif;
-            }
-            .bg-light{
-                background-color: #8b0000!important;
-            }
-            
-            .navbar-nav>li>a {
-                padding-top: 40px;
-                padding-bottom: 15px;
-            }
-            
-            .navbar-default .navbar-nav>li>a {
-                    color: #fff;
-                }
-                
-            .navbar-default {
-                background-color: #990000;
-                border-color: #990000;
-            }
-            
-            
-            .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon:before {
-                content: "x";
-            }
-            .ui-chips {
-                box-shadow: none;
-                cursor: pointer;
-                display: inline-block;
-                position: relative;
-                width: auto;
-            }
-            .ui-chips-container {
-                padding: 0;
-                clear: left;
-                cursor: text;
-                list-style-type: none;
-                margin: 0;
-                min-height: 1px;
-                overflow: hidden;
-                width: 400px;
-            }
-            .ui-chips .ui-chips-container .ui-chips-token {
-                padding: 0.10725em 0;
-                margin: 0.10725em 0.286em 0.10725em 0;
-                background: #900;
-                color: white;
-            }
-            .ui-chips-token {
-                cursor: default;
-                display: inline-block;
-                vertical-align: middle;
-                overflow: hidden;
-                padding: 1px 3px;
-                white-space: nowrap;
-                position: relative;
-                margin: 2px;
-            }
-            .ui-icon {
-                height: 1em;
-                width: 1em;
-                font-size: 1.25em;
-                display: inline-block;
-                vertical-align: middle;
-                margin: 0;
-                margin-top: 0;
-                position: static;
-                text-indent: 0;
-                overflow: visible;
-                background-repeat: no-repeat;
-            }
-            .ui-chips-token .ui-chips-token-icon {
-                cursor: pointer;
-                margin-top: -9px;
-                position: absolute;
-                right: 0.2em;
-                top: 50%;
-            }
-            .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon {
-                margin-top: -0.5em;
-                position: absolute;
-                font-family: 'primeicons';
-                speak: none;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                display: inline-block;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                text-indent: 0px !important;
-                text-align: center;
-                background: none;
-                display: inline-block;
-                font-size: 1.25em;
-               }
-               
-             
-               
-        
-        </style>
-        
-        <style type="text/css">
-            .value {
-                font-weight: bold;
-            }
-        </style>
 
-        
-    </h:head>
-    
-    
-<h:body style="background-image:url(resources/images/publico.jpg);background-size:cover;background-repeat: no-repeat;">
-        <f:metadata>
-            <f:viewParam name="correo" value="#{usuarioBean.correo}" />
-        </f:metadata>
+	<style type="text/css">
+	.value {
+		font-weight: bold;
+	}
+	</style>
 
-        <p:inputText id="nom" binding="#{nom}" value = "#{usuarioBean.getUsuario().getNombre()}" style="display:none"/>
-        <p:inputText id="nomi" binding="#{nomi}" value = "#{usuarioBean.getUsuario().getTipo()}" style="display:none"/>
-        <nav class="navbar navbar-default"  style="height:8px">
-            <div class="container-fluid">
-           
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                       <h:panelGrid columns ="1" style="
+</h:head>
+
+
+<h:body
+	style="background-image:url(resources/images/publico.jpg);background-size:cover;background-repeat: no-repeat;">
+	<f:metadata>
+		<f:viewParam name="correo" value="#{usuarioBean.correo}" />
+	</f:metadata>
+
+	<p:inputText id="nom" binding="#{nom}"
+		value="#{usuarioBean.getUsuario().getNombre()}" style="display:none" />
+	<p:inputText id="nomi" binding="#{nomi}"
+		value="#{usuarioBean.getUsuario().getTipo()}" style="display:none" />
+	<nav class="navbar navbar-default" style="height:8px">
+	<div class="container-fluid">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<h:panelGrid columns="1"
+					style="
                              text-align:center;
-                             margin: 15% auto;
+                             margin: 1% auto;
                              height:5px;">
-                        <h:outputText value = "#{nom.value}"  style=" font-size: 20px;
+					<h:outputText value="#{nom.value}"
+						style=" font-size: 20px;
                                       color : rgba(255, 255, 255, 1);
-                                      "/>
+                                      " />
 
-                        <h:outputText value = "#{nomi.value}"  style=" font-size: 15px;
+					<h:outputText value="#{nomi.value}"
+						style=" font-size: 15px;
                                       color : rgba(255, 255, 255, 1);
-                                      "/>
-                    </h:panelGrid>
-                </ul>
-              
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="index.xhtml"  style="font-size: 1.5rem"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
-                </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
+                                      " />
+				</h:panelGrid>
+			</ul>
 
-        
-           
-                
-                
-             
-            <form>
-                      <div class="form-group"  >
-                            <select class="form-control" id="exampleFormControlSelect1" style="
-                                 border-radius: 11px;
-                                 background-color:  rgba(255, 237, 246, 0.5);
-                                 border: rgba(144, 22, 38, 0.7);
-                                 text-align:center;                   
-                                 width: 450px;">
-                               
-                                <ui:repeat var="gg" value="#{usuarioBean.getRoles()}">
-                                    <option>#{gg}</option>
-                                </ui:repeat>
-                                
-                            </select>
-                      </div>
-            
-                </form>
-                   
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="index.xhtml" style="font-size: 1.5rem"><span
+						class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-                <p:commandButton value="buscar"  style="
+
+	
+	
+
+
+	
+	<div class="container">
+		<div class = "row">
+			<div class="column">
+			<div class="form-group" style="display: inline;">
+			<select class="form-control" id="exampleFormControlSelect1"
+				style="border-radius: 11px; background-color: rgba(255, 237, 246, 0.5); border: rgba(144, 22, 38, 0.7); text-align: center; width: 250px; left:-5px">
+				<ui:repeat var="gg" value="#{usuarioBean.getRoles()}">
+					<option value="#{usuarioBean.opcion}">#{gg}</option>
+				</ui:repeat>
+			</select>
+			</div>
+		</div>
+		<div class="column">	
+			<p:commandButton value="buscar" style="
                                  border-radius: 11px;
                                  background-color: rgba(144, 22, 38, 0.7);
                                  border: rgba(144, 22, 38, 0.7);
@@ -195,12 +106,16 @@
                                  right: -42px;
                                  bottom: -10px;
                                  color : rgba(255, 255, 255, 1)"/>
-                 
+		</div>
+      </div>
+    </div>
 
 
-
-        <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
-        <script src = "bootstrap-3.3.7-dist/js/bootstrap.min.js"/>
-    </h:body>   
+	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
+	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" />
+	<h:outputScript name = "dataTable/js/jquery.dataTables.min.js" />
+	<h:outputScript name = "dataTable/js/dataTables.bootstrap.min.js" />
+	<h:outputScript name = "js/load.js"></h:outputScript>
+</h:body>
 </html>
