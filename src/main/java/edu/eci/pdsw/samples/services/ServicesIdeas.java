@@ -44,6 +44,7 @@ public interface ServicesIdeas {
 	
 	public void usuarioMuestraInteresxIniciativa(String nombreIniciativa, Interes interes) throws ServicesException;
 	public Collection<Interes> consultarInteresesxIniciativa(String nombreIniciativa) throws ServicesException;
+	public Collection<Interes> consultarInteresesxUsuario(String correo) throws ServicesException;
 	
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException; //
 	public File consultarEstadisticas() throws ServicesException;

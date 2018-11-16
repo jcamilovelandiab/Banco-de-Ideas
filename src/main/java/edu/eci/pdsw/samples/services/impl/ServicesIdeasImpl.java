@@ -275,6 +275,34 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
+	/**
+	 * Consulta los intereses de una iniciativa
+	 * @param nombreIniciativa
+	 */
+	@Override
+	public Collection<Interes> consultarInteresesxIniciativa(String nombreIniciativa) throws ServicesException {
+		try{
+			return interesDAO.consultarInteresesxIniciativa(nombreIniciativa);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar los intereses de la iniciativa "+nombreIniciativa);
+		}
+	}
+	
+	/**
+	 * Consulta los intereses que tiene el usuario en ciertas iniciativas
+	 * @param correo Correo del usuario
+	 */
+	@Override
+	public Collection<Interes> consultarInteresesxUsuario(String correo) throws ServicesException {
+		try{
+			return interesDAO.consultarInteresesxUsuario(correo);
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al consultar los intereses del usuario "+correo);
+		}
+	}
+	
 	@Override
 	public File consultarEstadisticas() throws ServicesException {
 		// TODO Auto-generated method stub
@@ -346,19 +374,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}
 	}
 	
-	/**
-	 * Consulta los intereses de una iniciativa
-	 * @param nombreIniciativa
-	 */
-	@Override
-	public Collection<Interes> consultarInteresesxIniciativa(String nombreIniciativa) throws ServicesException {
-		try{
-			return interesDAO.consultarInteresesxIniciativa(nombreIniciativa);
-		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
-			throw  new SecurityException("Error al consultar los intereses de la iniciativa "+nombreIniciativa);
-		}
-	}
+	
 	
 	
 	/**
@@ -389,5 +405,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Error al consultar los comentarios de la iniciativa "+nombreIniciativa);
 		}
 	}
+
+	
 	
 }

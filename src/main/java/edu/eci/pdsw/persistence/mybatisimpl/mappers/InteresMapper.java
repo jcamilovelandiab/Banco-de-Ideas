@@ -9,7 +9,7 @@ import edu.eci.pdsw.entities.Interes;
 
 public interface InteresMapper {
 
-	public List<Interes> consultarInteresesxProponente(@Param("correo") String correo) throws PersistenceException;
+	public List<Interes> consultarInteresesxUsuario(@Param("correo") String correo) throws PersistenceException;
 	
 	public void usuarioMuestraInteresxIniciativa(@Param("nombreIni")String nombreIni, @Param("interes")Interes interes) throws PersistenceException;
 	

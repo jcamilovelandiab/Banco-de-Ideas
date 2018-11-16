@@ -17,8 +17,8 @@ public class MyBATISInteresDAO implements InteresDAO {
     private InteresMapper interesMapper; 
 	
 	@Override
-	public List<Interes> consultarInteresesxProponente(String correo) throws PersistenceException {
-		return interesMapper.consultarInteresesxProponente(correo);
+	public List<Interes> consultarInteresesxUsuario(String correo) throws PersistenceException {
+		return interesMapper.consultarInteresesxUsuario(correo);
 	}
 
 	@Override

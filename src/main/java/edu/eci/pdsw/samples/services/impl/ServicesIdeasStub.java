@@ -199,5 +199,11 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		return null;
 	}
 
+	@Override
+	public Collection<Interes> consultarInteresesxUsuario(String correo) throws ServicesException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
