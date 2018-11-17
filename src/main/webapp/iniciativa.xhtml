@@ -1,182 +1,369 @@
 <?xml version='1.0' encoding='UTF-8' ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
+
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+
       xmlns:f="http://java.sun.com/jsf/core"
+
       xmlns:p="http://primefaces.org/ui">
 
+
+
     <h:head>
+
         <h:outputStylesheet name="css/tags.css" />
+
         <style>
+
             body {
+
                 margin: 0;
+
                 font-family: PT Sans, Arial, Helvetica, sans-serif;
+
             }
+
             .topnav {
+
                 overflow: hidden;
+
                 background-color: #900;
+
             }
+
             .topnav a {
+
                 float: left;
+
                 color: #f2f2f2;
+
                 text-align: center;
+
                 padding: 14px 16px;
+
                 text-decoration: none;
+
                 font-size: 17px;
+
             }
+
             .topnav a:hover {
+
                 background-color: #900;
+
                 color: black;
+
             }
+
             legend {
+
                 display: block;
+
                 width: 100%;
+
                 padding: 0;
+
                 margin-bottom: 20px;
+
                 font-size: 21px;
+
                 line-height: inherit;
+
                 color: #ffffff;
+
                 border: 0;
+
                 border-bottom: 1px solid #e5e5e5;
+
             }
+
             .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon:before {
+
                 content: "x";
+
             }
+
             .ui-chips {
+
                 box-shadow: none;
+
                 cursor: pointer;
+
                 display: inline-block;
+
                 position: relative;
+
                 width: auto;
+
             }
+
             .ui-chips-container {
+
                 padding: 0;
+
                 clear: left;
+
                 cursor: text;
+
                 list-style-type: none;
+
                 margin: 0;
+
                 min-height: 1px;
+
                 overflow: hidden;
+
                 width: 400px;
+
             }
+
             .ui-chips .ui-chips-container .ui-chips-token {
+
                 padding: 0.10725em 0;
+
                 margin: 0.10725em 0.286em 0.10725em 0;
+
                 background: #900;
+
                 color: white;
+
             }
+
             .ui-chips-token {
+
                 cursor: default;
+
                 display: inline-block;
+
                 vertical-align: middle;
+
                 overflow: hidden;
+
                 padding: 1px 3px;
+
                 white-space: nowrap;
+
                 position: relative;
+
                 margin: 2px;
+
             }
+
             .ui-icon {
+
                 height: 1em;
+
                 width: 1em;
+
                 font-size: 1.25em;
+
                 display: inline-block;
+
                 vertical-align: middle;
+
                 margin: 0;
+
                 margin-top: 0;
+
                 position: static;
+
                 text-indent: 0;
+
                 overflow: visible;
+
                 background-repeat: no-repeat;
+
             }
+
             .ui-chips-token .ui-chips-token-icon {
+
                 cursor: pointer;
+
                 margin-top: -9px;
+
                 position: absolute;
+
                 right: 0.2em;
+
                 top: 50%;
+
             }
+
             .ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon {
+
                 margin-top: -0.5em;
+
                 position: absolute;
+
                 font-family: 'primeicons';
+
                 speak: none;
+
                 font-style: normal;
+
                 font-weight: normal;
+
                 font-variant: normal;
+
                 text-transform: none;
+
                 line-height: 1;
+
                 display: inline-block;
+
                 -webkit-font-smoothing: antialiased;
+
                 -moz-osx-font-smoothing: grayscale;
+
                 text-indent: 0px !important;
+
                 text-align: center;
+
                 background: none;
+
                 display: inline-block;
+
                 font-size: 1.25em;
+
             }
+
         </style>
+
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/stylePal.css" />
 
+
+
     </h:head>
+
     <h:body
+
         style="background-image:url(resources/images/fondoUsu.jpg);background-size:cover;background-repeat: no-repeat;">
 
+
+
         <nav class="navbar navbar-default">
+
             <p class="navbar-text navbar-right"
+
                style="color: white; font-size: 17px; left: -80px; right: -42px; bottom: -10px;">
+
                 Usuario <a href="#" class="navbar-link"
+
                            style="color: white; font-size: 17px">Publico</a>
+
             </p>
+
             
+
+
+
 
 
         </nav>
 
 
+
+
+
         <h:form prependId="false">
+
             <h:panelGrid columns="2"
+
                          style="
+
                          margin: 2% auto;
+
                          width:500px;height:5px;
+
                          background-color: rgba(255,255,255,0);
+
                          border-radius: 11px;
+
                          text-align:center;
+
                          right: 1000px;"
+
                          cellpadding="10">
 
+
+
                 <h:panelGrid columns="2" class="bootstrap-tagsinput  bootstrap-tagsinput.form-contro 
+
                              ui-chips ui-chips-container ui-chips-token 
+
                              ">
+
                     <p:chips id="chips" value="#{iniciativaBean.claves}" />
 
 
+
+
+
                 </h:panelGrid>
+
                 <p:commandButton value="buscar" update="results" actionListener="#{iniciativaBean.getDatas()}" style="
+
                                  border-radius: 11px;
+
                                  background-color: rgba(144, 22, 38, 0.7);
+
                                  border: rgba(144, 22, 38, 0.7);
+
                                  text-align:center;
+
                                  top: 0px;
+
                                  left: 2px;
+
                                  right: -42px;
+
                                  bottom: -10px;
+
                                  color : rgba(255, 255, 255, 1)"/>
+
             </h:panelGrid>
-		<p:dataTable id="results" var="ini" value="#{iniciativaBean.iniciativas}">
+
+		<p:dataTable id="results" var="ini" value="#{iniciativaBean.iniciativas}" 
+
+                rows="4" paginator="true" id="inis"  style="background-color: rgba(255, 237, 246, 0.3);"
+
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+
+        rowsPerPageTemplate="6,12,18" styleClass="dataG-title"
+
+        >
+
 			<p:column headerText="Iniciativas">
+
 				<p:fieldset collapsed="true" legend="#{ini.nombre}" toggleable="true" toggleSpeed="500">
+
 					<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}"/>					
+
 					<h:outputText value="Proponente: #{ini.proponente.nombre}"></h:outputText><br/>
+
 					<h:outputText value="Fecha en que se propuso: #{ini.fechaPropuesta}"></h:outputText><br/>
+
 					<h:outputText value="Estado de la propuesta: #{ini.estado}"></h:outputText><br/>
+
 					<h:outputText value="Descripción: #{ini.descripcion}"></h:outputText>
+
 				</p:fieldset>
+
 			</p:column>
+
 	        </p:dataTable>
 
+
+
 		
+
         </h:form>
+
             
+
 	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="js/bootstrap-tagsinput.js" />
     </h:body>
