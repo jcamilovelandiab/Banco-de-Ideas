@@ -287,9 +287,7 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		}else{
 
 			throw new ServicesException("El usuario con correo "+correoUsuario+" no existe.");
-
 		}
-
 	}
 
 
