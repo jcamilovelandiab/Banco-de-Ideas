@@ -13,114 +13,59 @@
 
 
 	<resultMap id="InteresResult" type="Interes">
-
 		<id property="id" column="interesId"></id>
-
 		<result property="intencion" column="interesIntencion"></result>
-
 		<result property="descripcion" column="interesDescripcion"></result>
-
 		<result property="fecha" column="interesFecha"></result>
-
 		<result property="trabajo" column="interesTrabajo"></result>
-
 		<association property="interesado" javaType='Usuario' resultMap="edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult"></association>
-
 	</resultMap>
-
 	
-
 	<select id="consultarInteresesxUsuario" resultMap="InteresResult">
-
-		SELECT
-
-	
-
+		SELECT 
 			intereses.id as interesId,
-
 			intereses.intencion as interesIntencion,
-
 			intereses.descripcion as interesDescripcion,
-
 			intereses.fecha as interesFecha,
-
 			intereses.trabajo as interesTrabajo,
 
-		
-
 			usr.correo AS usuarioCorreo,
-
 			usr.nombre AS usuarioNombre,
-
 			usr.tipo AS usuarioTipo,
-
 			usr.area AS usuarioArea,
 
-			
-
 			areas.id AS areaId,
-
 			areas.nombre AS areaNombre,
-
-			areas.descripcion AS areaDescripcion
-
-			
-
+			areas.descripcion AS areaDescripcion 
 		FROM 
-
 			intereses, iniciativas ini, usuarios usr, areas
-
-			
-
 		WHERE 
-
 			ini.nombre=intereses.iniciativa and usr.correo = intereses.usuario 
-
 			and usr.area = areas.id and usr.correo=#{correo}
-
 	</select>
 
 	
 
-	<select id="consultarInteresesxIniciativa">
+	<select id="consultarInteresesxIniciativa" resultMap="InteresResult">
 
 		SELECT
-
-	
-
 			intereses.id as interesId,
-
 			intereses.intencion as interesIntencion,
-
 			intereses.descripcion as interesDescripcion,
-
 			intereses.fecha as interesFecha,
-
 			intereses.trabajo as interesTrabajo,
-
 		
-
 			usr.correo AS usuarioCorreo,
-
 			usr.nombre AS usuarioNombre,
-
 			usr.tipo AS usuarioTipo,
-
 			usr.area AS usuarioArea,
-
 			
-
 			areas.id AS areaId,
-
 			areas.nombre AS areaNombre,
-
 			areas.descripcion AS areaDescripcion 
-
-
 		FROM
 			intereses, iniciativas ini, usuarios usr, areas
 		WHERE 
-
 			ini.nombre=intereses.iniciativa AND usr.correo = intereses.usuario 
 			AND usr.area = areas.id AND ini.nombre=#{nombreIni}
 	</select>
@@ -129,7 +74,5 @@
 		INSERT INTO Intereses(iniciativa, intencion, descripcion, fecha, trabajo, usuario) 
 		VALUES(#{nombreIni},#{interes.intencion},#{interes.descripcion}, #{interes.fecha}, #{interes.trabajo}, #{interes.interesado.correo});
 	</insert>
-
-
 
 </mapper>

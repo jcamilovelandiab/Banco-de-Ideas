@@ -10,7 +10,4 @@ public interface InteresMapper {
 	public List<Interes> consultarInteresesxUsuario(@Param("correo") String correo) throws PersistenceException;	
 	public void usuarioMuestraInteresxIniciativa(@Param("nombreIni")String nombreIni, @Param("interes")Interes interes) throws PersistenceException;
 	public List<Interes> consultarInteresesxIniciativa(@Param("nombreIni") String nombreIni) throws PersistenceException;
-
-
-
 }

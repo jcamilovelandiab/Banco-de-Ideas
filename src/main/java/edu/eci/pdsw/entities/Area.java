@@ -24,7 +24,6 @@ public class Area {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-
 	
 	public long getId() {
 		return id;

@@ -12,6 +12,4 @@ public interface InteresDAO {
 	public void usuarioMuestraInteresxIniciativa(String nombreIniciativa, Interes interes) throws PersistenceException;
 	public List<Interes> consultarInteresesxIniciativa(String nombreIni) throws PersistenceException;
 
-	
-
 }

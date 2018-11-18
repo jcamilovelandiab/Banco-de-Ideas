@@ -146,5 +146,4 @@ public class Iniciativa {
 				+ ", palabrasClave=" + palabrasClave + ", votantes=" + votantes + ", comentarios=" + comentarios
 				+ ", intereses=" + intereses + "]";
 	}
-
 }

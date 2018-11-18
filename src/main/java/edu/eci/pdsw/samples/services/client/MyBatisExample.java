@@ -41,7 +41,6 @@ public class MyBatisExample {
 	      ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
 	      ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
 	      UsuarioMapper usrMapper =  sqlss.getMapper(UsuarioMapper.class);
-	      System.out.println(usrMapper.consultarUsuario("jose.naranjo@mail.escuelaing.edu.co"));
 	      /*
 	      IniciativaMapper iniMapper =  sqlss.getMapper(IniciativaMapper.class);
 	      Area area = new Area("AreaPrueba", "descripcionPrueba");
@@ -86,12 +85,15 @@ public class MyBatisExample {
 	    	  Usuario usrJohn = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
 	    	  Usuario usrVelan = ideasServices.consultarUsuario("juan.velandia-b@mail.escuelaing.edu.co");
 	    	  Usuario usrAlejo = ideasServices.consultarUsuario("jose.naranjo@mail.escuelaing.edu.co");
-	    	  Usuario usrYowis = ideasServices.consultarUsuario("john.ibanez@mail.escuelaing.edu.co");
+	    	  Usuario usrYowis = ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co");
 	    	  Collection<Usuario> usuarios = ideasServices.consultarUsuarios();
-	    	  for (Usuario usr : usuarios) {
+	    	  /*for (Usuario usr : usuarios) {
 	    		  System.out.println(usr);
-	    	  }
-	    	  assert(usrJohn!=null); assert(usrVelan!=null); assert(usrAlejo!=null); assert(usrYowis!=null); 
+	    	  }*/
+	    	  assert(usrJohn!=null); assert(usrVelan!=null); assert(usrAlejo!=null); assert(usrYowis!=null);
+	    	  
+	    	  
+	    	  
 	    	  /*
 	    	  ArrayList<String> palabrasClave = new ArrayList();
 	    	  palabrasClave.add("biblioteca"); palabrasClave.add("prueba"); palabrasClave.add("plataformas a la primera");
@@ -216,12 +218,12 @@ public class MyBatisExample {
 	    	  // ------------------------------------------------------------------------------
 	    	  */
 	    	  
-	    	  
+	    	  /*
 	    	  Collection<Iniciativa> iniciativas = ideasServices.consultarIniciativas();
 	    	  System.out.println("\nCONSULTAR INICIATIVAS\n");
 	    	  for (Iniciativa ini : iniciativas) {
 	    		  System.out.println(ini);
-	    	  }
+	    	  }*/
 	    	  
 	    	  /*
 	    	  // -------------------------- PROBANDO  COMENTARIOS --------------------------
@@ -239,7 +241,21 @@ public class MyBatisExample {
 	    	  for (Comentario com : comentariosQ) {
 	    		  System.out.println(com);
 	    	  }*/
+	    	  // -------------------------- PROBANDO INTERESES --------------------------
+	    	  /*Interes interes = new Interes("Interesada en aportar con mis ideas","estoy interesada, la propuesta es buena",true,usrYowis);
+	    	  //ideasServices.usuarioMuestraInteresxIniciativa("construir un nuevo edificio", interes);
 	    	  
+	    	  System.out.println("CONSULTAR INTERESES");
+	    	  Collection<Interes> interesesBiblioteca = ideasServices.consultarInteresesxIniciativa("hacer una biblioteca");
+	    	  Collection<Interes> interesesVelan = ideasServices.consultarInteresesxUsuario(usrVelan.getCorreo());
+	    	  System.out.println("INTERESES DEL VELAN");
+	    	  for (Interes inter : interesesVelan) {
+	    		  System.out.println(inter);
+	    	  }
+	    	  System.out.println("INTERESES DE LA BIBLIOTECA");
+	    	  for (Interes inter : interesesBiblioteca) {
+	    		  System.out.println(inter);
+	    	  }*/
 	      } catch (ServicesException e){
 			  System.out.println(e.getMessage());
 	      }

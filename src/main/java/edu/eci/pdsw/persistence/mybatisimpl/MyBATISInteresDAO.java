@@ -14,27 +14,21 @@ import edu.eci.pdsw.persistence.mybatisimpl.mappers.UsuarioMapper;
 
 public class MyBATISInteresDAO implements InteresDAO {
 
-
-
     @Inject
     private InteresMapper interesMapper; 
 
-	
 	@Override
 	public List<Interes> consultarInteresesxUsuario(String correo) throws PersistenceException {
 		return interesMapper.consultarInteresesxUsuario(correo);
 	}
-
 
 	@Override
 	public void usuarioMuestraInteresxIniciativa(String nombreIni, Interes interes) throws PersistenceException {
 		interesMapper.usuarioMuestraInteresxIniciativa(nombreIni, interes);
 	}
 
-
 	@Override
 	public List<Interes> consultarInteresesxIniciativa(String nombreIni) throws PersistenceException {
 		return interesMapper.consultarInteresesxIniciativa(nombreIni);
-
 	}
 }
