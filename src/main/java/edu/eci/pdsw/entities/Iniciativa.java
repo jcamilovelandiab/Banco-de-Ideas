@@ -136,6 +136,11 @@ public class Iniciativa {
 		this.intereses = intereses;
 	}
 
+	public String getNombreUnido(){
+		return nombre.replaceAll(" ","");
+		
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -146,5 +151,4 @@ public class Iniciativa {
 				+ ", palabrasClave=" + palabrasClave + ", votantes=" + votantes + ", comentarios=" + comentarios
 				+ ", intereses=" + intereses + "]";
 	}
-
 }

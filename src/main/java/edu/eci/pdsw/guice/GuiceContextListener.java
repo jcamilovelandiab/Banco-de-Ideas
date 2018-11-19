@@ -47,5 +47,4 @@ public class GuiceContextListener implements ServletContextListener {
 		ServletContext servletContext = servletContextEvent.getServletContext();
 		servletContext.setAttribute(Injector.class.getName(), injector);
 	}
-
 }
