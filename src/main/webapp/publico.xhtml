@@ -17,9 +17,24 @@
 
 
 	<style type="text/css">
-.value {
-	font-weight: bold;
-}
+	.value {
+		font-weight: bold;
+	}
+
+	.panel-default > .panel-heading {
+	    color: white;
+	    background-color: rgba(0,0,0,0.7);
+	    border-color: transparent;
+	}
+
+	.panel {
+    margin-bottom: 20px;
+    background-color: rgba(204, 181, 181, 0);
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	}
 </style>
 
 </h:head>
@@ -102,7 +117,7 @@
 							                             color: white;
 							                             text-align:center" binding="#{correo}"/> 
 							                <p:watermark for="email" value="Correo" style="color:white;"/>
-							                
+
 							                <p></p>
 							                <p:separator style="width:350px;height:0px" />
 							                <p:commandButton value = "Comentar" style="
@@ -179,7 +194,7 @@
 					                <a role="button" data-toggle="collapse"
 					                   data-parent="#accordion" href="#hh#{gg.getNombreUnido()}"
 					                   aria-expanded="false" aria-controls="sample-list">
-					                    #{gg.nombre}
+					                   <center> #{gg.nombre}</center>
 					                </a>
 					            </h4>
 					        </div>
