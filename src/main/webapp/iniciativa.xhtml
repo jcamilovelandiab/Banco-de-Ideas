@@ -15,6 +15,7 @@
     <h:head>
 
         <h:outputStylesheet name="css/tags.css" />
+        <h:outputStylesheet name="css/tablas.css" />
 
         <style>
 
@@ -256,7 +257,7 @@
 
             </p>
 
-            
+
 
 
 
@@ -326,45 +327,43 @@
 
             </h:panelGrid>
 
-		<p:dataTable id="results" var="ini" value="#{iniciativaBean.iniciativas}" 
+            		<p:dataTable id="results" var="car" value="#{iniciativaBean.inivs()}" 
 
-                rows="4" paginator="true" id="inis"  style="background-color: rgba(255, 237, 246, 0.3);"
-
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-
-        rowsPerPageTemplate="6,12,18" styleClass="dataG-title"
+                rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15" 
 
         >
+  
+        <f:facet name="header">
+            Multiple Column Sort with Metakey
+        </f:facet>
+                            <p:column headerText="Id" sortBy="#{car.nombre}">
+            <h:outputText value="#{car.nombre}" />
+        </p:column>
+ 
+                            <p:column headerText="Year" sortBy="#{car.fechaPropuesta}">
+            <h:outputText value="#{car.fechaPropuesta}" />
+        </p:column>
+ 
+                            <p:column headerText="Brand" sortBy="#{car.descripcion}">
+            <h:outputText value="#{car.descripcion}" />
+        </p:column>
+ 
+                            <p:column headerText="Color" sortBy="#{car.proponente.nombre}">
+            <h:outputText value="#{car.proponente.nombre}" />
+        </p:column>
+    </p:dataTable>
 
-			<p:column headerText="Iniciativas">
-
-				<p:fieldset collapsed="true" legend="#{ini.nombre}" toggleable="true" toggleSpeed="500">
-
-					<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}"/>					
-
-					<h:outputText value="Proponente: #{ini.proponente.nombre}"></h:outputText><br/>
-
-					<h:outputText value="Fecha en que se propuso: #{ini.fechaPropuesta}"></h:outputText><br/>
-
-					<h:outputText value="Estado de la propuesta: #{ini.estado}"></h:outputText><br/>
-
-					<h:outputText value="Descripción: #{ini.descripcion}"></h:outputText>
-
-				</p:fieldset>
-
-			</p:column>
-
-	        </p:dataTable>
 
 
-
-		
 
         </h:form>
 
-            
 
-	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+
+        <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="js/bootstrap-tagsinput.js" />
     </h:body>
 </html>

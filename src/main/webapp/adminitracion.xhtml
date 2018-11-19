@@ -7,6 +7,7 @@
 
     <h:head>
         <title>Template</title>
+        <h:outputStylesheet name="css/caro.css" />
     
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
      
@@ -80,23 +81,18 @@
     border-collapse: separate;
     border-spacing: 2px;
     border-color:rgba(255, 237, 246, 0.3);
+  
 }
+
         </style>
         <style type="text/css">
-            .value {
-                font-weight: bold;
-            }
-            .dataG{
-                background-color: rgba(255, 248, 246, 0.7);
-                font-family: "PT Sans",Arial,Helvetica,sans-serif;
-                font-size: 13px;
-            }
-            .dataG-title{
-                background-color: rgba(255, 248, 246, 0.7);
-                font-family: "PT Sans",Arial,Helvetica,sans-serif;
-                font-size: 15px;
-                border-color: black;
-            }
+             .value {
+        font-weight: bold;
+    }
+     
+    .ui-carousel {
+        margin-bottom: 20px;
+    }
         </style>
     </h:head>
 
@@ -144,95 +140,57 @@
         </nav>
 
         <!-- usuarios y mas cosas-->
-        <h:panelGrid columns="2">
-            <p:panel id="idIniciativa" >
-                <p:panel style="
-                          border-radius: 11px;          
-                                 background-color: rgba(144, 22, 38, 0.7);
-                                 border: rgba(144, 22, 38, 0.7);
-                                 text-align:center;
-                                 top: 0px;
-                                 left: 2px;
-                                 right: -42px;
-                                 bottom: -10px;
-                                 color : rgba(255, 255, 255, 1);">
-                    <h:outputText value="Iniciativas" style="font-size:13px; text-align: center"></h:outputText>
-                </p:panel>
-                </p:panel><br/>
-
-                <p:panel style="width:650px;height:5px;">
-                    <p:dataGrid id="results" var="ini" value="#{iniciativaBean.inivs()}" 
-                rows="4" paginator="true" style=" border-radius: 11px;
-                          
-                                 background-color: rgba(144, 22, 38, 0.7);
-                                 border: rgba(144, 22, 38, 0.7);
-                                 text-align:center;
-                                 top: 0px;
-                                 left: 2px;
-                                 right: -42px;
-                                 bottom: -10px;
-                                 color : black;"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12,18" styleClass="dataG-title"
-        >
-			<p:column headerText="Iniciativas">
-				<p:fieldset collapsed="true" legend="#{ini.nombre}" toggleable="true" toggleSpeed="500"
-                                            >
-					<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}"/>					
-					<h:outputText value="Proponente: #{ini.proponente.nombre}"></h:outputText><br/>
-					<h:outputText value="Fecha en que se propuso: #{ini.fechaPropuesta}"></h:outputText><br/>
-					<h:outputText value="Estado de la propuesta: #{ini.estado}"></h:outputText><br/>
-					<h:outputText value="Descripción: #{ini.descripcion}"></h:outputText>
-				</p:fieldset>
-			</p:column>
-                    </p:dataGrid>
-
-                </p:panel>
-                
-                    <p:panel id="idUsuario" >
-                <p:panel style="
-                          border-radius: 11px;
-                          
-                                 background-color: rgba(144, 22, 38, 0.7);
-                                 border: rgba(144, 22, 38, 0.7);
-                                 text-align:center;
-                                 top: 0px;
-                                 left: 2px;
-                                 right: -42px;
-                                 bottom: -10px;
-                                 color : rgba(255, 255, 255, 1);">
-                    <h:outputText value="Usuario" style="font-size:13px; text-align: center"></h:outputText>
-                </p:panel>
-                </p:panel><br/>
-
-                <p:panel style="width:650px;height:5px;">
-                 <p:accordionPanel activeIndex="-2" 
-multiple="true" value="#{usuarioBean.usr()}" var="car" style="
-    background-color: rgba(0,0,0,0.4);
-   
-    border-radius: 11px;text-align:center">
-        <p:tab title="#{car.nombre}"  class="tabi">
-            <h:panelGrid columns="2" cellpadding="3">
-                 
-                <h:outputText value="Area:" style="font-weight: bold" />
-                <h:outputText value="#{car.area.nombre}" />
-                
-                <h:outputText value="Correo:" style="font-weight: bold" />
-                <h:outputText value="#{car.correo}" />
     
-     
-            </h:panelGrid>
-        </p:tab>
-    </p:accordionPanel>
-                </p:panel>
+<h:form id="form">
+     <p:carousel value="#{iniciativaBean.inivs()}" headerText="Iniciativas" var="car" itemStyle="text-align:center" responsive="true" >
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px; background-color: white;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+         
+ 
+            <h:outputText value="Nombre:" style="color: black" />
+            <h:outputText value="#{car.nombre}"  style="font-size: 12px"/>
+ 
+            <h:outputText value="Fecha:" style="color: black" />
+            <h:outputText value="#{car.fechaPropuesta}" style="font-size: 12px"/>
+ 
+            <h:outputText value="Estado:"  style="color: black"/>
+            <h:outputText value="#{car.estado}" style="font-size: 12px" />
+ 
+            <h:outputText value="Proponente" style="color: black"/>
+            <h:outputText value="#{car.proponente.nombre}" style="font-size: 12px"/>
+            
+            <h:outputText value="Descripcion" style="color: black"/>
+            <h:outputText value="#{car.descripcion}" style="font-size: 12px"/>
+        </p:panelGrid>
+ 
+      
+    </p:carousel>
+    
+      <p:carousel value="#{usuarioBean.usr()}" headerText="Usuarios" var="car" itemStyle="text-align:center" responsive="true" >
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px; background-color: white;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+         
+ 
+            <h:outputText value="Nombre:" style="color: black" />
+            <h:outputText value="#{car.nombre}"  style="font-size: 12px"/>
+ 
+            <h:outputText value="Correo:" style="color: black" />
+            <h:outputText value="#{car.correo}" style="font-size: 12px"/>
+ 
+            <h:outputText value="Area:"  style="color: black"/>
+            <h:outputText value="#{car.area.nombre}" style="font-size: 12px" />
+ 
 
-        </h:panelGrid><br/>
+        </p:panelGrid>
+ 
+      
+    </p:carousel>
+  
+</h:form>
         
 
             
 
         <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+
         <script src = "bootstrap-3.3.7-dist/js/bootstrap.min.js"/>
     </h:body>
 </html>
