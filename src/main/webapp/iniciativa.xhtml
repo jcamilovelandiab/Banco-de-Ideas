@@ -20,7 +20,11 @@
         <h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />	
         <h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
         <style>
-
+.btn-success {
+    color: #fff;
+    background-color: #990000bd;
+    border-color: #990000bd;
+}
             body {
 
                 margin: 0;
@@ -329,44 +333,38 @@
 
         </h:panelGrid>
 
-        <div class="col-xs-6" style="background-color:transparent;">
-            <table id="example" class="table table-bordered table-striped" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Proponente</th>
-                        <th>Estado</th>    
-                        <th>fechas</th>
-                        <th>Descripcion</th>
-                        <th class="">Edit</th>
+                <div class="col-xs-6" style="background-color:transparent;">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Proponente</th>
+                                <th>Estado</th>    
+                                <th>fechas</th>
+                                <th>Descripcion</th>
+                                 <th class="">Edit</th>
+                            </tr>
 
-                    </tr>
+                        </thead>
+                        <tbody>
 
-                </thead>
-                <tbody>
-
-                    <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
-                        <tr>
-                            <td>#{ini.nombre}</td>
-                            <td>#{ini.proponente.nombre}</td>
-                            <td>
-
-                                #{ini.estado}</td>
-                            <td>#{ini.fechaPropuesta}</td>      
-                            <td>#{ini.descripcion}</td>
-                            <td style="text-align:center;">
+                            <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
+                                <tr id="#{ini.getNombreUnido()}">
+                                    <td>#{ini.nombre}</td>
+                                    <td>#{ini.proponente.nombre}</td>
+                                    <td  >#{ini.estado}</td>
+                                    <td>#{ini.fechaPropuesta}</td>      
+                                    <td>#{ini.descripcion}</td>
+                                    <td  style="text-align:center;">
                                 <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Edit</button>
                             </td>
-                        </tr>
-                    </ui:repeat>
+                                </tr>
+                            </ui:repeat>
 
 
-                </tbody>
-
-
-
-            </table>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        </tbody>
+                    </table>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content"></div>
                 </div>
@@ -383,27 +381,32 @@
 
                         </div>
                         <div class="modal-body"></div>
+   <select name="number" id="number">
+ 
+      <option selected="selected"  value="EN_REVISION">EN_REVISION</option>
+      <option value="DESECHADO">DESECHADO</option>
+      <option value="SOLUCIONADO">SOLUCIONADO</option>
+      <option value="PROYECTO">PROYECTO</option>
+      <option value="EN_ESPERA">EN_ESPERA</option>
+
+    </select>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button id="modify" type="button" class="btn btn-primary" action="#{iniciativaBean.cambioEstado(ini.nombre.value,e )}">Modificar</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-        </div>
-
+                </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
-        <h:outputScript name="js/load.js"></h:outputScript>
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="build/table-edits.min.js"></script>
 
+        <h:outputScript name="js/load.js"></h:outputScript>
+        
 
 
     </h:body>
