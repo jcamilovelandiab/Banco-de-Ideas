@@ -39,28 +39,10 @@ public class UsuarioBean extends BasePageBean {
         private String opcion;
         private String rol;
         private List<String> roles;
-        
-        private String input;
+                
 
     	
-        public String getInput() {
-    		return input;
-    	}
-
-
-    	public void setInput(String input) {
-    		System.out.println(input);
-    		this.input = input.replaceAll("_"," ");
-    	}
-
-
-    	public List<Comentario> getComentarios () throws ServicesException{
-                
-              return (List<Comentario>) services.consultarComentariosxIniciativa(input);
-            
-       }
-
-        
+      
 
     	public void setOpcion(String opcion){
     		this.opcion = opcion;
@@ -116,6 +98,6 @@ public class UsuarioBean extends BasePageBean {
 	        
         public List<Usuario> usr() throws ServicesException{
             System.out.println(services.consultarUsuarios());
-			return (List<Usuario>) services.consultarUsuarios();
+            return (List<Usuario>) services.consultarUsuarios();
 	}
 }

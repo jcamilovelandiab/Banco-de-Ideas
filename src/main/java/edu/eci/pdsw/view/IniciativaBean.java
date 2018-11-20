@@ -1,5 +1,6 @@
 package edu.eci.pdsw.view;
 
+import edu.eci.pdsw.entities.Comentario;
 import edu.eci.pdsw.entities.Estado;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class IniciativaBean extends BasePageBean{
 	private String nombre;
 	private List<String> claves;
 	private List<Iniciativa> iniciativas;
-    private Iniciativa selectIniciativa;
+        private Iniciativa selectIniciativa;
+        private String input;
         
         
 	public List<String> getClaves() {
@@ -74,11 +76,12 @@ public class IniciativaBean extends BasePageBean{
 		this.iniciativas = iniciativas;
 	}
 
-    public Iniciativa getSelectIniciativa() {
+        public Iniciativa getSelectIniciativa() {
         
         return selectIniciativa;
-    }
+        }
 
+<<<<<<< HEAD
     public void setSelectIniciativa(Iniciativa selectIniciativa) {
         this.selectIniciativa = selectIniciativa;
     }
@@ -89,12 +92,19 @@ public class IniciativaBean extends BasePageBean{
         if(e.equals("PROYECTO"))services.modificarEstado(nombre, Estado.PROYECTO);
         else services.modificarEstado(nombre, Estado.SOLUCIONADO);
     }
+=======
+        public void setSelectIniciativa(Iniciativa selectIniciativa) {
+            this.selectIniciativa = selectIniciativa;
+        }
+        public void cambioEstado(String nombre, Estado e) throws ServicesException{
+            services.modificarEstado(nombre, e);
+        }
+>>>>>>> d2436977cdaecde80960015f47dc944573b34d99
 
         
-    public List<Iniciativa>  inivs() throws ServicesException{
-       
+        public List<Iniciativa>  inivs() throws ServicesException{       
 		return (List<Iniciativa>)  services.consultarIniciativas();
-	}
+        }
 
 
 	public List<Iniciativa> getPrueba() throws ServicesException{
@@ -107,6 +117,23 @@ public class IniciativaBean extends BasePageBean{
 		}
 		
 	}
+        
+        public String getInput() {
+    		return input;
+    	}
+
+
+    	public void setInput(String input) {
+    		System.out.println("-.- "+input);
+    		this.input = input.replaceAll("_"," ");
+    	}
+
+
+    	public List<Comentario> getComentarios () throws ServicesException{                
+              return (List<Comentario>) services.consultarComentariosxIniciativa(input);
+       }
+
+        
 
 
 	
