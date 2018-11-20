@@ -14,7 +14,6 @@ import java.util.List;
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "publicoBean")
 @RequestScoped
-
 public class PublicoBean extends BasePageBean {
 	
 	
@@ -23,25 +22,7 @@ public class PublicoBean extends BasePageBean {
 	@Inject
 	private ServicesIdeas services;
 
-	private String opcion;
-
-	public void setOpcion(String opcion){
-		this.opcion = opcion;
-	}
-
-
-	public String getOpcion(){
-		return this.opcion;
-	}
-        
-        public List<Comentario> getComentarios (String nombre) throws ServicesException{
-            String tmp = nombre.replaceAll("_"," ");
-            System.out.println("Entre "+nombre);
-            System.out.println(services.consultarComentariosxIniciativa(tmp));
-            return (List<Comentario>) services.consultarComentariosxIniciativa(tmp);
-        
-        }
-
+	
 	
         
 
