@@ -8,12 +8,12 @@
     <h:head>
         <title>Template</title>
         <h:outputStylesheet name="css/caro.css" />
-    
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-     
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
+
         <style>
             body{
                 font-family: "PT Sans",Arial,Helvetica,sans-serif;
@@ -58,41 +58,52 @@
             .ui-carousel {
                 margin-bottom: 20px;
             }
-             .ui-accordion .ui-accordion-header.ui-state-active {
-    border: 1px solid #007ad9;
-    border-radius: 11px;
-    background-color: rgba(144, 22, 38, 0.7);
-    color: #fbf9f9;
-}
- .ui-accordion .ui-accordion-content {
-    border: 1px solid #c8c8c8;
-    border-radius: 11px;
-    background-color: #ffffff;
-    color: #333333;
-    padding: 0.571em 1em;
-    border-top: 0 none;
-    margin: 0;
-    position: static;
-    line-height: 1.5;
-    
-}
-.table {
-    display: table;
-    border-collapse: separate;
-    border-spacing: 2px;
-    border-color:rgba(255, 237, 246, 0.3);
-  
-}
+            .ui-accordion .ui-accordion-header.ui-state-active {
+                border: 1px solid #007ad9;
+                border-radius: 11px;
+                background-color: rgba(144, 22, 38, 0.7);
+                color: #fbf9f9;
+            }
+            .ui-accordion .ui-accordion-content {
+                border: 1px solid #c8c8c8;
+                border-radius: 11px;
+                background-color: #ffffff;
+                color: #333333;
+                padding: 0.571em 1em;
+                border-top: 0 none;
+                margin: 0;
+                position: static;
+                line-height: 1.5;
+
+            }
+            .table {
+                display: table;
+                border-collapse: separate;
+                border-spacing: 2px;
+                border-color:rgba(255, 237, 246, 0.3);
+
+            }
+            .boton{
+                border-radius: 11px;
+
+                background-color: rgba(144, 22, 38, 0.7);
+
+                border: rgba(144, 22, 38, 0.7);
+
+                text-align:center;
+
+                color : rgba(255, 255, 255, 1)
+            }
 
         </style>
         <style type="text/css">
-             .value {
-        font-weight: bold;
-    }
-     
-    .ui-carousel {
-        margin-bottom: 20px;
-    }
+            .value {
+                font-weight: bold;
+            }
+
+            .ui-carousel {
+                margin-bottom: 20px;
+            }
         </style>
     </h:head>
 
@@ -140,54 +151,70 @@
         </nav>
 
         <!-- usuarios y mas cosas-->
-    
-<h:form id="form">
-     <p:carousel value="#{iniciativaBean.inivs()}" headerText="Iniciativas" var="car" itemStyle="text-align:center" responsive="true" >
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px; background-color: white;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-         
- 
-            <h:outputText value="Nombre:" style="color: black" />
-            <h:outputText value="#{car.nombre}"  style="font-size: 12px"/>
- 
-            <h:outputText value="Fecha:" style="color: black" />
-            <h:outputText value="#{car.fechaPropuesta}" style="font-size: 12px"/>
- 
-            <h:outputText value="Estado:"  style="color: black"/>
-            <h:outputText value="#{car.estado}" style="font-size: 12px" />
- 
-            <h:outputText value="Proponente" style="color: black"/>
-            <h:outputText value="#{car.proponente.nombre}" style="font-size: 12px"/>
-            
-            <h:outputText value="Descripcion" style="color: black"/>
-            <h:outputText value="#{car.descripcion}" style="font-size: 12px"/>
-        </p:panelGrid>
- 
-      
-    </p:carousel>
-    
-      <p:carousel value="#{usuarioBean.usr()}" headerText="Usuarios" var="car" itemStyle="text-align:center" responsive="true" >
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px; background-color: white;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-         
- 
-            <h:outputText value="Nombre:" style="color: black" />
-            <h:outputText value="#{car.nombre}"  style="font-size: 12px"/>
- 
-            <h:outputText value="Correo:" style="color: black" />
-            <h:outputText value="#{car.correo}" style="font-size: 12px"/>
- 
-            <h:outputText value="Area:"  style="color: black"/>
-            <h:outputText value="#{car.area.nombre}" style="font-size: 12px" />
- 
 
-        </p:panelGrid>
- 
-      
-    </p:carousel>
-  
-</h:form>
+        <h:form id="form">
+            <p:carousel value="#{iniciativaBean.inivs()}" headerText="Iniciativas" var="car" itemStyle="text-align:center" responsive="true" id="yowis">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px; background-color: white;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+
+
+                    <h:outputText value="Nombre:" style="color: black" />
+                    <h:outputText value="#{car.nombre}"  style="font-size: 12px"/>
+
+                    <h:outputText value="Fecha:" style="color: black" />
+                    <h:outputText value="#{car.fechaPropuesta}" style="font-size: 12px"/>
+
+                    <h:outputText value="Estado:"  style="color: black"/>
+                    <h:outputText value="#{car.estado}" style="font-size: 12px" />
+
+                    <h:outputText value="Proponente" style="color: black"/>
+                    <h:outputText value="#{car.proponente.nombre}" style="font-size: 12px"/>
+
+                    <h:outputText value="Descripcion" style="color: black"/>
+                    <h:outputText value="#{car.descripcion}" style="font-size: 12px"/>
+                    <p:commandButton value="Cambiar Estado" type="button" class="boton"
+                    onclick="PF('Cestado').show();" />
+                </p:panelGrid>
+ <p:dialog header="Ingresar nuevo Estado:" widgetVar="Cestado" minHeight="40" style="background-color:  rgba(0,0,0,0.7);
+           color : rgba(255, 255, 255, 1);">
+                <table border="1">
+                    <tr>
+               <div class="form-group">
+  <label for="usr">Estado:</label>
+  <input type="text" class="form-control" id="usr"/>
+</div>
+                    </tr>
         
+                </table>
+      <p:commandButton value="Guardar" class="boton"
+                    update="yowis" process="@this yowis"/>
+  
+                </p:dialog>
 
-            
+            </p:carousel>
+
+            <p:carousel value="#{usuarioBean.usr()}" headerText="Usuarios" var="car" itemStyle="text-align:center" responsive="true" >
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px; background-color: white;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+
+
+                    <h:outputText value="Nombre:" style="color: black" />
+                    <h:outputText value="#{car.nombre}"  style="font-size: 12px"/>
+
+                    <h:outputText value="Correo:" style="color: black" />
+                    <h:outputText value="#{car.correo}" style="font-size: 12px"/>
+
+                    <h:outputText value="Area:"  style="color: black"/>
+                    <h:outputText value="#{car.area.nombre}" style="font-size: 12px" />
+
+
+                </p:panelGrid>
+
+
+            </p:carousel>
+
+        </h:form>
+
+
+
 
         <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
 
