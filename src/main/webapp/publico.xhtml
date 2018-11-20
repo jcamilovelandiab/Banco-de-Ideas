@@ -1,220 +1,203 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" 
-	>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" 
+      >
 
-<h:head>
-
-
-	<h:outputStylesheet name="css/publico.css" />
-	<h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />	
-	<h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
+    <h:head>
 
 
-	<style type="text/css">
-	.value {
-		font-weight: bold;
-	}
-
-	.panel-default > .panel-heading {
-	    color: white;
-	    background-color: rgba(0,0,0,0.7);
-	    border-color: transparent;
-	}
-
-	.panel {
-            margin-bottom: 20px;
-            background-color: rgba(204, 181, 181, 0);
-            border: 1px solid rgba(0, 0, 0, .5);
-            border-radius: 4px;
-            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-	}
-        table.dataTable thead {
-            background-color:rgba(144, 22, 38, 0.7);
-            color:white;
-            border-radius: 1px;
-        }
-       
-</style>
-
-</h:head>
+        <h:outputStylesheet name="css/publico.css" />
+        <h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />	
+        <h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
 
 
-<h:body
-	style="background-image:url(resources/images/publico.jpg);background-size:cover;background-repeat: no-repeat;">
-	<f:metadata>
-		<f:viewParam name="correo" value="#{usuarioBean.correo}" />
-	</f:metadata>
+        <style type="text/css">
+            .value {
+                font-weight: bold;
+            }
 
-	<p:inputText id="nom" binding="#{nom}"
-		value="#{usuarioBean.getUsuario().getNombre()}" style="display:none" />
-	<p:inputText id="nomi" binding="#{nomi}"
-		value="#{usuarioBean.getUsuario().getTipo()}" style="display:none" />
-	<nav class="navbar navbar-default" style="height:8px">
-	<div class="container-fluid">
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<h:panelGrid columns="1"
-					style="
-                             text-align:center;
-                             margin: 1% auto;
-                             height:5px;">
-					<h:outputText value="#{nom.value}"
-						style=" font-size: 20px;
-                                      color : rgba(255, 255, 255, 1);
-                                      " />
+            .panel-default > .panel-heading {
+                color: white;
+                background-color: rgba(0,0,0,0.7);
+                border-color: transparent;
+            }
 
-					<h:outputText value="#{nomi.value}"
-						style=" font-size: 15px;
-                                      color : rgba(255, 255, 255, 1);
-                                      " />
-				</h:panelGrid>
-			</ul>
+            .panel {
+                margin-bottom: 20px;
+                background-color: rgba(204, 181, 181, 0);
+                border: 1px solid rgba(0, 0, 0, .5);
+                border-radius: 4px;
+                -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+                box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            }
+            table.dataTable thead {
+                background-color:rgba(144, 22, 38, 0.7);
+                color:white;
+                border-radius: 1px;
+            }
 
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.xhtml" style="font-size: 1.5rem"><span
-						class="glyphicon glyphicon-log-in"></span> Salir</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
+        </style>
 
-   	<div class="container">
-		<div class="row">
+    </h:head>
 
-			<div class="col-xs-6">
-					    	
 
-		
-					<ul class="nav nav-tabs"  style="width: 100%">
-							<li class="active">
-				        <a  href="#1" data-toggle="tab">Comentarios</a>
-							</li>
-							<li><a href="#2" data-toggle="tab">Comentar</a>
-							</li> 
-							
-						</ul>
+    <h:body
+        style="background-image:url(resources/images/publico.jpg);background-size:cover;background-repeat: no-repeat;">
+        <f:metadata>
+            <f:viewParam name="correo" value="#{usuarioBean.correo}" />
+        </f:metadata>
 
-							<div class="tab-content ">
-							  <div class="tab-pane active" id="1">
-						          <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
-										</div>
-									
-						        <div class="tab-pane" id="2">
-						        	<h:form  prependId="false" >
-							            <h:panelGrid columns="1" style="
-							                         margin: 15% auto;
-							                         width:450px;height:5px;
-							                         background-color: rgba(0,0,0,0.7);
-							                         border-radius: 11px;text-align:center" >
-							                <p></p>
+        <p:inputText id="nom" binding="#{nom}"
+                     value="#{usuarioBean.getUsuario().getNombre()}" style="display:none" />
+        <p:inputText id="nomi" binding="#{nomi}"
+                     value="#{usuarioBean.getUsuario().getTipo()}" style="display:none" />
+        <nav class="navbar navbar-default" style="height:8px">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse"
+                     id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <h:panelGrid columns="1"
+                                     style="
+                                     text-align:center;
+                                     margin: 1% auto;
+                                     height:5px;">
+                            <h:outputText value="#{nom.value}"
+                                          style=" font-size: 20px;
+                                          color : rgba(255, 255, 255, 1);
+                                          " />
 
-							                <p:inputText id="email" style="border-radius: 11px;
-							                             background-color: rgba(255, 237, 246, 0.3);
-							                             border: rgba(255, 237, 246, 0.3);
-							                             color: white;
-							                             text-align:center" binding="#{correo}"/> 
-							                <p:watermark for="email" value="Correo" style="color:white;"/>
+                            <h:outputText value="#{nomi.value}"
+                                          style=" font-size: 15px;
+                                          color : rgba(255, 255, 255, 1);
+                                          " />
+                        </h:panelGrid>
+                    </ul>
 
-							                <p></p>
-							                <p:separator style="width:350px;height:0px" />
-							                <p:commandButton value = "Comentar" style="
-							                                 border-radius: 11px;
-							                                 background-color: rgba(144, 22, 38, 0.7);
-							                                 border: rgba(144, 22, 38, 0.7);
-							                                 text-align:center;
-							                                 top: -10px;
-							                                 left: 2px;
-							                                 right: -42px;
-							                                 bottom: -10px;
-							                                 color : rgba(255, 255, 255, 1)
-							                                 "
-							                              >
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.xhtml" style="font-size: 1.5rem"><span
+                                    class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-							                </p:commandButton>
+        <input id="input" binding="#{tmp}" update=":comentarios "/>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-6">
 
 
 
-							            </h:panelGrid>
+                    <ul class="nav nav-tabs"  style="width: 100%">
+                        <li class="active">
+                            <a  href="#1" data-toggle="tab">Comentarios</a>
+                        </li>
+                        <li><a href="#2" data-toggle="tab">Comentar</a>
+                        </li> 
 
-							        </h:form>
-						        	
+                    </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-								</div>
-							</div>
-				
-		
-		</div>
-	
-			<div class="col-xs-6" style="background-color:transparent;">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="1">
+                             <table id="comentarios" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Proponente</th>
-                                        <th>Estado</th>    
-                                        <th>fechas</th>
-                                        <th>Descripcion</th>
-                                    </tr>
-                                    
+                                    </tr>                              
                                 </thead>
                                 <tbody>
-                                    
-                                       <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
-                                           <tr>
-                                               <td>#{ini.nombre}</td>
-                                               <td>#{ini.proponente.nombre}</td>
-                                               <td>#{ini.estado}</td>
-                                               <td>#{ini.fechaPropuesta}</td>      
-                                               <td>#{ini.descripcion}</td>
-                                           </tr>
-                                       </ui:repeat>
+                                    <ui:repeat value ="#{publicoBean.getComentarios(tmp.value)}" var="ini">
+                                        <tr>
+                                             <td>#{ini.nombre}</td>
+                                        
+                                        </tr>
+                            </ui:repeat>
+                                       
                                                   
                                     
                                 </tbody>
-                                
-                                
-                                
+      
                             </table>
-			  
-
                         </div>
-		</div>			
-	</div>
-	
+
+                        <div class="tab-pane" id="2">
+                            <h:form  prependId="false" >
+                                <h:panelGrid columns="1" style="
+                                             margin: 15% auto;
+                                             width:450px;height:5px;
+                                             background-color: rgba(0,0,0,0.7);
+                                             border-radius: 11px;text-align:center" >
+                                    <p></p>
+                                    <p:inputText id="email" style="border-radius: 11px;
+                                                 background-color: rgba(255, 237, 246, 0.3);
+                                                 border: rgba(255, 237, 246, 0.3);
+                                                 color: white;
+                                                 text-align:center" binding="#{correo}"/> 
+                                    <p:watermark for="email" value="Correo" style="color:white;"/>
+                                    <p></p>
+                                    <p:separator style="width:350px;height:0px" />
+                                    <p:commandButton value = "Comentar" style="
+                                                     border-radius: 11px;
+                                                     background-color: rgba(144, 22, 38, 0.7);
+                                                     border: rgba(144, 22, 38, 0.7);
+                                                     text-align:center;
+                                                     top: -10px;
+                                                     left: 2px;
+                                                     right: -42px;
+                                                     bottom: -10px;
+                                                     color : rgba(255, 255, 255, 1)
+                                                     "
+                                                     >
+                                    </p:commandButton>
+                                </h:panelGrid>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-6" style="background-color:transparent;">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Proponente</th>
+                                <th>Estado</th>    
+                                <th>fechas</th>
+                                <th>Descripcion</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
+                                <tr id="#{ini.getNombreUnido()}">
+                                    <td>#{ini.nombre}</td>
+                                    <td>#{ini.proponente.nombre}</td>
+                                    <td>#{ini.estado}</td>
+                                    <td>#{ini.fechaPropuesta}</td>      
+                                    <td>#{ini.descripcion}</td>
+                                </tr>
+                            </ui:repeat>
 
 
-
-
+                        </tbody>
+                    </table>
+                </div>
+            </div>			
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-	<h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
-	<h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
-	<h:outputScript name="js/load.js"></h:outputScript>
-</h:body>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+        <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+        <h:outputScript name="js/load.js"></h:outputScript>
+    </h:body>
 </html>

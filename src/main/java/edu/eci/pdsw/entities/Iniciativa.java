@@ -140,8 +140,9 @@ public class Iniciativa {
 	}
 
 	public String getNombreUnido(){
-		return nombre.replaceAll(" ","");	
-	}
+
+		return nombre.replaceAll(" ","_");
+        }
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
