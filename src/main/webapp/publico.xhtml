@@ -87,10 +87,11 @@
             </div>
         </nav>
         
-        
-        <p:inputText id = "input" binding="#{tmp}"/>
-        <p:commandButton id="comentarioBoton" actionListener="#{usuarioBean.input(tmp.value)}"></p:commandButton>
-        
+      
+		<p:inputText id="input" binding="#{keywordsInput}"/>
+                <p:commandButton id="botonComentario" value = "Buscar" actionListener="#{iniciativaBean.setInput(keywordsInput.value)}" style="display: none"></p:commandButton>
+
+
 		
         
         <div class="container">
@@ -179,8 +180,7 @@
                 </div>
             </div>			
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
