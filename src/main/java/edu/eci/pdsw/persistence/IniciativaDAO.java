@@ -12,7 +12,6 @@ public interface IniciativaDAO {
     public void crearIniciativa(Iniciativa iniciativa) throws PersistenceException;
     
     public List<Iniciativa> consultarIniciativas() throws PersistenceException;
-    public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxClaves(String palabraClave) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxOrden(String orden) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxEstado(Estado estado) throws PersistenceException;
