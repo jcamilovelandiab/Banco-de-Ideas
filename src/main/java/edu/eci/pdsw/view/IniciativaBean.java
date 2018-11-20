@@ -1,5 +1,6 @@
 package edu.eci.pdsw.view;
 
+import edu.eci.pdsw.entities.Estado;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,7 +28,7 @@ public class IniciativaBean extends BasePageBean{
 	private String nombre;
 	private List<String> claves;
 	private List<Iniciativa> iniciativas;
-        private Iniciativa selectIniciativa;
+    private Iniciativa selectIniciativa;
         
         
 	public List<String> getClaves() {
@@ -80,6 +81,9 @@ public class IniciativaBean extends BasePageBean{
 
     public void setSelectIniciativa(Iniciativa selectIniciativa) {
         this.selectIniciativa = selectIniciativa;
+    }
+    public void cambioEstado(String nombre, Estado e) throws ServicesException{
+        services.modificarEstado(nombre, e);
     }
 
         

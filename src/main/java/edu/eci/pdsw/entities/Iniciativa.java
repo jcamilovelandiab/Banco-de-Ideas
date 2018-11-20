@@ -15,6 +15,8 @@ public class Iniciativa {
 	private ArrayList<Comentario> comentarios;
 	private ArrayList<Interes> intereses;
 	
+	private ArrayList<Iniciativa> iniciativasRelacionadas;
+	
 	public Iniciativa() {
 		
 	}
@@ -30,6 +32,7 @@ public class Iniciativa {
 		this.comentarios= new ArrayList<Comentario>();
 		this.intereses= new ArrayList<Interes>();
 		this.estado=Estado.EN_ESPERA;
+		this.iniciativasRelacionadas = new ArrayList<Iniciativa>();
 	}
 	
 	public ArrayList<Interes> getInteres() {
@@ -137,9 +140,9 @@ public class Iniciativa {
 	}
 
 	public String getNombreUnido(){
+
 		return nombre.replaceAll(" ","_");
-		
-	}
+        }
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
