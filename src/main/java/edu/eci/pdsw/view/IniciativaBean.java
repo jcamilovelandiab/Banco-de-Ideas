@@ -27,7 +27,7 @@ public class IniciativaBean extends BasePageBean{
 	private String nombre;
 	private List<String> claves;
 	private List<Iniciativa> iniciativas;
-        private Iniciativa selectIniciativa;
+    private Iniciativa selectIniciativa;
         
         
 	public List<String> getClaves() {

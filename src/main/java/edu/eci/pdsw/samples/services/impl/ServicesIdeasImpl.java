@@ -3,9 +3,11 @@ package edu.eci.pdsw.samples.services.impl;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -105,9 +107,22 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	 * @param nombreIni Nombre de la iniciativa
 	 */
 	@Override
-	public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException {
+	public Collection<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException {
 		try{
-			return iniciativaDAO.consultarIniciativasRelacionadas(nombreIni);
+			Iniciativa iniciativa = consultarIniciativa(nombreIni);
+			if(iniciativa==null) {
+				throw new ServicesException("La iniciativa "+nombreIni+" no existe");
+			}
+			List<String> palabrasClave = iniciativa.getPalabrasClave();
+			Collection<Iniciativa> iniciativasxClaves = consultarIniciativasxClaves(palabrasClave);
+			Collection<Iniciativa> iniciativasRelacionadas = new ArrayList<Iniciativa>();
+			System.out.println(iniciativa.getNombre());
+			for (Iniciativa ini : iniciativasxClaves) {
+				if(!ini.getNombre().equals(iniciativa.getNombre())) {
+					iniciativasRelacionadas.add(ini);
+				}
+			}
+			return iniciativasRelacionadas;
 		}catch(PersistenceException  ex) {
 			throw new ServicesException("Error al consultar iniciativas relacionadas de "+nombreIni);
 		}

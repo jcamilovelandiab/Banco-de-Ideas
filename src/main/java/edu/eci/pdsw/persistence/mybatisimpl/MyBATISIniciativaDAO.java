@@ -29,11 +29,6 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws PersistenceException {
-		return iniciativaMapper.consultarIniciativasRelacionadas(nombreIni.toLowerCase());
-	}
-
-	@Override
 	public List<Iniciativa> consultarIniciativasxClaves(String palabraClave) throws PersistenceException {
 		return iniciativaMapper.consultarIniciativasxClaves(palabraClave.toLowerCase());
 	}

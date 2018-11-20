@@ -42,10 +42,8 @@ public class LoginBean extends BasePageBean {
             } else if (user.getTipo().equals(Rol.PMO_ODI)) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("PMO.xhtml?correo=" + correo);
             }
-
         } else {
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-
         }
     }
 

@@ -256,6 +256,17 @@ public class MyBatisExample {
 	    	  for (Interes inter : interesesBiblioteca) {
 	    		  System.out.println(inter);
 	    	  }*/
+	    	  
+	    	  // ---------------------------- PROBANDO INICIATIVAS RELACIONADAS DADA UNA INICIATIVA ----------------------------
+	    	  /*
+	    	  System.out.println("\nConsultar iniciativas relacionadas");
+	    	  Iniciativa iniHacerBiblioteca = ideasServices.consultarIniciativa("hacer una biblioteca");
+	    	  System.out.println(iniHacerBiblioteca+"\n");
+	    	  assert(iniHacerBiblioteca!=null);
+	    	  Collection<Iniciativa> iniciativasRelacionadas = ideasServices.consultarIniciativasRelacionadas("hacer una biblioteca");
+	    	  for (Iniciativa iniRelacionada : iniciativasRelacionadas) {
+	    		  System.out.println(iniRelacionada);
+	    	  }*/
 	      } catch (ServicesException e){
 			  System.out.println(e.getMessage());
 	      }
