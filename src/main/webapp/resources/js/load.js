@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    $('table.display').DataTable();
+    $('#example').DataTable();
 } );
 
