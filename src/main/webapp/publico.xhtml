@@ -28,13 +28,19 @@
 	}
 
 	.panel {
-    margin-bottom: 20px;
-    background-color: rgba(204, 181, 181, 0);
-    border: 1px solid rgba(0, 0, 0, .5);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            margin-bottom: 20px;
+            background-color: rgba(204, 181, 181, 0);
+            border: 1px solid rgba(0, 0, 0, .5);
+            border-radius: 4px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 	}
+        table.dataTable thead {
+            background-color:rgba(144, 22, 38, 0.7);
+            color:white;
+            border-radius: 1px;
+        }
+       
 </style>
 
 </h:head>
@@ -165,55 +171,46 @@
 		</div>
 	
 			<div class="col-xs-6" style="background-color:transparent;">
-					  	<form class="form-inline" >
-					  			Iniciativas
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Proponente</th>
+                                        <th>Estado</th>    
+                                        <th>fechas</th>
+                                        <th>Descripcion</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>
+                                    
+                                       <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
+                                           <tr>
+                                               <td>#{ini.nombre}</td>
+                                               <td>#{ini.proponente.nombre}</td>
+                                               <td>#{ini.estado}</td>
+                                               <td>#{ini.fechaPropuesta}</td>      
+                                               <td>#{ini.descripcion}</td>
+                                           </tr>
+                                       </ui:repeat>
+                                                  
+                                    
+                                </tbody>
+                                
+                                
+                                
+                            </table>
+			  
 
-					  		  	<select class="form-control" id="exampleFormControlSelect1"
-									style="border-radius: 11px; background-color: rgba(255, 237, 246, 0.5); border: rgba(144, 22, 38, 0.7); text-align: center; width: 250px; left:-5px;">
-									<ui:repeat var="gg" value="#{usuarioBean.getRoles()}">
-										<option value="#{usuarioBean.opcion}">#{gg}</option>
-									</ui:repeat>
-								</select>
-								<button  class="btn btn-default" style="
-					                                 border-radius: 11px;
-					                                 background-color: rgba(144, 22, 38, 0.7);
-					                                 border: rgba(144, 22, 38, 0.7);
-					                                 right: -42px;
-					                                 bottom: -10px;
-					                                 color : rgba(255, 255, 255, 1)">Buscar</button>
-					    </form>	
-						<p></p>
-
-
-					
-
-					<ui:repeat var="gg" value="#{iniciativaBean.inivs()}" >   		
-					   	<div class="panel panel-default">
-					        <div class="panel-heading" role="tab" id="heading#{gg.nombre}">
-					            <h4 class="panel-title">
-					                <a role="button" data-toggle="collapse"
-					                   data-parent="#accordion" href="#hh#{gg.getNombreUnido()}"
-					                   aria-expanded="false" aria-controls="sample-list">
-					                   <center> #{gg.nombre}</center>
-					                </a>
-					            </h4>
-					        </div>
-					        <div id="hh#{gg.getNombreUnido()}" class="panel-collapse collapse"
-					             role="tabpanel" aria-labelledby="heading#{gg.nombre}">
-					            <div class="panel-body">#{gg.descripcion}</div>
-					        </div>
-					    </div>
-					</ui:repeat>
-
-				</div>
-			</div>			
-		</div>
+                        </div>
+		</div>			
+	</div>
 	
 
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	<h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
