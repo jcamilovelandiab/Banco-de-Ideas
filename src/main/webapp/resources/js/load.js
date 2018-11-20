@@ -2,10 +2,20 @@ $(document).ready(function() {
     $('#example').DataTable();
 } );
 
-$(document).ready(function () {      
-     $('#example tbody tr').click(function (event) {
+
+
+ $('#example tbody tr').click(function (event) {
          var id =  $(this).attr('id');
-         $("#input").val(id);
-         $("#botonComentario").click();
-	 });
+         $("#initiativeByKeywords_form input").val(id);
+	      $("#initiativeByKeywords_form botonComentario").click(
+             alert("holaaaa pirobos")    
+             );
+     
+     
  });
+ 
+ 
+
+ 
+ 
+ 

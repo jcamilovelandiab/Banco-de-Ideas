@@ -87,10 +87,13 @@
             </div>
         </nav>
         
-      
-		<p:inputText id="input" binding="#{keywordsInput}"/>
-                <p:commandButton id="botonComentario" value = "Buscar" actionListener="#{iniciativaBean.setInput(keywordsInput.value)}" style="display: none"></p:commandButton>
-
+        
+        <h:form id="initiativeByKeywords_form">
+		<p:inputText id="input" binding="#{keywordsInput}"  />
+                <p:commandButton id="botonComentario" value = "Buscar" action="#{iniciativaBean.setInput(keywordsInput.value)}" ></p:commandButton>
+        
+        </h:form>
+        
 
 		
         
