@@ -128,11 +128,12 @@
 
                     </ul>
                     <p></p>
-                    
+
                     <div class="tab-content ">
-       
+
                         <div class="tab-pane active" id="1">
-                            <h:panelGroup id="comentariosPanel">                               
+                            <h:panelGroup id="comentariosPanel">  
+                                <p:inputText binding="#{nombreIniciativa}" value="#{iniciativaBean.input}" style="display: none"/>            
                                 <table id="comentarios"  class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
@@ -150,18 +151,18 @@
                                             </tr>
                                         </ui:repeat>
                                     </tbody>
-                                    
+
                                 </table>
                                 <h:outputScript name = "dataTable/js/jquery.dataTables.min.js" />
                                 <h:outputScript name = "dataTable/js/dataTables.bootstrap.min.js" />
                                 <h:outputScript name = "js/tableRefresh.js" />
-                              
-                               
+
+
                             </h:panelGroup>
-                            
-                          
+
+
                         </div>
-                        
+
                         <div class="tab-pane " id="2">
                             <h:form  prependId="false" >
                                 <h:panelGrid columns="1" style="
@@ -170,19 +171,19 @@
                                              background-color: rgba(0,0,0,0.7);
                                              border-radius: 11px;text-align:center" >
                                     <p></p>
-                                    
-                                    
+
+
                                     <center>
-                                        
-                                        <label for="exampleFormControlTextarea1" style="color:white;">Registra tu comentario</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                               style="border-radius: 11px;
-                                                 background-color: rgba(255, 237, 246, 0.3);
-                                                 border: rgba(255, 237, 246, 0.3);
-                                                 color: white;
-                                                 text-align:center;
-                                                 width:80%"
-                                               ></textarea>
+
+                                        <label style="color:white;">Registra tu comentario</label>
+                                        <p:inputTextarea rows="6" cols="33" style="border-radius: 11px;
+                                                         background-color: rgba(255, 237, 246, 0.3);
+                                                         border: rgba(255, 237, 246, 0.3);
+                                                         color: white;
+                                                         text-align:center;
+                                                         width:80%"
+                                                         binding="#{comentarioAgregar}"
+                                                         />
                                     </center>
                                     <p></p>
                                     <p:separator style="width:350px;height:0px" />
@@ -197,7 +198,7 @@
                                                      bottom: -10px;
                                                      color : rgba(255, 255, 255, 1)
                                                      "
-                                                    
+                                                     actionListener="#{usuarioBean.registrarComentario(comentarioAgregar.value,nombreIniciativa.value)}"
                                                      >
                                     </p:commandButton>
                                 </h:panelGrid>
@@ -229,16 +230,16 @@
                                     <td>#{ini.fechaPropuesta}</td>      
                                     <td>#{ini.descripcion}</td>
                                     <td>
-                                        
+                                       
                                         <p:commandButton value="Comentarios" actionListener="#{iniciativaBean.setInput(ini.getNombreUnido())}" style="
-                                                     border-radius: 11px;
-                                                     background-color: rgba(144, 22, 38, 0.7);
-                                                     border: rgba(144, 22, 38, 0.7);
-                                                     text-align:center;
-                                                     bottom: -10px;
-                                                     color : rgba(255, 255, 255, 1)
-                                                     " update =  ":comentariosPanel"
-                                          ></p:commandButton>
+                                                         border-radius: 11px;
+                                                         background-color: rgba(144, 22, 38, 0.7);
+                                                         border: rgba(144, 22, 38, 0.7);
+                                                         text-align:center;
+                                                         bottom: -10px;
+                                                         color : rgba(255, 255, 255, 1)
+                                                         " update =  ":comentariosPanel"
+                                                         ></p:commandButton>
                                     </td>
                                 </tr>
                             </ui:repeat>
@@ -249,8 +250,8 @@
                 </div>
             </div>			
         </div>
-        
-        
+
+
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>       
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />

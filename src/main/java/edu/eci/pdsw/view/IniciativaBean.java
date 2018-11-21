@@ -20,117 +20,108 @@ import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
 import java.util.Arrays;
 
-
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "iniciativaBean")
 @RequestScoped
-public class IniciativaBean extends BasePageBean{
-	
-	@ManagedProperty(value = "#{param.nombre}")
-	private String nombre;
-	private List<String> claves;
-	private List<Iniciativa> iniciativas;
-        private Iniciativa selectIniciativa;
-        private String input;
-        
-        
-	
+public class IniciativaBean extends BasePageBean {
 
+    @ManagedProperty(value = "#{param.nombre}")
+    private String nombre;
+    private List<String> claves;
+    private List<Iniciativa> iniciativas;
+    private Iniciativa selectIniciativa;
+    private String input;
 
-	private static final long serialVersionUID = 3594009161252782831L;
-	
-	@Inject
-	private ServicesIdeas services;
+    private static final long serialVersionUID = 3594009161252782831L;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @Inject
+    private ServicesIdeas services;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public void getDatas()throws ServicesException {
-		try {
-			iniciativas=new ArrayList(services.consultarIniciativasxClaves(claves));
-		} catch (ServicesException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public List<Iniciativa> getIniciativas() {
-		return iniciativas;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setIniciativas(List<Iniciativa> iniciativas) {
-		this.iniciativas = iniciativas;
-	}
+    public void getDatas() throws ServicesException {
+        try {
+            iniciativas = new ArrayList(services.consultarIniciativasxClaves(claves));
+        } catch (ServicesException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-        public Iniciativa getSelectIniciativa() {
-        
+    public List<Iniciativa> getIniciativas() {
+        return iniciativas;
+    }
+
+    public void setIniciativas(List<Iniciativa> iniciativas) {
+        this.iniciativas = iniciativas;
+    }
+
+    public Iniciativa getSelectIniciativa() {
+
         return selectIniciativa;
+    }
+
+    public void setSelectIniciativa(Iniciativa selectIniciativa) {
+        this.selectIniciativa = selectIniciativa;
+    }
+
+    public void cambioEstado(String nombre, int posi) throws ServicesException {
+        List<Estado> pos = Arrays.asList(Estado.class.getEnumConstants());
+        System.out.println(nombre + pos.get(posi) + "" + "yowis");
+        services.modificarEstado(nombre, pos.get(posi));
+
+    }
+
+    public List<Iniciativa> inivs() throws ServicesException {
+        return (List<Iniciativa>) services.consultarIniciativas();
+    }
+
+    public List<Iniciativa> getPrueba() throws ServicesException {
+        List<Iniciativa> tmp;
+        try {
+            tmp = (List<Iniciativa>) services.consultarIniciativas();
+            return tmp;
+        } catch (ServicesException e) {
+            throw new ServicesException("ERROR AL TOMAR LA INICIATIVA");
         }
 
+    }
 
-        public void setSelectIniciativa(Iniciativa selectIniciativa) {
-            this.selectIniciativa = selectIniciativa;
+    public String getInput() {
+        
+        return (input==null)? "":this.input;
+    }
+
+    public void setInput(String input) {
+        System.out.println("Remplace " + input);
+        this.input = input.replaceAll("_", " ");
+    }
+
+    public List<Comentario> getComentarios() throws ServicesException {
+        System.out.println("Input" + input);
+        System.out.println(services.consultarComentariosxIniciativa(input));
+        return (List<Comentario>) services.consultarComentariosxIniciativa(input);
+    }
+
+    public List<Estado> getTypes() {
+        return Arrays.asList(Estado.class.getEnumConstants());
+    }
+
+    public List<String> getClaves() {
+        return claves;
+    }
+
+    public void setClaves(List<String> claves) {
+        if (claves == null) {
+            this.claves = new ArrayList<String>();
+        } else {
+            this.claves = claves;
         }
-        
-        public void cambioEstado(String nombre, int posi) throws ServicesException{
-            List<Estado> pos=Arrays.asList(Estado.class.getEnumConstants() );
-            System.out.println(nombre+pos.get(posi)+""+"yowis");
-            services.modificarEstado(nombre, pos.get(posi));
-            
-        }
-        
-        public List<Iniciativa>  inivs() throws ServicesException{       
-		return (List<Iniciativa>)  services.consultarIniciativas();
-        }
+    }
 
-
-	public List<Iniciativa> getPrueba() throws ServicesException{
-		List<Iniciativa> tmp;
-		try {
-			tmp = (List<Iniciativa>) services.consultarIniciativas();
-			return tmp;
-		} catch (ServicesException e) {
-			 throw new ServicesException("ERROR AL TOMAR LA INICIATIVA");
-		}
-		
-	}
-        
-        public String getInput() {
-    		return input;
-    	}
-
-
-    	public void setInput(String input) {
-    		System.out.println("Remplace "+input);
-    		this.input = input.replaceAll("_"," ");
-    	}
-
-
-    	public List<Comentario> getComentarios () throws ServicesException{  
-              System.out.println("Input"+input);
-              System.out.println(services.consultarComentariosxIniciativa(input));
-              return (List<Comentario>) services.consultarComentariosxIniciativa(input);
-       }
-        public List<Estado> getTypes (){
-		return Arrays.asList(Estado.class.getEnumConstants() );
-	}
-           
-        public List<String> getClaves() {
-		return claves;
-	}
-
-	public void setClaves(List<String> claves) {
-		if(claves == null) {
-			this.claves = new ArrayList<String>();
-		}else {
-			this.claves = claves;
-		}
-	}
-	
-        
-   }
-
+}
