@@ -87,13 +87,10 @@ public class IniciativaBean extends BasePageBean{
             this.selectIniciativa = selectIniciativa;
         }
         
-        public void cambioEstado(String nombre, String e) throws ServicesException{
-            System.out.println("hola marika   "+e);
-            if (e.equals("EN_ESPERA"))services.modificarEstado(nombre, Estado.EN_ESPERA);
-            if (e.equals("EN_REVISION"))services.modificarEstado(nombre, Estado.EN_REVISION);
-            if (e.equals("PROYECTO"))services.modificarEstado(nombre, Estado.PROYECTO);
-            if (e.equals("SOLUCIONADO"))services.modificarEstado(nombre, Estado.SOLUCIONADO);
-            else services.modificarEstado(nombre, Estado.DESECHADO);
+        public void cambioEstado(String nombre, int posi) throws ServicesException{
+            List<Estado> pos=Arrays.asList(Estado.class.getEnumConstants() );
+            System.out.println(nombre+pos.get(posi));
+            services.modificarEstado(nombre, pos.get(posi));
             
         }
         
