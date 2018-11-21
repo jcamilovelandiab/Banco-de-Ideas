@@ -40,6 +40,22 @@
                 color:white;
                 border-radius: 1px;
             }
+            .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+                z-index: 3;
+                color: #fff;
+                cursor: default;
+                background-color: #900;
+                border-color: transparent;
+            }
+
+            .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+                color: white;
+                cursor: not-allowed;
+                background-color: rgba(64, 76, 79, 0.76);
+                border-color: transparent;
+
+            }
+
 
         </style>
 
@@ -86,17 +102,16 @@
                 </div>
             </div>
         </nav>
-        
-        
+
+
         <!--<h:form id="initiativeByKeywords_form">
             <h:outputText id="input" value="#{buttonText}"/>
             
             <p:commandButton id="botonComentario" value = "Buscar" action="#{iniciativaBean.setInput(buttonText.value)}" ></p:commandButton>
         </h:form>-->
-        
 
-		
-        
+
+
         <div class="container">
             <div class="row">
 
@@ -117,25 +132,31 @@
                     <div class="tab-content ">
        
                         <div class="tab-pane active" id="1">
-                            <h:panelGroup id="comentariosPanel" >
-                               
+                            <h:panelGroup id="comentariosPanel">                               
                                 <table id="comentarios"  class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Comentarios</th>
+                                            <th>Fechas</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <ui:repeat value ="#{iniciativaBean.getComentarios()}" var="com">
                                             <tr>
-                                                <td>#{com.autor.nombre}</td> 
-                                             
+                                                <td>#{com.autor.nombre}</td>                                              
                                                 <td>#{com.contenido}</td> 
+                                                <td>#{com.fecha}</td>
                                             </tr>
                                         </ui:repeat>
                                     </tbody>
+                                    
                                 </table>
+                                <h:outputScript name = "dataTable/js/jquery.dataTables.min.js" />
+                                <h:outputScript name = "dataTable/js/dataTables.bootstrap.min.js" />
+                                <h:outputScript name = "js/tableRefresh.js" />
+                              
+                               
                             </h:panelGroup>
                             
                           
@@ -145,16 +166,24 @@
                             <h:form  prependId="false" >
                                 <h:panelGrid columns="1" style="
                                              margin: 15% auto;
-                                             width:450px;height:5px;
+                                             width:75%;height:5px;
                                              background-color: rgba(0,0,0,0.7);
                                              border-radius: 11px;text-align:center" >
                                     <p></p>
-                                    <p:inputText id="email" style="border-radius: 11px;
+                                    
+                                    
+                                    <center>
+                                        
+                                        <label for="exampleFormControlTextarea1" style="color:white;">Registra tu comentario</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                               style="border-radius: 11px;
                                                  background-color: rgba(255, 237, 246, 0.3);
                                                  border: rgba(255, 237, 246, 0.3);
                                                  color: white;
-                                                 text-align:center" binding="#{correo}"/> 
-                                    <p:watermark for="email" value="Correo" style="color:white;"/>
+                                                 text-align:center;
+                                                 width:80%"
+                                               ></textarea>
+                                    </center>
                                     <p></p>
                                     <p:separator style="width:350px;height:0px" />
                                     <p:commandButton value = "Comentar" style="
@@ -178,7 +207,7 @@
                 </div>
 
                 <div class="col-xs-6" style="background-color:transparent;">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="iniciativas" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -221,6 +250,8 @@
             </div>			
         </div>
         
+        
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>       
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
