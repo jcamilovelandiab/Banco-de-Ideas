@@ -115,6 +115,7 @@ public class IniciativaBean extends BasePageBean{
 
     	public List<Comentario> getComentarios () throws ServicesException{  
               System.out.println("Input"+input);
+              System.out.println(services.consultarComentariosxIniciativa(input));
               return (List<Comentario>) services.consultarComentariosxIniciativa(input);
        }
         public List<Estado> getTypes (){

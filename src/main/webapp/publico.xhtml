@@ -123,12 +123,15 @@
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
+                                            <th>Comentarios</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <ui:repeat value ="#{iniciativaBean.getComentarios()}" var="com">
-                                            <tr id="#{com.autor.nombre}">
-                                                <td>#{com.autor.nombre}</td>                                  
+                                            <tr>
+                                                <td>#{com.autor.nombre}</td> 
+                                             
+                                                <td>#{com.contenido}</td> 
                                             </tr>
                                         </ui:repeat>
                                     </tbody>
@@ -165,8 +168,7 @@
                                                      bottom: -10px;
                                                      color : rgba(255, 255, 255, 1)
                                                      "
-                                                     update="comentariosPanel
-                                                     "
+                                                    
                                                      >
                                     </p:commandButton>
                                 </h:panelGrid>
@@ -199,14 +201,14 @@
                                     <td>#{ini.descripcion}</td>
                                     <td>
                                         
-                                        <p:commandButton value="Comentarios" oncomplete="#{iniciativaBean.setInput(ini.getNombreUnido())}" style="
+                                        <p:commandButton value="Comentarios" actionListener="#{iniciativaBean.setInput(ini.getNombreUnido())}" style="
                                                      border-radius: 11px;
                                                      background-color: rgba(144, 22, 38, 0.7);
                                                      border: rgba(144, 22, 38, 0.7);
                                                      text-align:center;
                                                      bottom: -10px;
                                                      color : rgba(255, 255, 255, 1)
-                                                     " 
+                                                     " update =  ":comentariosPanel"
                                           ></p:commandButton>
                                     </td>
                                 </tr>
