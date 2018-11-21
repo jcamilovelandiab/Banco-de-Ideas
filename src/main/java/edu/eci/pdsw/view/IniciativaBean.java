@@ -34,17 +34,6 @@ public class IniciativaBean extends BasePageBean{
         private String input;
         
         
-	public List<String> getClaves() {
-		return claves;
-	}
-
-	public void setClaves(List<String> claves) {
-		if(claves == null) {
-			this.claves = new ArrayList<String>();
-		}else {
-			this.claves = claves;
-		}
-	}
 	
 
 
@@ -130,9 +119,19 @@ public class IniciativaBean extends BasePageBean{
         public List<Estado> getTypes (){
 		return Arrays.asList(Estado.class.getEnumConstants() );
 	}
+           
+        public List<String> getClaves() {
+		return claves;
+	}
 
-        
-
-
+	public void setClaves(List<String> claves) {
+		if(claves == null) {
+			this.claves = new ArrayList<String>();
+		}else {
+			this.claves = claves;
+		}
+	}
 	
+        
+    }
 }
