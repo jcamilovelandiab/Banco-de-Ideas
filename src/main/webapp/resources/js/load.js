@@ -8,7 +8,7 @@ $(document).ready(function() {
          var id =  $(this).attr('id');
          $("#initiativeByKeywords_form input").val(id);
 	      $("#initiativeByKeywords_form botonComentario").click(
-             alert("holaaaa pirobos")    
+                
              );
      
      

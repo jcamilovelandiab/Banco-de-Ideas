@@ -18,6 +18,7 @@ import edu.eci.pdsw.entities.Iniciativa;
 import edu.eci.pdsw.samples.services.ServicesException;
 import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
+import java.util.Arrays;
 
 
 @SuppressWarnings("deprecation")
@@ -86,8 +87,14 @@ public class IniciativaBean extends BasePageBean{
             this.selectIniciativa = selectIniciativa;
         }
         
-        public void cambioEstado(String nombre, Estado e) throws ServicesException{
-            services.modificarEstado(nombre, e);
+        public void cambioEstado(String nombre, String e) throws ServicesException{
+            System.out.println("hola marika   "+e);
+            if (e.equals("EN_ESPERA"))services.modificarEstado(nombre, Estado.EN_ESPERA);
+            if (e.equals("EN_REVISION"))services.modificarEstado(nombre, Estado.EN_REVISION);
+            if (e.equals("PROYECTO"))services.modificarEstado(nombre, Estado.PROYECTO);
+            if (e.equals("SOLUCIONADO"))services.modificarEstado(nombre, Estado.SOLUCIONADO);
+            else services.modificarEstado(nombre, Estado.DESECHADO);
+            
         }
         
         public List<Iniciativa>  inivs() throws ServicesException{       
@@ -120,6 +127,9 @@ public class IniciativaBean extends BasePageBean{
     	public List<Comentario> getComentarios () throws ServicesException{                
               return (List<Comentario>) services.consultarComentariosxIniciativa(input);
        }
+        public List<Estado> getTypes (){
+		return Arrays.asList(Estado.class.getEnumConstants() );
+	}
 
         
 
