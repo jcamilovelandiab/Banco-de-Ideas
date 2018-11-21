@@ -16,6 +16,7 @@ import edu.eci.pdsw.samples.services.impl.*;
 
 import edu.eci.pdsw.entities.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -41,7 +42,16 @@ public class UsuarioBean extends BasePageBean {
         private List<String> roles;
                 
 
-    	
+    	     public List<Rol> getTypes (){
+		return Arrays.asList(Rol.class.getEnumConstants() );
+	}
+             public void changeRol(String  correo, int i) throws ServicesException{
+                 List<Rol> pos=Arrays.asList(Rol.class.getEnumConstants() );
+                  System.out.println(correo+pos.get(i)+"   "+i+"  "+"yowis");
+                 services.asignarPerfil(correo,pos.get(i));
+             
+             }
+             
       
 
     	public void setOpcion(String opcion){
@@ -63,23 +73,10 @@ public class UsuarioBean extends BasePageBean {
             this.correo = correo;		
 	}
 
-        public String getRol() {
-            return rol;
-        }
 
-        public void setRol(String rol) {
-            this.rol = rol;
-        }
 
        
-       public List<String> getRoles(){
-           roles = new ArrayList<String>();
-           for (Rol entry : services.consultarRoles()) {
-                roles.add(entry.name());
-           }
-           System.out.println(roles);
-           return (List<String>)roles;
-       }
+
         
 	
         public Usuario getUsuario() throws ServicesException {
