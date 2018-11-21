@@ -333,8 +333,8 @@
 
         </h:panelGrid>
 
-        <div class="col-xs-6" style="background-color:transparent;">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+  <div class="col-xs-6" style="background-color:transparent;">
+            <table id="example" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -383,8 +383,8 @@
                         </div>
                         <div class="modal-body">
                         	<h:form id="rol_form">
-		     	  <input type="text" name="emailUser" id="emailUser" value="" />	  
-				  <p:inputText id="emailUser" binding="#{emailUser}" />
+		     	  <input type="text" name="emailUser" id="emailUser" value="" style="visibility: hidden" />	  
+				  <p:inputText id="emailUser" binding="#{emailUser}" type="hidden"/>
 				  <div class="form-group" >
 				  	  <label for="NuevoRol">Nuevo Rol</label>
 					  <select class="form-control" id="select">
@@ -395,9 +395,14 @@
 					  </select>
 					  <p:inputText styleClass="rol" binding="#{modifyRol2}" type="hidden"  />
 				  </div>
-				  <p:commandButton value = "Modificar"
+                                  <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                              <p:commandButton value = "Modificar"
 					actionListener="#{iniciativaBean.cambioEstado(emailUser.value,modifyRol2.value)}" id="boton" styleClass="btn btn-success">
 				  </p:commandButton>
+				
+                        </div>
 				</h:form>
  </div>
                      
@@ -406,13 +411,15 @@
             </div>
         </div>
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
 
-        <h:outputScript name="js/load.js"></h:outputScript>
+        
+        <h:outputScript name="js/ini.js"></h:outputScript>
 
 
 
