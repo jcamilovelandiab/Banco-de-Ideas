@@ -78,7 +78,7 @@ public class IniciativaBean extends BasePageBean{
         
         public void cambioEstado(String nombre, int posi) throws ServicesException{
             List<Estado> pos=Arrays.asList(Estado.class.getEnumConstants() );
-            System.out.println(nombre+pos.get(posi));
+            System.out.println(nombre+pos.get(posi)+""+"yowis");
             services.modificarEstado(nombre, pos.get(posi));
             
         }
