@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#example').DataTable();
-    $('#tableComentarios').DataTable({
+    $('#comentarios').DataTable({
         searching :false
         
         
