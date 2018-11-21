@@ -81,26 +81,14 @@ public class IniciativaBean extends BasePageBean{
         return selectIniciativa;
         }
 
-<<<<<<< HEAD
-    public void setSelectIniciativa(Iniciativa selectIniciativa) {
-        this.selectIniciativa = selectIniciativa;
-    }
-    public void cambioEstado(String nombre, String e) throws ServicesException{
-        if(e.equals("EN_ESPERA"))services.modificarEstado(nombre, Estado.EN_ESPERA);
-        else if(e.equals("DESECHADO"))services.modificarEstado(nombre, Estado.DESECHADO);
-        if(e.equals("EN_REVISION"))services.modificarEstado(nombre, Estado.EN_REVISION);
-        if(e.equals("PROYECTO"))services.modificarEstado(nombre, Estado.PROYECTO);
-        else services.modificarEstado(nombre, Estado.SOLUCIONADO);
-    }
-=======
+
         public void setSelectIniciativa(Iniciativa selectIniciativa) {
             this.selectIniciativa = selectIniciativa;
         }
+        
         public void cambioEstado(String nombre, Estado e) throws ServicesException{
             services.modificarEstado(nombre, e);
         }
->>>>>>> d2436977cdaecde80960015f47dc944573b34d99
-
         
         public List<Iniciativa>  inivs() throws ServicesException{       
 		return (List<Iniciativa>)  services.consultarIniciativas();

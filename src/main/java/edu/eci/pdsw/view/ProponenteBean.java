@@ -11,4 +11,6 @@ public class ProponenteBean extends BasePageBean{
     @Inject
     private ServicesIdeasImpl services;
 	
+    
+    
 }

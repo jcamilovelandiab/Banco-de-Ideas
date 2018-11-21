@@ -34,22 +34,17 @@
         </style>
 
     </h:head>
-    <h:body>
+    <h:body style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
         <nav class="navbar navbar-default">
-
             <div class="topnav">
                 <a class="active" href="index.xhtml">Inicio</a>
 
                 <a href="#about">Quienes somos</a>
             </div>
-            
-            
         </nav>
 
-
-
-
         <h:form  prependId="false" >
+        
             <h:panelGrid columns="1" style="
                          margin: 15% auto;
                          width:450px;height:5px;
@@ -65,7 +60,6 @@
                               font-family: 'MyriadProRegular';
                               color : rgba(255, 255, 255, 1);
                               "/> 
-
 
                 <p:inputText id="email" style="border-radius: 11px;
                              background-color: rgba(255, 237, 246, 0.3);
@@ -88,8 +82,6 @@
                                  "
                                  actionListener="#{loginBean.login(correo.value)}">
                 </p:commandButton>
-
-
 
             </h:panelGrid>
 
