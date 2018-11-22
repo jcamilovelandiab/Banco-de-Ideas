@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import edu.eci.pdsw.entities.Iniciativa;
+import edu.eci.pdsw.entities.Usuario;
 import edu.eci.pdsw.samples.services.ServicesException;
 import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
@@ -84,6 +85,7 @@ public class IniciativaBean extends BasePageBean{
         }
         
         public List<Iniciativa>  inivs() throws ServicesException{       
+            System.out.println(services.consultarIniciativas());
 		return (List<Iniciativa>)  services.consultarIniciativas();
         }
 
@@ -95,9 +97,10 @@ public class IniciativaBean extends BasePageBean{
 			return tmp;
 		} catch (ServicesException e) {
 			 throw new ServicesException("ERROR AL TOMAR LA INICIATIVA");
-		}
-		
+		}	
 	}
+        
+        
         
         public String getInput() {
     		return input;
@@ -121,8 +124,25 @@ public class IniciativaBean extends BasePageBean{
            
         public List<String> getClaves() {
 		return claves;
+                
 	}
-
+        public void votar(String correo, String iniciativa) throws ServicesException{
+            services.agregarVotanteAIniciativa(correo,iniciativa);
+        }
+        public boolean yaVoto(String correo, String iniciativa) throws ServicesException{
+            ArrayList<Usuario> votantes = (ArrayList<Usuario>) services.consultarVotantesxIniciativa(iniciativa);
+            boolean flag = false;
+            for(int i = 0; i<votantes.size() && !flag;i++){
+                if(votantes.get(i).getCorreo().equals(correo)){
+                    flag = true;
+                }
+            }
+            return flag;
+        }
+        
+        public int votos(String nombre) throws ServicesException{
+            return services.consultarCantidadVotos(nombre);
+        }
 	public void setClaves(List<String> claves) {
 		if(claves == null) {
 			this.claves = new ArrayList<String>();

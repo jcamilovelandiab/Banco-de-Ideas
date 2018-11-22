@@ -1,4 +1,7 @@
-
+$(document).ready(function () {
+    $('#TablaUsr').DataTable({       
+    });    
+});
 
 $('#selectUsr').on('change', function() {
 	$(".rol").val($('#selectUsr').val());

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Iniciativa {
+        private boolean voto;
 	private String nombre;
 	private String descripcion;
 	private Date fechaPropuesta;
@@ -65,6 +66,14 @@ public class Iniciativa {
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+        
+        public boolean getVoto() {
+		return voto;
+	}
+	
+	public void setVoto(boolean voto) {
+		this.voto = voto;
 	}
 	
 	public String getDescripcion() {
