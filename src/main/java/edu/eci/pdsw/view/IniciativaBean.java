@@ -99,21 +99,7 @@ public class IniciativaBean extends BasePageBean {
   
     
 
-    public String getInput() {
-        return input;
-    }
-
-    public void setInput(String input) {
-        System.out.println("Remplace " + input);
-        this.input = input.replaceAll("_", " ");
-    }
-
-    public List<Comentario> getComentarios() throws ServicesException {
-        System.out.println("Input" + input);
-        System.out.println(services.consultarComentariosxIniciativa(input));
-        return (List<Comentario>) services.consultarComentariosxIniciativa(input);
-    }
-
+    
     public List<Estado> getTypes() {
         return Arrays.asList(Estado.class.getEnumConstants());
     }
