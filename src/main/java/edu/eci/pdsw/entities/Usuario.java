@@ -59,4 +59,10 @@ public class Usuario {
 	}
 
     
+    public boolean equals(Usuario usr) {
+        return this.nombre.equals(usr.getNombre()); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+        
+    
 }
