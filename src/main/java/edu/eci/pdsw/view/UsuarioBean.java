@@ -51,13 +51,7 @@ public class UsuarioBean extends BasePageBean {
 
     }
 
-    public void registrarComentario(String comen,String iniciativa) throws ServicesException {
-        System.out.println(comen+" "+iniciativa);
-        Usuario usr  = services.consultarUsuario(this.correo);
-        Comentario comentario = new Comentario(comen, usr);
-        services.agregarComentarioxIniciativa(iniciativa, comentario);
-    }
-
+   
     public void setOpcion(String opcion) {
         this.opcion = opcion;
     }
@@ -92,4 +86,8 @@ public class UsuarioBean extends BasePageBean {
         System.out.println(services.consultarUsuarios());
         return (List<Usuario>) services.consultarUsuarios();
     }
+    
+   
+
+
 }

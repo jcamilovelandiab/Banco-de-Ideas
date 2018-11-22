@@ -124,7 +124,7 @@ public class IniciativaBean extends BasePageBean {
         }
 
     }
-  
+    
     public String getInput() {
         return input;
     }
@@ -149,9 +149,21 @@ public class IniciativaBean extends BasePageBean {
 
     }
 
-    public void votar(String correo, String iniciativa) throws ServicesException {
-        services.agregarVotanteAIniciativa(correo, iniciativa);
+    public void votar(String nombre,String iniciativa) throws ServicesException {
+        System.out.println("prueba de fuego  "+nombre+"  "+iniciativa);
+      
+        if (!yaVoto(nombre,iniciativa))services.agregarVotanteAIniciativa(nombre, iniciativa);
     }
+    public void dislike(String nombre,String iniciativa)throws ServicesException{
+        System.out.println("prueba de fuego dislike  "+nombre+"  "+iniciativa);
+      
+        if (yaVoto(nombre,iniciativa)) services.eliminarVotanteAIniciativa(nombre, iniciativa);
+        
+    }
+    public List<Iniciativa> mias(String correo) throws ServicesException{
+        return (List<Iniciativa>) services.consultarIniciativasxProponente(correo);
+    }
+    
 
     public boolean yaVoto(String correo, String iniciativa) throws ServicesException {
         ArrayList<Usuario> votantes = (ArrayList<Usuario>) services.consultarVotantesxIniciativa(iniciativa);
@@ -159,6 +171,7 @@ public class IniciativaBean extends BasePageBean {
         for (int i = 0; i < votantes.size() && !flag; i++) {
             if (votantes.get(i).getCorreo().equals(correo)) {
                 flag = true;
+                
             }
         }
         return flag;
