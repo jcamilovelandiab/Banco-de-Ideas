@@ -28,22 +28,53 @@ public class IniciativaBean extends BasePageBean {
 
     @ManagedProperty(value = "#{param.nombre}")
     private String nombre;
-    private List<String> claves;
+    private String descripcion;
+    private Usuario autor;
+    private ArrayList<String> claves;    
+    private String clavesUnidas;
+    
     private List<Iniciativa> iniciativas;
     private Iniciativa selectIniciativa;
     private String input;
-
+    
+    
     private static final long serialVersionUID = 3594009161252782831L;
 
     @Inject
     private ServicesIdeas services;
 
+    public void save() {
+    	try {
+    		clavesUnidas = clavesUnidas.replace(" ","");
+    		claves = (ArrayList<String>) Arrays.asList(clavesUnidas.split("#"));
+			services.crearIniciativa(new Iniciativa(nombre, descripcion, autor, claves));
+		} catch (ServicesException e) {
+			e.printStackTrace();
+		}
+    }
+    
     public String getNombre() {
         return nombre;
     }
-
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public String getClavesUnidas() {
+    	return clavesUnidas;
+    }
+    
+    public void setClavesUnidas(String clavesUnidas) {
+    	this.clavesUnidas=clavesUnidas;
+    }
+    
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public void getDatas() throws ServicesException {
@@ -53,9 +84,6 @@ public class IniciativaBean extends BasePageBean {
             System.out.println(e.getMessage());
         }
     }
-
-
-    
 
     public List<Iniciativa> getIniciativas() {
         return iniciativas;
@@ -97,8 +125,6 @@ public class IniciativaBean extends BasePageBean {
 
     }
   
-    
-
     public String getInput() {
         return input;
     }
@@ -142,10 +168,10 @@ public class IniciativaBean extends BasePageBean {
         return services.consultarCantidadVotos(nombre);
     }
 
-    public void setClaves(List<String> claves) {
+    public void setClaves(ArrayList<String> claves) {
         if (claves == null) {
             this.claves = new ArrayList<String>();
-        } else {
+        }else{
             this.claves = claves;
         }
     }

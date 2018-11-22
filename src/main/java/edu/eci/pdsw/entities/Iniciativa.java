@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Iniciativa {
-        private boolean voto;
+    private boolean voto;
 	private String nombre;
 	private String descripcion;
 	private Date fechaPropuesta;
