@@ -282,11 +282,11 @@
                                 <div class="form-group" >
                                     <label for="votar">Vota:</label>
                                     <h:panelGroup style="position: center">
-                                    <p:commandButton value = "Like"
-                                                      id="dislike" styleClass="btn btn-success">
+                                    <p:commandButton value = "Like"  actionListener="#{iniciativaBean.votar(usuarioBean.correo,lik.value)}"
+                                                      id="like" styleClass="btn btn-success" >
                                     </p:commandButton>
-                                    <p:commandButton value = "dislike"
-                                                      id="like" styleClass="btn btn-success">
+                                    <p:commandButton value = "dislike" actionListener="#{iniciativaBean.dislike(usuarioBean.correo,lik.value)}"
+                                                      id="dislike" styleClass="btn btn-success">
                                     </p:commandButton>
                                     </h:panelGroup>
                                 </div>
@@ -307,7 +307,7 @@
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
         <h:outputScript name="js/usr.js"></h:outputScript>
-
+<h:outputScript name="js/gh.js"></h:outputScript>
         <h:outputScript name="js/ini.js"></h:outputScript>
     </h:body>
 </html>
