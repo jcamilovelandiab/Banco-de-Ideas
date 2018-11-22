@@ -179,6 +179,7 @@
                        
                         <th>Votos</th>
                          <th class="">Cambio</th>
+                         <th>Votar</th>
                         
                     </tr>
 
@@ -198,14 +199,18 @@
                                     <button class="modify-ini btn btn-success" data-id="#{ini.nombre}" data-toggle="modal" data-target="#myModal">Modificar</button>
                                 </h:panelGroup>
                             </td>
-                                
+                                 <td  style="text-align:center;">
+                                <h:panelGroup layout="block">
+                                    <button class="votos btn btn-success" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto">Voto</button>
+                                </h:panelGroup>
+                            </td>
                         </tr>
                     </ui:repeat>
 
 
                 </tbody>
             </table>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content"></div>
                 </div>
@@ -224,7 +229,7 @@
                         <div class="modal-body">
                             <h:form id="est_form">
                                 
-                                <input type="text" name="nameIni" id="nameIni" value=""  />	  
+                                <input type="text" name="nameIni" id="nameIni" value=""  style="visibility: hidden"/>	  
                                 <p:inputText id="nameIni" binding="#{nameIni}" type="hidden" />
                                 <div class="form-group" >
                                     <label for="NuevoEst">Nuevo Estado</label>
@@ -251,6 +256,50 @@
                 </div>
             </div>
         </div>
+
+            
+            <div class="modal fade" id="ModalVoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Votar:</h4>
+
+                        </div>
+                        <div class="modal-body">
+                            <h:form id="votos_form">
+                                
+                                <input type="text" name="lik" id="lik" value="" style="visibility: hidden" />	  
+                                <p:inputText id="lik" binding="#{lik}" type="hidden" />
+                                <div class="form-group" >
+                                    <label for="votar">Vota:</label>
+                                    <h:panelGroup style="position: center">
+                                    <p:commandButton value = "Like"
+                                                      id="dislike" styleClass="btn btn-success">
+                                    </p:commandButton>
+                                    <p:commandButton value = "dislike"
+                                                      id="like" styleClass="btn btn-success">
+                                    </p:commandButton>
+                                    </h:panelGroup>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </h:form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+       
 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
