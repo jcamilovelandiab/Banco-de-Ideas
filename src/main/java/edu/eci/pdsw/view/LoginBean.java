@@ -46,6 +46,9 @@ public class LoginBean extends BasePageBean {
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         }
     }
+    public void redirect(String correo) throws IOException{
+    FacesContext.getCurrentInstance().getExternalContext().redirect("iniciativa.xhtml?correo=" + correo);
+    }
 
 }
 
