@@ -66,6 +66,7 @@
                 <div class="collapse navbar-collapse"
                      id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
+                        <h:panelGrid columns="2">
                         <h:panelGrid columns="1"
                                      style="
                                      text-align:center;
@@ -80,7 +81,21 @@
                                           style=" font-size: 15px;
                                           color : rgba(255, 255, 255, 1);
                                           " />
+                            
                         </h:panelGrid>
+                                       <p:commandButton value = "Palabras Claves" style="
+                                 border-radius: 11px;
+                                 background-color: rgba(144, 22, 38, 0.7);
+                                 border: rgba(144, 22, 38, 0.7);
+                                 text-align:center;
+                                 top: 0px;
+                                 left: 200px;
+                                 right: -42px;
+                                 bottom: 0px;
+                                 color : rgba(255, 255, 255, 1)
+                                 "
+                                 actionListener="#{loginBean.redirect(usuarioBean.correo)}">
+                </p:commandButton> </h:panelGrid>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -88,9 +103,7 @@
                                     class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                     </ul>
                 </div>
-                <div class="topnav">
-                <a class="active" href="#{loginBean.login(usuarioBean.correo)}">Iniciativas</a>
-            </div>
+  
             </div>
         </nav>
 
