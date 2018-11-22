@@ -1,4 +1,5 @@
 package edu.eci.pdsw.view;
+
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
@@ -21,80 +22,74 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 
-
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean extends BasePageBean {
-	@ManagedProperty(value = "#{param.correo}")
-	private String correo;
-	private Usuario sr;
-	
-	
-	private static final long serialVersionUID = 3594009161252782831L;
-	
-	@Inject
-	private ServicesIdeas services;
-	
-        
-        private String opcion;
-        private String rol;
-        private List<String> roles;
-                
 
-    	     public List<Rol> getTypes (){
-		return Arrays.asList(Rol.class.getEnumConstants() );
-	}
-             public void changeRol(String  correo, int i) throws ServicesException{
-                 List<Rol> pos=Arrays.asList(Rol.class.getEnumConstants() );
-                  System.out.println(correo+pos.get(i)+"   "+i+"  "+"yowis");
-                 services.asignarPerfil(correo,pos.get(i));
-             
-             }
-             
-      
+    @ManagedProperty(value = "#{param.correo}")
+    private String correo;
+    private Usuario sr;
 
-    	public void setOpcion(String opcion){
-    		this.opcion = opcion;
-    	}
+    private static final long serialVersionUID = 3594009161252782831L;
 
+    @Inject
+    private ServicesIdeas services;
 
-    	public String getOpcion(){
-    		return this.opcion;
-    	}
+    private String opcion;
+    private String rol;
+    private List<String> roles;
 
-        
-       public String getCorreo(){
-	        System.out.println(correo);
-			return this.correo;
+    public List<Rol> getTypes() {
+        return Arrays.asList(Rol.class.getEnumConstants());
+    }
+
+    public void changeRol(String correo, int i) throws ServicesException {
+        List<Rol> pos = Arrays.asList(Rol.class.getEnumConstants());
+        System.out.println(correo + pos.get(i) + "   " + i + "  " + "yowis");
+        services.asignarPerfil(correo, pos.get(i));
+
+    }
+
+    public void registrarComentario(String comen,String iniciativa) throws ServicesException {
+        System.out.println(comen+" "+iniciativa);
+        Usuario usr  = services.consultarUsuario(this.correo);
+        Comentario comentario = new Comentario(comen, usr);
+        services.agregarComentarioxIniciativa(iniciativa, comentario);
+    }
+
+    public void setOpcion(String opcion) {
+        this.opcion = opcion;
+    }
+
+    public String getOpcion() {
+        return this.opcion;
+    }
+
+    public String getCorreo() {
+        System.out.println(correo);
+        return this.correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Usuario getUsuario() throws ServicesException {
+        try {
+            sr = services.consultarUsuario(this.correo);
+        } catch (ServicesException e) {
+            e.getMessage();
         }
-        
-       public void setCorreo(String correo) {
-            this.correo = correo;		
-	}
+        return sr;
+    }
 
-
-
-       
-
-        
-	
-        public Usuario getUsuario() throws ServicesException {
-            try {
-		sr = services.consultarUsuario(this.correo);
-            } catch(ServicesException e) {
-		e.getMessage();
-            }
-            return sr;
-	}
-		
-        /*public List<Iniciativas> getBuscar(){
+    /*public List<Iniciativas> getBuscar(){
             return services.consulta
             
         }*/
-	        
-        public List<Usuario> usr() throws ServicesException{
-            System.out.println(services.consultarUsuarios());
-            return (List<Usuario>) services.consultarUsuarios();
-	}
+    public List<Usuario> usr() throws ServicesException {
+        System.out.println(services.consultarUsuarios());
+        return (List<Usuario>) services.consultarUsuarios();
+    }
 }
