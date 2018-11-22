@@ -88,6 +88,9 @@
                                     class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                     </ul>
                 </div>
+                <div class="topnav">
+                <a class="active" href="#{loginBean.login(usuarioBean.correo)}">Iniciativas</a>
+            </div>
             </div>
         </nav>
 
@@ -299,14 +302,50 @@
                     </div>
                 </div>
             </div>
-       
+       <div class="col-xs-6" style="background-color:transparent;">
+            <table id="TablaIniP" class="table table-striped table-bordered"  style="width:100%; background-color: white">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Estado</th>    
+                        <th>fechas</th>
+                        <th>Descripcion</th>                     
+                        <th>Votos</th>
+                         <th>Votar</th>
+                        
+                    </tr>
 
+                </thead>
+                <tbody>
+
+                    <ui:repeat value ="#{iniciativaBean.mias(usuarioBean.correo)}" var="inic">
+                        <tr id="#{inic.nombre}">
+                            <td>#{inic.nombre}</td>
+                            <td  >#{inic.estado}</td>
+                            <td>#{inic.fechaPropuesta}</td>      
+                            <td>#{inic.descripcion}</td>
+                            <td>#{iniciativaBean.votos(inic.nombre)}</td>
+
+                                 <td  style="text-align:center;">
+                                <h:panelGroup layout="block">
+                                    <button class="votos btn btn-success" data-id="#{inics.nombre}" data-toggle="modal" data-target="#ModalVoto">Voto</button>
+                                </h:panelGroup>
+                            </td>
+                        </tr>
+                    </ui:repeat>
+
+
+                </tbody>
+            </table>
+              
+       </div>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
         <h:outputScript name="js/usr.js"></h:outputScript>
+        <h:outputScript name="js/load.js"></h:outputScript>
 <h:outputScript name="js/gh.js"></h:outputScript>
         <h:outputScript name="js/ini.js"></h:outputScript>
     </h:body>

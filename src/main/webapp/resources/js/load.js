@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $('#iniciativas').DataTable();
-    $('#comentarios').DataTable();    
+    $('#comentarios').DataTable();  
+    $('#TablaIniP').DataTable();  
+    
  });
 
 

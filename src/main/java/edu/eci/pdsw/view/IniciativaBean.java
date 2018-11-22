@@ -134,6 +134,9 @@ public class IniciativaBean extends BasePageBean {
         if (yaVoto(nombre,iniciativa)) services.eliminarVotanteAIniciativa(nombre, iniciativa);
         
     }
+    public List<Iniciativa> mias(String correo) throws ServicesException{
+        return (List<Iniciativa>) services.consultarIniciativasxProponente(correo);
+    }
     
 
     public boolean yaVoto(String correo, String iniciativa) throws ServicesException {
