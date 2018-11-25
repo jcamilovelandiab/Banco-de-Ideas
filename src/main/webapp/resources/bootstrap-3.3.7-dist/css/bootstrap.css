@@ -6752,6 +6752,11 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 150px;
   }
 }
+
 /*# sourceMappingURL=bootstrap.css.map */

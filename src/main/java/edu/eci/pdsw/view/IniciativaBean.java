@@ -148,6 +148,11 @@ public class IniciativaBean extends BasePageBean {
         return claves;
 
     }
+    public String descripcion(String nombreI) throws ServicesException{
+        System.out.println("edu.eci.pdsw.view.IniciativaBean.descripcion()"+nombreI);
+        return services.consultarIniciativa(nombre).getDescripcion();
+        
+    }
 
     public void votar(String nombre,String iniciativa) throws ServicesException {
         System.out.println("prueba de fuego  "+nombre+"  "+iniciativa);

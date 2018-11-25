@@ -1,7 +1,3 @@
-$(document).ready(function () {
-    $('#TablaIni').DataTable({       
-    });    
-});
 
 $('#select').on('change', function() {
 	$(".rol").val($('#select').val());
