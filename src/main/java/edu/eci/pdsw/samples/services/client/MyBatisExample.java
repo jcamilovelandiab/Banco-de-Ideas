@@ -267,6 +267,16 @@ public class MyBatisExample {
 	    	  for (Iniciativa iniRelacionada : iniciativasRelacionadas) {
 	    		  System.out.println(iniRelacionada);
 	    	  }*/
+	    	  
+	    	  // ----------------------------- PROBANDO MODIFICAR LA DESCRIPCION DE LAS INICIATIVAS EN ESPERA -----------------
+	    	  /*
+	    	  Iniciativa iniHacerBiblioteca = ideasServices.consultarIniciativa("hacer una biblioteca");
+	    	  ideasServices.modificarIniciativaxEstado("hacer una biblioteca", "No tenemos una biblioteca decente y mas grande");
+	    	  Iniciativa iniHacerBibliotecaMod = ideasServices.consultarIniciativa("hacer una biblioteca");
+	    	  assert(iniHacerBiblioteca!=iniHacerBibliotecaMod);
+	    	  */
+	    	  ideasServices.modificarIniciativaxEstado("esto es una pruebita", "Es una nueva descripcion");
+	    	  
 	      } catch (ServicesException e){
 			  System.out.println(e.getMessage());
 	      }

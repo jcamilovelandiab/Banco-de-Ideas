@@ -25,4 +25,6 @@ public interface IniciativaDAO {
     public void modificarEstado(String nombreIniciativa, Estado estado) throws PersistenceException;
     public void agregarPalabraClave(String nombreIni,String desc) throws PersistenceException;
     
+    public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws PersistenceException;
+    
 }

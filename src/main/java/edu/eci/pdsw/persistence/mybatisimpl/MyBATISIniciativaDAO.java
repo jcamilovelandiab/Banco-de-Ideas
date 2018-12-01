@@ -83,5 +83,11 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	public void eliminarVotanteAIniciativa(String correo, String nombreIni) throws PersistenceException {
 		iniciativaMapper.eliminarVotanteAIniciativa(correo.toLowerCase(), nombreIni.toLowerCase());
 	}
+
+	@Override
+	public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws PersistenceException {
+		iniciativaMapper.modificarIniciativaxEstado(nombreIniciativa,nuevaDescripcion);
+	}
 	
 }
+

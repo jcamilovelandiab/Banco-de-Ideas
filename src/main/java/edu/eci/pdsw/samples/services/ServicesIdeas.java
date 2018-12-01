@@ -11,10 +11,11 @@ import edu.eci.pdsw.entities.*;
 public interface ServicesIdeas { 
 
     
-	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException;
-    public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException;
-    public Collection<Iniciativa> consultarIniciativas() throws ServicesException;
-    public Collection<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException;
+	public void crearIniciativa(Iniciativa iniciativa) throws ServicesException; //
+    public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException; //
+    public Collection<Iniciativa> consultarIniciativas() throws ServicesException; //
+    public Collection<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException; //
+    
     public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException; //
     public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException; //
     public Collection<Iniciativa> consultarIniciativasxOrden(String orden) throws ServicesException;  //
@@ -40,8 +41,9 @@ public interface ServicesIdeas {
 	public Collection<Interes> consultarInteresesxUsuario(String correo) throws ServicesException; //
 	
 	public void asignarPerfil(String correoUsuario, Rol tipo) throws ServicesException; //
-	public File consultarEstadisticas() throws ServicesException;
-	public int existeUsuario(String correo) throws SecurityException;
+	public File consultarEstadisticas() throws ServicesException; 
+	public int existeUsuario(String correo) throws SecurityException; //
     public Collection<Rol> consultarRoles() throws SecurityException; //
-
+    
+    public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws SecurityException;
 }

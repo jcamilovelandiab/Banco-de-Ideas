@@ -156,7 +156,9 @@
 		VALUES (#{nombreIni},#{descripcion}); 
 	</insert>
 	
-	
+	<update id="modificarIniciativaxEstado">
+		UPDATE iniciativas SET descripcion=#{nuevaDescripcion} WHERE nombre=#{nombreIni}
+	</update>
 	
 	<update id="modificarEstado">
 		UPDATE iniciativas SET estado=#{estado} WHERE nombre=#{nombreIni};
