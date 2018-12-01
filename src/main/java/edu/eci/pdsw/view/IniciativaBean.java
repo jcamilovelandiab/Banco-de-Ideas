@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +26,11 @@ import java.util.Arrays;
 @ManagedBean(name = "iniciativaBean")
 @RequestScoped
 public class IniciativaBean extends BasePageBean {
-
-    @ManagedProperty(value = "#{param.nombre}")
+	
     private String nombre;
     private String descripcion;
     private Usuario autor;
-    private ArrayList<String> claves;    
+    private List<String> claves;    
     private String clavesUnidas;
     
     private List<Iniciativa> iniciativas;
@@ -43,11 +43,19 @@ public class IniciativaBean extends BasePageBean {
     @Inject
     private ServicesIdeas services;
 
-    public void save() {
+    public void save(String correo) {
     	try {
-    		clavesUnidas = clavesUnidas.replace(" ","");
-    		claves = (ArrayList<String>) Arrays.asList(clavesUnidas.split("#"));
-			services.crearIniciativa(new Iniciativa(nombre, descripcion, autor, claves));
+    		
+    		//System.out.println("AQUI LLEGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -> <"+correo+">");
+    		autor = services.consultarUsuario(correo);
+    		if(autor!=null) {
+    			
+    			//System.out.println(autor);
+        		clavesUnidas = clavesUnidas.replace(" ","");
+        		claves = Arrays.asList(clavesUnidas.split("#"));
+        		//System.out.println("INICIATIVA BEAN "+autor);
+    			services.crearIniciativa(new Iniciativa(nombre, descripcion, autor, claves));
+    		}
 		} catch (ServicesException e) {
 			e.printStackTrace();
 		}
@@ -148,11 +156,6 @@ public class IniciativaBean extends BasePageBean {
         return claves;
 
     }
-    public String descripcion(String nombreI) throws ServicesException{
-        System.out.println("edu.eci.pdsw.view.IniciativaBean.descripcion()"+nombreI);
-        return services.consultarIniciativa(nombre).getDescripcion();
-        
-    }
 
     public void votar(String nombre,String iniciativa) throws ServicesException {
         System.out.println("prueba de fuego  "+nombre+"  "+iniciativa);
@@ -195,6 +198,4 @@ public class IniciativaBean extends BasePageBean {
     }
 
 }
-
-
 

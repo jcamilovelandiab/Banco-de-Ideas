@@ -2,6 +2,7 @@ package edu.eci.pdsw.entities;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Iniciativa {
     private boolean voto;
@@ -11,7 +12,7 @@ public class Iniciativa {
 	private Date fechaCierre;
 	private Estado estado;
 	private Usuario proponente;
-	private ArrayList<String> palabrasClave;
+	private List<String> palabrasClave;
 	private ArrayList<Usuario> votantes;
 	private ArrayList<Comentario> comentarios;
 	private ArrayList<Interes> intereses;
@@ -22,7 +23,7 @@ public class Iniciativa {
 		
 	}
 	
-	public Iniciativa(String nombre, String descripcion, Usuario usuario, ArrayList<String> palabrasClave) {
+	public Iniciativa(String nombre, String descripcion, Usuario usuario, List<String> palabrasClave) {
 		this.nombre=nombre;
 		this.descripcion=descripcion;
 		this.fechaPropuesta = new java.sql.Date((new java.util.Date()).getTime());
@@ -108,11 +109,11 @@ public class Iniciativa {
 		this.estado = estado;
 	}
 	
-	public ArrayList<String> getPalabrasClave() {
+	public List<String> getPalabrasClave() {
 		return palabrasClave;
 	}
 	
-	public void setPalabrasClave(ArrayList<String> palabrasClave) {
+	public void setPalabrasClave(List<String> palabrasClave) {
 		this.palabrasClave = palabrasClave;
 	}
 

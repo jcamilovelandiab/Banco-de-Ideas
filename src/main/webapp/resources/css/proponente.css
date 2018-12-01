@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+body{
+	background-image: url(/resources/images/proponente.jpg);
+	background-size: 100vw 100vh;
+	background-attachment: fixed;
+	margin: 0;
+	font-family: "PT Sans",Arial,Helvetica,sans-serif;
+}
+
+form{
+	width: 450px;
+	margin: auto;
+	background: rgba(0, 0, 0, 0.7);
+	padding: 10px 20px;
+	box-sizing: border-box;
+	margin-top: 20px;
+	font-family: "PT Sans",Arial,Helvetica,sans-serif;
+	border-radius: 7px;
+}
+
+.classH2{
+	color: #fff;
+	text-align: center;
+	margin: 0;
+	font-size: 20px;
+	font-family: "PT Sans",Arial,Helvetica,sans-serif;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.classOutputLabel{
+	color: #fff;
+	font-size: 16px;
+}
+
+.classInputText{
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 7px;
+	box-sizing: border-box;
+	font-size: 16px;
+	border: none;
+	border-radius: 7px;
+}
+
+.botonRegistrarIniciativa{
+	background: #DB6262;
+	color: #fff;
+	padding: 7px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 7px;
+	width: 100%;
+	font-family: "PT Sans",Arial,Helvetica,sans-serif;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+
+.ui-chips .ui-chips-container .ui-chips-token .ui-chips-token-icon:before {
+    content: "x";
+}
+
+.ui-chips {
+    width: 100%;
+}
+
+.ui-chips-container {
+    width: 100%;
+}

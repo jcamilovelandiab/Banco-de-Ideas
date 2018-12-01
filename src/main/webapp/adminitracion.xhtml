@@ -24,6 +24,7 @@
         <!-- Favicons -->
         <link href="resources/pruebita/img/favicon.png" rel="icon"/>
         <link href="resources/pruebita/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+        
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:Lato:300,400,700,300italic,400italic|Raleway:400,300,700" rel="stylesheet"/>
@@ -393,7 +394,7 @@
             <div class="container">
                 <h1>Registrar iniciativa</h1>
                 <hr/>
-                <p>regitra una iniciativa de proyecto.</p>
+                <p>registra una iniciativa de proyecto.</p>
             </div>
             <!-- container -->
         </section>
@@ -403,9 +404,91 @@
                 <h1 class="centered">Registrar iniciativa</h1>
                 <hr/>
       
-                 </div>
+            </div>
+            
+            <h:form style = "
+					width: 600px;
+					margin: auto;
+					background: rgba(0, 0, 0, 0.7);
+					padding: 10px 20px;
+					box-sizing: border-box;
+					margin-top: 10px;
+					font-family: 'PT Sans',Arial,Helvetica,sans-serif;
+					border-radius: 7px;">
+				
+				<p:outputLabel style="color: #fff; font-size: 14px; font-family: 'PT Sans',Arial,Helvetica,sans-serif;"
+					for="nombreIniciativa" value="Nombre"/>
+				
+				<p:inputText id="nombreIniciativa" style="
+					width: 100%;
+					margin-bottom: 15px;
+					padding: 7px;
+					box-sizing: border-box;
+					font-size: 16px;
+					border: none;
+					border-radius: 7px;
+					font-family: 'PT Sans',Arial,Helvetica,sans-serif;"
+					
+					value="#{iniciativaBean.nombre}" required="true" 
+					label="nombreIniciativa" placeholder="Nombre de la iniciativa">
+			           <f:validateLength minimum="2" />
+			    </p:inputText>
+			    
+			    
+			    <p:outputLabel for="descripcionIniciativa" value="Descripcion"
+			    	style="color: #fff; font-size: 14px; font-family: 'PT Sans',Arial,Helvetica,sans-serif;"/>		
+			    	        
+	            <p:inputText id="descripcionIniciativa" value="#{iniciativaBean.descripcion}" required="true"
+	            	label="descripcionIniciativa" placeholder="Descripcion de la iniciativa" style="
+			    	width: 100%;
+					margin-bottom: 15px;
+					padding: 7px;
+					box-sizing: border-box;
+					font-size: 16px;
+					border: none;
+					border-radius: 7px;
+					font-family: 'PT Sans',Arial,Helvetica,sans-serif;">
+					
+	            	<f:validateLength minimum="2" />
+	           	</p:inputText>
+			   
+			    <p:outputLabel for="palabrasClaveIniciativa" value="Palabras clave"
+			        style="color: #fff; font-size: 14px; font-family: 'PT Sans',Arial,Helvetica,sans-serif; "/>   		
+	            <p:inputText id="palabrasClaveIniciativa" value="#{iniciativaBean.clavesUnidas}" required="true" 
+	            	  label="palabrasClaveIniciativa" placeholder="ejemplo: #biblioteca #amomiescuela" style="
+			    	width: 100%;
+					margin-bottom: 15px;
+					padding: 7px;
+					box-sizing: border-box;
+					font-size: 16px;
+					border: none;
+					border-radius: 7px;
+					font-family: 'PT Sans',Arial,Helvetica,sans-serif;">
+					
+	            	<f:validateLength minimum="2" />
+	           	</p:inputText>
+		    
+			    <p:commandButton id="botonRegistrarIniciativa" 
+			    	style="
+			    		background: #DB6262;
+						color: #fff;
+						padding: 7px;
+						box-sizing: border-box;
+						border: none;
+						border-radius: 7px;
+						width: 100%;
+						font-family: 'PT Sans',Arial,Helvetica,sans-serif;
+						margin-top: 10px;
+						cursor: pointer;"
+						 
+			    	value="registrar" update="@parent" action="#{iniciativaBean.save(usuarioBean.correo)}"/>
+			</h:form>
+			<p></p>
+            
         </div>
-          <!-- section -->
+        
+        
+        <!-- section -->
         <section class="section-divider textdivider divider3">
             <div class="container">
                 <h1>Modificar estado de iniciativa.</h1>

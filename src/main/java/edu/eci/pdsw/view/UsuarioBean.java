@@ -30,12 +30,10 @@ public class UsuarioBean extends BasePageBean {
     @ManagedProperty(value = "#{param.correo}")
     private String correo;
     private Usuario sr;
-
     private static final long serialVersionUID = 3594009161252782831L;
 
     @Inject
     private ServicesIdeas services;
-
     private String opcion;
     private String rol;
     private List<String> roles;
@@ -48,7 +46,6 @@ public class UsuarioBean extends BasePageBean {
         List<Rol> pos = Arrays.asList(Rol.class.getEnumConstants());
         System.out.println(correo + pos.get(i) + "   " + i + "  " + "yowis");
         services.asignarPerfil(correo, pos.get(i));
-
     }
 
    
