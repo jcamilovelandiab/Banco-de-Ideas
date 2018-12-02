@@ -280,6 +280,9 @@
                             <li> <a href="#modificarE" class="smoothscroll">Modificar estado</a></li>
                             <li> <a href="#cambiarR" class="smoothscroll"> Cambiar rol</a></li>
                             <li> <a href="#estadisticas" class="smoothscroll">Estadisticas</a></li>
+                            <li> <a href="index.xhtml" class="smoothscroll">
+                            	<span class="glyphicon glyphicon-log-in"></span> Salir</a>
+                            </li>
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -305,6 +308,9 @@
                             <li> <a href="#modificarE" class="smoothscroll">Modificar estado</a></li>
                             <li> <a href="#cambiarR" class="smoothscroll"> Cambiar rol</a></li>
                             <li> <a href="#estadisticas" class="smoothscroll">Estadisticas</a></li>
+                            <li> <a href="index.xhtml" class="smoothscroll">
+                            	<span class="glyphicon glyphicon-log-in"></span> Salir</a>
+                            </li>
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -443,30 +449,18 @@
                 <hr/>
                 <h:form prependId="false">
                     <h:panelGrid columns="2"
-
                                  style="
-
                                  margin: 2% auto;
-
-                                 width:500px;height:5px;
-
+                                 width:500px;
+                                 height:5px;
                                  background-color: rgba(255,255,255,0);
-
                                  border-radius: 11px;
-
                                  text-align:center;
-
                                  right: 1000px;"
-
                                  cellpadding="10">
 
-
-
                         <h:panelGrid columns="2" class="bootstrap-tagsinput  bootstrap-tagsinput.form-contro 
-
-                                     ui-chips ui-chips-container ui-chips-token 
-
-                                     ">
+                                     ui-chips ui-chips-container ui-chips-token ">
 
                             <p:chips id="chips" value="#{iniciativaBean.claves}" />
 
@@ -881,8 +875,26 @@
                 </div>
             </div>
         </div>
-           
-        </div> </div>            
+        
+        <!-- ==== SECTION DIVIDER3 -->
+        <section class="section-divider textdivider divider3">
+            <div class="container">
+                <h1>Estadisticas de las iniciativas</h1>
+                <hr/>
+                <p>Consulta las estadisticas por areas o dependencias.</p>
+            </div>
+            <!-- container -->
+        </section>
+        
+        <div class="container" id="estadisticas" name="estadisticas">
+            <div class="row white">
+                <br/>
+                <h1 class="centered">Estadisticas</h1>
+                <hr/>
+            </div>
+        </div>
+        
+        </div> </div>           
                 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 

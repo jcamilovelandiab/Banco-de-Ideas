@@ -116,7 +116,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			List<String> palabrasClave = iniciativa.getPalabrasClave();
 			Collection<Iniciativa> iniciativasxClaves = consultarIniciativasxClaves(palabrasClave);
 			Collection<Iniciativa> iniciativasRelacionadas = new ArrayList<Iniciativa>();
-			System.out.println(iniciativa.getNombre());
+			//System.out.println(iniciativa.getNombre());
 			for (Iniciativa ini : iniciativasxClaves) {
 				if(!ini.getNombre().equals(iniciativa.getNombre())) {
 					iniciativasRelacionadas.add(ini);
@@ -410,6 +410,19 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		}catch(PersistenceException ex){
 			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar los comentarios de la iniciativa "+nombreIniciativa);
+		}
+	}
+
+	@Override
+	public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws SecurityException {
+		try{
+			Iniciativa iniciativa = iniciativaDAO.consultarIniciativa(nombreIniciativa);
+			if(iniciativa!=null && iniciativa.getEstado().equals(Estado.EN_ESPERA)) {
+				iniciativaDAO.modificarIniciativaxEstado(nombreIniciativa,nuevaDescripcion);
+			}
+		}catch(PersistenceException ex){
+			System.err.println(ex.getMessage());
+			throw  new SecurityException("Error al modificar la iniciativa "+nombreIniciativa);
 		}
 	}
 }

@@ -410,6 +410,14 @@ public class ServicesIdeasStub implements ServicesIdeas{
 
 
 
+	@Override
+	public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws SecurityException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 
 }
