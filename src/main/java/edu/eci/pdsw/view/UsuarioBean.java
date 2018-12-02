@@ -44,7 +44,6 @@ public class UsuarioBean extends BasePageBean {
 
     public void changeRol(String correo, int i) throws ServicesException {
         List<Rol> pos = Arrays.asList(Rol.class.getEnumConstants());
-        System.out.println(correo + pos.get(i) + "   " + i + "  " + "yowis");
         services.asignarPerfil(correo, pos.get(i));
     }
 

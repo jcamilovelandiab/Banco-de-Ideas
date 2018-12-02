@@ -691,7 +691,7 @@
                 <h1 class="centered">Modificar estado de iniciativa.</h1>
                 <hr/>
        <div class="col-xs-6" style="background-color:transparent;">
-                    <table id="TablaIni" class="table table-striped table-bordered"  style="width:100%; background-color: white">
+                    <table id="TablaIniE" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -772,7 +772,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                             <p:commandButton id="mod" value = "Modificar"
-                                                             actionListener="#{iniciativaBean.cambioEstado(nameIni.value,modifyEst.value)}" styleClass="btn btn-success" upload = "TablaIni">
+                                                             actionListener="#{iniciativaBean.cambioEstado(nameIni.value,modifyEst.value)}" styleClass="btn btn-success" upload = "TablaIniE">
                                             </p:commandButton>
 
                                         </div>
@@ -858,15 +858,14 @@
                                             <option value="#{item.ordinal()}">#{item}</option>
                                         </ui:repeat> 
                                     </select>
-                                    <p:inputText styleClass="rol" binding="#{modifyRolUser}" type="hidden"  />
+                                    <p:inputText styleClass="rol" binding="#{modifyRolUser}" type="hidden"/>
                                 </div>
                                 <div class="modal-body"></div>
                                 <div class="modal-footer">
-                                    <button id="prueba"  type="button" class="btn btn-default" >Cancelar</button>
-                                    <button id="modificar" type="button"
-                                                     onclick="#{usuarioBean.changeRol(emailUser.value,modifyRolUser.value)}" 
-                                                      class="btn btn-success">Modificar
-                                   </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <p:commandButton id="modificar" value = "Modificar"
+                                                             actionListener="#{usuarioBean.changeRol(emailUser.value,modifyRolUser.value)}" styleClass="btn btn-success" upload = "TablaUsr">
+                                            </p:commandButton>
 
                                 </div>
                             </h:form>
