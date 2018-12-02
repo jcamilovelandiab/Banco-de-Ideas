@@ -96,7 +96,7 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativasxEstado(estado);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
+			System.out.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar todas las iniciativas");
 		}
 	}

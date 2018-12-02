@@ -151,12 +151,12 @@
                     <div class="modal-body">
                         <h:form id="votos_form">
 
-                            <input type="text" name="lik" id="lik" value="" style="visibility: hidden" />	  
-                            <p:inputText id="lik" binding="#{lik}" type="hidden" />
+                            <input type="text" name="lik" id="lik" value=""  />	  
+                            <p:inputText id="lik" binding="#{lik}"  />
                             <div class="form-group" >
                                 <label for="votar">Vota:</label>
                                 <h:panelGroup style="position: center">
-                                    <p:commandButton value = "Like"  actionListener="#{iniciativaBean.votar(usuarioBean.correo,lik.value)}"
+                                    <p:commandButton value = "Like"  actionListener="#{iniciativaBean.yaVoto(usuarioBean.correo,lik.value)}"
                                                      id="like" class="icon icon-plus" styleClass="btn btn-success icon icon icon-plus" >
                                     </p:commandButton>
                                     <p:commandButton value = "dislike" actionListener="#{iniciativaBean.dislike(usuarioBean.correo,lik.value)}"
@@ -643,12 +643,7 @@
                 </tbody>
             </table>
             <div class="modal fade" id="myModalUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content"></div>
-                </div>
-                <div class="modal-dialog">
-                    <div class="modal-content"></div>
-                </div>
+
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -689,9 +684,41 @@
         </div>
            
         </div> </div>            
+        <section class="section-divider textdivider divider3">
+            <div class="container">
+                <h1>Estadisticas por area.</h1>
+                <hr/>
+               
+            </div>
+            </section>
+            <div class="container" id="cambiarR" name="estadisticas">
+                <div class="row white">
+                <br/>
+                <h1 class="centered">Estadisticas por area.</h1>
+                <hr/>
+                <div class="col-xs-6" style="background-color:transparent;">
+                    
+                </div>
+                <p:inputText id="holi" value="#{iniciativaBean.dato()}"/>
+                <canvas id="polarChart">
+                    
+              
+                        <input type="text" name="esta" id="esta"  />
+                        
+                        
+                 
+                </canvas>
+                </div>
                 
+                
+                
+                
+                
+                
+                
+            </div>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"/>
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
@@ -699,5 +726,6 @@
         <h:outputScript name="js/gh.js"></h:outputScript>
         <h:outputScript name="js/ini.js"></h:outputScript>
         <h:outputScript name="js/usr.js"></h:outputScript>
+        <h:outputScript name="js/chart.js"></h:outputScript>
     </h:body>
 </html>

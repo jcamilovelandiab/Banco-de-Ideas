@@ -21,7 +21,7 @@ public interface  IniciativaMapper {
     
     public List<Iniciativa> consultarIniciativasxOrden(@Param("orden")String orden); //
     public List<Iniciativa> consultarIniciativasxClaves(@Param("clave")String clave); //
-    public List<Iniciativa> consultarIniciativasxEstado(@Param("estado")Estado estado);
+    public List<Iniciativa> consultarIniciativasxEstado(@Param("estado")String estado);
     public List<Iniciativa> consultarIniciativasxProponente(@Param("correo")String correo); //
     
     public void agregarVotanteAIniciativa(@Param("correo")String correo, @Param("nombreIni")String nombreIni);

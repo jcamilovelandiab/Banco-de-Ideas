@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-
+import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -21,18 +26,19 @@ import edu.eci.pdsw.samples.services.ServicesException;
 import edu.eci.pdsw.samples.services.ServicesIdeas;
 import edu.eci.pdsw.samples.services.impl.ServicesIdeasImpl;
 import java.util.Arrays;
+import javax.annotation.PostConstruct;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "iniciativaBean")
 @RequestScoped
 public class IniciativaBean extends BasePageBean {
-	
+        
     private String nombre;
     private String descripcion;
     private Usuario autor;
     private List<String> claves;    
     private String clavesUnidas;
-    
+    private BarChartModel bar;
     private List<Iniciativa> iniciativas;
     private Iniciativa selectIniciativa;
     private String input;
@@ -174,6 +180,7 @@ public class IniciativaBean extends BasePageBean {
     
 
     public boolean yaVoto(String correo, String iniciativa) throws ServicesException {
+        System.out.println(correo + " " + iniciativa);
         ArrayList<Usuario> votantes = (ArrayList<Usuario>) services.consultarVotantesxIniciativa(iniciativa);
         boolean flag = false;
         for (int i = 0; i < votantes.size() && !flag; i++) {
@@ -195,6 +202,24 @@ public class IniciativaBean extends BasePageBean {
         }else{
             this.claves = claves;
         }
+    }
+    public int dato() throws ServicesException{
+        int b,c,a,d,e;
+       a=services.consultarIniciativasxEstado(Estado.DESECHADO).size();
+       return 65;
+    } 
+ public void createBarModel() {
+        bar = new BarChartModel();
+   
+
+    }
+ 
+    public BarChartModel getBarModel() {
+        return bar;
+    }
+ 
+    public void setBarModel(BarChartModel barModel) {
+        this.bar = barModel;
     }
 
 }
