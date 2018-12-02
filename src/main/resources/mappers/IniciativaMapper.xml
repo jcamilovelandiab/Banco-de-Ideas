@@ -157,6 +157,29 @@
 		WHERE
 			ini.proponente = usr.correo AND usr.area = areas.id AND ini.estado=#{estado};
 	</select>
+        <select id="consultarIniciativasxArea"  resultMap="IniciativaResult">
+		SELECT
+			ini.nombre AS iniciativaNombre,
+			ini.descripcion AS iniciativaDescripcion,
+			ini.fechapropuesta AS iniciativaFechaPropuesta,
+			ini.fechacierre AS iniciativaFechaCierre,
+			ini.estado AS iniciativaEstado,
+			
+			usr.correo AS usuarioCorreo,
+			usr.nombre AS usuarioNombre,
+			usr.tipo AS usuarioTipo,
+			usr.area AS usuarioArea,
+			
+			areas.id AS areaId,
+			areas.nombre AS areaNombre,
+			areas.descripcion AS areaDescripcion
+			
+		FROM 
+			iniciativas ini, usuarios usr, areas
+		WHERE
+			ini.proponente = usr.correo AND usr.area = areas.id and areas.id=#{area};
+	</select>
+        
 	<insert id="crearIniciativa" parameterType="Iniciativa">
 		INSERT INTO Iniciativas (nombre,descripcion,fechaPropuesta, estado, proponente) 
 		VALUES (#{ini.nombre},#{ini.descripcion}, now(), #{ini.estado}, #{ini.proponente.correo}); 
@@ -177,7 +200,9 @@
 		VALUES (#{nombreIni},#{descripcion}); 
 	</insert>
 	
-	
+	<update id="modificarIniciativaxEstado">
+		UPDATE iniciativas SET descripcion=#{nuevaDescripcion} WHERE nombre=#{nombreIni}
+	</update>
 	
 	<update id="modificarEstado">
 		UPDATE iniciativas SET estado=#{estado} WHERE nombre=#{nombreIni};

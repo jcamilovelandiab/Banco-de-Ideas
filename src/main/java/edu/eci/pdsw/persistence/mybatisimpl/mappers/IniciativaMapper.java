@@ -36,5 +36,9 @@ public interface  IniciativaMapper {
     
     public void agregarPalabraClave(@Param("nombreIni")String nombreIni,
     		@Param("descripcion") String desc);
-     
+   
+    public void modificarIniciativaxEstado(@Param("nombreIni")String nombreIniciativa,@Param("nuevaDescripcion") String nuevaDescripcion);
+
+    public List<Iniciativa> consultarIniciativasxArea(@Param("area") int area);
+   
 }

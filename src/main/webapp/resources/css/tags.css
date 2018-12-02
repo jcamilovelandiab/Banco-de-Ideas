@@ -13,6 +13,7 @@
   cursor: text;
   text-align:center;
 }
+
 .bootstrap-tagsinput input {
   border: none;
   box-shadow: none;
@@ -22,13 +23,16 @@
   width: auto;
   max-width: inherit;
 }
+
 .bootstrap-tagsinput.form-control input::-moz-placeholder {
   color: #900;
   opacity: 1;
 }
+
 .bootstrap-tagsinput.form-control input:-ms-input-placeholder {
   color: #900;
 }
+
 .bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
   color: #900;
 }

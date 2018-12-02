@@ -33,6 +33,7 @@ import edu.eci.pdsw.entities.Usuario;
 import edu.eci.pdsw.samples.services.ServicesException;
 
 import edu.eci.pdsw.samples.services.ServicesIdeas;
+import org.apache.ibatis.exceptions.PersistenceException;
 
 
 
@@ -146,7 +147,7 @@ public class ServicesIdeasStub implements ServicesIdeas{
 
 	@Override
 
-	public List<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException {
+	public List<Iniciativa> consultarIniciativasxEstado(String estado) throws ServicesException {
 
 		// TODO Auto-generated method stub
 
@@ -407,6 +408,19 @@ public class ServicesIdeasStub implements ServicesIdeas{
 		return null;
 
 	}
+
+
+
+	@Override
+	public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws SecurityException {
+		// TODO Auto-generated method stub
+		
+	}
+
+    @Override
+    public List<Iniciativa> consultarIniciativasxArea(int area) throws PersistenceException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
 

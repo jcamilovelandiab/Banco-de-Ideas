@@ -12,6 +12,7 @@ public interface IniciativaDAO {
     public void crearIniciativa(Iniciativa iniciativa) throws PersistenceException;
     
     public List<Iniciativa> consultarIniciativas() throws PersistenceException;
+      public List<Iniciativa> consultarIniciativasxArea(int area) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxClaves(String palabraClave) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxOrden(String orden) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxEstado(String estado) throws PersistenceException;
@@ -24,5 +25,7 @@ public interface IniciativaDAO {
     
     public void modificarEstado(String nombreIniciativa, Estado estado) throws PersistenceException;
     public void agregarPalabraClave(String nombreIni,String desc) throws PersistenceException;
+    
+    public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws PersistenceException;
     
 }
