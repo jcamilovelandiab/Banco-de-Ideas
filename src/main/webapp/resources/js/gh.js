@@ -6,6 +6,5 @@ $(document).on("click", ".votos", function () {
 });
 
 $("#ModalVoto").on('shown.bs.modal', function(){
-
 	$("#votos_form\\:lik").val($("#lik").val())
 });

@@ -862,10 +862,11 @@
                                 </div>
                                 <div class="modal-body"></div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                                    <p:commandButton value = "Modificar"
-                                                     actionListener="#{usuarioBean.changeRol(emailUser.value,modifyRolUser.value)}" id="boton" styleClass="btn btn-success">
-                                    </p:commandButton>
+                                    <button id="prueba"  type="button" class="btn btn-default" >Cancelar</button>
+                                    <button id="modificar" type="button"
+                                                     onclick="#{usuarioBean.changeRol(emailUser.value,modifyRolUser.value)}" 
+                                                      class="btn btn-success">Modificar
+                                   </button>
 
                                 </div>
                             </h:form>
