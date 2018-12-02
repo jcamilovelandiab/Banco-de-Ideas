@@ -165,11 +165,11 @@ public class IniciativaBean extends BasePageBean {
 
     public void votar(String iniciativa) throws ServicesException {
         String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
-        if (!yaVoto(iniciativa))services.agregarVotanteAIniciativa(correo, iniciativa);
+        if (!isVoto(iniciativa))services.agregarVotanteAIniciativa(correo, iniciativa);
     }
     public void dislike(String iniciativa)throws ServicesException{
         String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
-        if (yaVoto(iniciativa)) services.eliminarVotanteAIniciativa(correo, iniciativa);
+        if (isVoto(iniciativa)) services.eliminarVotanteAIniciativa(correo, iniciativa);
         
     }
     public List<Iniciativa> mias(String correo) throws ServicesException{
@@ -179,7 +179,10 @@ public class IniciativaBean extends BasePageBean {
     
 
 
-    public boolean yaVoto( String iniciativa) throws ServicesException {
+
+
+    public boolean isVoto(String iniciativa) throws ServicesException {
+
     	String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
         System.out.println("Entre "+ correo + " " + iniciativa);
     	ArrayList<Usuario> votantes = (ArrayList<Usuario>) services.consultarVotantesxIniciativa(iniciativa);
@@ -188,7 +191,6 @@ public class IniciativaBean extends BasePageBean {
         for (int i = 0; i < votantes.size() && !flag; i++) {
             if (votantes.get(i).getCorreo().equals(correo)) {
                 flag = true;
-                
             }
         }
         return flag;
@@ -196,6 +198,10 @@ public class IniciativaBean extends BasePageBean {
 
     public int votos(String nombre) throws ServicesException {
         return services.consultarCantidadVotos(nombre);
+    }
+
+    public void setPrueba(){
+        System.out.println("Funciona el click");
     }
 
     public void setClaves(ArrayList<String> claves) {
