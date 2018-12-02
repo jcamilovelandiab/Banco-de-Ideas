@@ -336,6 +336,7 @@
                 <div class="modal-content"></div>
             </div>
             <div class="modal-dialog">
+
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
@@ -346,22 +347,18 @@
                     </div>
                     <div class="modal-body">
                         <h:form id="votos_form">
- 
-                            
-                            
-                            <input type="text" name="lik" id="lik" value="" />	  
-                            <p:inputText id="lik" binding="#{lik}" />
-                            <p:inputText id="voto" value = "#{iniciativaBean.yaVoto(lik.value)}" />
+                            <input type="text" name="lik" id="lik" value="" style="visibility: hidden" />
+                            <p:inputText id="lik" binding="#{lik}" type="hidden"/>
+
                             <div class="form-group" >
-                                <label for="votar">Vota:</label>
-                                <div id="activate" class="toggle-switch" data-ts-color="red">
-								  <label for="ts4" class="ts-label"></label>
-								  <input id="ts4" type="checkbox" hidden="hidden"/>
-								  <label for="ts4" class="ts-helper"></label>
-								</div>
-								<script>
-									
-								</script>                        	                             
+                                <h:panelGroup  style="position: center" id="prueba">
+                                    <label for="votar">Vota:</label>
+                                    <div id="activate" class="toggle-switch" data-ts-color="red">
+                                          <label for="ts4" class="ts-label"></label>
+                                          <input id="ts4" type="checkbox" hidden="hidden"/>
+                                          <label for="ts4" class="ts-helper"></label>
+                                    </div>
+                                </h:panelGroup>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -381,6 +378,7 @@
                 <h1 class="centered">Consultar Iniciativas</h1>
                 <hr/>
                 <div class="col-xs-6" style="background-color:transparent;">
+                    <center>
                     <table id="TablaIni" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                         <thead>
                             <tr>
@@ -389,13 +387,9 @@
                                 <th>Estado</th>    
                                 <th>fechas</th>
                                 <th>Descripcion</th>
-
                                 <th>Votos</th>
-
                                 <th>Votar</th>
-
                             </tr>
-
                         </thead>
                         <tbody>
 
@@ -410,8 +404,11 @@
 
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                
-                                            <button class="votos btn btn-success icon icon-plus" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}"></button>
+                                            <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}" style="visibility: hidden"/>
+
+                                            <button class="votos btn btn-success icon icon-plus" data-id="#{ini.nombre}" value="#{iniciativaBean.isVoto(ini.nombre)}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}">
+                                                
+                                            </button>
                                         </h:panelGroup>
                                     </td>
                                 </tr>
@@ -420,7 +417,7 @@
 
                         </tbody>
                     </table>
-
+                    </center>
 
 
 
@@ -701,7 +698,7 @@
                                 <th>Descripcion</th>
 
                                 <th>Votos</th>
-<th class="">Cambio</th>
+                                <th class="">Cambio</th>
                                 <th>Votar</th>
 
                             </tr>
