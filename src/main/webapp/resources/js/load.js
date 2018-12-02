@@ -9,12 +9,9 @@ $(document).ready(function () {
        );  
 });
 
-
-$("#")
-
-
-
-
+$(".modal-footer>.btn.btn-success").mouseup(function(){
+    location.reload();
+});
 
 
 
