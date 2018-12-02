@@ -201,7 +201,7 @@
     </style>
     
     
-<h:outputStylesheet name="/resources/css/proponente.css" />
+        <h:outputStylesheet name="resources/css/proponente.css" />
         <h:outputStylesheet name="css/publico.css" />
         <h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />	
         <h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
@@ -257,8 +257,6 @@
         <f:metadata>
             <f:viewParam name="correo" value="#{usuarioBean.correo}" />
         </f:metadata>
-        <h:outputScript name="js/load.js"></h:outputScript>
-        
 
 
         <!-- creacion de la barra-->
@@ -900,6 +898,15 @@
         </div> </div>           
                 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+             
+             $(".modal-footer>.btn.btn-success").mouseup(function(){
+                location.reload();
+            });
+
+
+
+        </script>
 
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
