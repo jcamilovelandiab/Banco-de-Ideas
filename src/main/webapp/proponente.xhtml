@@ -13,7 +13,7 @@
         
         <link rel="stylesheet" href="/resources/css/proponente.css"/>
         <h:outputStylesheet name="/resources/css/proponente.css" />
-        <h:outputStylesheet name="/resourcesdataTable/css/dataTables.bootstrap.min.css" />	
+        <h:outputStylesheet name="/resources/dataTable/css/dataTables.bootstrap.min.css" />	
         <h:outputStylesheet name="/resources/dataTable/css/jquery.dataTables.min.css" />
              <h:outputStylesheet name="css/tags.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
@@ -59,7 +59,32 @@
 		<!-- Registrar una iniciativa -->
 		<!-- PRIME FACES-->
 		
-		
+		<h:form>
+			<h2 class="classH2">
+				Registro de Iniciativas</h2>
+			
+			<p:outputLabel class="classOutputLabel" for="nombreIniciativa" value="Nombre"/>
+			
+			<p:inputText class="classInputText" id="nombreIniciativa" value="#{iniciativaBean.nombre}" required="true" 
+				label="nombreIniciativa" placeholder="Nombre de la iniciativa">
+		           <f:validateLength minimum="2" />
+		    </p:inputText>
+		    
+		    <p:outputLabel class="classOutputLabel" for="descripcionIniciativa" value="Descripcion"/>		        
+            <p:inputText class="classInputText" id="descripcionIniciativa" value="#{iniciativaBean.descripcion}" required="true" label="descripcionIniciativa"
+            	 placeholder="Descripcion de la iniciativa">
+            	<f:validateLength minimum="2" />
+           	</p:inputText>
+		   
+		    <p:outputLabel class="classOutputLabel" for="palabrasClaveIniciativa" value="Palabras clave"/>	           		
+            <p:inputText class="classInputText" id="palabrasClaveIniciativa" value="#{iniciativaBean.clavesUnidas}" required="true" label="palabrasClaveIniciativa"
+            	 placeholder="ejemplo: #biblioteca #amomiescuela">
+            	<f:validateLength minimum="2" />
+           	</p:inputText>
+	    
+		    <p:commandButton class="botonRegistrarIniciativa" id="botonRegistrarIniciativa" 
+		    	value="registrar" update="@parent" action="#{iniciativaBean.save(usuarioBean.correo)}"/>
+		</h:form>
 		
     </h:body>
 </html>

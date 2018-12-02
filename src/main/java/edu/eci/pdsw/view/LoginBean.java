@@ -30,8 +30,10 @@ public class LoginBean extends BasePageBean {
     private ServicesIdeasImpl services;
 
     public void login(String correo) throws IOException, ServicesException {
+
     	Usuario user = services.consultarUsuario(correo);
     	FacesContext facesContext = FacesContext.getCurrentInstance();
+    	
         if (user != null) {
             HttpSession sesssion = (HttpSession) facesContext.getExternalContext().getSession(true);
             sesssion.setAttribute("correo", user.getCorreo());
@@ -45,12 +47,14 @@ public class LoginBean extends BasePageBean {
             } else if (user.getTipo().equals(Rol.PMO_ODI)) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("PMO.xhtml?correo=" + correo);
             }
+            
         } else {
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         }
     }
+    
     public void redirect(String correo) throws IOException{
-    FacesContext.getCurrentInstance().getExternalContext().redirect("iniciativa.xhtml?correo=" + correo);
+    	FacesContext.getCurrentInstance().getExternalContext().redirect("iniciativa.xhtml?correo=" + correo);
     }
 
 }
