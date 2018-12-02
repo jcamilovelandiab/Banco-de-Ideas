@@ -6,11 +6,11 @@ $(document).ready(function () {
         
    );  
    $('#TablaIniP').DataTable(
-        
-   );  
-    
- });
+       );  
+});
 
+
+$("#")
 
 
 
