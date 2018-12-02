@@ -29,7 +29,7 @@ public class LoginBean extends BasePageBean {
 
     public void login(String correo) throws IOException, ServicesException {
         this.correo = correo;
-
+        System.out.println(correo);
         Usuario user = services.consultarUsuario(correo);
         if (user != null) {
             if (user.getTipo().equals(Rol.ADMINISTRADOR)) {
@@ -47,7 +47,7 @@ public class LoginBean extends BasePageBean {
         }
     }
     public void redirect(String correo) throws IOException{
-    FacesContext.getCurrentInstance().getExternalContext().redirect("iniciativa.xhtml?correo=" + correo);
+    	FacesContext.getCurrentInstance().getExternalContext().redirect("iniciativa.xhtml?correo=" + correo);
     }
 
 }
