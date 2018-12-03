@@ -14,7 +14,8 @@
     
     
        <style>
-       	     
+
+           
 		.toggle-switch {
 			-webkit-touch-callout: none;
 			-webkit-user-select: none;
@@ -378,9 +379,42 @@
                                                 </tbody>
                                         </table>
                                         <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
-                        <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                                         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
                         <h:outputScript name="js/tableRefresh.js" />
                                     </h:panelGroup>
+                                    <div class="panel panel-default">
+                                    <div class="panel-heading" style="  color: white;
+            background-color: #900;
+            border-color: #ddd;
+
+                                            ">Agregar Comentario</div>
+                                      <div class="panel-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <p:inputTextarea rows="6" cols="33" id="mt"
+                                                binding="#{comentarioTexto}"
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    width:100%"/>
+                                                <p></p>
+                                            </div>
+                                        </form>
+                                     </div>
+                                     <div class="panel-footer">
+                                        
+                                        <p:commandButton value="Comentar"
+                                                style="
+                                                 background-color: rgba(144, 22, 38, 0.7);
+                                                 border: rgba(144, 22, 38, 0.7);
+                                                 text-align:center;                                 
+                                                 color : rgba(255, 255, 255, 1)
+                                                 "
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto.value,lik.value)}">
+                                    </p:commandButton>
+                                     </div>
+                                    </div>
+
                     
                                 </h:panelGroup>
                             </div>
@@ -709,7 +743,7 @@
                 <br/>
                 <h1 class="centered">Modificar estado de iniciativa.</h1>
                 <hr/>
-                    <div class="" style="background-color:transparent;">
+                    <div style="background-color:transparent;">
                     <table id="TablaIniE" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                         <thead>
                             <tr>

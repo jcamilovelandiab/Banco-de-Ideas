@@ -154,6 +154,14 @@ public class IniciativaBean extends BasePageBean {
         return (List<Comentario>) services.consultarComentariosxIniciativa(input);
     }
 
+    public void registrarComentario(String comen,String iniciativa) throws ServicesException {
+        String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
+        Usuario usr  = services.consultarUsuario(correo);
+        Comentario comentario = new Comentario(comen, usr);
+        services.agregarComentarioxIniciativa(iniciativa,comentario);
+    }
+
+
     public List<Estado> getTypes() {
         return Arrays.asList(Estado.class.getEnumConstants());
     }
