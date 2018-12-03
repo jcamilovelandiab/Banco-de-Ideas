@@ -733,9 +733,9 @@ a:before, a:after {
 /* Copyrights */
 
 #copyrights {
-  background: #222222;
-  padding: 20px 0;
-  text-align: center;
+    background: #800000;
+    padding: 20px 0;
+    text-align: center;
 }
 
 #copyrights p {
@@ -744,11 +744,14 @@ a:before, a:after {
 }
 
 #copyrights a {
-  color: #3498db;
+  color: transparent;
+  margin-bottom: 5px;
 }
 
 .credits {
   color: #999;
+  margin-bottom: 5px;
+  text-align: center;
 }
 .nav > li > a:hover{
     background-color:white;

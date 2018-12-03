@@ -342,23 +342,25 @@
                         <h:form id="votos_form">
                             <input type="text" name="lik" id="lik" value="" style="visibility: hidden" />
                             <p:inputText id="lik" binding="#{lik}" type="hidden"/>
-                            <h:outputText id="yaper" value="#{iniciativaBean.consultarIniciativa(lik.value).getDescripcion()}+holi"></h:outputText>
+                            
                             <div class="form-group" >
                                 <h:panelGroup  style="position: center" id="prueba">
-                                    <label for="votar">Vota : </label>
+                                    
                                     <p:commandButton  styleClass="ntb btn btn-default glyphicon glyphicon-hand-right"    
                                          actionListener="#{iniciativaBean.votar(lik.value)}" value="">                                             
                                     </p:commandButton>
-                                    
+                                
                                     <p:commandButton   
-                                         update="comentariosPanel" value="Cargar comentarios"
+                                         update="comentariosPanel" value="Cargar comentarios"  styleClass="ntb btn btn-default glyphicon glyphicon-folder-open" 
                                          style="background-color: rgba(144, 22, 38, 0.7);
-                                             border: rgba(144, 22, 38, 0.7);
+                                             
                                              text-align:center; 
+                                             display: inline-block;
                                              left:15%;
                                              border-radius: 11px;                              
                                              color : rgba(255, 255, 255, 1)">                             
                                     </p:commandButton>
+                                   
                                     <p></p>
                                     <h:panelGroup id="comentariosPanel">
                                         <table id="comentarios" class="table table-striped table-bordered"
@@ -384,30 +386,33 @@
                                          <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
                         <h:outputScript name="js/tableRefresh.js" />
                                     </h:panelGroup>
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default" style="border-radius: 11px;">
                                     <div class="panel-heading" style="  color: white;
-            background-color: #900;
-            border-color: #ddd;
+            background-color: #8b0000!important;
+            border-color: #8b0000!important;
+            border-radius: 11px;
 
                                             ">Agregar Comentario</div>
                                       <div class="panel-body">
                                         <form>
-                                            <div class="form-group">
-                                                <p:inputTextarea rows="6" cols="33" id="mt"
-                                                binding="#{comentarioTexto}"
+                                            <div class="form-group contact-form php-mail-form" >
+                                                <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
+                                                binding="#{comentarioTexto}" placeholder="Agrega un comentario"
                                                 style="color:black; border-radius: 11px;
                                                     background-color: rgba(255, 237, 246, 0.3);
                                                     border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
                                                     width:100%"/>
                                                 <p></p>
                                             </div>
                                         </form>
                                      </div>
-                                     <div class="panel-footer">
-                                        
-                                        <p:commandButton value="Comentar"
-                                                style="
-                                                 background-color: rgba(144, 22, 38, 0.7);
+                                        <div class="panel-footer" style="background-color: transparent;">
+                                         <div class="loading"></div>
+            
+                                        <p:commandButton class="form-send" value="Comentar" styleClass="ntb btn btn-default glyphicon glyphicon-pencil" 
+                                       style="
+                                                 background-color:#8b0000!important;
                                                  border: rgba(144, 22, 38, 0.7);
                                                  text-align:center;                                 
                                                  color : rgba(255, 255, 255, 1)
@@ -447,7 +452,7 @@
                                 <th>fechas</th>
                                 <th>Descripcion</th>
                                 <th>Votos</th>
-                                <th>Votar</th>
+                                <th>Más...</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -465,7 +470,7 @@
                                         <h:panelGroup layout="block">
                                             <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}" style="visibility: hidden"/>
 
-                                            <button class="votos btn btn-success glyphicon glyphicon-hand-right" data-id="#{ini.nombre}" value="#{iniciativaBean.isVoto(ini.nombre)}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}">
+                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" value="#{iniciativaBean.isVoto(ini.nombre)}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}">
                                                 
                                             </button>
                                         </h:panelGroup>
@@ -602,7 +607,7 @@
                                 <th>fechas</th>
                                 <th>Descripcion</th>                     
                                 <th>Votos</th>
-                                <th>Votar</th>
+                                <th>Más...</th>
 
                             </tr>
 
@@ -619,7 +624,7 @@
 
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="votos btn btn-success glyphicon glyphicon-hand-right" data-id="#{inics.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>                                        </h:panelGroup>
+                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{inics.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>                                        </h:panelGroup>
                                     </td>
                                 </tr>
                             </ui:repeat>
@@ -757,7 +762,7 @@
 
                                 <th>Votos</th>
                                 <th class="">Cambio</th>
-                                <th>Votar</th>
+                                <th>Más...</th>
 
                             </tr>
 
@@ -779,7 +784,7 @@
                             </td>
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="votos btn btn-success glyphicon glyphicon-hand-right" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>
+                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>
                                         </h:panelGroup>
                                     </td>
                                 </tr>
@@ -855,7 +860,7 @@
                 <br/>
                 <h1 class="centered">Modificar rol del usuario.</h1>
                 <hr/>
-                <div class="col-xs-6" style="background-color:transparent;">
+                <div  style="background-color:transparent;">
                     
             <table id="TablaUsr" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                 <thead>
@@ -991,7 +996,7 @@
                 <br/>
                 <h1 class="centered">Iniciativas.</h1>
                 <hr/>
-       <div class="col-xs-6" style="background-color:transparent;">
+       <div  style="background-color:transparent;">
                     <table id="TablaIniEspera" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                         <thead>
                             <tr>
@@ -1003,7 +1008,7 @@
 
                                 <th>Votos</th>
                                 <th class="">Cambio</th>
-                                <th>Votar</th>
+                                <th>Más..</th>
 
                             </tr>
 
@@ -1025,7 +1030,7 @@
                             </td>
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="votos btn btn-success glyphicon glyphicon-hand-right" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>
+                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>
                                         </h:panelGroup>
                                     </td>
                                 </tr>
@@ -1071,7 +1076,7 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                             <p:commandButton id="mod" value = "Modificar"
-                                                             actionListener="#{iniciativaBean.cambioEstado(nameIni.value,modifyEst.value)}" styleClass="btn btn-success" upload = "TablaIniE">
+                                                             actionListener="#{iniciativaBean.cambioEstado(nameIni.value,modifyEst.value)}" styleClass="btn btn-success" upload = "TablaIniEspera">
                                             </p:commandButton>
 
                                         </div>
@@ -1085,7 +1090,23 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
                  </div>
         </div>
                 
-                
+                <div id="copyrights">
+  <div class="container">
+    <p>
+        Escuela Colombiana de Ingeniería Julio Garavito 
+    </p>
+    <div class="credits">
+        AK.45 No.205-59 (Autopista Norte)
+        PBX: +57(1) 668 3600
+        Call Center: +57(1) 668 3600
+        Línea Nacional Gratuita: 018000112668
+
+        Bogotá, D.C. - Colombia
+ 
+
+    </div>
+  </div>
+</div>
            
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
