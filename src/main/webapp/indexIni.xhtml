@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <style>
+            body {
+                margin: 0;
+                font-family: "PT Sans",Arial,Helvetica,sans-serif;
+            }
+
+            .topnav {
+                overflow: hidden;
+                background-color: #990000;
+            }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+            .topnav a:hover {
+                background-color: #900;
+                color: black;
+            }
+
+        </style>
+
+    </h:head>
+    <h:body style="background-image:url(resources/images/inicio.jpg);background-size:cover;background-repeat: no-repeat;">
+        <nav class="navbar navbar-default">
+            <div class="topnav">
+                <a class="active" href="index.xhtml">Inicio</a>
+
+                <a href="#about">Quienes somos</a>
+            </div>
+        </nav>
+
+        <h:form  prependId="false" >
+        
+            <h:panelGrid columns="1" style="
+                         margin: 15% auto;
+                         width:450px;height:5px;
+                         background-color: rgba(0,0,0,0.7);
+                         border-radius: 11px;text-align:center"  >
+
+                <h:outputText value = "Banco de" style=" font-size: 2.5em;
+                              font-family: 'MyriadProRegular';
+                              color : rgba(255, 255, 255, 1);
+
+                              "/>
+                <h:outputText value = "Iniciativas" style=" font-size: 2.5em;
+                              font-family: 'MyriadProRegular';
+                              color : rgba(255, 255, 255, 1);
+                              "/> 
+
+                <p:inputText id="email" style="border-radius: 11px;
+                             background-color: rgba(255, 237, 246, 0.3);
+                             border: rgba(255, 237, 246, 0.3);
+                             color: white;
+                             text-align:center" binding="#{correo}"/> 
+                <p:watermark for="email" value="Correo"/>
+                <p></p>
+                <p:separator style="width:350px;height:0px" />
+                <p:commandButton value = "Iniciar Sesion" style="
+                                 border-radius: 11px;
+                                 background-color: rgba(144, 22, 38, 0.7);
+                                 border: rgba(144, 22, 38, 0.7);
+                                 text-align:center;
+                                 top: -10px;
+                                 left: 2px;
+                                 right: -42px;
+                                 bottom: -10px;
+                                 color : rgba(255, 255, 255, 1)
+                                 "
+                                 actionListener="#{loginBean.login(correo.value)}">
+                </p:commandButton>
+
+            </h:panelGrid>
+
+        </h:form>
+        <h:outputStylesheet name = "bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+
+    </h:body>
+</html>
+<!--
+
+
+
+
+
+            .modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #9a0d0d;
+}
+                              
+
+    -->
