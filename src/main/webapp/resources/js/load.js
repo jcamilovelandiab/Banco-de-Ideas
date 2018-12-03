@@ -6,6 +6,8 @@ $(document).ready(function () {
     $("#TablaIniE").DataTable();     
    $('#TablaIniP').DataTable(
        );  
+       $('#TablaIniEspera').DataTable(
+       );  
 });
 
 

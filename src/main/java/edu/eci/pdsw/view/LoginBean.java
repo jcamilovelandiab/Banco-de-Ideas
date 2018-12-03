@@ -30,7 +30,7 @@ public class LoginBean extends BasePageBean {
     private ServicesIdeasImpl services;
 
     public void login(String correo) throws IOException, ServicesException {
-
+        System.out.println(correo+" "+"velan es una gay");
     	Usuario user = services.consultarUsuario(correo);
     	FacesContext facesContext = FacesContext.getCurrentInstance();
     	
