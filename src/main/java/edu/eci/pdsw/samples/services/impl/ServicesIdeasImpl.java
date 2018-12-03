@@ -92,11 +92,11 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 	 * @param estado
 	 */
 	@Override
-	public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException {
+	public Collection<Iniciativa> consultarIniciativasxEstado(String estado) throws ServicesException {
 		try{
 			return iniciativaDAO.consultarIniciativasxEstado(estado);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
+			System.out.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar todas las iniciativas");
 		}
 	}
@@ -425,4 +425,9 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			throw  new SecurityException("Error al modificar la iniciativa "+nombreIniciativa);
 		}
 	}
+
+    @Override
+    public List<Iniciativa> consultarIniciativasxArea(int area) throws PersistenceException {
+        return iniciativaDAO.consultarIniciativasxArea(area);
+    }
 }

@@ -15,9 +15,9 @@ public interface ServicesIdeas {
     public Iniciativa consultarIniciativa(String nombreIniciativa) throws ServicesException; //
     public Collection<Iniciativa> consultarIniciativas() throws ServicesException; //
     public Collection<Iniciativa> consultarIniciativasRelacionadas(String nombreIni) throws ServicesException; //
-    
+    public List<Iniciativa> consultarIniciativasxArea(int area) throws PersistenceException;
     public Collection<Iniciativa> consultarIniciativasxClaves(List<String> palabrasClave) throws ServicesException; //
-    public Collection<Iniciativa> consultarIniciativasxEstado(Estado estado) throws ServicesException; //
+    public Collection<Iniciativa> consultarIniciativasxEstado(String estado) throws ServicesException; //
     public Collection<Iniciativa> consultarIniciativasxOrden(String orden) throws ServicesException;  //
     public Collection<Iniciativa> consultarIniciativasxProponente(String correo) throws ServicesException; //
     

@@ -12,9 +12,10 @@ public interface IniciativaDAO {
     public void crearIniciativa(Iniciativa iniciativa) throws PersistenceException;
     
     public List<Iniciativa> consultarIniciativas() throws PersistenceException;
+      public List<Iniciativa> consultarIniciativasxArea(int area) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxClaves(String palabraClave) throws PersistenceException;
     public List<Iniciativa> consultarIniciativasxOrden(String orden) throws PersistenceException;
-    public List<Iniciativa> consultarIniciativasxEstado(Estado estado) throws PersistenceException;
+    public List<Iniciativa> consultarIniciativasxEstado(String estado) throws PersistenceException;
     public Iniciativa consultarIniciativa(String nombreIniciativa) throws PersistenceException;
     
     public void agregarVotanteAIniciativa(String correo, String nombreIni);

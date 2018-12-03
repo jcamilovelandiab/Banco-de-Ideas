@@ -34,7 +34,7 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	}
 
 	@Override
-	public List<Iniciativa> consultarIniciativasxEstado(Estado estado) throws PersistenceException {
+	public List<Iniciativa> consultarIniciativasxEstado(String estado) throws PersistenceException {
 		return iniciativaMapper.consultarIniciativasxEstado(estado);
 	}
 
@@ -88,6 +88,11 @@ public class MyBATISIniciativaDAO implements IniciativaDAO {
 	public void modificarIniciativaxEstado(String nombreIniciativa, String nuevaDescripcion) throws PersistenceException {
 		iniciativaMapper.modificarIniciativaxEstado(nombreIniciativa,nuevaDescripcion);
 	}
+
+    @Override
+    public List<Iniciativa> consultarIniciativasxArea(int area) throws PersistenceException {
+        return iniciativaMapper.consultarIniciativasxArea(area);
+    }
 	
 }
 

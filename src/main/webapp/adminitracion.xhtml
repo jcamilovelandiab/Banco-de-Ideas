@@ -196,6 +196,20 @@
 		.toggle-switch[data-ts-color=green] input:not(:disabled):checked+.ts-helper:active:before {
 			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(76, 175, 80, .2)
 		}
+                #iconos {
+     position:relative;
+     width: 10px;
+     height:20;
+
+}
+ 
+#iconos img {
+   width:10px;
+   float:left;
+}
+.nav navbar-nav{
+    color:white;
+}
 			  
        
     </style>
@@ -212,9 +226,9 @@
         <meta content="" name="description"/>
 
         <!-- Favicons -->
-        <!--<link href="resources/pruebita/img/favicon.png" rel="icon"/>
-        <link href="resources/pruebita/img/apple-touch-icon.png" rel="apple-touch-icon"/>
-        -->
+        <link href="resources/login/images/logo_eci.PNG" rel="icon"/>
+
+        
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:Lato:300,400,700,300italic,400italic|Raleway:400,300,700" rel="stylesheet"/>
@@ -266,9 +280,13 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon icon-shield" style="font-size:30px; color:#3498db;"></span>
+                            <img src="resources/images/logo1.png"/>
                         </button>
-                        <a class="navbar-brand hidden-xs hidden-sm smoothscroll" href="#home"><span class="icon icon-shield" style="font-size:18px; color:#3498db;"></span></a>
+                        <a class="navbar-brand hidden-xs hidden-sm smoothscroll" href="#home">
+                          
+                            <span class="icon icon-home" style="font-size:18px; color:#3498db; color: whites">
+                              
+                            </span></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -280,34 +298,7 @@
                             <li> <a href="#modificarE" class="smoothscroll">Modificar estado</a></li>
                             <li> <a href="#cambiarR" class="smoothscroll"> Cambiar rol</a></li>
                             <li> <a href="#estadisticas" class="smoothscroll">Estadisticas</a></li>
-                            <li> <a href="index.xhtml" class="smoothscroll">
-                            	<span class="glyphicon glyphicon-log-in"></span> Salir</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/.nav-collapse -->
-                </div>
-            </div>
-        </div> <div id="navbar-main">
-            <!-- Fixed navbar -->
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon icon-shield" style="font-size:30px; color:#3498db;"></span>
-                        </button>
-                        <a class="navbar-brand hidden-xs hidden-sm smoothscroll" href="#home"><span class="icon icon-shield" style="font-size:18px; color:#3498db;"></span></a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#home" class="smoothscroll">Home</a></li>
-                            <li> <a href="#iniciativa" class="smoothscroll"> Iniciativas</a></li>
-                            <li> <a href="#Palabras" class="smoothscroll">Palabras claves</a></li>
-                            <li> <a href="#mias" class="smoothscroll">Mias</a></li>
-                            <li> <a href="#registrar" class="smoothscroll">Registrar</a></li>
-                            <li> <a href="#modificarE" class="smoothscroll">Modificar estado</a></li>
-                            <li> <a href="#cambiarR" class="smoothscroll"> Cambiar rol</a></li>
-                            <li> <a href="#estadisticas" class="smoothscroll">Estadisticas</a></li>
+                            <li> <a href="#estadisticasArea" class="smoothscroll">Estadisticas areas</a></li>
                             <li> <a href="index.xhtml" class="smoothscroll">
                             	<span class="glyphicon glyphicon-log-in"></span> Salir</a>
                             </li>
@@ -321,14 +312,13 @@
         <div id="home"></div>
         <div id="headerwrap" name="home">
             <header class="clearfix">
-                <h1><span class="icon icon-shield"></span></h1>
+                <h1><span class="iconos"></span></h1>
+                <img src="resources/images/logo1.png"/>
                 <p>Banco de</p>
                 <p>Iniciativas</p>
             </header>
         </div>
-
-
-        <div class="modal fade" id="ModalVoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalVoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content"></div>
             </div>
@@ -366,8 +356,7 @@
 
                 </div>
             </div>
-        </div>
-
+        </div>ad
 
         <!--creracion tablas-->
         <div class="container" id="iniciativa" name="iniciativa">
@@ -558,8 +547,7 @@
 
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="votos btn btn-success icon icon-plus" data-id="#{inics.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>
-                                        </h:panelGroup>
+                                            <button class="votos btn btn-success icon icon-plus" data-id="#{inics.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>                                        </h:panelGroup>
                                     </td>
                                 </tr>
                             </ui:repeat>
@@ -826,12 +814,7 @@
                 </tbody>
             </table>
             <div class="modal fade" id="myModalUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content"></div>
-                </div>
-                <div class="modal-dialog">
-                    <div class="modal-content"></div>
-                </div>
+
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -870,28 +853,65 @@
                 </div>
             </div>
         </div>
-        
-        <!-- ==== SECTION DIVIDER3 -->
+
+        </div> </div>            
         <section class="section-divider textdivider divider3">
             <div class="container">
-                <h1>Estadisticas de las iniciativas</h1>
+                <h1>Estadisticas por Estados de iniciativas.</h1>
                 <hr/>
-                <p>Consulta las estadisticas por areas o dependencias.</p>
+               
             </div>
-            <!-- container -->
-        </section>
-        
-        <div class="container" id="estadisticas" name="estadisticas">
-            <div class="row white">
+            </section>
+            <div class="container" id="estadisticas" name="estadisticas">
+                <div class="row white">
                 <br/>
-                <h1 class="centered">Estadisticas</h1>
+                <h1 class="centered">Estadisticas.</h1>
                 <hr/>
+                <div class="col-xs-6" style="background-color:transparent;">
+                    
+                </div>
+              <p:inputText id="solucionado" value="#{iniciativaBean.solucionado()}" style="visibility: hidden" />
+               <p:inputText id="espera" value="#{iniciativaBean.espera()}" style="visibility: hidden"/>
+                <p:inputText id="revision" value="#{iniciativaBean.revision()}" style="visibility: hidden"/>
+                <p:inputText id="desechado" value="#{iniciativaBean.desechado()}" style="visibility: hidden"/>
+                <p:inputText id="proyecto" value="#{iniciativaBean.proyecto()}" style="visibility: hidden"/>
+                <canvas id="polarChart" >
+
+                </canvas>
+                </div>
+        </div>           
+
+        <section class="section-divider textdivider divider3">
+            <div class="container">
+                <h1>Estadisticas por area o dependdencia.</h1>
+                <hr/> 
             </div>
-        </div>
-        
-        </div> </div>           
+            </section>
                 
+                     <div class="container" id="estadisticasArea" name="estadisticasArea">
+                <div class="row white">
+                <br/>
+                <h1 class="centered">Estadisticas.</h1>
+                <hr/>
+                <div class="col-xs-6" style="background-color:transparent;">
+                    
+                </div>
+                <p:inputText id="areaP" value="#{iniciativaBean.areaP()}" style="visibility: hidden" />
+                <p:inputText id="areaD" value="#{iniciativaBean.areaD()}" style="visibility: hidden"/>
+ 
+                <canvas id="AreapolarChart" >
+
+                </canvas>
+                </div>
+        </div> 
+                
+                
+                
+           
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"/>
+
         <script type="text/javascript">
              
              $(".modal-footer>.btn.btn-success").mouseup(function(){
@@ -912,5 +932,12 @@
         <h:outputScript name="js/gh.js"></h:outputScript>
         <h:outputScript name="js/ini.js"></h:outputScript>
         <h:outputScript name="js/usr.js"></h:outputScript>
+        <h:outputScript name="js/chart.js"></h:outputScript>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="js/main.js"></script>
     </h:body>
 </html>
