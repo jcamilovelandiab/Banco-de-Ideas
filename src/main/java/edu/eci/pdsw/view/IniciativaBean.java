@@ -148,7 +148,7 @@ public class IniciativaBean extends BasePageBean {
         this.input = input.replaceAll("_", " ");
     }
 
-    public List<Comentario> getComentarios() throws ServicesException {
+    public List<Comentario> getComentarios(String input) throws ServicesException {
         System.out.println("Input" + input);
         System.out.println(services.consultarComentariosxIniciativa(input));
         return (List<Comentario>) services.consultarComentariosxIniciativa(input);

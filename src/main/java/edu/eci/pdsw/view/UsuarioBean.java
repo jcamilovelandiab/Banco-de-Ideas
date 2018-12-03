@@ -83,7 +83,11 @@ public class UsuarioBean extends BasePageBean {
         return (List<Usuario>) services.consultarUsuarios();
     }
     
-   
+   public List<Comentario> getComentarios(String input) throws ServicesException {
+        
+        return (List<Comentario>) services.consultarComentariosxIniciativa(input);
+    }
+
 
 
 }

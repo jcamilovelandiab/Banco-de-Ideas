@@ -346,6 +346,42 @@
                                     <p:commandButton  styleClass="ntb btn btn-default"    
                                          actionListener="#{iniciativaBean.votar(lik.value)}" value="Me gusta">                                             
                                     </p:commandButton>
+                                    
+                                    <p:commandButton   
+                                         update="comentariosPanel" value="Cargar comentarios"
+                                         style="background-color: rgba(144, 22, 38, 0.7);
+                                             border: rgba(144, 22, 38, 0.7);
+                                             text-align:center; 
+                                             left:15%;
+                                             border-radius: 11px;                              
+                                             color : rgba(255, 255, 255, 1)">                             
+                                    </p:commandButton>
+                                    <p></p>
+                                    <h:panelGroup id="comentariosPanel">
+                                        <table id="comentarios" class="table table-striped table-bordered"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Fechas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ui:repeat value="#{iniciativaBean.getComentarios(lik.value)}" var="com">
+                                                    <tr>
+                                                        <td>#{com.autor.nombre}</td>
+                                                        <td>#{com.contenido}</td>
+                                                        <td>#{com.fecha}</td>
+                                                    </tr>
+                                                </ui:repeat>
+                                                </tbody>
+                                        </table>
+                                        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+                        <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                        <h:outputScript name="js/tableRefresh.js" />
+                                    </h:panelGroup>
+                    
                                 </h:panelGroup>
                             </div>
                             <div class="modal-footer">
@@ -364,7 +400,7 @@
                 <br/>
                 <h1 class="centered">Consultar Iniciativas</h1>
                 <hr/>
-                <div class="col-xs-6" style="background-color:transparent;">
+                <div style="background-color:transparent;">
                     <center>
                     <table id="TablaIni" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                         <thead>
@@ -521,7 +557,7 @@
                 <br/>
                 <h1 class="centered">Consultar Iniciativas Propias</h1>
                 <hr/>
-                <div class="col-xs-6" style="background-color:transparent;">
+                <div style="background-color:transparent;">
                     <table id="TablaIniP" class="table table-striped table-bordered"  style="width:100%; background-color: white">
                         <thead>
                             <tr>
