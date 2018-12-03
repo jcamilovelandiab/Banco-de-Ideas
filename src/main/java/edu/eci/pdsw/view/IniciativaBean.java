@@ -256,6 +256,12 @@ public class IniciativaBean extends BasePageBean {
        return a;
     } 
 
-
+      public Iniciativa consultarIniciativa(String nombre) throws ServicesException{
+          System.out.println(nombre+"  "+"a veces me sorprendo lo makia que soy o lo marika");
+          return services.consultarIniciativa(nombre);
+      }
+      public List<Iniciativa> iniciativasEspera() throws ServicesException{
+          return (List<Iniciativa>) services.consultarIniciativasxEstado("EN_ESPERA");
+      }
 }
 

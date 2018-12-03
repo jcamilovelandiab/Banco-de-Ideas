@@ -92,7 +92,7 @@ body {
 }
 
 .modal-header {
-  background: #3498db;
+  background: #8b0000;
 }
 
 .modal-header h4 {
@@ -100,12 +100,12 @@ body {
 }
 
 .modal-footer {
-  background: #2b2b2b;
+  background: transparent;
 }
 
 .navbar-default {
   border-color: transparent;
-  background-color: #8b0000!important;
+ overflow: hidden;
 }
 
 .navbar-toggle {
@@ -114,7 +114,7 @@ body {
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-  background-color: #8b0000!important;
+  background-color:white;
   color: white;
 }
 .navbar-header{
@@ -123,9 +123,11 @@ body {
 .navbar-inverse {
     background-color:  #8b0000!important;
     border-color: #8b0000!important;
+    color: white;
 }
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
     border-color: #8b0000!important;
+    color: white;
 }
 hr {
   position: relative;
@@ -233,7 +235,11 @@ blockquote cite:before {
 /* Links */
 
 a {
-  color: #3498db;
+  float: left;
+                color: #f2f2f2;
+                text-align: center;
+               
+  background-color: #80000!important
   word-wrap: break-word;
   -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
   -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -243,12 +249,15 @@ a {
 }
 
 a:hover, a:focus {
-  color: #c0392b;
+  color: white;
+   background-color: white;
   text-decoration: none;
   outline: 0;
 }
 
 a:before, a:after {
+    color:white;
+    background-color: white;
   -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
   -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
   -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -740,4 +749,8 @@ a:before, a:after {
 
 .credits {
   color: #999;
+}
+.nav > li > a:hover{
+    background-color:white;
+    color:white;
 }
