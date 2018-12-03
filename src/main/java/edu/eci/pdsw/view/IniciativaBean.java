@@ -159,6 +159,7 @@ public class IniciativaBean extends BasePageBean {
 
     public void votar(String iniciativa) throws ServicesException {
         String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
+        if(iniciativa.equals(""))return;
         if (!isVoto(iniciativa))services.agregarVotanteAIniciativa(correo, iniciativa);
     }
     public void dislike(String iniciativa)throws ServicesException{

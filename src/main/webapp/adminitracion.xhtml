@@ -352,16 +352,14 @@
 
                             <div class="form-group" >
                                 <h:panelGroup  style="position: center" id="prueba">
-                                    <label for="votar">Vota:</label>
-                                    <div id="activate" class="toggle-switch" data-ts-color="red">
-                                          <label for="ts4" class="ts-label"></label>
-                                          <input id="ts4" type="checkbox" hidden="hidden"/>
-                                          <label for="ts4" class="ts-helper"></label>
-                                    </div>
+                                    <label for="votar">Vota : </label>
+                                    <p:commandButton  styleClass="ntb btn btn-default"    
+                                         actionListener="#{iniciativaBean.votar(lik.value)}" value="Me gusta">                                             
+                                    </p:commandButton>
                                 </h:panelGroup>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button id="cancelar" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                             </div>
                         </h:form>
                     </div>
@@ -897,9 +895,12 @@
         <script type="text/javascript">
              
              $(".modal-footer>.btn.btn-success").mouseup(function(){
-                location.reload();
+                
             });
 
+            $('#cancelar').click(function(){
+                location.reload();
+            });
 
 
         </script>

@@ -17,7 +17,25 @@ $('td').click(function(){
     if(colIndex == 6){
     	var voto = $("#TablaIni tr:eq("+rowIndex+") td:last .g").data('id');
     	if(voto==true){
-    		$("#ts4").prop('checked','true');
+    		$(".ntb").attr('style','background-color: #900; color:white;');
+    	}else{
+    		$(".ntb").attr('style','background-color: white; color:black;');
     	}
     }
+});
+
+
+$(".ntb").click(function(){
+	var estilo = $(".ntb").attr('style');
+	var estiloSplit = estilo.split(" ");
+	//["background-color:", "#900;", "color:white"]
+	if(estiloSplit[1]=='#900;'){
+		$(".ntb").attr('style','background-color: white; color:black;');
+	}else{
+		$(".ntb").attr('style','background-color: #900; color:white;');
+	}
+});
+
+$('#cancelar').click(function(){
+	localition
 });
