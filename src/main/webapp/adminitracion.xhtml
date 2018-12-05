@@ -611,6 +611,7 @@
                                 <th>fechas</th>
                                 <th>Descripcion</th>                     
                                 <th>Votos</th>
+                                <th>Cambio</th>
                                 <th>Más...</th>
 
                             </tr>
@@ -625,10 +626,15 @@
                                     <td>#{inic.fechaPropuesta}</td>      
                                     <td>#{inic.descripcion}</td>
                                     <td>#{iniciativaBean.votos(inic.nombre)}</td>
+                                    <td  style="text-align:center;">
+                                <h:panelGroup layout="block">
+                                    <button class="modify-esp btn btn-success icon icon-pencil" data-id="#{inic.nombre}" data-toggle="modal" data-target="#modalEspera"></button>
+                                </h:panelGroup>
+                            </td>
 
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{inics.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>                                        </h:panelGroup>
+                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{inic.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>                                        </h:panelGroup>
                                     </td>
                                 </tr>
                             </ui:repeat>
@@ -636,6 +642,60 @@
 
                         </tbody>
                     </table>
+                    
+                    
+
+
+
+                    <div class="modal fade" id="modalEspera" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+
+                                    </button>
+                                    <h4 class="modal-title 
+glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
+
+                                </div>
+                                <div class="modal-body">
+                                    <h:form id="espera_form">
+                                        
+                                        <input type="text" name="nameIniEspera" id="nameIniEspera" value=""  style="visibility: hidden"/>	  
+                                        <p:inputText id="nameIniEspera" binding="#{nameIniEspera}" type="hidden" />
+                                        <div class="form-group" >
+                                            <label for="NuevoEst">Nueva Descripcion </label>
+                                           <div class="form-group">
+           <p:inputTextarea rows="6" cols="33" id="Iniesp" class="form-control"
+                                                binding="#{iniciativaEspera}" placeholder="Escriba una descripcion "
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
+                                                    width:100%"/>
+                                                <p></p></div>
+                                         
+                                        </div>
+                                        <div class="modal-body"></div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <p:commandButton id="mod" value = "Modificar"
+                                                             actionListener="#{iniciativaBean.changeDescription(nameIniEspera.value, iniciativaEspera.value)}" styleClass="btn btn-success" upload = "TablaIniEspera">
+                                            </p:commandButton>
+
+                                        </div>
+                                    </h:form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -1027,11 +1087,7 @@
                                     <td>#{ini.fechaPropuesta}</td>      
                                     <td>#{ini.descripcion}</td>
                                     <td>#{iniciativaBean.votos(ini.nombre)}</td>
-   <td  style="text-align:center;">
-                                <h:panelGroup layout="block">
-                                    <button class="modify-ini btn btn-success icon icon-pencil" data-id="#{ini.nombre}" data-toggle="modal" data-target="#myModalEspera"></button>
-                                </h:panelGroup>
-                            </td>
+   
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
                                             <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" data-toggle="modal" data-target="#ModalVoto"></button>
@@ -1044,52 +1100,6 @@
                         </tbody>
                     </table>
 
-
-
-
-                    <div class="modal fade" id="myModalEspera" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content"></div>
-                        </div>
-                        <div class="modal-dialog">
-                            <div class="modal-content"></div>
-                        </div>
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
-
-                                    </button>
-                                    <h4 class="modal-title 
-glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
-
-                                </div>
-                                <div class="modal-body">
-                                    <h:form id="espera_form">
-
-                                        <input type="text" name="nameIniEspera" id="nameIniEspera" value=""  style="visibility: hidden"/>	  
-                                        <p:inputText id="nameIniEspera" binding="#{nameIniEspera}" type="hidden" />
-                                        <div class="form-group" >
-                                            <label for="NuevoEst">Nueva Descripcion </label>
-                                           <div class="form-group">
-              <textarea class="form-control" name="message" id="contact-message" placeholder="Escribe una nueva descripcion" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-              <div class="validate"></div></div>
-                                            <p:inputText styleClass="rol" binding="#{modifyEst}" type="hidden"  />
-                                        </div>
-                                        <div class="modal-body"></div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <p:commandButton id="mod" value = "Modificar"
-                                                             actionListener="#{iniciativaBean.cambioEstado(nameIni.value,modifyEst.value)}" styleClass="btn btn-success" upload = "TablaIniEspera">
-                                            </p:commandButton>
-
-                                        </div>
-                                    </h:form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
                  </div>
         </div>
@@ -1137,7 +1147,7 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
         <h:outputScript name="js/ini.js"></h:outputScript>
         <h:outputScript name="js/usr.js"></h:outputScript>
         <h:outputScript name="js/chart.js"></h:outputScript>
-
+<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
