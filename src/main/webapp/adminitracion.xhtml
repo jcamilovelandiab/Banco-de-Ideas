@@ -335,21 +335,25 @@
                         <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
                         </button>
                          
-                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar:</h4>
+                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar</h4>
 
                     </div>
                     <div class="modal-body">
                         <h:form id="votos_form">
-                            <input type="text" name="lik" id="lik" value="" style="visibility: hidden" />
-                            <p:inputText id="lik" binding="#{lik}" type="hidden"/>
+                            <input type="text" name="lik" id="lik" value=""/>
+                            <p:inputText id="lik" binding="#{lik}" />
                             
                             <div class="form-group" >
                                 <h:panelGroup  style="position: center" id="prueba">
                                     
-                                    <p:commandButton  styleClass="ntb btn btn-default glyphicon glyphicon-hand-right"    
-                                         actionListener="#{iniciativaBean.votar(lik.value)}" value="">                                             
+                                    
+                                	<p:commandButton styleClass="oculto" style="display:none"
+                                         actionListener="#{iniciativaBean.votar(lik.value)}" value="">                                                                                      
                                     </p:commandButton>
-                                
+                                     
+                                    <p:commandButton styleClass="ntb btn btn-default glyphicon glyphicon-hand-right"    
+                                         value="">                                             
+                                    </p:commandButton>
                                     <p:commandButton   
                                          update="comentariosPanel" value="Cargar comentarios"  styleClass="btn btn-default glyphicon glyphicon-folder-open" 
                                          style="background-color: rgba(144, 22, 38, 0.7);
@@ -468,8 +472,8 @@
 
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}" style="visibility: hidden"/>
-
+                                            <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}"/>
+											<p:inputText value="#{iniciativaBean.isVoto(ini.nombre)} ini.nombre"></p:inputText>
                                             <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" value="#{iniciativaBean.isVoto(ini.nombre)}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}">
                                                 
                                             </button>

@@ -79,7 +79,6 @@ public class UsuarioBean extends BasePageBean {
             
         }*/
     public List<Usuario> usr() throws ServicesException {
-        System.out.println("UsuarioBean Usr " + services.consultarUsuarios());
         return (List<Usuario>) services.consultarUsuarios();
     }
     

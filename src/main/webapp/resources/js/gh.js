@@ -12,10 +12,11 @@ $("#ModalVoto").on('shown.bs.modal', function(){
 });
 
 $('td').click(function(){
+
     var colIndex = $(this).parent().children().index($(this));
     var rowIndex = $(this).parent().parent().children().index($(this).parent());
     if(colIndex == 6){
-    	var voto = $("#TablaIni tr:eq("+rowIndex+") td:last .g").data('id');
+    	var voto = $("#TablaIni tr:eq("+(rowIndex+1)+") td:last .g").data('id');
     	if(voto==true){
     		$(".ntb").attr('style','background-color: #900; color:white;');
     	}else{
@@ -34,6 +35,7 @@ $(".ntb").click(function(){
 	}else{
 		$(".ntb").attr('style','background-color: #900; color:white;');
 	}
+	$(".oculto").click();
 });
 
 $('#cancelar').click(function(){

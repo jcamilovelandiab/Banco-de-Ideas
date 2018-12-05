@@ -149,8 +149,6 @@ public class IniciativaBean extends BasePageBean {
     }
 
     public List<Comentario> getComentarios(String input) throws ServicesException {
-        System.out.println("Input" + input);
-        System.out.println(services.consultarComentariosxIniciativa(input));
         return (List<Comentario>) services.consultarComentariosxIniciativa(input);
     }
 
@@ -172,9 +170,13 @@ public class IniciativaBean extends BasePageBean {
     }
 
     public void votar(String iniciativa) throws ServicesException {
+    	System.out.println(iniciativa+ "---------------------------------------" );
         String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
         if(iniciativa.equals(""))return;
         if (!isVoto(iniciativa))services.agregarVotanteAIniciativa(correo, iniciativa);
+        else{
+        	services.eliminarVotanteAIniciativa(correo, iniciativa);
+        }
     }
     public void dislike(String iniciativa)throws ServicesException{
         String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
@@ -193,7 +195,7 @@ public class IniciativaBean extends BasePageBean {
     public boolean isVoto(String iniciativa) throws ServicesException {
 
     	String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
-        System.out.println("Entre "+ correo + " " + iniciativa);
+       
     	ArrayList<Usuario> votantes = (ArrayList<Usuario>) services.consultarVotantesxIniciativa(iniciativa);
 
         boolean flag = false;
@@ -209,9 +211,7 @@ public class IniciativaBean extends BasePageBean {
         return services.consultarCantidadVotos(nombre);
     }
 
-    public void setPrueba(){
-        System.out.println("Funciona el click");
-    }
+
 
     public void setClaves(ArrayList<String> claves) {
         if (claves == null) {
