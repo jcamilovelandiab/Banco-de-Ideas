@@ -340,8 +340,8 @@
                     </div>
                     <div class="modal-body">
                         <h:form id="votos_form">
-                            <input type="text" name="lik" id="lik" value=""/>
-                            <p:inputText id="lik" binding="#{lik}" />
+                            <input type="text" name="lik" id="lik" value="" style="visibility: hidden"/>
+                            <p:inputText id="lik" binding="#{lik}" type="hidden"/>
                             
                             <div class="form-group" >
                                 <h:panelGroup  style="position: center" id="prueba">
@@ -472,8 +472,8 @@
 
                                     <td  style="text-align:center;">
                                         <h:panelGroup layout="block">
-                                            <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}"/>
-											<p:inputText value="#{iniciativaBean.isVoto(ini.nombre)} ini.nombre"></p:inputText>
+                                            <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}" style="visibility: hidden"/>
+                                            <p:inputText value="#{iniciativaBean.isVoto(ini.nombre)} ini.nombre" type="hidden"></p:inputText>
                                             <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" value="#{iniciativaBean.isVoto(ini.nombre)}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}">
                                                 
                                             </button>
