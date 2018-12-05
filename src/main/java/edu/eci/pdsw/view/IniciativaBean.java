@@ -37,7 +37,7 @@ public class IniciativaBean extends BasePageBean {
         
     private String nombre;
     private String descripcion;
-    private Usuario autor;
+    private String correoAutor;
     private List<String> claves;    
     private String clavesUnidas;
     private BarChartModel bar;
@@ -51,18 +51,22 @@ public class IniciativaBean extends BasePageBean {
     @Inject
     private ServicesIdeas services;
 
-    public void save(String correo) {
+    public void save() {
     	try {
     		
     		//System.out.println("AQUI LLEGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -> <"+correo+">");
-    		autor = services.consultarUsuario(correo);
-    		if(autor!=null) {
+    		correoAutor =  ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString(); 
+    		if(correoAutor!=null) {
     			
     			//System.out.println(autor);
         		clavesUnidas = clavesUnidas.replace(" ","");
         		claves = Arrays.asList(clavesUnidas.split("#"));
         		//System.out.println("INICIATIVA BEAN "+autor);
-    			services.crearIniciativa(new Iniciativa(nombre, descripcion, autor, claves));
+        		Usuario autor = services.consultarUsuario(correoAutor);
+        		if(autor!=null){
+        			System.out.println(autor.getCorreo()+ " registro iniciativa -> "+nombre);
+        			services.crearIniciativa(new Iniciativa(nombre, descripcion, autor, claves));
+        		}
     		}
 		} catch (ServicesException e) {
 			e.printStackTrace();
@@ -181,9 +185,11 @@ public class IniciativaBean extends BasePageBean {
         if (isVoto(iniciativa)) services.eliminarVotanteAIniciativa(correo, iniciativa);
         
     }
-    public List<Iniciativa> mias(String correo) throws ServicesException{
-    	//String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
-        return (List<Iniciativa>) services.consultarIniciativasxProponente(correo);
+    public List<Iniciativa> mias() throws ServicesException{
+    	String correo = ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString();
+
+    	return (List<Iniciativa>) services.consultarIniciativasxProponente(correo);
+        
     }
     
 
