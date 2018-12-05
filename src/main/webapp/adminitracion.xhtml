@@ -618,7 +618,7 @@
                         </thead>
                         <tbody>
 
-                            <ui:repeat value ="#{iniciativaBean.mias(usuarioBean.correo)}" var="inic">
+                            <ui:repeat value ="#{iniciativaBean.mias()}" var="inic">
                                 <tr id="#{inic.nombre}">
                                     <td>#{inic.nombre}</td>
                                     <td  >#{inic.estado}</td>
@@ -733,7 +733,7 @@
 						margin-top: 10px;
 						cursor: pointer;"
 						 
-			    	value="registrar" update="@parent" action="#{iniciativaBean.save(usuarioBean.correo)}"/>
+			    	value="registrar" update="@parent" action="#{iniciativaBean.save()}"/>
 			</h:form>
 			<p></p>
             
