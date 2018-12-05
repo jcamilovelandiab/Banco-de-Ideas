@@ -269,5 +269,9 @@ public class IniciativaBean extends BasePageBean {
       public List<Iniciativa> iniciativasEspera() throws ServicesException{
           return (List<Iniciativa>) services.consultarIniciativasxEstado("EN_ESPERA");
       }
+      public void changeDescription(String nombre,String descripcion){
+          //System.out.println("el nombre es]:  "+nombre+ "ddes"+ "  "+ descripcion);
+          services.modificarIniciativaxEstado(nombre, descripcion);
+      }
 }
 
