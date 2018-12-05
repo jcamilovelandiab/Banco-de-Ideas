@@ -1,5 +1,125 @@
 # Banco_De_Ideas
 
+´´´ HTML
+<div class="modal fade" id="ModalVotoMias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+                        </button>
+                         
+                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="votosMias_form">
+                            <input type="text" name="lik" id="lik" value="" style="visibility: hidden"/>
+                            <p:inputText id="lik" binding="#{lik}" type="hidden"/>
+                            
+                            <div class="form-group" >
+                                <h:panelGroup  style="position: center" id="prueba">
+                                    
+                                    
+                                	<p:commandButton styleClass="oculto" style="display:none"
+                                         actionListener="#{iniciativaBean.votar(lik.value)}" value="">                                                                                      
+                                    </p:commandButton>
+                                     
+                                    <p:commandButton styleClass="mia btn btn-default glyphicon glyphicon-hand-right"    
+                                         value="">                                             
+                                    </p:commandButton>
+                                    <p:commandButton   
+                                         update="comentariosMiaPanel" value="Cargar comentarios"  styleClass="btn btn-default glyphicon glyphicon-folder-open" 
+                                         style="background-color: rgba(144, 22, 38, 0.7);
+                                             
+                                             text-align:center; 
+                                             display: inline-block;
+                                             left:15%;
+                                             border-radius: 11px;                              
+                                             color : rgba(255, 255, 255, 1)">                             
+                                    </p:commandButton>
+                                   
+                                    <p></p>
+                                    <h:panelGroup id="comentariosMiaPanel">
+                                        <table id="comentarios" class="table table-striped table-bordered"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Fechas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ui:repeat value="#{iniciativaBean.getComentarios(lik.value)}" var="com">
+                                                    <tr>
+                                                        <td>#{com.autor.nombre}</td>
+                                                        <td>#{com.contenido}</td>
+                                                        <td>#{com.fecha}</td>
+                                                    </tr>
+                                                </ui:repeat>
+                                                </tbody>
+                                        </table>
+                                        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+                                         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                        <h:outputScript name="js/tableRefresh.js" />
+                                    </h:panelGroup>
+                                    <div class="panel panel-default" style="border-radius: 11px;">
+                                    <div class="panel-heading" style="  color: white;
+												background-color: #8b0000!important;
+												border-color: #8b0000!important;
+												border-radius: 11px;
+                                            ">Agregar Comentario</div>
+                                      <div class="panel-body">
+                                        <form>
+                                            <div class="form-group contact-form php-mail-form" >
+                                                <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
+                                                binding="#{comentarioTexto}" placeholder="Agrega un comentario"
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
+                                                    width:100%"/>
+                                                <p></p>
+                                            </div>
+                                        </form>
+                                     </div>
+                                        <div class="panel-footer" style="background-color: transparent;">
+                                         <div class="loading"></div>
+            
+                                        <p:commandButton class="form-send" value="Comentar" styleClass="btn btn-default glyphicon glyphicon-pencil" 
+                                       style="
+                                                 background-color:#8b0000!important;
+                                                 border: rgba(144, 22, 38, 0.7);
+                                                 text-align:center;                                 
+                                                 color : rgba(255, 255, 255, 1)
+                                                 "
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto.value,lik.value)}">
+                                    </p:commandButton>
+                                     </div>
+                                    </div>
+
+                    
+                                </h:panelGroup>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="cancelar" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+´´´
+
 # Usuario
 
 ## Consultar la información relacianada con las ideas o iniciativas que tienen un estado determinado
