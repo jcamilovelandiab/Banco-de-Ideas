@@ -238,7 +238,7 @@
         <h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />	
         <h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
         <meta charset="utf-8"/>
-        <title>Administracion</title>
+        <title>PMO ODI</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta content="" name="keywords"/>
         <meta content="" name="description"/>
@@ -1150,8 +1150,8 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
 					</div>
 	
 					<div class="container-login100-form-btn">
-						<p:commandButton class="login100-form-btn" id="log" 
-		    				value="Iniciar sesion" actionListener="#{iniciativaBean.save}">
+						<p:commandButton class="login100-form-btn" id="registrarIni"
+		    				value="Registrar" actionListener="#{iniciativaBean.save}">
 		    			</p:commandButton>
 					</div>
 				</h:form>
@@ -1420,6 +1420,11 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
             $('#cancelarEstado').click(function(){
                 location.reload();
             });
+            
+            $('.login100-form-btn').click(function(){
+                location.reload();
+            });
+            
         </script>
 
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
@@ -1442,7 +1447,6 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
 		<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
 		<script src="lib/jquery/jquery.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-		
 		
 
     </h:body>

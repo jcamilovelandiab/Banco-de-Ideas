@@ -1151,8 +1151,8 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
 					</div>
 	
 					<div class="container-login100-form-btn">
-						<p:commandButton class="login100-form-btn" id="log" 
-		    				value="Iniciar sesion" actionListener="#{iniciativaBean.save}">
+						<p:commandButton class="login100-form-btn" id="registrarIni" 
+		    				value="Registrar" actionListener="#{iniciativaBean.save}">
 		    			</p:commandButton>
 					</div>
 				</h:form>
@@ -1590,6 +1590,10 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
         	    });
             	$('#cancelarEstado').click(function(){
                 	location.reload();
+            	});
+            	
+            	$('#registrarIni').click(function(){
+            		location.reload();
             	});
       </script>
 

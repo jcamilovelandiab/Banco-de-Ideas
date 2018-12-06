@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import edu.eci.pdsw.entities.Iniciativa;
+import edu.eci.pdsw.entities.Rol;
 import edu.eci.pdsw.entities.Usuario;
 import edu.eci.pdsw.samples.services.ServicesException;
 import edu.eci.pdsw.samples.services.ServicesIdeas;
@@ -74,9 +75,26 @@ public class IniciativaBean extends BasePageBean {
         		if(autor!=null){
         			System.out.println(autor.getCorreo()+ " registro iniciativa -> "+nombre);
         			services.crearIniciativa(new Iniciativa(nombre, descripcion, autor, claves));
+        			if (autor.getTipo().equals(Rol.ADMINISTRADOR)) {
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
+                    } else if (autor.getTipo().equals(Rol.PUBLICO)) {
+
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("publico.xhtml");
+                    } else if (autor.getTipo().equals(Rol.PROPONENTE)) {
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("proponente.xhtml");
+                    } else if (autor.getTipo().equals(Rol.PMO_ODI)) {
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("PMO.xhtml");
+                    }
+        			
         		}
     		}
+    		nombre="";
+    		descripcion="";
+    		clavesUnidas="";
 		} catch (ServicesException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
