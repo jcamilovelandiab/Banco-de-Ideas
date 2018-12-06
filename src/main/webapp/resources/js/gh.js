@@ -39,19 +39,15 @@ $(".ntb").click(function(){
 
 //Mias
 
-$(document).on("click", ".mias", function () {
-     var lik = $(this).data('id');
-     
-     $(".modal-body #mia").val( lik );
-
+$(document).on("click", ".propias", function () {
+     var lik = $(this).data('id');     
+     $(".modal-body #mias").val( lik );
 });
 
-$("#ModalMias").on('shown.bs.modal', function(){
-	$("#mias_form\\:mia").val($("#mia").val());
+$("#ModalVotoMias").on('shown.bs.modal', function(){
+	$("#votosMias_form\\:mias").val($("#mias").val());
 
 });
-
-
 
 $('td').click(function(){
 
@@ -60,23 +56,21 @@ $('td').click(function(){
     if(colIndex == 6){
     	var voto = $("#TablaIniP tr:eq("+(rowIndex+1)+") td:last .p").data('id');
     	if(voto==true){
-    		$(".mia").attr('style','background-color: #900; color:white;');
+    		$(".mias").attr('style','background-color: #900; color:white;');
     	}else{
-    		$(".mia").attr('style','background-color: white; color:black;');
+    		$(".mias").attr('style','background-color: white; color:black;');
     	}
     }
 });
 
-
-
-$(".mia").click(function(){
-	var estilo = $(".mia").attr('style');
+$(".mias").click(function(){
+	var estilo = $(".mias").attr('style');
 	var estiloSplit = estilo.split(" ");
 	//["background-color:", "#900;", "color:white"]
 	if(estiloSplit[1]=='#900;'){
-		$(".mia").attr('style','background-color: white; color:black;');
+		$(".mias").attr('style','background-color: white; color:black;');
 	}else{
-		$(".mia").attr('style','background-color: #900; color:white;');
+		$(".mias").attr('style','background-color: #900; color:white;');
 	}
 	$(".escondido").click();
 });
