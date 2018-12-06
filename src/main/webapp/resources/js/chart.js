@@ -1,11 +1,14 @@
-var s=document.getElementById('solucionado').value ;
-var r=document.getElementById('espera').value ;
-var e=document.getElementById('revision').value ;
-var d=document.getElementById('desechado').value ;
-var p=document.getElementById('proyecto').value ;
+
+var solucionado=document.getElementById('solucionado').value ;
+var espera=document.getElementById('espera').value ;
+var revision=document.getElementById('revision').value;
+
+var desechado=document.getElementById('desechado').value ;
+var proyecto=document.getElementById('proyecto').value ;
 var areaD=document.getElementById('areaD').value ;
 var areaP=document.getElementById('areaP').value ;
 var canvasArea = document.getElementById("AreapolarChart").getContext('2d');
+
 var ctxPA = document.getElementById("polarChart").getContext('2d');
   var myPolarChart = new Chart(ctxPA, {
    
@@ -13,12 +16,12 @@ var ctxPA = document.getElementById("polarChart").getContext('2d');
     data: {
       labels: ["Revision", "Espera", "Solucionado", "Desechado", "Proyecto"],
       datasets: [{
-        data: [r, e, s, d, p],
+        data: [revision,espera,solucionado,desechado,proyecto],
         backgroundColor: ["rgba(219, 0, 0, 0.1)", "rgba(0, 165, 2, 0.1)", "rgba(255, 195, 15, 0.2)",
           "rgba(55, 59, 66, 0.1)", "rgba(0, 0, 0, 0.3)"
         ],
-        hoverBackgroundColor: ["rgba(219, 0, 0, 0.2)", "rgba(0, 165, 2, 0.2)",
-          "rgba(255, 195, 15, 0.3)", "rgba(55, 59, 66, 0.1)", "rgba(0, 0, 0, 0.4)"
+        hoverBackgroundColor: ["rgba(219, 0, 0, 0.1)", "rgba(0, 165, 2, 0.1)", "rgba(255, 195, 15, 0.2)",
+          "rgba(55, 59, 66, 0.1)", "rgba(0, 0, 0, 0.3)"
         ]
       }]
     },
@@ -41,6 +44,11 @@ var ctxPA = document.getElementById("polarChart").getContext('2d');
     options: {
       responsive: true
     }
+    
   });
-
+  $("#downloadPdf").click(function() {
+ 	    $("#polarChart").toBlob(function(blob) {
+    		saveAs(blob, "chart_1.png");
+		});
+});
 
