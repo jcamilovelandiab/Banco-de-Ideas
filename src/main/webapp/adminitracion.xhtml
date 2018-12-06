@@ -423,8 +423,8 @@
                                       <div class="panel-body">
                                         <form>
                                             <div class="form-group contact-form php-mail-form" >
-                                                <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
-                                                binding="#{comentarioTexto}" placeholder="Agrega un comentario"
+                                                <p:inputTextarea rows="6" cols="33"  class="form-control"
+                                                binding="#{comentarioTexto1}" placeholder="Agrega un comentario"
                                                 style="color:black; border-radius: 11px;
                                                     background-color: rgba(255, 237, 246, 0.3);
                                                     border: rgba(255, 237, 246, 0.3);
@@ -444,7 +444,7 @@
                                                  text-align:center;                                 
                                                  color : rgba(255, 255, 255, 1)
                                                  "
-                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto.value,lik.value)}">
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto1.value,lik.value)}">
                                     </p:commandButton>
                                      </div>
                                     </div>
@@ -541,10 +541,10 @@
 
                                             ">Agregar Comentario</div>
                                       <div class="panel-body">
-                                        <form>
+                                        <h:form>
                                             <div class="form-group contact-form php-mail-form" >
                                                 <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
-                                                binding="#{comentarioTexto}" placeholder="Agrega un comentario"
+                                                binding="#{comentarioTexto2}" placeholder="Agrega un comentario"
                                                 style="color:black; border-radius: 11px;
                                                     background-color: rgba(255, 237, 246, 0.3);
                                                     border: rgba(255, 237, 246, 0.3);
@@ -552,7 +552,7 @@
                                                     width:100%"/>
                                                 <p></p>
                                             </div>
-                                        </form>
+                                        </h:form>
                                      </div>
                                         <div class="panel-footer" style="background-color: transparent;">
                                          <div class="loading"></div>
@@ -564,7 +564,7 @@
                                                  text-align:center;                                 
                                                  color : rgba(255, 255, 255, 1)
                                                  "
-                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto.value,mias.value)}">
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto2.value,mias.value)}">
                                     </p:commandButton>
                                      </div>
                                     </div>
@@ -661,7 +661,7 @@
                                         <form>
                                             <div class="form-group contact-form php-mail-form" >
                                                 <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
-                                                binding="#{comentarioTexto}" placeholder="Agrega un comentario"
+                                                binding="#{comentarioTexto3}" placeholder="Agrega un comentario"
                                                 style="color:black; border-radius: 11px;
                                                     background-color: rgba(255, 237, 246, 0.3);
                                                     border: rgba(255, 237, 246, 0.3);
@@ -681,7 +681,7 @@
                                                  text-align:center;                                 
                                                  color : rgba(255, 255, 255, 1)
                                                  "
-                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto.value,est.value)}">
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto3.value,est.value)}">
                                     </p:commandButton>
                                      </div>
                                     </div>
@@ -781,7 +781,7 @@
                                         <form>
                                             <div class="form-group contact-form php-mail-form" >
                                                 <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
-                                                binding="#{comentarioTexto}" placeholder="Agrega un comentario"
+                                                binding="#{comentarioTexto4}" placeholder="Agrega un comentario"
                                                 style="color:black; border-radius: 11px;
                                                     background-color: rgba(255, 237, 246, 0.3);
                                                     border: rgba(255, 237, 246, 0.3);
@@ -801,7 +801,7 @@
                                                  text-align:center;                                 
                                                  color : rgba(255, 255, 255, 1)
                                                  "
-                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto.value,claves.value)}">
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto4.value,claves.value)}">
                                     </p:commandButton>
                                      </div>
                                     </div>
@@ -1464,10 +1464,11 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
 
                                         <p:panelGrid columns="2" >
                                             <h:outputText value="Nombre:" />
-                                           
+                                            <h:outputText value="#{usuarioBean.getUsuario().nombre}" />
                                             <h:outputText value="Area:" />
-                                           
+                                            <h:outputText value="#{usuarioBean.getUsuario().area.nombre}" />
                                             <h:outputText value="Rol:" />
+                                            <h:outputText value="#{usuarioBean.getUsuario().tipo}" />
                                      
                                             
                                         </p:panelGrid>
@@ -1514,7 +1515,7 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
         <h:outputScript name="js/ini.js"></h:outputScript>
         <h:outputScript name="js/usr.js"></h:outputScript>
         <h:outputScript name="js/chart.js"></h:outputScript>
-
+<h:outputScript name="js/load.js"></h:outputScript>
         <h:outputScript name="js/perfil.js"></h:outputScript>
 <h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
 <script src="lib/jquery/jquery.min.js"></script>

@@ -22,12 +22,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuarioBean")
 @SessionScoped
 public class UsuarioBean extends BasePageBean {
-
+    private String correoAutor;
     private String correo;
     private Usuario sr;
     private static final long serialVersionUID = 3594009161252782831L;
@@ -67,7 +68,8 @@ public class UsuarioBean extends BasePageBean {
 
     public Usuario getUsuario() throws ServicesException {
         try {
-            sr = services.consultarUsuario(this.correo);
+            correoAutor =  ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString(); 
+            sr = services.consultarUsuario(correoAutor);
         } catch (ServicesException e) {
             e.getMessage();
         }

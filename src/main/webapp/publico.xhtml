@@ -1,286 +1,1092 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html  xmlns="http://www.w3.org/1999/xhtml"
 
-<h:head>
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
 
+       xmlns:f="http://java.sun.com/jsf/core"
 
-	<h:outputStylesheet name="css/publico.css" />
-	<h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />
-	<h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:c="http://java.sun.com/jsp/jstl/core">
 
+    <h:head>
+    	
+		<link rel="stylesheet" type="text/css" href="resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="resources/login/fonts/iconic/css/material-design-iconic-font.min.css"/>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="resources/login/vendor/animate/animate.css"/>
+	<!--===============================================================================================-->	
+		<link rel="stylesheet" type="text/css" href="resources/login/vendor/css-hamburgers/hamburgers.min.css"/>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="resources/login/vendor/animsition/css/animsition.min.css"/>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="resources/login/vendor/select2/select2.min.css"/>
+	<!--===============================================================================================-->	
+		<link rel="stylesheet" type="text/css" href="resources/login/vendor/daterangepicker/daterangepicker.css"/>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="resources/login/css/util.css"/>
+		<link rel="stylesheet" type="text/css" href="resources/login/css/main.css"/>
+    	
+       <style>
 
-	<style type="text/css">
-		.value {
-			font-weight: bold;
+           
+		.toggle-switch {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none
 		}
-		
-		.panel-default>.panel-heading {
-			color: white;
-			background-color: rgba(0, 0, 0, 0.7);
-			border-color: transparent;
+
+
+		.toggle-switch {
+			display: inline-block;
+			vertical-align: top;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none
 		}
-		
-		.panel {
-			margin-bottom: 20px;
-			background-color: rgba(204, 181, 181, 0);
-			border: 1px solid rgba(0, 0, 0, .5);
-			border-radius: 4px;
-			-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-			box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+
+		.toggle-switch .ts-label {
+			display: inline-block;
+			margin: 0 20px 0 0;
+			vertical-align: top;
+			-webkit-transition: color .56s cubic-bezier(.4, 0, .2, 1);
+			transition: color .56s cubic-bezier(.4, 0, .2, 1)
 		}
-		
-		table.dataTable thead {
-			background-color: rgba(144, 22, 38, 0.7);
-			color: white;
-			border-radius: 1px;
+
+		.toggle-switch .ts-helper {
+			display: inline-block;
+			position: relative;
+			width: 40px;
+			height: 16px;
+			border-radius: 8px;
+			background: rgba(0, 0, 0, .26);
+			-webkit-transition: background .28s cubic-bezier(.4, 0, .2, 1);
+			transition: background .28s cubic-bezier(.4, 0, .2, 1);
+			vertical-align: middle;
+			cursor: pointer
 		}
-		
-		.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
-			.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
-			{
-			z-index: 3;
-			color: #fff;
-			cursor: default;
-			background-color: #900;
-			border-color: transparent;
+
+		.toggle-switch .ts-helper:before {
+			content: '';
+			position: absolute;
+			top: -4px;
+			left: -4px;
+			width: 24px;
+			height: 24px;
+			background: #fafafa;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28);
+			border-radius: 50%;
+			webkit-transition: left .28s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1), box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+			transition: left .28s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1), box-shadow .28s cubic-bezier(.4, 0, .2, 1)
 		}
-		
-		.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover,
-			.pagination>.disabled>span, .pagination>.disabled>span:focus,
-			.pagination>.disabled>span:hover {
-			color: white;
-			cursor: not-allowed;
-			background-color: rgba(64, 76, 79, 0.76);
-			border-color: transparent;
+
+		.toggle-switch:not(.disabled) .ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(128, 128, 128, .1)
 		}
-		</style>
 
-</h:head>
+		.toggle-switch input {
+			position: absolute;
+			z-index: 1;
+			width: 46px;
+			margin: 0 0 0 -4px;
+			height: 24px;
+			opacity: 0;
+			filter: alpha(opacity=0);
+			cursor: pointer
+		}
+
+		.toggle-switch input:checked+.ts-helper:before {
+			left: 20px
+		}
+
+		.toggle-switch:not([data-ts-color]) input:not(:disabled):checked+.ts-helper {
+			background: rgba(0, 150, 136, .5)
+		}
+
+		.toggle-switch:not([data-ts-color]) input:not(:disabled):checked+.ts-helper:before {
+			background: #009688
+		}
+
+		.toggle-switch:not([data-ts-color]) input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(0, 150, 136, .2)
+		}
+
+		.toggle-switch.disabled {
+			opacity: .6;
+			filter: alpha(opacity=60)
+		}
+
+		.toggle-switch[data-ts-color=red] input:not(:disabled):checked+.ts-helper {
+			background: rgba(244, 67, 54, .5)
+		}
+
+		.toggle-switch[data-ts-color=red] input:not(:disabled):checked+.ts-helper:before {
+			background: #F44336
+		}
+
+		.toggle-switch[data-ts-color=red] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(244, 67, 54, .2)
+		}
+
+		.toggle-switch[data-ts-color=blue] input:not(:disabled):checked+.ts-helper {
+			background: rgba(33, 150, 243, .5)
+		}
+
+		.toggle-switch[data-ts-color=blue] input:not(:disabled):checked+.ts-helper:before {
+			background: #2196F3
+		}
+
+		.toggle-switch[data-ts-color=blue] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(33, 150, 243, .2)
+		}
+
+		.toggle-switch[data-ts-color=amber] input:not(:disabled):checked+.ts-helper {
+			background: rgba(255, 193, 7, .5)
+		}
+
+		.toggle-switch[data-ts-color=amber] input:not(:disabled):checked+.ts-helper:before {
+			background: #FFC107
+		}
+
+		.toggle-switch[data-ts-color=amber] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(255, 193, 7, .2)
+		}
+
+		.toggle-switch[data-ts-color=purple] input:not(:disabled):checked+.ts-helper {
+			background: rgba(186, 104, 200, .5)
+		}
+
+		.toggle-switch[data-ts-color=purple] input:not(:disabled):checked+.ts-helper:before {
+			background: #BA68C8
+		}
+
+		.toggle-switch[data-ts-color=purple] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(186, 104, 200, .2)
+		}
+
+		.toggle-switch[data-ts-color=pink] input:not(:disabled):checked+.ts-helper {
+			background: rgba(233, 30, 99, .5)
+		}
+
+		.toggle-switch[data-ts-color=pink] input:not(:disabled):checked+.ts-helper:before {
+			background: #E91E63
+		}
+
+		.toggle-switch[data-ts-color=pink] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(233, 30, 99, .2)
+		}
+
+		.toggle-switch[data-ts-color=lime] input:not(:disabled):checked+.ts-helper {
+			background: rgba(205, 220, 57, .5)
+		}
+
+		.toggle-switch[data-ts-color=lime] input:not(:disabled):checked+.ts-helper:before {
+			background: #CDDC39
+		}
+
+		.toggle-switch[data-ts-color=lime] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(205, 220, 57, .2)
+		}
+
+		.toggle-switch[data-ts-color=cyan] input:not(:disabled):checked+.ts-helper {
+			background: rgba(0, 188, 212, .5)
+		}
+
+		.toggle-switch[data-ts-color=cyan] input:not(:disabled):checked+.ts-helper:before {
+			background: #00BCD4
+		}
+
+		.toggle-switch[data-ts-color=cyan] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(0, 188, 212, .2)
+		}
+
+		.toggle-switch[data-ts-color=green] input:not(:disabled):checked+.ts-helper {
+			background: rgba(76, 175, 80, .5)
+		}
+
+		.toggle-switch[data-ts-color=green] input:not(:disabled):checked+.ts-helper:before {
+			background: #4CAF50
+		}
+
+		.toggle-switch[data-ts-color=green] input:not(:disabled):checked+.ts-helper:active:before {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(76, 175, 80, .2)
+		}
+                #iconos {
+     position:relative;
+     width: 10px;
+     height:20;
+
+}
+ 
+#iconos img {
+   width:10px;
+   float:left;
+}
+.topnav a:hover {
+    background-color: white;
+                color: black;
+}
+			  
+       
+    </style>
+    
+    
+        <h:outputStylesheet name="resources/css/proponente.css" />
+        <h:outputStylesheet name="css/publico.css" />
+        <h:outputStylesheet name="dataTable/css/dataTables.bootstrap.min.css" />	
+        <h:outputStylesheet name="dataTable/css/jquery.dataTables.min.css" />
+        <meta charset="utf-8"/>
+        <title>Administracion</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="" name="keywords"/>
+        <meta content="" name="description"/>
+
+        <!-- Favicons -->
+        <link href="resources/login/images/logo_eci.PNG" rel="icon"/>
+
+        
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:Lato:300,400,700,300italic,400italic|Raleway:400,300,700" rel="stylesheet"/>
+
+        <!-- Bootstrap CSS File -->
+        <link href="resources/pruebita/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Libraries CSS Files -->
+        <link href="resources/pruebita/lib/icomoon/icomoon.css" rel="stylesheet"/>
+
+        <!-- Main Stylesheet File -->
+        <link href="resources/pruebita/css/style.css" rel="stylesheet"/>
+
+        <!-- =======================================================
+          Template Name: Shield
+          Template URL: https://templatemag.com/shield-bootstrap-agency-template/
+          Author: TemplateMag.com
+          License: https://templatemag.com/license/
+        ======================================================= -->
+
+        <style>
+            body{
+                font-family: "PT Sans",Arial,Helvetica,sans-serif;
+            }
+            
+            .btn-success {
+                color: #fff;
+                background-color: #900;
+                border-color: #900;
+            }
+            ul.nav a:hover { color: white!important; }
+
+        </style>
+
+    </h:head>
 
 
-<h:body
-	style="background-image:url(resources/images/publico.jpg);background-size:cover;background-repeat: no-repeat;">
-	<f:metadata>
-		<f:viewParam name="correo" value="#{publicoBean.correo}" />
-	</f:metadata>
-
-	<p:inputText id="nom" binding="#{nom}"
-		value="#{publicoBean.usr.nombre}" style="display:none" />
-	<p:inputText id="nomi" binding="#{nomi}"
-		value="#{publicoBean.usr.tipo}" style="display:none" />
-	<nav class="navbar navbar-default" style="height:8px">
-	<div class="container-fluid">
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<h:panelGrid columns="1"
-					style="
-                                     text-align:center;
-                                     margin: 1% auto;
-                                     height:5px;">
-					<h:outputText value="#{nom.value}"
-						style=" font-size: 20px;
-                                          color : rgba(255, 255, 255, 1);
-                                          " />
-
-					<h:outputText value="#{nomi.value}"
-						style=" font-size: 15px;
-                                          color : rgba(255, 255, 255, 1);
-                                          " />
-				</h:panelGrid>
-			</ul>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.xhtml" style="font-size: 1.5rem"><span
-						class="glyphicon glyphicon-log-in"></span> Salir</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
 
 
-
-	<div class="container">
-		<div class="row">
-
-
-			<div class="col-xs-6">
-				<h:form prependId="false">
-					<h:panelGroup id="comentariosPanel">
-						<table id="comentarios" class="table table-striped table-bordered"
-							style="width: 100%">
-							<thead>
-								<tr>
-									<th>Nombre</th>
-									<th>Comentarios</th>
-									<th>Fechas</th>
-								</tr>
-							</thead>
-							<tbody>
-								<ui:repeat value="#{publicoBean.getComentarios()}" var="com">
-									<tr>
-										<td>#{com.autor.nombre}</td>
-										<td>#{com.contenido}</td>
-										<td>#{com.fecha}</td>
-									</tr>
-								</ui:repeat>
-							</tbody>
+    <h:body  >
+        <f:metadata>
+            <f:viewParam name="correo" value="#{usuarioBean.correo}" />
+        </f:metadata>
 
 
-						</table>
-						<p:inputText id="email" binding="#{correoTmp}"
-							value="#{publicoBean.correo}" style="display: none" />
-						<p:inputText id="inputTmp" binding="#{inputTmp}"
-							value="#{publicoBean.input}" style="display: none" />
+<!-- CREACION DE LA BARRA-->
+        <div id="navbar-main">
+            <!-- Fixed navbar -->
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <img src="resources/images/logo1.png"/>
+                        </button>
+                        <a class="navbar-brand hidden-xs hidden-sm smoothscroll" href="#home">
+                          
+                            <span class="icon icon-home" style="font-size:18px; color:#3498db; color: white">
+                              
+                            </span></a>
+                    </div>
+                    
+                        <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav topnav">
+                            <h:panelGroup layout="block">
+                    <button class="perfil btn btn-success glyphicon glyphicon-education" data-toggle="modal" data-target="#ModalPerfil"></button>  
+                    </h:panelGroup>
+                            <li><a href="#home"  class="smoothscroll" style="color:white">Home</a></li>
+                            <li> <a href="#iniciativa" class="smoothscroll" style="color:white"> Iniciativas</a></li>
+                            <li> <a href="#Palabras" class="smoothscroll" style="color:white">Palabras claves</a></li>
+                           
+                           
+                            
+                         <li> <a href="index.xhtml" class="smoothscroll" style="color:white">
+                            	<span class="glyphicon glyphicon-log-in" style="color:white"></span> Salir</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- ==== HEADERWRAP ==== -->
+        <div id="home"></div>
+        <div id="headerwrap2" name="home">
+            <header class="clearfix">
+                <h1><span class="iconos"></span></h1>
+                <img src="resources/images/logo1.png"/>
+                <p>Banco de</p>
+                <p>Iniciativas</p>
+            </header>
+        </div>
 
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#exampleModal">Comentar</button>
-						<h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
-						<h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
-						<h:outputScript name="js/tableRefresh.js" />
-					</h:panelGroup>
+<!-- MODAL INICIATIVAS (VOTOS) -->
 
-					<div class="modal fade" id="exampleModal" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content"
-								style="background-color: rgba(0, 0, 0, 0.7); border-radius: 11px; color: white">
-								<div class="modal-header">
+<div class="modal fade" id="ModalVoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
 
-									<center>
-										<h:outputText value="Registrar comentario"
-											style=" font-size: 2.5em;
-                              color : rgba(255, 255, 255, 1);
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+                        </button>
+                         
+                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar</h4>
 
-                              " />
-									</center>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form>
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="votos_form">
+                            <input type="text" name="lik" id="lik" value="" style="visibility: hidden"/>
+                            <p:inputText id="lik" binding="#{lik}" type="hidden"/>
+                            
+                            <div class="form-group" >
+                                <h:panelGroup  style="position: center" id="prueba">
+                                    
+                                    
+                                	<p:commandButton styleClass="oculto" style="display:none"
+                                         actionListener="#{iniciativaBean.votar(lik.value)}" value="">                                                                                      
+                                    </p:commandButton>
+                                     
+                                    <p:commandButton styleClass="ntb btn btn-default glyphicon glyphicon-hand-right"    
+                                         value="">                                             
+                                    </p:commandButton>
+                                    <p:commandButton   
+                                         update="comentariosPanel" value="Cargar comentarios"  styleClass="btn btn-default glyphicon glyphicon-folder-open" 
+                                         style="background-color: rgba(144, 22, 38, 0.7);
+                                             
+                                             text-align:center; 
+                                             display: inline-block;
+                                             left:15%;
+                                             border-radius: 11px;                              
+                                             color : rgba(255, 255, 255, 1)">                             
+                                    </p:commandButton>
+                                   
+                                    <p></p>
+                                    <h:panelGroup id="comentariosPanel">
+                                        <table id="comentarios" class="table table-striped table-bordered"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Fechas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ui:repeat value="#{iniciativaBean.getComentarios(lik.value)}" var="com">
+                                                    <tr>
+                                                        <td>#{com.autor.nombre}</td>
+                                                        <td>#{com.contenido}</td>
+                                                        <td>#{com.fecha}</td>
+                                                    </tr>
+                                                </ui:repeat>
+                                                </tbody>
+                                        </table>
+                                        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+                                         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                        <h:outputScript name="js/tableRefresh.js" />
+                                    </h:panelGroup>
+                                    <div class="panel panel-default" style="border-radius: 11px;">
+                                    <div class="panel-heading" style="  color: white;
+            background-color: #8b0000!important;
+            border-color: #8b0000!important;
+            border-radius: 11px;
+
+                                            ">Agregar Comentario</div>
+                                      <div class="panel-body">
+                                        <form>
+                                            <div class="form-group contact-form php-mail-form" >
+                                                <p:inputTextarea rows="6" cols="33"  class="form-control"
+                                                binding="#{comentarioTexto1}" placeholder="Agrega un comentario"
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
+                                                    width:100%"/>
+                                                <p></p>
+                                            </div>
+                                        </form>
+                                     </div>
+                                        <div class="panel-footer" style="background-color: transparent;">
+                                         <div class="loading"></div>
+            
+                                        <p:commandButton class="form-send" value="Comentar" styleClass="btn btn-default glyphicon glyphicon-pencil" 
+                                       style="
+                                                 background-color:#8b0000!important;
+                                                 border: rgba(144, 22, 38, 0.7);
+                                                 text-align:center;                                 
+                                                 color : rgba(255, 255, 255, 1)
+                                                 "
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto1.value,lik.value)}">
+                                    </p:commandButton>
+                                     </div>
+                                    </div>
+
+                    
+                                </h:panelGroup>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="cancelar" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+<!-- MODAL PROPIAS -->
+
+<div class="modal fade" id="ModalVotoMias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+                        </button>
+                         
+                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="votosMias_form">
+                            <input type="text" name="mias" id="mias" value="" style="visibility: hidden"/>
+                            <p:inputText id="mias" binding="#{mias}" type="hidden"/>
+                            
+                            <div class="form-group" >
+                                <h:panelGroup  style="position: center" id="prueba">
+                                    
+                                    
+                                	<p:commandButton styleClass="escondido" style="display:none"
+                                         actionListener="#{iniciativaBean.votar(mias.value)}" value="">                                                                                      
+                                    </p:commandButton>
+                                     
+                                    <p:commandButton styleClass="mias btn btn-default glyphicon glyphicon-hand-right"    
+                                         value="">                                             
+                                    </p:commandButton>
+                                    <p:commandButton   
+                                         update="comentariosPanel" value="Cargar comentarios"  styleClass="btn btn-default glyphicon glyphicon-folder-open" 
+                                         style="background-color: rgba(144, 22, 38, 0.7);
+                                             
+                                             text-align:center; 
+                                             display: inline-block;
+                                             left:15%;
+                                             border-radius: 11px;                              
+                                             color : rgba(255, 255, 255, 1)">                             
+                                    </p:commandButton>
+                                   
+                                    <p></p>
+                                    <h:panelGroup id="comentariosPanel">
+                                        <table id="comentarios" class="table table-striped table-bordered"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Fechas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ui:repeat value="#{iniciativaBean.getComentarios(mias.value)}" var="com">
+                                                    <tr>
+                                                        <td>#{com.autor.nombre}</td>
+                                                        <td>#{com.contenido}</td>
+                                                        <td>#{com.fecha}</td>
+                                                    </tr>
+                                                </ui:repeat>
+                                                </tbody>
+                                        </table>
+                                        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+                                         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                        <h:outputScript name="js/tableRefresh.js" />
+                                    </h:panelGroup>
+                                    <div class="panel panel-default" style="border-radius: 11px;">
+                                    <div class="panel-heading" style="  color: white;
+            background-color: #8b0000!important;
+            border-color: #8b0000!important;
+            border-radius: 11px;
+
+                                            ">Agregar Comentario</div>
+                                      <div class="panel-body">
+                                        <h:form>
+                                            <div class="form-group contact-form php-mail-form" >
+                                                <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
+                                                binding="#{comentarioTexto2}" placeholder="Agrega un comentario"
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
+                                                    width:100%"/>
+                                                <p></p>
+                                            </div>
+                                        </h:form>
+                                     </div>
+                                        <div class="panel-footer" style="background-color: transparent;">
+                                         <div class="loading"></div>
+            
+                                        <p:commandButton class="form-send" value="Comentar" styleClass="btn btn-default glyphicon glyphicon-pencil" 
+                                       style="
+                                                 background-color:#8b0000!important;
+                                                 border: rgba(144, 22, 38, 0.7);
+                                                 text-align:center;                                 
+                                                 color : rgba(255, 255, 255, 1)
+                                                 "
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto2.value,mias.value)}">
+                                    </p:commandButton>
+                                     </div>
+                                    </div>
+
+                    
+                                </h:panelGroup>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="cancelarMias" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+<!-- MODAL CAMBIAR ESTADO -->
+
+<div class="modal fade" id="ModalEstado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+                        </button>
+                         
+                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="estados_form">
+                            <input type="text" name="est" id="est" value="" style="visibility:hidden"/>
+                            <p:inputText id="est" binding="#{est}" type="hidden"/>
+                            
+                            <div class="form-group" >
+                                <h:panelGroup  style="position: center" id="prueba">                                   
+                                    <p:commandButton styleClass="etb btn btn-default glyphicon glyphicon-hand-right"    
+                                         value="">                                             
+                                    </p:commandButton>
+                                    <p:commandButton styleClass="ocultoe" style="display:none"
+                                         actionListener="#{iniciativaBean.votar(est.value)}" value="">                                                                                      
+                                    </p:commandButton>
+                                    <p:commandButton   
+                                         update="comentariosPanel" value="Cargar comentarios"  styleClass="btn btn-default glyphicon glyphicon-folder-open" 
+                                         style="background-color: rgba(144, 22, 38, 0.7);
+                                             
+                                             text-align:center; 
+                                             display: inline-block;
+                                             left:15%;
+                                             border-radius: 11px;                              
+                                             color : rgba(255, 255, 255, 1)">                             
+                                    </p:commandButton>
+                                   
+                                    <p></p>
+                                    <h:panelGroup id="comentariosPanel">
+                                        <table id="comentarios" class="table table-striped table-bordered"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Fechas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ui:repeat value="#{iniciativaBean.getComentarios(est.value)}" var="com">
+                                                    <tr>
+                                                        <td>#{com.autor.nombre}</td>
+                                                        <td>#{com.contenido}</td>
+                                                        <td>#{com.fecha}</td>
+                                                    </tr>
+                                                </ui:repeat>
+                                                </tbody>
+                                        </table>
+                                        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+                                         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                        <h:outputScript name="js/tableRefresh.js" />
+                                    </h:panelGroup>
+                                    <div class="panel panel-default" style="border-radius: 11px;">
+                                    <div class="panel-heading" style="  color: white;
+            background-color: #8b0000!important;
+            border-color: #8b0000!important;
+            border-radius: 11px;
+
+                                            ">Agregar Comentario</div>
+                                      <div class="panel-body">
+                                        <form>
+                                            <div class="form-group contact-form php-mail-form" >
+                                                <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
+                                                binding="#{comentarioTexto3}" placeholder="Agrega un comentario"
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
+                                                    width:100%"/>
+                                                <p></p>
+                                            </div>
+                                        </form>
+                                     </div>
+                                        <div class="panel-footer" style="background-color: transparent;">
+                                         <div class="loading"></div>
+            
+                                        <p:commandButton class="form-send" value="Comentar" styleClass="btn btn-default glyphicon glyphicon-pencil" 
+                                       style="
+                                                 background-color:#8b0000!important;
+                                                 border: rgba(144, 22, 38, 0.7);
+                                                 text-align:center;                                 
+                                                 color : rgba(255, 255, 255, 1)
+                                                 "
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto3.value,est.value)}">
+                                    </p:commandButton>
+                                     </div>
+                                    </div>
+
+                    
+                                </h:panelGroup>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="cancelarEstado" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+<!-- MODAL PALABRAS CLAVE -->
+
+<div class="modal fade" id="ModalClaves" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+                        </button>
+                         
+                        <h4 class="modal-title glyphicon glyphicon-pushpin" id="myModalLabel"> Votar</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="votosClaves_form">
+                            <input type="text" name="claves" id="claves" value="" style="visibility: hidden"/>
+                            <p:inputText id="claves" binding="#{claves}" type="hidden"/>
+                            
+                            <div class="form-group" >
+                                <h:panelGroup  style="position: center" id="prueba">
+                                    
+                                    
+                                	<p:commandButton styleClass="ocultado" style="display:none"
+                                         actionListener="#{iniciativaBean.votar(claves.value)}" value="">                                                                                      
+                                    </p:commandButton>
+                                     
+                                    <p:commandButton styleClass="claves btn btn-default glyphicon glyphicon-hand-right"    
+                                         value="">                                             
+                                    </p:commandButton>
+                                    <p:commandButton   
+                                         update="comentariosPanel" value="Cargar comentarios"  styleClass="btn btn-default glyphicon glyphicon-folder-open" 
+                                         style="background-color: rgba(144, 22, 38, 0.7);
+                                             
+                                             text-align:center; 
+                                             display: inline-block;
+                                             left:15%;
+                                             border-radius: 11px;                              
+                                             color : rgba(255, 255, 255, 1)">                             
+                                    </p:commandButton>
+                                   
+                                    <p></p>
+                                    <h:panelGroup id="comentariosPanel">
+                                        <table id="comentarios" class="table table-striped table-bordered"
+                                            style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Fechas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ui:repeat value="#{iniciativaBean.getComentarios(claves.value)}" var="com">
+                                                    <tr>
+                                                        <td>#{com.autor.nombre}</td>
+                                                        <td>#{com.contenido}</td>
+                                                        <td>#{com.fecha}</td>
+                                                    </tr>
+                                                </ui:repeat>
+                                                </tbody>
+                                        </table>
+                                        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+                                         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+                        <h:outputScript name="js/tableRefresh.js" />
+                                    </h:panelGroup>
+                                    <div class="panel panel-default" style="border-radius: 11px;">
+                                    <div class="panel-heading" style="  color: white;
+            background-color: #8b0000!important;
+            border-color: #8b0000!important;
+            border-radius: 11px;
+
+                                            ">Agregar Comentario</div>
+                                      <div class="panel-body">
+                                        <form>
+                                            <div class="form-group contact-form php-mail-form" >
+                                                <p:inputTextarea rows="6" cols="33" id="mt" class="form-control"
+                                                binding="#{comentarioTexto4}" placeholder="Agrega un comentario"
+                                                style="color:black; border-radius: 11px;
+                                                    background-color: rgba(255, 237, 246, 0.3);
+                                                    border: rgba(255, 237, 246, 0.3);
+                                                    border-color: rgba(144, 22, 38, 0.7);
+                                                    width:100%"/>
+                                                <p></p>
+                                            </div>
+                                        </form>
+                                     </div>
+                                        <div class="panel-footer" style="background-color: transparent;">
+                                         <div class="loading"></div>
+            
+                                        <p:commandButton class="form-send" value="Comentar" styleClass="btn btn-default glyphicon glyphicon-pencil" 
+                                       style="
+                                                 background-color:#8b0000!important;
+                                                 border: rgba(144, 22, 38, 0.7);
+                                                 text-align:center;                                 
+                                                 color : rgba(255, 255, 255, 1)
+                                                 "
+                                        actionListener="#{iniciativaBean.registrarComentario(comentarioTexto4.value,claves.value)}">
+                                    </p:commandButton>
+                                     </div>
+                                    </div>
+
+                    
+                                </h:panelGroup>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="cancelarClaves" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+<!--CREACION TABLAS-->
+
+<!--TABLAS INICIATIVAS-->
+        <div class="container" id="iniciativa" name="iniciativa">
+            <div class="row white">
+                <br/>
+                <h1 class="centered">Consultar Iniciativas</h1>
+                <hr/>
+                <div style="background-color:transparent;">
+                    <center>
+                    <table id="TablaIni" class="table table-striped table-bordered"  style="width:100%; background-color: white">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Proponente</th>
+                                <th>Estado</th>    
+                                <th>fechas</th>
+                                <th>Descripcion</th>
+                                <th>Votos</th>
+                                <th>Más...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
+                                <tr id="#{ini.nombre}">
+                                    <td>#{ini.nombre}</td>
+                                    <td>#{ini.proponente.nombre}</td>
+                                    <td>#{ini.estado}</td>
+                                    <td>#{ini.fechaPropuesta}</td>      
+                                    <td>#{ini.descripcion}</td>
+                                    <td>#{iniciativaBean.votos(ini.nombre)}</td>
+
+                                    <td  style="text-align:center;">
+                                        <h:panelGroup layout="block">
+                                            <button class="g" data-id="#{iniciativaBean.isVoto(ini.nombre)}" style="visibility: hidden"/>
+                                            <p:inputText value="#{iniciativaBean.isVoto(ini.nombre)} ini.nombre" type="hidden"></p:inputText>
+                                            <button class="votos btn btn-success glyphicon glyphicon-list-alt" data-id="#{ini.nombre}" value="#{iniciativaBean.isVoto(ini.nombre)}" data-toggle="modal" data-target="#ModalVoto" action="#{iniciativaBean.setNombre(ini.nombre)}">
+                                                
+                                            </button>
+                                        </h:panelGroup>
+                                    </td>
+                                </tr>
+                            </ui:repeat>
 
 
-										<div class="form-group">
+                        </tbody>
+                    </table>
+                    </center>
 
 
-											<p:inputTextarea rows="6" cols="33" id="message-text"
-												binding="#{comentarioTexto}"
-												style="color:white; border-radius: 11px;
-		                             								background-color: rgba(255, 237, 246, 0.3);
-		                             border: rgba(255, 237, 246, 0.3);
-		                             width:100%" />
-											<p></p>
-										</div>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Cerrar</button>
-									<p:commandButton value="Comentar"
-										style="
-                                 background-color: rgba(144, 22, 38, 0.7);
-                                 border: rgba(144, 22, 38, 0.7);
+
+
+                </div>
+
+
+            </div>
+        </div>
+<!-- TABLA PALABRAS CLAVE -->
+        <section class="section-divider textdivider divider2">
+            <div class="container">
+                <h1>Consultar Iniciativas por palabras claves</h1>
+                <hr/>
+                <p>Consulta iniciativas por tags asiganados por usuario.</p>
+
+
+            </div>
+            
+        </section>
+
+        <div class="container" id="Palabras" name="Palabras">
+            <div class="row white">
+                <br/>
+                <h1 class="centered">Consultar Iniciativas por palabras claves</h1>
+                <hr/>
+                <h:form prependId="false">
+                    <h:panelGrid columns="2"
+                                 style="
+                                 margin: 2% auto;
+                                 width:500px;
+                                 height:5px;
+                                 background-color: rgba(255,255,255,0);
+                                 border-radius: 11px;
                                  text-align:center;
-                                 top: -10px;
-                                 left: 2px;
-                                 right: -42px;
-                                 bottom: -10px;
-                                 color : rgba(255, 255, 255, 1)
-                                 "
-										actionListener="#{publicoBean.registrarComentario(comentarioTexto.value,correoTmp.value)}">
-									</p:commandButton>
-								</div>
-							</div>
-						</div>
-					</div>
+                                 right: 1000px;"
+                                 cellpadding="10">
+
+                        <h:panelGrid columns="2" class="bootstrap-tagsinput  bootstrap-tagsinput.form-contro 
+                                     ui-chips ui-chips-container ui-chips-token ">
+
+                            <p:chips id="chips" value="#{iniciativaBean.claves}" />
 
 
 
 
 
+                        </h:panelGrid>
+
+                        <p:commandButton value="buscar" update="results"  actionListener="#{iniciativaBean.getDatas()}" style="
+
+                                         border-radius: 11px;
+
+                                         background-color: rgba(144, 22, 38, 0.7);
+
+                                         border: rgba(144, 22, 38, 0.7);
+
+                                         text-align:center;
+
+                                         top: 0px;
+
+                                         left: 2px;
+
+                                         right: -42px;
+
+                                         bottom: -10px;
+
+                                         color : rgba(255, 255, 255, 1)"/>
+
+                    </h:panelGrid>
+
+                    <p:dataTable id="results" var="inip" value="#{iniciativaBean.iniciativas}"  rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
 
 
+                        <p:column headerText="Nombre:">
+                            <h:outputText value="#{inip.nombre}" />
+                        </p:column>		  <p:column headerText="Proponente:">
+                            <h:outputText value="#{inip.proponente.nombre}"/>
+                        </p:column>  <p:column headerText="Fecha:">
+                            <h:outputText value="#{inip.fechaPropuesta}" />
+                        </p:column>  <p:column headerText="Estado:">
+                            <h:outputText value="#{inip.estado}" />
+                        </p:column>  <p:column headerText="Descripcion:">
+                            <h:outputText value="#{inip.descripcion}" />
+                        </p:column>			
+                        <p:column headerText="Votos">
+                            <h:outputText value="#{iniciativaBean.votos(inip.nombre)}" />
+                        </p:column>
+                        <p:column headerText="Votar">
+                        <p:commandButton value = "votar"
+                                             id="c" class="icon icon-plus" styleClass="btn btn-success icon icon icon-plus">
+                            </p:commandButton>
+                            <!--
+                            <h:panelGroup layout="block">
+                                            <button class="c" data-return="#{iniciativaBean.isVoto(inip.nombre)}" style="visibility:hidden"/>
+                                            <p:inputText value="#{iniciativaBean.isVoto(inip.nombre)} inip.nombre" type="hidden"></p:inputText>
+                                            <button class="claves btn btn-success glyphicon glyphicon-list-alt" data-id="#{inip.nombre}" value="#{iniciativaBean.isVoto(inip.nombre)}" data-toggle="modal" data-target="#ModalClaves" action="#{iniciativaBean.setNombre(inip.nombre)}">
+                                                
+                                            </button>
+                                        </h:panelGroup>-->
+                        </p:column>
 
+                    </p:dataTable>
 
+                </h:form>
+            </div>
+        </div>
+        <!-- section -->
 
-				</h:form>
+<!-- MODAL CAMBIO DESCRIPCION -->
+<!-- section -->
+        
+<!-- TABLA MODIFICAR ESTADO -->
+                
+                <div id="copyrights">
+  <div class="container">
+    <p>
+        Escuela Colombiana de Ingeniería Julio Garavito 
+    </p>
+    <div class="credits">
+        AK.45 No.205-59 (Autopista Norte)
+        PBX: +57(1) 668 3600
+        Call Center: +57(1) 668 3600
+        Línea Nacional Gratuita: 018000112668
 
+        Bogotá, D.C. - Colombia
+ 
 
-			</div>
-
-			<div class="col-xs-6" style="background-color: transparent;">
-				<table id="iniciativas" class="table table-striped table-bordered"
-					style="width: 100%">
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Proponente</th>
-							<th>Estado</th>
-							<th>fechas</th>
-							<th>Descripcion</th>
-							<th>Comentarios</th>
-						</tr>
-
-					</thead>
-					<tbody>
-
-						<ui:repeat value="#{iniciativaBean.inivs()}" var="ini">
-							<tr id="#{ini.getNombreUnido()}">
-
-								<td>#{ini.nombre}</td>
-								<td>#{ini.proponente.nombre}</td>
-								<td>#{ini.estado}</td>
-								<td>#{ini.fechaPropuesta}</td>
-								<td>#{ini.descripcion}</td>
-								<td><p:commandButton value="Comentarios"
-										action="#{publicoBean.setInput(ini.nombre())}"
-										style="
-                                                         border-radius: 11px;
-                                                         background-color: rgba(144, 22, 38, 0.7);
-                                                         border: rgba(144, 22, 38, 0.7);
-                                                         text-align:center;
-                                                         bottom: -10px;
-                                                         color : rgba(255, 255, 255, 1)
-                                                         "
-										update=":comentariosPanel">
-
-										<f:param name="correo" value="#{publicoBean.correo}" />
-
-
-									</p:commandButton></td>
-							</tr>
-						</ui:repeat>
-
-
-					</tbody>
-				</table>
-			</div>
-		</div>
-
-	<div>
-        <input type="checkbox" name="switch" id="switch" value="1" data-on-text="ON" data-off-text="OFF" />
     </div>
+  </div>
+</div>
+             <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
 
+                                    </button>
+                                    <h4 class="modal-title glyphicon glyphicon-education" id="myModalLabel"> Perfil</h4>
 
-	</div>
+                                </div>
+                                <div class="modal-body">
+                                    <h:form id="perfil_form">
+                                        <input type="text" name="nameper" id="nameper" value="" style="visibility: hidden" />	  
+                                <p:inputText id="nameper" binding="#{nameper}" type= "hidden" />
 
+                                        <p:panelGrid columns="2" >
+                                            <h:outputText value="Nombre:" />
+                                            <h:outputText value="#{usuarioBean.getUsuario().nombre}" />
+                                            <h:outputText value="Area:" />
+                                            <h:outputText value="#{usuarioBean.getUsuario().area.nombre}" />
+                                            <h:outputText value="Rol:" />
+                                            <h:outputText value="#{usuarioBean.getUsuario().tipo}" />
+                                     
+                                            
+                                        </p:panelGrid>
+                                        <div class="modal-body"></div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </h:form>
+                                </div>
 
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-	<h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
-	<h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
-	<h:outputScript name="js/load.js"></h:outputScript>
-</h:body>
+                            </div>
+                        </div>
+                    </div>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"/>
+
+        <script type="text/javascript">
+             
+             $(".modal-footer>.btn.btn-success").mouseup(function(){
+                location.reload();
+            });
+
+            $('#cancelar').click(function(){
+                location.reload();
+            });
+
+			$('#cancelarMias').click(function(){
+                location.reload();
+            });
+            $('#cancelarClaves').click(function(){
+                location.reload();
+            });
+            $('#cancelarEstado').click(function(){
+                location.reload();
+            });
+        </script>
+
+        <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
+        <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
+        <h:outputScript name="js/load.js"></h:outputScript>
+        <h:outputScript name="js/gh.js"></h:outputScript>
+        <h:outputScript name="js/ini.js"></h:outputScript>
+        <h:outputScript name="js/usr.js"></h:outputScript>
+        <h:outputScript name="js/chart.js"></h:outputScript>
+<h:outputScript name="js/load.js"></h:outputScript>
+        <h:outputScript name="js/perfil.js"></h:outputScript>
+<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+<script src="js/main.js"></script>
+
+		<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
+		<script src="lib/jquery/jquery.min.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		
+		
+
+    </h:body>
 </html>

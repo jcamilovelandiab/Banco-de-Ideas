@@ -41,11 +41,11 @@ public class LoginBean extends BasePageBean {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("adminitracion.xhtml");
             } else if (user.getTipo().equals(Rol.PUBLICO)) {
 
-                FacesContext.getCurrentInstance().getExternalContext().redirect("publico.xhtml?correo=" + correo);
+                FacesContext.getCurrentInstance().getExternalContext().redirect("publico.xhtml");
             } else if (user.getTipo().equals(Rol.PROPONENTE)) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("proponente.xhtml?correo=" + correo);
+                FacesContext.getCurrentInstance().getExternalContext().redirect("proponente.xhtml");
             } else if (user.getTipo().equals(Rol.PMO_ODI)) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("PMO.xhtml?correo=" + correo);
+                FacesContext.getCurrentInstance().getExternalContext().redirect("PMO.xhtml");
             }
             
         } else {
