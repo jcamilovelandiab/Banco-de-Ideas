@@ -28,7 +28,6 @@ import javax.annotation.PostConstruct;
 @SessionScoped
 public class UsuarioBean extends BasePageBean {
 
-    @ManagedProperty(value = "#{param.correo}")
     private String correo;
     private Usuario sr;
     private static final long serialVersionUID = 3594009161252782831L;
