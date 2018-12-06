@@ -53,6 +53,14 @@ public class LoginBean extends BasePageBean {
         }
     }
     
+    
+    public void logOut() throws ServicesException, IOException{
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+		session.removeAttribute("correo");
+		facesContext.getExternalContext().redirect("/faces/index.xhtml");
+	}
+    
     public void redirect(String correo) throws IOException{
     	FacesContext.getCurrentInstance().getExternalContext().redirect("iniciativa.xhtml?correo=" + correo);
     }

@@ -2,6 +2,9 @@ package edu.eci.pdsw.view;
 
 import edu.eci.pdsw.entities.Comentario;
 import edu.eci.pdsw.entities.Estado;
+
+import java.io.IOException;
+import java.nio.file.DirectoryStream.Filter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,6 +22,9 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -51,6 +57,8 @@ public class IniciativaBean extends BasePageBean {
     @Inject
     private ServicesIdeas services;
 
+
+    
     public void save() {
     	try {
     		
@@ -273,5 +281,7 @@ public class IniciativaBean extends BasePageBean {
           //System.out.println("el nombre es]:  "+nombre+ "ddes"+ "  "+ descripcion);
           services.modificarIniciativaxEstado(nombre, descripcion);
       }
+
+
 }
 

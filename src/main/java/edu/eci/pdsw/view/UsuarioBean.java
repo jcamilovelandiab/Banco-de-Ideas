@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +25,9 @@ import javax.annotation.PostConstruct;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuarioBean")
-@RequestScoped
+@SessionScoped
 public class UsuarioBean extends BasePageBean {
 
-    @ManagedProperty(value = "#{param.correo}")
     private String correo;
     private Usuario sr;
     private static final long serialVersionUID = 3594009161252782831L;
