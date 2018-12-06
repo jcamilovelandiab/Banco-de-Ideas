@@ -214,12 +214,13 @@
 			box-shadow: 0 2px 8px rgba(0, 0, 0, .28), 0 0 0 20px rgba(76, 175, 80, .2)
 		}
                 #iconos {
-     position:relative;
-     width: 10px;
-     height:20;
+	     position:relative;
+	     width: 10px;
+	     height:20;
 
-}
- 
+		}
+
+		
 #iconos img {
    width:10px;
    float:left;
@@ -1159,8 +1160,62 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
         </div> 
         <hr/>
         <p></p>
+
+
+        <section class="section-divider textdivider divider3">
+            <div class="container">
+                <h1>Cambiando usuarios global.</h1>
+                <hr/>
+               
+            </div>
+            </section>
+            <div class="container" id="cambiarRolesGlobales" name="cambiarRolesGlobales">
+                <div class="row white">
+                <br/>
+                <h1 class="centered">Cambio de estado al usuario.</h1>
+                <hr/>
+                <div  style="background-color:transparent;">
+
+                	<div style="background-color:transparent;">
+                    <table id="exa" class="table table-striped table-bordered"  style="width:100%; background-color: white">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Proponente</th>
+                                <th>Estado</th>    
+                                <th>fechas</th>
+                                <th>Descripcion</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <ui:repeat value ="#{iniciativaBean.inivs()}" var="ini">
+                                <tr id="#{ini.nombre}">
+                                    <td>#{ini.nombre}</td>
+                                    <td>#{ini.proponente.nombre}</td>
+                                    <td>#{ini.estado}</td>
+                                    <td>#{ini.fechaPropuesta}</td>      
+                                    <td>#{ini.descripcion}</td>
+                                </tr>
+                            </ui:repeat>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                    
+                </div>
+             
+                </div>
+        </div>   
+
+                <hr/>
+        <p></p>
+        
+
                 
-                <div id="copyrights">
+        <div id="copyrights">
   <div class="container">
     <p>
         Escuela Colombiana de Ingeniería Julio Garavito 
@@ -1195,20 +1250,41 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
 			$('#cancelarMias').click(function(){
                 location.reload();
             });
+
+            $(document).ready(function() {
+
+			    var table = $('#exa').DataTable({
+			    		
+
+			    });
+			 
+			    $('#exa tbody').on( 'click', 'tr', function () {
+			        $(this).toggleClass('selected');
+			    } );
+			 
+			    $('#button').click( function () {
+			        alert( table.rows('.selected').data().length +' row(s) selected' );
+			    } );
+			} );
         </script>
 
         <h:outputStylesheet name="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-        <h:outputScript name="dataTable/js/jquery.dataTables.min.js" />
         <h:outputScript name="dataTable/js/dataTables.bootstrap.min.js" />
         <h:outputScript name="js/load.js"></h:outputScript>
         <h:outputScript name="js/gh.js"></h:outputScript>
         <h:outputScript name="js/ini.js"></h:outputScript>
         <h:outputScript name="js/usr.js"></h:outputScript>
         <h:outputScript name="js/chart.js"></h:outputScript>
+
+        <h:outputScript name="js/jquery-3.3.1.js"></h:outputScript>
+        <h:outputScript name="js/jquery.dataTables.min.js"></h:outputScript>
+ 		<h:outputStylesheet name="css/jquery.dataTables.min.css" />
+       
+        
 		<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
 		<script src="lib/jquery/jquery.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
-		
+
     </h:body>
 </html>
