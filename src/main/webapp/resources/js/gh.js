@@ -74,3 +74,81 @@ $(".mias").click(function(){
 	}
 	$(".escondido").click();
 });
+
+//claves
+
+$(document).on("click", ".Palabras", function () {
+     var lik = $(this).data('id');     
+     $(".modal-body #claves").val( lik );
+});
+
+$("#ModalClaves").on('shown.bs.modal', function(){
+	$("#votosClaves_form\\:claves").val($("#claves").val());
+
+});
+
+$('td').click(function(){
+
+    var colIndex = $(this).parent().children().index($(this));
+    var rowIndex = $(this).parent().parent().children().index($(this).parent());
+    if(colIndex == 6){
+    	var voto = $("#TablaIniP tr:eq("+(rowIndex+1)+") td:last .c").data('id');
+    	if(voto==true){
+    		$(".claves").attr('style','background-color: #900; color:white;');
+    	}else{
+    		$(".claves").attr('style','background-color: white; color:black;');
+    	}
+    }
+});
+
+$(".mias").click(function(){
+	var estilo = $(".claves").attr('style');
+	var estiloSplit = estilo.split(" ");
+	//["background-color:", "#900;", "color:white"]
+	if(estiloSplit[1]=='#900;'){
+		$(".claves").attr('style','background-color: white; color:black;');
+	}else{
+		$(".claves").attr('style','background-color: #900; color:white;');
+	}
+	$(".ocultado").click();
+});
+
+//estado
+
+$(document).on("click", ".estados", function () {
+     var lik = $(this).data('id');
+     
+     $(".modal-body #est").val( lik );
+
+});
+
+$("#ModalEstado").on('shown.bs.modal', function(){
+	$("#estados_form\\:est").val($("#est").val());
+
+});
+
+$('td').click(function(){
+
+    var colIndex = $(this).parent().children().index($(this));
+    var rowIndex = $(this).parent().parent().children().index($(this).parent());
+    if(colIndex == 7){
+    	var voto = $("#TablaIniE tr:eq("+(rowIndex+1)+") td:last .es").data('id');
+    	if(voto==true){
+    		$(".etb").attr('style','background-color: #900; color:white;');
+    	}else{
+    		$(".etb").attr('style','background-color: white; color:black;');
+    	}
+    }
+});
+
+$(".etb").click(function(){	
+	var estilo = $(".etb").attr('style');
+	var estiloSplit = estilo.split(" ");
+	//["background-color:", "#900;", "color:white"]
+	if(estiloSplit[1]=='#900;'){
+		$(".etb").attr('style','background-color: white; color:black;');
+	}else{
+		$(".etb").attr('style','background-color: #900; color:white;');
+	}
+	$(".ocultoe").click();
+});
