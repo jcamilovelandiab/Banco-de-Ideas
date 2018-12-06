@@ -13,7 +13,12 @@
                 
     <dependencies>
         
-        
+        <!-- https://mvnrepository.com/artifact/org.webjars/jspdf -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jspdf</artifactId>
+    <version>1.4.1</version>
+</dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

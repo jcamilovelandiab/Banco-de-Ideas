@@ -307,8 +307,12 @@
                               
                             </span></a>
                     </div>
-                    <div class="navbar-collapse collapse">
+                    
+                        <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav topnav">
+                            <h:panelGroup layout="block">
+                    <button class="perfil btn btn-success glyphicon glyphicon-education" data-toggle="modal" data-target="#ModalPerfil"></button>  
+                    </h:panelGroup>
                             <li><a href="#home"  class="smoothscroll" style="color:white">Home</a></li>
                             <li> <a href="#iniciativa" class="smoothscroll" style="color:white"> Iniciativas</a></li>
                             <li> <a href="#Palabras" class="smoothscroll" style="color:white">Palabras claves</a></li>
@@ -1366,7 +1370,9 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
                
             </div>
             </section>
-            <div class="container" id="estadisticas" name="estadisticas">
+  
+         <div id="reportPage">
+            <div class="chartContainer" id="estadisticas" name="estadisticas">
                 <div class="row white">
                 <br/>
                 <h1 class="centered">Estadisticas.</h1>
@@ -1374,17 +1380,24 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
                 <div class="col-xs-6" style="background-color:transparent;">
                     
                 </div>
+               
+               
               <p:inputText id="solucionado" value="#{iniciativaBean.solucionado()}" style="visibility: hidden" />
                <p:inputText id="espera" value="#{iniciativaBean.espera()}" style="visibility: hidden"/>
-                <p:inputText id="revision" value="#{iniciativaBean.revision()}" style="visibility: hidden"/>
+                <p:inputText id="revision" value="#{iniciativaBean.revision()}" style="visibility: hidden" />
                 <p:inputText id="desechado" value="#{iniciativaBean.desechado()}" style="visibility: hidden"/>
                 <p:inputText id="proyecto" value="#{iniciativaBean.proyecto()}" style="visibility: hidden"/>
+                
                 <canvas id="polarChart" >
 
                 </canvas>
+                 
+                <button  id="downloadPdf" type="button" class="btn btn-danger" style="position: relative"> Download as PDF</button>
                 </div>
-        </div>           
-
+        </div></div>    
+          
+<hr/>
+         <p></p>
         <section class="section-divider textdivider divider3">
             <div class="container">
                 <h1>Estadisticas por area o dependdencia.</h1>
@@ -1428,7 +1441,46 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
     </div>
   </div>
 </div>
-           
+             <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class=""></span><span class="sr-only">Close</span>
+
+                                    </button>
+                                    <h4 class="modal-title glyphicon glyphicon-education" id="myModalLabel"> Perfil</h4>
+
+                                </div>
+                                <div class="modal-body">
+                                    <h:form id="perfil_form">
+                                        <input type="text" name="nameper" id="nameper" value="" style="visibility: hidden" />	  
+                                <p:inputText id="nameper" binding="#{nameper}" type= "hidden" />
+
+                                        <p:panelGrid columns="2" >
+                                            <h:outputText value="Nombre:" />
+                                           
+                                            <h:outputText value="Area:" />
+                                           
+                                            <h:outputText value="Rol:" />
+                                     
+                                            
+                                        </p:panelGrid>
+                                        <div class="modal-body"></div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </h:form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"/>
@@ -1462,10 +1514,20 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
         <h:outputScript name="js/ini.js"></h:outputScript>
         <h:outputScript name="js/usr.js"></h:outputScript>
         <h:outputScript name="js/chart.js"></h:outputScript>
+
+        <h:outputScript name="js/perfil.js"></h:outputScript>
+<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+<script src="js/main.js"></script>
+
 		<h:outputScript name="js/IniciativaEspera.js"></h:outputScript>
 		<script src="lib/jquery/jquery.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
 		
+		
+
     </h:body>
 </html>
