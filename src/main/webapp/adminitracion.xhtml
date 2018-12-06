@@ -368,7 +368,7 @@
                             <p:inputText id="lik" binding="#{lik}" type="hidden"/>
                             
                             <div class="form-group" >
-                                <h:panelGroup  style="position: center" id="prueba">
+                                <h:panelGroup  style="position: center" >
                                     
                                     
                                 	<p:commandButton styleClass="oculto" style="display:none"
@@ -1487,6 +1487,10 @@ glyphicon glyphicon-cog" id="myModalLabel"> Cambiar descripcion:</h4>
                                     </select>
                                     <p:inputText styleClass="rol" binding="#{modifyRolUser}" type="hidden"/>
                                 </div>
+
+                               <p:commandButton id="modificarGlobal" value = "Modificar"
+                                                             actionListener="#{iniciativaBean.cambioEstado(nameIni.value,modifyEst.value)}" styleClass="btn btn-success" upload = "TablaIniE">
+                               	</p:commandButton>
         
 
                 
