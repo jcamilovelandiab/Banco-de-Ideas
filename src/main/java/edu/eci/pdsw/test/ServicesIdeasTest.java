@@ -20,6 +20,11 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.quicktheories.core.Gen;
+import static org.quicktheories.QuickTheory.qt;
+import static org.quicktheories.generators.Generate.*;
+import static org.quicktheories.generators.SourceDSL.*;
+
 public class ServicesIdeasTest {
 
 	@Inject

@@ -30,6 +30,13 @@
     <version>6.2</version>
 </dependency>
 
+			<dependency>
+			    <groupId>org.quicktheories</groupId>
+			    <artifactId>quicktheories</artifactId>
+			    <version>0.25</version>
+			    <scope>test</scope>
+			</dependency>
+
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-guice</artifactId>
@@ -103,6 +110,10 @@
     </dependencies>
 <build>
         <plugins>
+            
+            <!-- https://mvnrepository.com/artifact/org.quicktheories/quicktheories -->
+
+            
             
             
             <!-- clean project (also local H2 database)-->
