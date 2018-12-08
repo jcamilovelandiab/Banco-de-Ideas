@@ -83,7 +83,7 @@ Estados del sistema:
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModificarEstadoIniciativa.PNG)
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModificarEstadoModal.PNG)
 
-```
+
 
 
 # Arquitectura y diseño detallado. 
