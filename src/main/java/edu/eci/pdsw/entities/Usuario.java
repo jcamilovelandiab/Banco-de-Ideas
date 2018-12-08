@@ -21,6 +21,14 @@ public class Usuario {
         this.tipo=tipo;
     }
 	
+	public Usuario(String nombre, String correo) {
+        this.nombre = nombre;
+        this.correo=correo;
+        this.tipo = Rol.PUBLICO;
+        Area areaT = new Area("Decanatura de Sistemas","decanatura del programa de decanatura de sistemas"); areaT.setId(1);
+        this.area = areaT;
+    }
+	
 	public String getNombre() {
         return nombre;
     }

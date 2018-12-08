@@ -92,8 +92,6 @@ public class MyBatisExample {
 	    	  }
 	    	  assert(usrJohn!=null); assert(usrVelan!=null); assert(usrAlejo!=null); assert(usrYowis!=null);
 	    	  
-	    	  
-	    	  
 	    	  /*
 	    	  ArrayList<String> palabrasClave = new ArrayList();
 	    	  palabrasClave.add("biblioteca"); palabrasClave.add("prueba"); palabrasClave.add("plataformas a la primera");

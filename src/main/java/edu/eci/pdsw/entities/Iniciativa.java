@@ -37,6 +37,20 @@ public class Iniciativa {
 		this.iniciativasRelacionadas = new ArrayList<Iniciativa>();
 	}
 	
+	public Iniciativa(String nombre, String descripcion, Usuario usuario) {
+		this.nombre=nombre;
+		this.descripcion=descripcion;
+		this.fechaPropuesta = new java.sql.Date((new java.util.Date()).getTime());
+		this.fechaCierre=null;
+		this.proponente=usuario;
+		this.palabrasClave= palabrasClave;
+		this.votantes= new ArrayList<Usuario>();
+		this.comentarios= new ArrayList<Comentario>();
+		this.intereses= new ArrayList<Interes>();
+		this.estado=Estado.EN_ESPERA;
+		this.iniciativasRelacionadas = new ArrayList<Iniciativa>();
+	}
+	
 	public ArrayList<Interes> getInteres() {
 		return intereses;
 	}

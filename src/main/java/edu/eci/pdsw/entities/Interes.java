@@ -22,6 +22,15 @@ public class Interes {
 		this.interesado = interesado;
 	}
 	
+	public Interes(String intencion,String descripcion, Usuario interesado) {
+		this.intencion = intencion;
+		this.fecha = new java.sql.Date((new java.util.Date()).getTime());
+		this.trabajo = trabajo;
+		this.descripcion = descripcion;
+		this.interesado = interesado;
+		trabajo=false;
+	}
+	
 	public Usuario getInteresado() {
 		return interesado;
 	}

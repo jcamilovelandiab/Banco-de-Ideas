@@ -54,7 +54,7 @@ public class ServicesIdeasFactory {
 
     public ServicesIdeas getServicesIdeasTesting(){
         if (!optInjector.isPresent()) {
-            optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
+            optInjector = Optional.of(myBatisInjector("test","mybatis-config.xml"));
         }
         return optInjector.get().getInstance(ServicesIdeas.class);
     }

@@ -72,7 +72,6 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 		return usuarioMapper.existeUsuario(correo.toLowerCase());	
 	}
 
-
 	@Override
 	public List<Usuario> consultarVotantesxIniciativa(String nombreIni) throws PersistenceException {
 		return usuarioMapper.consultarVotantesxIniciativa(nombreIni.toLowerCase());
