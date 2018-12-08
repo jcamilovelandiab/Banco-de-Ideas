@@ -1,4 +1,4 @@
-# Banco de Iniciativas
+﻿# Banco de Iniciativas
 Periodo Académico: 2018-2
 Nombre del curso: Procesos de desarrollos de software - Grupo 2
 Nombre de los integrantes:
@@ -23,7 +23,7 @@ Roles asignados:
 # Descripción del producto
 
 -   Descripción general.
-	    El banco de iniciativas es una plataforma donde los miembros de la Escuela Colombiana de Ingeniería Julio Garavito	pueden proponer ideas para la realización de futuros proyectos que beneficien a la comunidad universitaria, podrán realizar ciertas acciones según el rol que tengan asignado, estos roles son:
+	    La Plataforma banco de iniciativas de proyectos es una herramienta que le permite al personal académico registrar iniciativas o ideas de proyectos para ser realizados o gestionados por la PMO. Adicional a esto cada miembro de la escuela colombiana de ingeniera Julio Garavito dependiendo del rol que posea podrá hacer revisar las iniciativas que ya estén propuestas, mostrar interés por alguna de estas entre otras funcionalidades, estos roles son:
 	    
 				1. Administrador
 				2. PMO ODI
