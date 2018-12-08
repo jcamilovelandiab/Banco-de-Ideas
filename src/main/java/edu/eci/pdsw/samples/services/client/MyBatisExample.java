@@ -39,7 +39,7 @@ public class MyBatisExample {
 	      SqlSession sqlss = sessionfact.openSession();
 	      
 	      ServicesIdeasFactory servicesFactory = ServicesIdeasFactory.getInstance();
-	      ServicesIdeas ideasServices = servicesFactory.getIdeasServices();
+	      ServicesIdeas ideasServices = servicesFactory.getServicesIdeas();
 	      UsuarioMapper usrMapper =  sqlss.getMapper(UsuarioMapper.class);
 	      /*
 	      IniciativaMapper iniMapper =  sqlss.getMapper(IniciativaMapper.class);
@@ -190,8 +190,7 @@ public class MyBatisExample {
                   //ideasServices.crearUsuario(usuario);
                   //ideasServices.crearUsuario(usuario2);
 	    	  
-	    	  
-	    	  
+	    	  	  
 	    	  /*
 	    	  // -------------------------- PROBANDO  VOTOS --------------------------
 	    	  System.out.println("PROBANDO VOTOS");
