@@ -1,21 +1,30 @@
+
 ﻿# Banco de Iniciativas
 Periodo Académico: 2018-2
 Nombre del curso: Procesos de desarrollos de software - Grupo 2
+
+# Banco de Iniciativas
+2018-2
+Procesos de desarrollos de software - Grupo 2
+
 Nombre de los integrantes:
 
  - Yohanna Toro Durán
  - John Ibañez Rodriguez	
  - Alejandro Naranjo Guzmán
  - Camilo Velandia Botello
- 
+
+
 Nombre del profesor: Francisco José Chaves Alonso
+
+
 Roles asignados:
 	
- - Francisco Chaves Alonso -> Dueño de producto
- - Alejandro Naranjo Guzmán -> Scrum Master
- - Yohanna Toro Durán -> Miembro del team
- - John Ibañez Rodriguez	-> Miembro del team
- -  Camilo Velandia Botello -> Miembro del team
+ - Francisco Chaves Alonso - ***Product Owner***
+ - Alejandro Naranjo Guzmán -  ***Scrum Master***
+ - Yohanna Toro Durán -   ***Scrum team member***
+ - John Ibañez Rodriguez  - 	 ***Scrum team member***
+ -  Camilo Velandia Botello -  ***Scrum team member***
 
 
 	
