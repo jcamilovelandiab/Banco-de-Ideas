@@ -7,6 +7,7 @@ Nombre del curso: Procesos de desarrollos de software - Grupo 2
 2018-2
 Procesos de desarrollos de software - Grupo 2
 
+
 Nombre de los integrantes:
 
  - Yohanna Toro Durán
@@ -27,6 +28,7 @@ Roles asignados:
  -  Camilo Velandia Botello -  ***Scrum team member***
 
 
+[Manual de usuario](https://www.overleaf.com/read/bmyjcprmfvxh)
 	
 
 # Descripción del producto
