@@ -29,6 +29,7 @@ Roles asignados:
 
 
 [Manual de usuario](https://www.overleaf.com/read/bmyjcprmfvxh)
+
 [Scrum excel, avance de cada sprint](https://drive.google.com/drive/folders/1NF_p17u2SX6CMR6mxmlteYBVlUnMgm85)
 	
 
