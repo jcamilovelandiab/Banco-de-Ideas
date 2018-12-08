@@ -89,7 +89,15 @@ Estados del sistema:
 # Arquitectura y diseño detallado. 
 
 ## Modelo  E-R.
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BancoDeIniciativas-2018-12-08_10_27.png)
+
 ## Modelo de clases.
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModeloClases.png)
+
+
+
 ## Arquitectura utilizada.
 
 > JavaScript
@@ -139,6 +147,25 @@ Enlace de trello para ver proceso del grupo.
 ## Release-burndown
 ## Sprint.
 ### Sprint-1.
-### Sprint-2
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s1.png)
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s1-2.png)
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BurndownChartSprint1.png)
+
+
+
+
+### Sprint-2.
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s2.png)
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BurndownChartSprint2.png)
+
 ### Sprint-3.
+
+
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s3.png)
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BurndownChartSprint3.png)
+
 ## Reporte de pruebas.
