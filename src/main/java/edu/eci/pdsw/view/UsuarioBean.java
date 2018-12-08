@@ -43,9 +43,10 @@ public class UsuarioBean extends BasePageBean {
         return Arrays.asList(Rol.class.getEnumConstants());
     }
 
-    public void changeRol(String correo, int i) throws ServicesException {
+    public void changeRol(int i) throws ServicesException {
+		correoAutor =  ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).getAttribute("correo").toString(); 
         List<Rol> pos = Arrays.asList(Rol.class.getEnumConstants());
-        services.asignarPerfil(correo, pos.get(i));
+        services.asignarPerfil(correoAutor, pos.get(i));
     }
 
    
