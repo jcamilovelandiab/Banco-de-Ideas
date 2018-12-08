@@ -87,9 +87,9 @@ public class MyBatisExample {
 	    	  Usuario usrAlejo = ideasServices.consultarUsuario("jose.naranjo@mail.escuelaing.edu.co");
 	    	  Usuario usrYowis = ideasServices.consultarUsuario("yohanna.toro@mail.escuelaing.edu.co");
 	    	  Collection<Usuario> usuarios = ideasServices.consultarUsuarios();
-	    	  /*for (Usuario usr : usuarios) {
+	    	  for (Usuario usr : usuarios) {
 	    		  System.out.println(usr);
-	    	  }*/
+	    	  }
 	    	  assert(usrJohn!=null); assert(usrVelan!=null); assert(usrAlejo!=null); assert(usrYowis!=null);
 	    	  
 	    	  
@@ -275,7 +275,7 @@ public class MyBatisExample {
 	    	  Iniciativa iniHacerBibliotecaMod = ideasServices.consultarIniciativa("hacer una biblioteca");
 	    	  assert(iniHacerBiblioteca!=iniHacerBibliotecaMod);
 	    	  */
-	    	  ideasServices.modificarIniciativaxEstado("esto es una pruebita", "Es una nueva descripcion");
+	    	  //ideasServices.modificarIniciativaxEstado("esto es una pruebita", "Es una nueva descripcion");
 	    	  
 	      } catch (ServicesException e){
 			  System.out.println(e.getMessage());
