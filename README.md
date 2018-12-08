@@ -7,7 +7,6 @@ Nombre del curso: Procesos de desarrollos de software - Grupo 2
 2018-2
 Procesos de desarrollos de software - Grupo 2
 
-
 Nombre de los integrantes:
 
  - Yohanna Toro Durán
@@ -28,9 +27,6 @@ Roles asignados:
  -  Camilo Velandia Botello -  ***Scrum team member***
 
 
-[Manual de usuario](https://www.overleaf.com/read/bmyjcprmfvxh)
-
-[Scrum excel, avance de cada sprint](https://drive.google.com/drive/folders/1NF_p17u2SX6CMR6mxmlteYBVlUnMgm85)
 	
 
 # Descripción del producto
@@ -184,3 +180,4 @@ Enlace de trello para ver proceso del grupo.
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BurndownChartSprint3.png)
 
 ## Reporte de pruebas.
+[![CircleCI](https://circleci.com/gh/YohannaToro/Banco_De_Ideas.svg?style=svg)](https://circleci.com/gh/YohannaToro/Banco_De_Ideas)
