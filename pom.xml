@@ -11,16 +11,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
     </properties>        
                 
     <dependencies>
         
         <!-- https://mvnrepository.com/artifact/org.webjars/jspdf -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>jspdf</artifactId>
-    <version>1.4.1</version>
-</dependency>
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>jspdf</artifactId>
+	    <version>1.4.1</version>
+	</dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
