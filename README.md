@@ -1,4 +1,4 @@
-﻿# Banco de Iniciativas
+# Banco de Iniciativas
 Periodo Académico: 2018-2
 Nombre del curso: Procesos de desarrollos de software - Grupo 2
 Nombre de los integrantes:
@@ -83,5 +83,62 @@ Estados del sistema:
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModificarEstadoIniciativa.PNG)
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModificarEstadoModal.PNG)
 
-
 ```
+
+
+# Arquitectura y diseño detallado. 
+
+## Modelo  E-R.
+## Modelo de clases.
+## Arquitectura utilizada.
+
+> JavaScript
+
+> Cascading Style Sheets (CSS)
+
+> Java8
+
+> PostgreSQL
+
+> PrimeFaces
+
+> Bootstrap
+
+> Guice
+
+> XML, Xhtml , Html 
+
+### Capas
+ 
+
+## Herokuapp.
+Enlace para el despliegue de la aplicacion.
+
+* [BancodeIdeas](https://bancoideas.herokuapp.com/faces/index.xhtml)
+* Login Administrador
+  *  Usr yohanna.toro@mail.escuelaing.edu.co
+  *  pass administrador123
+
+* Login publico
+  *  Usr yohanna.toro@mail.escuelaing.edu.co
+  *  pass publico123
+
+* Login PMO
+  *  Usr yohanna.toro@mail.escuelaing.edu.co
+  *  pass POM123
+
+
+
+# Descripcion del proceso.
+## Metodología utilizada
+## Trello
+Enlace de trello para ver proceso del grupo.
+
+* [Trello](https://trello.com/b/bK73jNjp/2018-2-proypdsw-hailyowis)
+
+## Release-burndown
+## Sprint.
+### Sprint-1.
+### Sprint-2
+### Sprint-3.
+## Reporte de pruebas.
