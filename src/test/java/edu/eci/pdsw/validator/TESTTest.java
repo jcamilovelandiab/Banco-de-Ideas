@@ -6,10 +6,12 @@ import static org.quicktheories.generators.SourceDSL.integers;
 
 import org.junit.Test;
 
+
 public class TESTTest {
 
 	@Test
 	public void test() {
+	
 		  qt()
 		    .forAll(integers().allPositive()
 		          , integers().allPositive())
