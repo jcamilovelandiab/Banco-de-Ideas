@@ -17,7 +17,7 @@ Nombre del profesor: Francisco José Chaves Alonso
 Roles asignados:
 	
  - Francisco Chaves Alonso - ***Product Owner***
- - Alejandro Naranjo Guzmán -  ***Scrum Master ***
+ - Alejandro Naranjo Guzmán -  ***Scrum Master***
  - Yohanna Toro Durán -   ***Scrum team member***
  - John Ibañez Rodriguez  - 	 ***Scrum team member***
  -  Camilo Velandia Botello -  ***Scrum team member***
