@@ -42,7 +42,7 @@ El usuario tiene la posibilidad de consultar todas las iniciativas registradas e
  - Información de la iniciativa
 - Cantidad de iniciativas que desea ver (Paginación)
 
-![](https://github.com/YohannaToro/Banco_De_Ideas/images/ConsultarIniciativas.PNG)
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ConsultarIniciativas.PNG)
 
 ### Consultar Iniciativas por palabras claves
 El usuario tiene la posibilidad de consultar todas las iniciativas según los tags que los usuarios
@@ -52,7 +52,7 @@ les asignaron cuando la registraron
 ### Comentarios y votos
 El usuario tiene la posibilidad de comentar y dar un voto a una iniciativa
 
-![](https://github.com/YohannaToro/Banco_De_Ideas/images/LikesYComentariosIniciativas.PNG)
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/LikesYComentariosIniciativas.PNG)
 
 ## Usuario proponente
 
@@ -60,7 +60,7 @@ El usuario proponente puede realizar las mismas acciones que el usuario público
 ### Registrar iniciativa
 El usuario puede registrar en el sistema su idea de proyecto.
 
-![](https://github.com/YohannaToro/Banco_De_Ideas/images/RegistroIniciativas.PNG)
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/RegistroIniciativas.PNG)
 
 ### Consultar iniciativas propias registradas
 El usuario puede consultar las iniciativas que haya registrado en el sistema.
@@ -80,8 +80,8 @@ Estados del sistema:
  - SOLUCIONADO
  - DESECHADO
 
-![](https://github.com/YohannaToro/Banco_De_Ideas/images/ModificarEstadoIniciativa.PNG)
-![](https://github.com/YohannaToro/Banco_De_Ideas/images/ModificarEstadoModal.PNG)
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModificarEstadoIniciativa.PNG)
+![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/ModificarEstadoModal.PNG)
 
 
 ```
