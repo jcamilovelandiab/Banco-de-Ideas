@@ -137,13 +137,15 @@ Enlace para el despliegue de la aplicacion.
   *  pass administrador123
 
 * Login publico
-  *  Usr yohanna.toro@mail.escuelaing.edu.co
+  *  Usr john.ibanez@mail.escuelaing.edu.co
   *  pass publico123
 
 * Login PMO
-  *  Usr yohanna.toro@mail.escuelaing.edu.co
+  *  Usr jose.naranjo@mail.escuelaing.edu.co
   *  pass POM123
-
+* Login PROPONENTE
+  *  Usr juan.velandia-b@mail.escuelaing.edu.co
+  *  pass PROPONENTE123
 
 
 # Descripcion del proceso.
