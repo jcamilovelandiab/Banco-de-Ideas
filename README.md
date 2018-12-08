@@ -9,8 +9,11 @@ Nombre de los integrantes:
  - John Ibañez Rodriguez	
  - Alejandro Naranjo Guzmán
  - Camilo Velandia Botello
- 
+
+
 Nombre del profesor: Francisco José Chaves Alonso
+
+
 Roles asignados:
 	
  - Francisco Chaves Alonso - ***Product Owner***
