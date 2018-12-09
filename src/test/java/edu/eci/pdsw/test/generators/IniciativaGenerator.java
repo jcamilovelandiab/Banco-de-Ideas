@@ -18,7 +18,7 @@ public class IniciativaGenerator {
 	}
 	
 	private static Gen<String> nombres() {
-		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 15);
+		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 15).map(x -> { return x +"_prueba"; });
 	}
 	
 	private static Gen<String> descripciones() {

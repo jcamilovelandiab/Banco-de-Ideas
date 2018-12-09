@@ -18,7 +18,7 @@ public class ComentarioGenerator {
 	}
 	
 	private static Gen<String> contenidos() {
-		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 20);
+		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 20).map(x -> { return x +"_prueba"; });
 	}
 	
 	//public Comentario(String contenido, Usuario autor)

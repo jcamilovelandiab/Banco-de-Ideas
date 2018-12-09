@@ -15,7 +15,7 @@ public class AreaGenerator {
 	}
 	
 	private static Gen<String> nombres() {
-		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 20);
+		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 20).map(x -> { return x +"_prueba"; });
 	}
 	
 	private static Gen<String> descripciones() {

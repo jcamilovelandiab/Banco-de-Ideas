@@ -41,7 +41,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 				iniciativaDAO.agregarPalabraClave(iniciativa.getNombre(), pclave.toLowerCase());
 			}
 		}catch(PersistenceException  ex) {
-			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al crear la iniciativa <"+iniciativa.getNombre()+">");
 		}
 	}
@@ -55,7 +54,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try {
 			return iniciativaDAO.consultarIniciativa(nombreIniciativa);
 		}catch(PersistenceException  ex) {
-			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al consultar la iniciativa <"+nombreIniciativa+">");
 		}
 	}
@@ -69,7 +67,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativasxOrden(orden);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar una iniciativa por "+orden);
 		}
 	}
@@ -82,7 +79,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativas();
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar todas las iniciativas");
 		}
 	}
@@ -96,7 +92,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativasxEstado(estado);
 		}catch(PersistenceException ex){
-			System.out.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar todas las iniciativas");
 		}
 	}
@@ -149,7 +144,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			}
 			return iniciativas.values();
 		}catch(PersistenceException  e) {
-			e.printStackTrace();
 			throw new ServicesException("Error al consultar iniciativas por palabras clave");
 		}
 	}
@@ -204,7 +198,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return usuarioDAO.consultarUsuario(correo);
 		}catch(PersistenceException  ex) {
-			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al consultar el usuario con correo "+correo);
 		}
 	}
@@ -246,7 +239,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			}
 			iniciativaDAO.agregarVotanteAIniciativa(correo, nombreIni);
 		}catch(PersistenceException  ex) {
-			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al registrar el voto de "+correo+" en la iniciativa "+ nombreIni);
 		}
 	}
@@ -267,7 +259,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 			}
 			iniciativaDAO.eliminarVotanteAIniciativa(correo, nombreIni);
 		}catch(PersistenceException  ex) {
-			System.err.println(ex.getMessage());
 			throw new ServicesException("Error al cancelar el voto del usuario "+ correo+ " de la iniciativa"+nombreIni);
 		}
 	}
@@ -295,7 +286,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return interesDAO.consultarInteresesxIniciativa(nombreIniciativa);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar los intereses de la iniciativa "+nombreIniciativa);
 		}
 	}
@@ -309,7 +299,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return interesDAO.consultarInteresesxUsuario(correo);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar los intereses del usuario "+correo);
 		}
 	}
@@ -353,7 +342,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return iniciativaDAO.consultarIniciativasxProponente(correo);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Hay problema al buscar las iniciativas de "+correo);
 		}
 	}
@@ -367,7 +355,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return usuarioDAO.consultarVotantesxIniciativa(nombreIni);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Hay problema los votantes de la iniciativa "+nombreIni);
 		}
 	}
@@ -380,7 +367,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return Arrays.asList(Rol.values());
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar los roles");
 		}
 	}
@@ -408,7 +394,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 		try{
 			return comentarioDAO.consultarComentariosxIniciativa(nombreIniciativa);
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al consultar los comentarios de la iniciativa "+nombreIniciativa);
 		}
 	}
@@ -421,7 +406,6 @@ public class ServicesIdeasImpl  implements ServicesIdeas{
 				iniciativaDAO.modificarIniciativaxEstado(nombreIniciativa,nuevaDescripcion);
 			}
 		}catch(PersistenceException ex){
-			System.err.println(ex.getMessage());
 			throw  new SecurityException("Error al modificar la iniciativa "+nombreIniciativa);
 		}
 	}

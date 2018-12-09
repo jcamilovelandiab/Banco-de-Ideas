@@ -24,6 +24,8 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.Random;
 
 import org.quicktheories.core.Gen;
 import static org.quicktheories.QuickTheory.qt;
@@ -36,36 +38,26 @@ public class ServicesIdeasTest {
 	@Inject
     private SqlSession sqlSession;   
     @Inject
-    ServicesIdeas servicesIdeas;
+    private ServicesIdeas servicesIdeas;
+    
+    private SqlSessionFactory sessionfact;
     
     public ServicesIdeasTest() {
-    	servicesIdeas = ServicesIdeasFactory.getInstance().getServicesIdeasTesting();
+    	servicesIdeas = ServicesIdeasFactory.getInstance().getServicesIdeas();
     }
     
     @Before
     public void setUp() {
     }
-    /*
-    @Test
-    public void pruebaArea() {
-    	System.setProperty("QT_EXAMPLES", "10");
-        qt().forAll(AreaGenerator.areas()).check((area) -> {
-        	
-            return true;
-        });
-    }
     
     @Test
-    public void pruebaUsuarios() {
-    	System.setProperty("QT_EXAMPLES", "10");
-    	System.out.println("PROBANDO USUARIOS");
+    public void creandoUsuarios() {
     	qt().forAll(UsuarioGenerator.usuarios()).check((usuario) -> {
     		Area area = new Area("Decanatura de Sistemas","decanatura del programa de decanatura de sistemas");
     		area.setId(1);
     		usuario.setArea(area);
     		boolean r = true;
     		try {
-    			System.out.println(usuario);
     			if(servicesIdeas.consultarUsuario(usuario.getCorreo())==null) {
     				
     				servicesIdeas.crearUsuario(usuario);
@@ -74,29 +66,78 @@ public class ServicesIdeasTest {
     			}
 						
 			} catch (ServicesException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 				r=false;
+			}catch (Exception e) {
+				r=true;
 			}
             return r;
-        });
-    }*/
-    
-    @Test
-    public void pruebaIniciativas() {
-    	System.setProperty("QT_EXAMPLES", "10");
-        qt().forAll(IniciativaGenerator.iniciativas()).check((iniciativa) -> {
-        	System.out.println(iniciativa);
-            return true;
         });
     }
     
     @Test
-    public void pruebaComentarios() {
+    public void registrandoIniciativas() {
     	System.setProperty("QT_EXAMPLES", "10");
+        qt().forAll(IniciativaGenerator.iniciativas()).check((iniciativa) -> {
+        	boolean r=true;
+        	try {
+        		Iniciativa iniciativaQuery = servicesIdeas.consultarIniciativa(iniciativa.getNombre());
+        		Collection<Iniciativa> iniciativas = servicesIdeas.consultarIniciativas();
+				if(iniciativaQuery==null) {
+					servicesIdeas.crearIniciativa(iniciativa);
+					r=(iniciativa == servicesIdeas.consultarIniciativa(iniciativa.getNombre()));
+				}
+				sqlSession.commit();
+                sqlSession.close();
+			} catch (ServicesException e) {
+				r=true;
+			} catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    } 
+    
+    @Test
+    public void cambiandoEstadoIniciativas() {
+    	boolean r=true;
+    	try {
+			Collection<Iniciativa> iniciativas = servicesIdeas.consultarIniciativas();
+			for (Iniciativa ini : iniciativas) {
+				Random random = new Random();
+				Estado nuevoEstado;
+				while(true) {
+					int number = random.nextInt(4);
+					if(ini.getEstado().ordinal()!=number) {
+						nuevoEstado = Estado.values()[number];
+						break;
+					}
+				}
+				servicesIdeas.modificarEstado(ini.getNombre(), nuevoEstado);
+				
+				assertTrue(servicesIdeas.consultarIniciativa(ini.getNombre()).getEstado().equals(nuevoEstado));
+			}
+		} catch (ServicesException e) {
+			r=true;
+		}catch (Exception e) {
+			r=true;
+		}
+    }
+    
+    
+    @Test
+    public void pruebaComentarios() {
+    	System.setProperty("QT_EXAMPLES", "5");
     	qt().forAll(ComentarioGenerator.comentarios()).check((comentario) -> {
-        	System.out.println(comentario);
-            return true;
+    		boolean r=true;
+        	try {
+        		//System.out.println(comentario.getContenido()+","+comentario.getAutor().getCorreo());
+				servicesIdeas.agregarComentarioxIniciativa("hacer una biblioteca", comentario);
+        	} catch (ServicesException e) {
+				r=true;
+			} catch (Exception e) {
+				r=false;
+			}
+            return r;
         });
     }
     

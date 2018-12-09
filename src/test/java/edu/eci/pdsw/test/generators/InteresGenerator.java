@@ -21,7 +21,7 @@ public class InteresGenerator {
 	}
 	
 	private static Gen<String> intenciones() {
-		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 20);
+		return strings().betweenCodePoints(97, 122).ofLengthBetween(6, 20).map(x -> { return x +"_prueba"; });
 	}
 	
 	private static Gen<String> descripciones() {
