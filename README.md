@@ -168,7 +168,13 @@ Enlace de trello para ver proceso del grupo.
 ## Release-burndown
 ## Sprint.
 ### Sprint-1.
+PAREJAS
+ 1. Ibañez y Naranjo
+ 2. Toro y Velandia
+ 3. Ibañez y Toro
+ 4. Velandia y Naranjo
 
+En este sprint se enfoco la mayoria del esuerzo en el modelado y se hicieron dos parejas , una que implementara la base de datos (Pareja 1) y otra la logica de la aplicacion en Java (Pareja 2). Al final del sprint se cambiaron las parejas, una de ellas se enfoco en la parte visual de la aplicacion (Pareja 3) y la otra en la parte logica de sus funciones (Pareja 4). Esta division y cambio de parejas favorecio la programacion extrema.
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s1.png)
 
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s1-2.png)
@@ -179,12 +185,14 @@ Enlace de trello para ver proceso del grupo.
 
 
 ### Sprint-2.
+
+Durante el inicio este sprint se mantuvieron las parejas 3 y 4 realizando las mismas funciones que en el sprint anterior, para posteriormente disolverse y trabajar todo el equipo en la parte visual.
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s2.png)
 
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BurndownChartSprint2.png)
 
 ### Sprint-3.
-
+En el ultimo sprint no hubo parejas fijas, se estuvo variando frecuentemente de equipo  y la mayoria del tiempo se trabajo intentando mostrar las funcionalidades en la capa de presentacion. 
 
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/s3.png)
 ![](https://github.com/YohannaToro/Banco_De_Ideas/blob/master/images/BurndownChartSprint3.png)
