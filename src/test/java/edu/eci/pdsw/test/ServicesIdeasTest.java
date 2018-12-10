@@ -24,6 +24,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
 
@@ -52,8 +53,9 @@ public class ServicesIdeasTest {
     
     @Test
     public void creandoUsuarios() {
+    	System.setProperty("QT_EXAMPLES", "5");
     	qt().forAll(UsuarioGenerator.usuarios()).check((usuario) -> {
-    		Area area = new Area("Decanatura de Sistemas","decanatura del programa de decanatura de sistemas");
+    		Area area = new Area("Decanatura de Sistemas","decanatura del programa de Ingenieria de Sistemas");
     		area.setId(1);
     		usuario.setArea(area);
     		boolean r = true;
@@ -68,6 +70,73 @@ public class ServicesIdeasTest {
 			} catch (ServicesException e) {
 				r=false;
 			}catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    }
+    
+    @Test
+    public void deberiaConsultarCorrectamenteUnUsuario() {
+    	System.setProperty("QT_EXAMPLES", "5");
+    	qt().forAll(UsuarioGenerator.usuarios()).check((usuario) -> {
+    		Area area = new Area("Decanatura de Sistemas","decanatura del programa de Ingenieria de Sistemas");
+    		area.setId(1);
+    		usuario.setArea(area);
+    		boolean r = true;
+    		try {
+    			servicesIdeas.crearUsuario(usuario);
+    			Usuario us = servicesIdeas.consultarUsuario(usuario.getCorreo());
+    			if(us != null) {
+    				r = usuario.getCorreo().equals(us.getCorreo());
+    			}else {
+    				r = false;
+    			}
+						
+			} catch (ServicesException e) {
+				r = true;
+				
+			}catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    }
+    
+    @Test
+    public void deberiaConsultarCorrectamenteLosUsuarios() {
+    	System.setProperty("QT_EXAMPLES", "5");
+    	qt().forAll(UsuarioGenerator.usuarios(),UsuarioGenerator.usuarios(),UsuarioGenerator.usuarios()).check((usuario1,usuario2,usuario3) -> {
+    		Area area = new Area("Decanatura de Sistemas","decanatura del programa de Ingenieria de Sistemas");
+    		area.setId(1);
+    		usuario1.setArea(area);
+    		usuario2.setArea(area);
+    		usuario2.setArea(area);
+    		boolean r = true;
+    		try {
+    			servicesIdeas.crearUsuario(usuario1);
+    			servicesIdeas.crearUsuario(usuario2);
+    			servicesIdeas.crearUsuario(usuario3);
+    			ArrayList<Usuario> us = (ArrayList<Usuario>) servicesIdeas.consultarUsuarios();
+    			if(us != null) {
+    				boolean f1 = false;boolean f2 = false;boolean f3 = false;					
+					for(int j = 0; j < us.size(); j++) {
+						if(us.get(j).getCorreo().equals(usuario1.getCorreo())) {
+							f1 = true;
+						}
+						if(us.get(j).getCorreo().equals(usuario2.getCorreo())) {
+							f2 = true;
+						}
+						if(us.get(j).getCorreo().equals(usuario3.getCorreo())) {
+							f3 = true;
+						}
+					}
+					r=f1 && f2 && f3;
+    			}else {
+    				r = false;
+    			}
+						
+			} catch (ServicesException e) {
 				r=true;
 			}
             return r;
@@ -99,6 +168,7 @@ public class ServicesIdeasTest {
     
     @Test
     public void cambiandoEstadoIniciativas() {
+    	System.setProperty("QT_EXAMPLES", "5");
     	boolean r=true;
     	try {
 			Collection<Iniciativa> iniciativas = servicesIdeas.consultarIniciativas();
@@ -141,4 +211,135 @@ public class ServicesIdeasTest {
         });
     }
     
+    @Test
+    public void DeberiaConsultarUnaIniciativaCorrectamente() {
+    	System.setProperty("QT_EXAMPLES", "10");
+        qt().forAll(IniciativaGenerator.iniciativas()).check((iniciativa) -> {
+        	boolean r=true;
+        	try {
+        		servicesIdeas.crearIniciativa(iniciativa);
+        		Iniciativa iniciativaQuery = servicesIdeas.consultarIniciativa(iniciativa.getNombre());
+				if(iniciativaQuery!=null) {
+					r=(iniciativa.getNombre().equals(iniciativaQuery.getNombre()));
+				}else {
+					r = false;
+				}
+				sqlSession.commit();
+                sqlSession.close();
+			} catch (ServicesException e) {
+				r=true;
+			} catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    }
+    
+    @Test
+    public void DeberiaConsultarLasIniciativasCorrectamente() {
+    	System.setProperty("QT_EXAMPLES", "10");
+        qt().forAll(IniciativaGenerator.iniciativas(),IniciativaGenerator.iniciativas(),IniciativaGenerator.iniciativas()).check((iniciativa1,iniciativa2,iniciativa3) -> {
+        	boolean r=true;
+        	try {
+        		servicesIdeas.crearIniciativa(iniciativa1);
+        		servicesIdeas.crearIniciativa(iniciativa2);
+        		servicesIdeas.crearIniciativa(iniciativa3);
+        		Collection<Iniciativa>iniciativaQuery = servicesIdeas.consultarIniciativas();
+				if(iniciativaQuery!=null) {
+					boolean f1 = false;boolean f2 = false;boolean f3 = false;					
+					for(int j = 0; j < iniciativaQuery.size(); j++) {
+						if(((ArrayList<Iniciativa>) iniciativaQuery).get(j).getNombre().equals(iniciativa1.getNombre())) {
+							f1 = true;
+						}
+						if(((ArrayList<Iniciativa>) iniciativaQuery).get(j).getNombre().equals(iniciativa2.getNombre())) {
+							f2 = true;
+						}
+						if(((ArrayList<Iniciativa>) iniciativaQuery).get(j).getNombre().equals(iniciativa3.getNombre())) {
+							f3 = true;
+						}
+					}
+					r=f1 && f2 && f3;
+				}else {
+					r = false;
+				}
+				sqlSession.commit();
+                sqlSession.close();
+			} catch (ServicesException e) {
+				r=true;
+			} catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    }
+    
+    @Test
+    public void deberiaAsignarCorrectamenteElPerfilAUnUsuario() {
+    	System.setProperty("QT_EXAMPLES", "5");
+    	qt().forAll(UsuarioGenerator.usuarios()).check((usuario) -> {
+    		Area area = new Area("Decanatura de Sistemas","decanatura del programa de Ingenieria de Sistemas");
+    		area.setId(1);
+    		usuario.setArea(area);
+    		boolean r = true;
+    		try {
+    			Random random = new Random();
+				Rol nuevoRol;
+				while(true) {
+					int number = random.nextInt(4);
+					if(usuario.getTipo().ordinal()!=number) {
+						nuevoRol = Rol.values()[number];
+						break;
+					}
+				}
+    			servicesIdeas.crearUsuario(usuario);
+    			servicesIdeas.asignarPerfil(usuario.getCorreo(),nuevoRol);
+    			Usuario us = servicesIdeas.consultarUsuario(usuario.getCorreo());
+    			if(us != null) {
+    				r = us.getTipo().equals(nuevoRol);
+    			}else {
+    				r = false;
+    			}
+						
+			} catch (ServicesException e) {
+				r=true;
+			}catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    }
+    
+    @Test
+    public void deberiaConsultarCorrectamenteLasIniciativasDeUnUsuario() {
+    	System.setProperty("QT_EXAMPLES", "5");
+    	qt().forAll(UsuarioGenerator.usuarios(),IniciativaGenerator.iniciativas()).check((usuario,iniciativa) -> {
+    		Area area = new Area("Decanatura de Sistemas","decanatura del programa de Ingenieria de Sistemas");
+    		area.setId(1);
+    		usuario.setArea(area);
+    		boolean r = true;
+    		boolean flag = false;
+    		try {
+    			iniciativa.setProponente(usuario);
+    			servicesIdeas.crearUsuario(usuario);
+    			servicesIdeas.crearIniciativa(iniciativa);
+    			ArrayList<Iniciativa> ini = (ArrayList<Iniciativa>) servicesIdeas.consultarIniciativasxProponente(usuario.getCorreo());
+    			if(ini != null) {
+    				
+    				for(int i = 0; i < ini.size() && !flag; i++) {
+    					if(ini.get(i).getNombre().equals(iniciativa.getNombre())) {
+    						flag = true;
+    					}
+    				}
+    			}else {
+    				r = false;
+    			}
+    			return r && flag;		
+			} catch (ServicesException e) {
+				r=true;
+			}catch (Exception e) {
+				r=true;
+			}
+            return r;
+        });
+    }
 }
