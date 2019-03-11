@@ -1,73 +1,71 @@
 http://sujoyu.github.io/plantuml-previewer/
 
-
-
-
 @startuml
-class Usuario
-{
+
+class Usuario{
   {field}-correo: String
-  {field}-nombre: String
-  {field}-tipo: Rol
+  {field}-nombres: String
+  {field}-apellidos: String
+  {field}-foto: Image
+  {field}-calificacion: int
+  {field}-fechaNacimiento: String
+  {field}-celular: String
+  {field}-clave: String
 }
 
-class Area
-{
-  {field}-id: Long
-  {field}-nombre: String
-  {field}-descripcion: String
+class Automovil{
+  {field}-placa: String
+  {field}-modelo: String
+  {field}-tipo: String
+  {field}-color: String
 }
 
-class Interes
-{
-  {field}-id: Long
-  {field}-intencion: String
-  {field}-descripcion: String
-  {field}-fecha: Date
-  {field}-trabajo: boolean
+class CuentaBancaria{
+  {field}-id: long
+  {field}-banco: String
+  {field}-activa: Boolean
 }
 
-class Iniciativa
-{
-  {field}-noIniciativa: Long
-  {field}-nombre: String
-  {field}-descripcion: String
-  {field}-fechaPropuesta: Date
-  {field}-fechaCierre: Date
-  {field}-estado: Estado
-  {field}-palabrasClave: ArrayList<String>
+class Pasajero{
 }
 
-class Comentario
-{
-  {field}-id: Long
-  {field}-fecha: Date
+class Cupon{
+  {field}-codigo: String
+  {field}-activo: Boolean
+}
+
+class Conductor{
+}
+
+class Viaje{
+  {field}-id: long
+  {field}-lugarOrigen: String
+  {field}-lugarDestino: String
+  {field}-calificacion: int[0..5]
+  {field}-costo: int
+  {field}-tiempo: long
+  {field}-correoPasajero: String
+  {field}-correoConductor: String
+  {field}-aceptado: Boolean
+}
+
+class Comentario{
+  {field}-id: long
   {field}-contenido: String
+  {field}-fecha: Date
+  {field}-correoAutor: String
 }
 
-enum Estado
-{
-  {field}EN_ESPERA
-  {field}EN_REVISION
-  {field}PROYECTO
-  {field}SOLUCIONADO
-  {field}DESECHADO
-}
+Usuario <|--- Conductor
+Usuario <|--- Pasajero 
 
-enum Rol
-{
-  {field}PUBLICO
-  {field}PROPONENTE
-  {field}ADMINISTRADOR
-  {field}PMO-ODI
-}
+Usuario -->"-cuentasBancarias *" CuentaBancaria
+Usuario -->"-viajes *" Viaje
+Conductor -->"-automovil " Automovil
+Viaje -->"-comentarios 0..2" Comentario
+Viaje --> "-pago " CuentaBancaria
+Pasajero--> "-cupones *" Cupon 
+ 
 
-Usuario "-votantes  *"<--Iniciativa
-Interes-->"-interesado"Usuario
-Iniciativa -->"-  proponente"Usuario
-Usuario "-autor"-->Comentario
-Usuario -->"-area"Area
-Iniciativa -->"-intereses  *"Interes
-Iniciativa -->"-comentarios  *"Comentario
 @enduml
 
